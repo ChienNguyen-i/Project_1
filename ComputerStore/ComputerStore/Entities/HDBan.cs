@@ -4,53 +4,53 @@ using System.Text;
 
 namespace ComputerStore.Entities
 {
-    class HDNhap
+    class HDBan
     {
         #region Các thành phần dữ liệu
         private static int stt = 0;
-        public int MaHDN;
+        public int MaHDB;
         private string MaNV;
-        private string MaNCC;
-        private DateTime NgayNhap;
+        private string MaKH;
+        private DateTime NgayBan;
         private double TongTien;
         #endregion
         #region Các phương thức khởi tạo
-        public HDNhap()
+        public HDBan()
         {
             stt++;
-            MaHDN = stt;
+            MaHDB = stt;
             MaNV = " ";
-            MaNCC = " ";
-            NgayNhap = DateTime.Now;
+            MaKH = " ";
+            NgayBan = DateTime.Now;
             TongTien = 0;
         }
-        public HDNhap(string manv, string mancc, DateTime ngaynhap, double tongtien)
+        public HDBan(string manv, string makh, DateTime ngayban, double tongtien)
         {
             this.MaNV = manv;
-            this.MaNCC = mancc;
-            this.NgayNhap = ngaynhap;
+            this.MaKH = makh;
+            this.NgayBan = ngayban;
             this.TongTien = tongtien;
         }
         //Phương thức sao chép
-        public HDNhap(HDNhap hdn)
+        public HDBan(HDBan hdb)
         {
-            this.MaHDN = hdn.MaHDN;
-            this.MaNV = hdn.MaNV;
-            this.MaNCC = hdn.MaNCC;
-            this.NgayNhap = hdn.NgayNhap;
-            this.TongTien = hdn.TongTien;
+            this.MaHDB = hdb.MaHDB;
+            this.MaNV = hdb.MaNV;
+            this.MaKH = hdb.MaKH;
+            this.NgayBan = hdb.NgayBan;
+            this.TongTien = hdb.TongTien;
         }
         #endregion
         #region Các thuộc tính
-        public int maHDN
-        { 
+        public int maHDB
+        {
             get
             {
-                return MaHDN;
+                return MaHDB;
             }
             set
             {
-                MaHDN = value;
+                MaHDB = value;
             }
         }
         public string maNV
@@ -65,27 +65,27 @@ namespace ComputerStore.Entities
                     MaNV = value;
             }
         }
-        public string maNCC
+        public string maKH
         {
             get
             {
-                return MaNCC;
+                return MaKH;
             }
             set
             {
                 if (value != "")
-                    MaNCC = value;
+                    MaKH = value;
             }
         }
-        public DateTime ngayNhap
+        public DateTime ngayBan
         {
             get
             {
-                return NgayNhap;
+                return NgayBan;
             }
             set
             {
-                NgayNhap = value;
+                NgayBan = value;
             }
         }
         public double tongTien
