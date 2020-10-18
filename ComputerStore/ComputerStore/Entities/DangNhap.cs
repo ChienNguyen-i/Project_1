@@ -18,6 +18,7 @@ namespace ComputerStore.Entities
             this.User = user;
             this.Password = pass;
         }
+        //Phương thức sao chép
         public DangNhap(DangNhap dn)
         {
             this.User = dn.User;

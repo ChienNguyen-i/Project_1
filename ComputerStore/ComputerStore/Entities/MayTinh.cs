@@ -26,16 +26,17 @@ namespace ComputerStore.Entities
             SLNhap = 0;
             SLCon = 0;
         }
-        public MayTinh(string maLM, string tenLM, string maNCC, int sln, int slc)
+        public MayTinh(string malm, string tenlm, string mancc, int sln, int slc)
         {
             stt++;
             MaMT = stt;
-            this.MaLM = maLM;
-            this.TenLM = tenLM;
-            this.MaNCC = maNCC;
+            this.MaLM = malm;
+            this.TenLM = tenlm;
+            this.MaNCC = mancc;
             this.SLNhap = sln;
             this.SLCon = slc;
         }
+        //Phương thức sao chép
         public MayTinh(MayTinh mt)
         {
             this.MaMT = mt.MaMT;

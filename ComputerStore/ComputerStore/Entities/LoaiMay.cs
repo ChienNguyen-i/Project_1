@@ -27,6 +27,7 @@ namespace ComputerStore.Entities
             this.TenLM = tenlm;
             this.DacDiem = dacdiem;
         }
+        //Phương thức sao chép
         public LoaiMay(LoaiMay lm)
         {
             this.MaLM = lm.MaLM;

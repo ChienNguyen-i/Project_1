@@ -4,63 +4,77 @@ using System.Text;
 
 namespace ComputerStore.Entities
 {
-    class NCC
+    class KhachHang
     {
         #region Các thành phần dữ liệu
         private static int stt = 0;
-        public int MaNCC;
-        private string TenNCC;
+        public int MaKH;
+        private string TenKH;
+        private string GioiTinh;
         private string DiaChi;
         private string SoDT;
         #endregion
         #region Các phương thức khởi tạo
-        public NCC()
+        public KhachHang()
         {
             stt++;
-            MaNCC = stt;
-            TenNCC = " ";
+            MaKH = stt;
+            TenKH = " ";
+            GioiTinh = " ";
             DiaChi = " ";
             SoDT = " ";
         }
-        public NCC(string tenncc, string diachi, string sdt)
+        public KhachHang(string tenkh, string gt, string diachi, string sdt)
         {
-            stt++;
-            MaNCC = stt;
-            this.TenNCC = tenncc;
+            this.TenKH = tenkh;
+            this.GioiTinh = gt;
             this.DiaChi = diachi;
             this.SoDT = sdt;
         }
         //Phương thức sao chép
-        public NCC(NCC n)
+        public KhachHang(KhachHang kh)
         {
-            this.MaNCC = n.MaNCC;
-            this.TenNCC = n.TenNCC;
-            this.DiaChi = n.DiaChi;
-            this.SoDT = n.SoDT;
+            this.MaKH = kh.MaKH;
+            this.TenKH = kh.TenKH;
+            this.GioiTinh = kh.GioiTinh;
+            this.DiaChi = kh.DiaChi;
+            this.SoDT = kh.SoDT;
         }
         #endregion
         #region Các thuộc tính
-        public int maNCC
+        public int maKH
         {
             get
             {
-                return MaNCC;
+                return MaKH;
             }
             set
             {
-                MaNCC = value;
+                MaKH = value;
             }
         }
-        public string tenNCC
+        public string tenKH
         {
             get
             {
-                return TenNCC;
+                return TenKH;
             }
             set
             {
                 if (value != "")
-                    TenNCC = value;
+                    TenKH = value;
+            }
+        }
+        public string gioiTinh
+        { 
+            get
+            {
+                return GioiTinh;
+            }
+            set
+            {
+                if (value.ToLower() == "nam" || value.ToLower() == "nữ")
+                    GioiTinh = value;
             }
         }
         public string diaChi
