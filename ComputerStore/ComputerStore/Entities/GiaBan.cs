@@ -7,8 +7,7 @@ namespace ComputerStore.Entities
     public class GiaBan
     {
         #region Các thành phần dữ liệu
-        private static int stt = 0;
-        public int MaGB;
+        private int MaGB;
         private string MaMT;
         private double Giaban;
         private DateTime NgayAD;
@@ -17,15 +16,15 @@ namespace ComputerStore.Entities
         #region Các phương thức khởi tạo
         public GiaBan()
         {
-            stt++;
-            MaGB = stt;
+            MaGB = 0;
             MaMT = " ";
             Giaban = 0;
             NgayAD = DateTime.Now;
             NgayThoiAD = DateTime.Now;
         }
-        public GiaBan(string mamt, double giaban, DateTime ngayad, DateTime ngaythoiad)
+        public GiaBan(int magb, string mamt, double giaban, DateTime ngayad, DateTime ngaythoiad)
         {
+            this.MaGB = magb;
             this.MaMT = mamt;
             this.Giaban = giaban;
             this.NgayAD = ngayad;
@@ -50,7 +49,8 @@ namespace ComputerStore.Entities
             }
             set
             {
-                MaGB = value;
+                if (value > 0)
+                    MaGB = value;
             }
         }
         public string maMT

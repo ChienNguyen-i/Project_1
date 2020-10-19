@@ -7,8 +7,7 @@ namespace ComputerStore.Entities
     public class CTHDNhap
     {
         #region Các thành phần dữ liệu
-        private static int stt = 0;
-        public int MaCTHDN;
+        private int MaCTHDN;
         private string MaHDN;
         private string MaMT;
         private int SoLuong;
@@ -18,16 +17,16 @@ namespace ComputerStore.Entities
         #region Các phương thức khởi tạo
         public CTHDNhap()
         {
-            stt++;
-            MaCTHDN = stt;
+            MaCTHDN = 0;
             MaHDN = " ";
             MaMT = " ";
             SoLuong = 0;
             DonGia = 0;
             ThanhTien = 0;
         }
-        public CTHDNhap(string mahdn, string mamt, int soluong, double dongia, double thanhtien)
+        public CTHDNhap(int macthdn, string mahdn, string mamt, int soluong, double dongia, double thanhtien)
         {
+            this.MaCTHDN = macthdn;
             this.MaHDN = mahdn;
             this.MaMT = mamt;
             this.SoLuong = soluong;
@@ -54,7 +53,8 @@ namespace ComputerStore.Entities
             }
             set
             {
-                MaCTHDN = value;
+                if (value > 0)
+                    MaCTHDN = value;
             }
         }
         public string maHDN

@@ -7,8 +7,7 @@ namespace ComputerStore.Entities
     public class MayTinh
     {
         #region Các thành phần dữ liệu
-        private static int stt = 0;
-        public int MaMT;
+        private int MaMT;
         private string MaLM;
         private string TenLM;
         private string MaNCC;
@@ -18,18 +17,16 @@ namespace ComputerStore.Entities
         #region Các phương thức khởi tạo
         public MayTinh()
         {
-            stt++;
-            MaMT = stt;
+            MaMT = 0;
             MaLM = " ";
             TenLM = " ";
             MaNCC = " ";
             SLNhap = 0;
             SLCon = 0;
         }
-        public MayTinh(string malm, string tenlm, string mancc, int sln, int slc)
+        public MayTinh(int mamt, string malm, string tenlm, string mancc, int sln, int slc)
         {
-            stt++;
-            MaMT = stt;
+            this.MaMT = mamt;
             this.MaLM = malm;
             this.TenLM = tenlm;
             this.MaNCC = mancc;
@@ -56,7 +53,8 @@ namespace ComputerStore.Entities
             }
             set
             {
-                MaMT = value;
+                if (value > 0)
+                    MaMT = value;
             }
         }
         public string maLM

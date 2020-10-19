@@ -7,8 +7,7 @@ namespace ComputerStore.Entities
     public class KhachHang
     {
         #region Các thành phần dữ liệu
-        private static int stt = 0;
-        public int MaKH;
+        private int MaKH;
         private string TenKH;
         private string GioiTinh;
         private string DiaChi;
@@ -17,15 +16,15 @@ namespace ComputerStore.Entities
         #region Các phương thức khởi tạo
         public KhachHang()
         {
-            stt++;
-            MaKH = stt;
+            MaKH = 0;
             TenKH = " ";
             GioiTinh = " ";
             DiaChi = " ";
             SoDT = " ";
         }
-        public KhachHang(string tenkh, string gt, string diachi, string sdt)
+        public KhachHang(int makh, string tenkh, string gt, string diachi, string sdt)
         {
+            this.MaKH = makh;
             this.TenKH = tenkh;
             this.GioiTinh = gt;
             this.DiaChi = diachi;
@@ -50,7 +49,8 @@ namespace ComputerStore.Entities
             }
             set
             {
-                MaKH = value;
+                if (value > 0)
+                    MaKH = value;
             }
         }
         public string tenKH

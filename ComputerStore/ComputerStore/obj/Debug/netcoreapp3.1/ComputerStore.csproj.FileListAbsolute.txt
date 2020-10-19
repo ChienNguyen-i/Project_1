@@ -2,3 +2,12 @@ D:\Project 1\ComputerStore\ComputerStore\obj\Debug\netcoreapp3.1\ComputerStore.c
 D:\Project 1\ComputerStore\ComputerStore\obj\Debug\netcoreapp3.1\ComputerStore.AssemblyInfoInputs.cache
 D:\Project 1\ComputerStore\ComputerStore\obj\Debug\netcoreapp3.1\ComputerStore.AssemblyInfo.cs
 D:\Project 1\ComputerStore\ComputerStore\obj\Debug\netcoreapp3.1\ComputerStore.csproj.CoreCompileInputs.cache
+D:\Project 1\ComputerStore\ComputerStore\bin\Debug\netcoreapp3.1\ComputerStore.exe
+D:\Project 1\ComputerStore\ComputerStore\bin\Debug\netcoreapp3.1\ComputerStore.deps.json
+D:\Project 1\ComputerStore\ComputerStore\bin\Debug\netcoreapp3.1\ComputerStore.runtimeconfig.json
+D:\Project 1\ComputerStore\ComputerStore\bin\Debug\netcoreapp3.1\ComputerStore.runtimeconfig.dev.json
+D:\Project 1\ComputerStore\ComputerStore\bin\Debug\netcoreapp3.1\ComputerStore.dll
+D:\Project 1\ComputerStore\ComputerStore\bin\Debug\netcoreapp3.1\ComputerStore.pdb
+D:\Project 1\ComputerStore\ComputerStore\obj\Debug\netcoreapp3.1\ComputerStore.dll
+D:\Project 1\ComputerStore\ComputerStore\obj\Debug\netcoreapp3.1\ComputerStore.pdb
+D:\Project 1\ComputerStore\ComputerStore\obj\Debug\netcoreapp3.1\ComputerStore.genruntimeconfig.cache

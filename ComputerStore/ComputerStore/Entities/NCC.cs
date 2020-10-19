@@ -7,8 +7,7 @@ namespace ComputerStore.Entities
     public class NCC
     {
         #region Các thành phần dữ liệu
-        private static int stt = 0;
-        public int MaNCC;
+        private int MaNCC;
         private string TenNCC;
         private string DiaChi;
         private string SoDT;
@@ -16,16 +15,14 @@ namespace ComputerStore.Entities
         #region Các phương thức khởi tạo
         public NCC()
         {
-            stt++;
-            MaNCC = stt;
+            MaNCC = 0;
             TenNCC = " ";
             DiaChi = " ";
             SoDT = " ";
         }
-        public NCC(string tenncc, string diachi, string sdt)
+        public NCC(int mancc, string tenncc, string diachi, string sdt)
         {
-            stt++;
-            MaNCC = stt;
+            this.MaNCC = mancc;
             this.TenNCC = tenncc;
             this.DiaChi = diachi;
             this.SoDT = sdt;
@@ -48,7 +45,8 @@ namespace ComputerStore.Entities
             }
             set
             {
-                MaNCC = value;
+                if (value > 0)
+                    MaNCC = value;
             }
         }
         public string tenNCC

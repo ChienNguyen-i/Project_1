@@ -7,8 +7,7 @@ namespace ComputerStore.Entities
     public class NhanVien
     {
         #region Các thành phần dữ liệu
-        private static int stt = 0;
-        public int MaNV;
+        private int MaNV;
         private string TenNV;
         private string GioiTinh;
         private string DiaChi;
@@ -18,18 +17,16 @@ namespace ComputerStore.Entities
         #region Các phương thức khởi tạo
         public NhanVien()
         {
-            stt++;
-            MaNV = stt;
+            MaNV = 0;
             TenNV = " ";
             GioiTinh = " ";
             DiaChi = " ";
             SoDT = " ";
             LoaiNV = " ";
         }
-        public NhanVien(string tennv, string gt, string diachi, string sdt, string loainv)
+        public NhanVien(int manv, string tennv, string gt, string diachi, string sdt, string loainv)
         {
-            stt++;
-            MaNV = stt;
+            this.MaNV = manv;
             this.TenNV = tennv;
             this.GioiTinh = gt;
             this.DiaChi = diachi;
@@ -56,7 +53,8 @@ namespace ComputerStore.Entities
             }
             set
             {
-                MaNV = value;
+                if (value > 0)
+                    MaNV = value;
             }
         }
         public string tenNV

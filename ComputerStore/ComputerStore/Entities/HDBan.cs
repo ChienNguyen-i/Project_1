@@ -7,8 +7,7 @@ namespace ComputerStore.Entities
     public class HDBan
     {
         #region Các thành phần dữ liệu
-        private static int stt = 0;
-        public int MaHDB;
+        private int MaHDB;
         private string MaNV;
         private string MaKH;
         private DateTime NgayBan;
@@ -17,15 +16,15 @@ namespace ComputerStore.Entities
         #region Các phương thức khởi tạo
         public HDBan()
         {
-            stt++;
-            MaHDB = stt;
+            MaHDB = 0;
             MaNV = " ";
             MaKH = " ";
             NgayBan = DateTime.Now;
             TongTien = 0;
         }
-        public HDBan(string manv, string makh, DateTime ngayban, double tongtien)
+        public HDBan(int mahdb, string manv, string makh, DateTime ngayban, double tongtien)
         {
+            this.MaHDB = mahdb;
             this.MaNV = manv;
             this.MaKH = makh;
             this.NgayBan = ngayban;
@@ -50,7 +49,8 @@ namespace ComputerStore.Entities
             }
             set
             {
-                MaHDB = value;
+                if (value > 0)
+                    MaHDB = value;
             }
         }
         public string maNV

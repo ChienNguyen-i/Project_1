@@ -7,23 +7,20 @@ namespace ComputerStore.Entities
     public class LoaiMay
     {
         #region Các thành phần dữ liệu
-        private static int stt = 0;
-        public int MaLM;
+        private int MaLM;
         private string TenLM;
         private string DacDiem;
         #endregion
         #region Các phương thức khởi tạo
         public LoaiMay()
         {
-            stt++;
-            MaLM = stt;
+            MaLM = 0;
             TenLM = " ";
             DacDiem = " ";
         }
-        public LoaiMay(string tenlm, string dacdiem)
+        public LoaiMay(int malm, string tenlm, string dacdiem)
         {
-            stt++;
-            MaLM = stt;
+            this.MaLM = malm;
             this.TenLM = tenlm;
             this.DacDiem = dacdiem;
         }
@@ -44,7 +41,8 @@ namespace ComputerStore.Entities
             }
             set
             {
-                MaLM = value;
+                if (value > 0)
+                    MaLM = value;
             }
         }
         public string tenLM

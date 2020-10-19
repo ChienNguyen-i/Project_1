@@ -7,8 +7,7 @@ namespace ComputerStore.Entities
     public class CTHDBan
     {
         #region Các thành phần dữ liệu
-        private static int stt = 0;
-        public int MaCTHDB;
+        private int MaCTHDB;
         private string MaHDB;
         private string MaMT;
         private int SoLuong;
@@ -18,16 +17,16 @@ namespace ComputerStore.Entities
         #region Các phương thức khởi tạo
         public CTHDBan()
         {
-            stt++;
-            MaCTHDB = stt;
+            MaCTHDB = 0;
             MaHDB = " ";
             MaMT = " ";
             SoLuong = 0;
             DonGia = 0;
             ThanhTien = 0;
         }
-        public CTHDBan(string mahdb, string mamt, int soluong, double dongia, double thanhtien)
+        public CTHDBan(int macthdb, string mahdb, string mamt, int soluong, double dongia, double thanhtien)
         {
+            this.MaCTHDB = macthdb;
             this.MaHDB = mahdb;
             this.MaMT = mamt;
             this.SoLuong = soluong;
@@ -54,7 +53,8 @@ namespace ComputerStore.Entities
             }
             set
             {
-                MaCTHDB = value;
+                if (value > 0)
+                    MaCTHDB = value;
             }
         }
         public string maHDB

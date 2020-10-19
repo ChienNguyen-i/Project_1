@@ -7,8 +7,7 @@ namespace ComputerStore.Entities
     public class HDNhap
     {
         #region Các thành phần dữ liệu
-        private static int stt = 0;
-        public int MaHDN;
+        private int MaHDN;
         private string MaNV;
         private string MaNCC;
         private DateTime NgayNhap;
@@ -17,15 +16,15 @@ namespace ComputerStore.Entities
         #region Các phương thức khởi tạo
         public HDNhap()
         {
-            stt++;
-            MaHDN = stt;
+            MaHDN = 0;
             MaNV = " ";
             MaNCC = " ";
             NgayNhap = DateTime.Now;
             TongTien = 0;
         }
-        public HDNhap(string manv, string mancc, DateTime ngaynhap, double tongtien)
+        public HDNhap(int mahdn, string manv, string mancc, DateTime ngaynhap, double tongtien)
         {
+            this.MaHDN = mahdn;
             this.MaNV = manv;
             this.MaNCC = mancc;
             this.NgayNhap = ngaynhap;
@@ -50,7 +49,8 @@ namespace ComputerStore.Entities
             }
             set
             {
-                MaHDN = value;
+                if (value > 0)
+                    MaHDN = value;
             }
         }
         public string maNV
