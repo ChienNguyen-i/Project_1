@@ -4,7 +4,7 @@ using System.Text;
 
 namespace ComputerStore.Entities
 {
-    class CTHDNhap
+    public class CTHDNhap
     {
         #region Các thành phần dữ liệu
         private static int stt = 0;

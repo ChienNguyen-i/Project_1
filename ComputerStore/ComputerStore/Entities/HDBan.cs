@@ -4,7 +4,7 @@ using System.Text;
 
 namespace ComputerStore.Entities
 {
-    class HDBan
+    public class HDBan
     {
         #region Các thành phần dữ liệu
         private static int stt = 0;

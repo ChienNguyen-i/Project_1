@@ -4,7 +4,7 @@ using System.Text;
 
 namespace ComputerStore.Entities
 {
-    class LoaiMay
+    public class LoaiMay
     {
         #region Các thành phần dữ liệu
         private static int stt = 0;

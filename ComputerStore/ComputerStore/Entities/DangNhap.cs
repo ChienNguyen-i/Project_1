@@ -4,7 +4,7 @@ using System.Text;
 
 namespace ComputerStore.Entities
 {
-    class DangNhap
+    public class DangNhap
     {
         #region Các thành phần dữ liệu
         private string User;
