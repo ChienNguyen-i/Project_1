@@ -18,9 +18,9 @@ namespace ComputerStore.Entities
         public MayTinh()
         {
             MaMT = 0;
-            MaLM = " ";
-            TenLM = " ";
-            MaNCC = " ";
+            MaLM = "";
+            TenLM = "";
+            MaNCC = "";
             SLNhap = 0;
             SLCon = 0;
         }

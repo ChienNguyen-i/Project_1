@@ -18,8 +18,8 @@ namespace ComputerStore.Entities
         public CTHDNhap()
         {
             MaCTHDN = 0;
-            MaHDN = " ";
-            MaMT = " ";
+            MaHDN = "";
+            MaMT = "";
             SoLuong = 0;
             DonGia = 0;
             ThanhTien = 0;

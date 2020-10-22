@@ -17,7 +17,7 @@ namespace ComputerStore.Entities
         public GiaBan()
         {
             MaGB = 0;
-            MaMT = " ";
+            MaMT = "";
             Giaban = 0;
             NgayAD = DateTime.Now;
             NgayThoiAD = DateTime.Now;

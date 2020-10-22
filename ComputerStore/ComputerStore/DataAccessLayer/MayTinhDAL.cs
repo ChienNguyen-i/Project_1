@@ -1,46 +1,47 @@
-﻿using ComputerStore.Entities;
-using System;
+﻿using System;
 using System.Collections;
 using System.Text;
-using ComputerStore.Utility;
 using System.IO;
+using ComputerStore.Utility;
+using ComputerStore.Entities;
+using System.Linq.Expressions;
 
 namespace ComputerStore.DataAccessLayer
 {
-    class LoaiMayDAL
+    class MayTinhDAL
     {
-        DataAccessHelper dah = new DataAccessHelper("Data/LoaiHang.txt");
-        public string toString(LoaiMay lm)
+        DataAccessHelper dah = new DataAccessHelper("Data/MayTinh.txt");
+        public string toString(MayTinh mt)
         {
-            return lm.maLM + "\t" + lm.tenLM + "\t" + lm.dacDiem;
+            return mt.maMT + "\t" + mt.maLM + "\t" + mt.tenLM + "\t" + mt.maNCC + "\t" + mt.sLNhap + "\t" + mt.sLCon;
         }
-        public LoaiMay tostring(string s)
+        public MayTinh tostring(string s)
         {
             s = CongCu.CatXau(s);
             string[] tmp = s.Split('\t');
-            LoaiMay lm = new LoaiMay(int.Parse(tmp[0]), tmp[1], tmp[2]);
-            return lm;
+            MayTinh mt = new MayTinh(int.Parse(tmp[0]), tmp[1], tmp[2], tmp[3], int.Parse(tmp[4]), int.Parse(tmp[5]));
+            return mt;
         }
-        public void Write(string filename, LoaiMay lm)
+        public void Write(string filename, MayTinh m)
         {
             FileStream f = new FileStream(filename, FileMode.Append, FileAccess.Write);
             StreamWriter sw = new StreamWriter(f);
-            sw.WriteLine(toString(lm));
+            sw.WriteLine(toString(m));
             sw.Close();
             f.Close();
         }
-        public LoaiMay Read(string filename)
+        public MayTinh Read(string filename)
         {
             FileStream f = new FileStream(filename, FileMode.Open, FileAccess.Read);
             StreamReader sr = new StreamReader(f);
             string kq = sr.ReadLine();
             return tostring(kq);
         }
-        public void WriteList(string filename, List<LoaiMay> lm)
+        public void WriteList(string filename, List<MayTinh> mt)
         {
             FileStream f = new FileStream(filename, FileMode.Create, FileAccess.Write);
             StreamWriter sw = new StreamWriter(f);
-            Node<LoaiMay> tg = lm.Head;
+            Node<MayTinh> tg = mt.Head;
             while (tg != null)
             {
                 sw.WriteLine(toString(tg.Info));
@@ -49,11 +50,11 @@ namespace ComputerStore.DataAccessLayer
             sw.Close();
             f.Close();
         }
-        public List<LoaiMay> ReadList(string filename)
+        public List<MayTinh> ReadList(string filename)
         {
             FileStream f = new FileStream(filename, FileMode.Open, FileAccess.Read);
             StreamReader sr = new StreamReader(f);
-            List<LoaiMay> list = new List<LoaiMay>();
+            List<MayTinh> list = new List<MayTinh>();
             string s = sr.ReadLine();
             while (s != null)
             {

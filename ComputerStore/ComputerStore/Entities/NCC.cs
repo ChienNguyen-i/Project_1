@@ -16,9 +16,9 @@ namespace ComputerStore.Entities
         public NCC()
         {
             MaNCC = 0;
-            TenNCC = " ";
-            DiaChi = " ";
-            SoDT = " ";
+            TenNCC = "";
+            DiaChi = "";
+            SoDT = "";
         }
         public NCC(int mancc, string tenncc, string diachi, string sdt)
         {

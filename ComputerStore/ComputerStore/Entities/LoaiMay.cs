@@ -15,8 +15,8 @@ namespace ComputerStore.Entities
         public LoaiMay()
         {
             MaLM = 0;
-            TenLM = " ";
-            DacDiem = " ";
+            TenLM = "";
+            DacDiem = "";
         }
         public LoaiMay(int malm, string tenlm, string dacdiem)
         {

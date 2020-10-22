@@ -17,10 +17,10 @@ namespace ComputerStore.Entities
         public KhachHang()
         {
             MaKH = 0;
-            TenKH = " ";
-            GioiTinh = " ";
-            DiaChi = " ";
-            SoDT = " ";
+            TenKH = "";
+            GioiTinh = "";
+            DiaChi = "";
+            SoDT = "";
         }
         public KhachHang(int makh, string tenkh, string gt, string diachi, string sdt)
         {

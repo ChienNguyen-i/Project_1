@@ -17,8 +17,8 @@ namespace ComputerStore.Entities
         public HDNhap()
         {
             MaHDN = 0;
-            MaNV = " ";
-            MaNCC = " ";
+            MaNV = "";
+            MaNCC = "";
             NgayNhap = DateTime.Now;
             TongTien = 0;
         }

@@ -17,8 +17,8 @@ namespace ComputerStore.Entities
         public HDBan()
         {
             MaHDB = 0;
-            MaNV = " ";
-            MaKH = " ";
+            MaNV = "";
+            MaKH = "";
             NgayBan = DateTime.Now;
             TongTien = 0;
         }

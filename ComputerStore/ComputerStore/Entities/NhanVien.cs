@@ -18,11 +18,11 @@ namespace ComputerStore.Entities
         public NhanVien()
         {
             MaNV = 0;
-            TenNV = " ";
-            GioiTinh = " ";
-            DiaChi = " ";
-            SoDT = " ";
-            LoaiNV = " ";
+            TenNV = "";
+            GioiTinh = "";
+            DiaChi = "";
+            SoDT = "";
+            LoaiNV = "";
         }
         public NhanVien(int manv, string tennv, string gt, string diachi, string sdt, string loainv)
         {

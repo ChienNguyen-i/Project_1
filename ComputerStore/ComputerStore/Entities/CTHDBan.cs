@@ -18,8 +18,8 @@ namespace ComputerStore.Entities
         public CTHDBan()
         {
             MaCTHDB = 0;
-            MaHDB = " ";
-            MaMT = " ";
+            MaHDB = "";
+            MaMT = "";
             SoLuong = 0;
             DonGia = 0;
             ThanhTien = 0;

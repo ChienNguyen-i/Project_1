@@ -1,46 +1,46 @@
-﻿using ComputerStore.Entities;
-using System;
+﻿using System;
 using System.Collections;
 using System.Text;
-using ComputerStore.Utility;
 using System.IO;
+using ComputerStore.Utility;
+using ComputerStore.Entities;
 
 namespace ComputerStore.DataAccessLayer
 {
-    class LoaiMayDAL
+    class NhanVienDAL
     {
-        DataAccessHelper dah = new DataAccessHelper("Data/LoaiHang.txt");
-        public string toString(LoaiMay lm)
+        DataAccessHelper dah = new DataAccessHelper("Data/NhanVien.txt");
+        public string toString(NhanVien nv)
         {
-            return lm.maLM + "\t" + lm.tenLM + "\t" + lm.dacDiem;
+            return nv.maNV + "\t" + nv.tenNV + "\t" + nv.gioiTinh + "\t" + nv.diaChi + "\t" + nv.soDT + "\t" + nv.loaiNV;
         }
-        public LoaiMay tostring(string s)
+        public NhanVien tostring(string s)
         {
             s = CongCu.CatXau(s);
             string[] tmp = s.Split('\t');
-            LoaiMay lm = new LoaiMay(int.Parse(tmp[0]), tmp[1], tmp[2]);
-            return lm;
+            NhanVien nv = new NhanVien(int.Parse(tmp[0]), tmp[1], tmp[2], tmp[3], tmp[4], tmp[5]);
+            return nv;
         }
-        public void Write(string filename, LoaiMay lm)
+        public void Write(string filename, NhanVien nv)
         {
             FileStream f = new FileStream(filename, FileMode.Append, FileAccess.Write);
             StreamWriter sw = new StreamWriter(f);
-            sw.WriteLine(toString(lm));
+            sw.WriteLine(toString(nv));
             sw.Close();
             f.Close();
         }
-        public LoaiMay Read(string filename)
+        public NhanVien Read(string filename)
         {
             FileStream f = new FileStream(filename, FileMode.Open, FileAccess.Read);
             StreamReader sr = new StreamReader(f);
             string kq = sr.ReadLine();
             return tostring(kq);
         }
-        public void WriteList(string filename, List<LoaiMay> lm)
+        public void WriteList(string filename, List<NhanVien> nv)
         {
             FileStream f = new FileStream(filename, FileMode.Create, FileAccess.Write);
             StreamWriter sw = new StreamWriter(f);
-            Node<LoaiMay> tg = lm.Head;
+            Node<NhanVien> tg = nv.Head;
             while (tg != null)
             {
                 sw.WriteLine(toString(tg.Info));
@@ -49,11 +49,11 @@ namespace ComputerStore.DataAccessLayer
             sw.Close();
             f.Close();
         }
-        public List<LoaiMay> ReadList(string filename)
+        public List<NhanVien> ReadList(string filename)
         {
             FileStream f = new FileStream(filename, FileMode.Open, FileAccess.Read);
             StreamReader sr = new StreamReader(f);
-            List<LoaiMay> list = new List<LoaiMay>();
+            List<NhanVien> list = new List<NhanVien>();
             string s = sr.ReadLine();
             while (s != null)
             {
