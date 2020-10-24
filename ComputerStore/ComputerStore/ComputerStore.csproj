@@ -6,7 +6,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Business\Interface\" />
     <Folder Include="Presenation\" />
   </ItemGroup>
 

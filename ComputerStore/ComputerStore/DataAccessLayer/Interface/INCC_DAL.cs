@@ -10,7 +10,7 @@ namespace ComputerStore.DataAccessLayer.Interface
     public interface INCC_DAL
     {
         List<NCC> GetData();
-        void Insert(NCC n);
+        void Insert(NCC ncc);
         void Update(List<NCC> list);
     }
 }

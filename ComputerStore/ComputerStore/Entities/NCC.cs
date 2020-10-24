@@ -24,12 +24,12 @@ namespace ComputerStore.Entities
             this.SoDT = sdt;
         }
         //Phương thức sao chép
-        public NCC(NCC n)
+        public NCC(NCC ncc)
         {
-            this.MaNCC = n.MaNCC;
-            this.TenNCC = n.TenNCC;
-            this.DiaChi = n.DiaChi;
-            this.SoDT = n.SoDT;
+            this.MaNCC = ncc.MaNCC;
+            this.TenNCC = ncc.TenNCC;
+            this.DiaChi = ncc.DiaChi;
+            this.SoDT = ncc.SoDT;
         }
         #endregion
         #region Các thuộc tính

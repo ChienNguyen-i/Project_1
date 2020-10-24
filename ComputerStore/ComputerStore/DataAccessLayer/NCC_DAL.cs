@@ -53,12 +53,12 @@ namespace ComputerStore.DataAccessLayer
                 }
             }
         }
-        public void Insert(NCC n)
+        public void Insert(NCC ncc)
         {
             int mancc = maNCC + 1;
             StreamWriter sw = File.AppendText(txtfile);
             sw.WriteLine();
-            sw.Write(mancc + "\t" + n.tenNCC + "\t" + n.diaChi + "\t" + n.soDT);
+            sw.Write(mancc + "\t" + ncc.tenNCC + "\t" + ncc.diaChi + "\t" + ncc.soDT);
             sw.Close();
         }
         public void Update(List<NCC> list)
