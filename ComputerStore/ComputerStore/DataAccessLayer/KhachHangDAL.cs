@@ -4,66 +4,69 @@ using System.Text;
 using System.IO;
 using ComputerStore.Utility;
 using ComputerStore.Entities;
+using ComputerStore.DataAccessLayer.Interface;
 
 namespace ComputerStore.DataAccessLayer
 {
-    class KhachHangDAL
+    class KhachHangDAL : IKhachHangDAL
     {
-        DataAccessHelper dah = new DataAccessHelper("Data/KhachHang.txt");
-        public string toString(KhachHang kh)
+        private string txtfile = "Data/KhachHang.txt";
+        public List<KhachHang> GetData()
         {
-            return kh.maKH + "\t" + kh.tenKH + "\t" + kh.gioiTinh + "\t" + kh.diaChi + "\t" + kh.soDT;
-        }
-        public KhachHang tostring(string s)
-        {
-            s = CongCu.CatXau(s);
-            string[] tmp = s.Split('\t');
-            KhachHang kh = new KhachHang(int.Parse(tmp[0]), tmp[1], tmp[2], tmp[3], tmp[4]);
-            return kh;
-        }
-        public void Write(string filename, KhachHang kh)
-        {
-            FileStream f = new FileStream(filename, FileMode.Append, FileAccess.Write);
-            StreamWriter sw = new StreamWriter(f);
-            sw.WriteLine(toString(kh));
-            sw.Close();
-            f.Close();
-        }
-        public KhachHang Read(string filename)
-        {
-            FileStream f = new FileStream(filename, FileMode.Open, FileAccess.Read);
-            StreamReader sr = new StreamReader(f);
-            string kq = sr.ReadLine();
-            return tostring(kq);
-        }
-        public void WriteList(string filename, List<KhachHang> kh)
-        {
-            FileStream f = new FileStream(filename, FileMode.Create, FileAccess.Write);
-            StreamWriter sw = new StreamWriter(f);
-            Node<KhachHang> tg = kh.Head;
-            while (tg != null)
-            {
-                sw.WriteLine(toString(tg.Info));
-                tg = tg.Link;
-            }
-            sw.Close();
-            f.Close();
-        }
-        public List<KhachHang> ReadList(string filename)
-        {
-            FileStream f = new FileStream(filename, FileMode.Open, FileAccess.Read);
-            StreamReader sr = new StreamReader(f);
             List<KhachHang> list = new List<KhachHang>();
+            StreamReader sr = File.OpenText(txtfile);
             string s = sr.ReadLine();
             while (s != null)
             {
                 if (s != "")
-                    list.AddTail(tostring(s));
+                {
+                    s = ComputerStore.Utility.CongCu.CatXau(s);
+                    string[] a = s.Split('\t');
+                    list.Add(new KhachHang(int.Parse(a[0]), a[1], a[2], a[3], a[4]));
+                }
                 s = sr.ReadLine();
             }
             sr.Close();
-            f.Close();
             return list;
+        }
+        public int maKH
+        {
+            get
+            {
+                StreamReader sr = File.OpenText(txtfile);
+                string s = sr.ReadLine();
+                string tmp = "";
+                while (s != null)
+                {
+                    if (s != "")
+                        tmp = s;
+                    s = sr.ReadLine();
+                }
+                sr.Close();
+                if (tmp == "")
+                    return 0;
+                else
+                {
+                    tmp = ComputerStore.Utility.CongCu.ChuanHoaXau(tmp);
+                    string[] a = tmp.Split('\t');
+                    return int.Parse(a[0]);
+                }
+            }
+        }
+        public void Insert(KhachHang kh)
+        {
+            int makh = maKH + 1;
+            StreamWriter sw = File.AppendText(txtfile);
+            sw.WriteLine();
+            sw.Write(makh + "\t" + kh.tenKH + "\t" + kh.gioiTinh + "\t" + kh.diaChi + "\t" + kh.soDT);
+            sw.Close();
+        }
+        public void Update(List<KhachHang> list)
+        {
+            StreamWriter sw = File.CreateText(txtfile);
+            for (int i = 0; i < list.Count; ++i)
+                sw.WriteLine(list[i].maKH + "\t" + list[i].tenKH + "\t" + list[i].gioiTinh + "\t" + list[i].diaChi + "\t" + list[i].soDT);
+            sw.Close();
         }
     }
 }

@@ -1,11 +1,10 @@
-﻿using Microsoft.VisualBasic;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace ComputerStore.Utility
 {
-    public class IO
+    class IO
     {
         public static string ReadPassword(int x, int y)
         {
@@ -18,14 +17,15 @@ namespace ComputerStore.Utility
                 if (kt.Key != ConsoleKey.Enter && kt.Key != ConsoleKey.Escape && kt.Key != ConsoleKey.Backspace)
                 {
                     Console.Write("*");
-                    s += kt.KeyChar.ToString();
+                    s = s + kt.KeyChar.ToString();
                 }
                 else if (kt.Key == ConsoleKey.Backspace)
                 {
                     Clear(x, y, s.Length, ConsoleColor.Black);
                     if (s.Length <= 1)
                         s = "";
-                    else s = s.Substring(0, s.Length - 1);
+                    else
+                        s = s.Substring(0, s.Length - 1);
                     if (s == "")
                     {
                         Writexy(" ", x, y);
@@ -130,7 +130,7 @@ namespace ComputerStore.Utility
                     i = 0;
                     j += 1;
                 }
-                else 
+                else
                     i += 1;
                 Writexy(" ", i, j, background_color, background_color);
                 d++;

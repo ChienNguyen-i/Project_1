@@ -4,66 +4,69 @@ using System.Text;
 using System.IO;
 using ComputerStore.Utility;
 using ComputerStore.Entities;
+using ComputerStore.DataAccessLayer.Interface;
 
 namespace ComputerStore.DataAccessLayer
 {
-    class HDNhapDAL
+    class HDNhapDAL : IHDNhapDAL
     {
-        DataAccessHelper dah = new DataAccessHelper("Data/HDNhap.txt");
-        public string toString(HDNhap hdn)
+        private string txtfile = "Data/HDNhap.txt";
+        public List<HDNhap> GetData()
         {
-            return hdn.maHDN + "\t" + hdn.maNV + "\t" + hdn.maNCC + "\t" + hdn.ngayNhap + "\t" + hdn.tongTien;
-        }
-        public HDNhap tostring(string s)
-        {
-            s = CongCu.CatXau(s);
-            string[] tmp = s.Split('\t');
-            HDNhap hdn = new HDNhap(int.Parse(tmp[0]), tmp[1], tmp[2], DateTime.Parse(tmp[3]), double.Parse(tmp[4]));
-            return hdn;
-        }
-        public void Write(string filename, HDNhap hdn)
-        {
-            FileStream f = new FileStream(filename, FileMode.Append, FileAccess.Write);
-            StreamWriter sw = new StreamWriter(f);
-            sw.WriteLine(toString(hdn));
-            sw.Close();
-            f.Close();
-        }
-        public HDNhap Read(string filename)
-        {
-            FileStream f = new FileStream(filename, FileMode.Open, FileAccess.Read);
-            StreamReader sr = new StreamReader(f);
-            string kq = sr.ReadLine();
-            return tostring(kq);
-        }
-        public void WriteList(string filename, List<HDNhap> hdn)
-        {
-            FileStream f = new FileStream(filename, FileMode.Create, FileAccess.Write);
-            StreamWriter sw = new StreamWriter(f);
-            Node<HDNhap> tg = hdn.Head;
-            while (tg != null)
-            {
-                sw.WriteLine(toString(tg.Info));
-                tg = tg.Link;
-            }
-            sw.Close();
-            f.Close();
-        }
-        public List<HDNhap> ReadList(string filename)
-        {
-            FileStream f = new FileStream(filename, FileMode.Open, FileAccess.Read);
-            StreamReader sr = new StreamReader(f);
             List<HDNhap> list = new List<HDNhap>();
+            StreamReader sr = File.OpenText(txtfile);
             string s = sr.ReadLine();
             while (s != null)
             {
                 if (s != "")
-                    list.AddTail(tostring(s));
+                {
+                    s = ComputerStore.Utility.CongCu.CatXau(s);
+                    string[] a = s.Split('\t');
+                    list.Add(new HDNhap(int.Parse(a[0]), a[1], a[2], DateTime.Parse(a[3]), double.Parse(a[4])));
+                }
                 s = sr.ReadLine();
             }
             sr.Close();
-            f.Close();
             return list;
+        }
+        public int maHDN
+        {
+            get
+            {
+                StreamReader sr = File.OpenText(txtfile);
+                string s = sr.ReadLine();
+                string tmp = "";
+                while (s != null)
+                {
+                    if (s != "")
+                        tmp = s;
+                    s = sr.ReadLine();
+                }
+                sr.Close();
+                if (tmp == "")
+                    return 0;
+                else
+                {
+                    tmp = ComputerStore.Utility.CongCu.ChuanHoaXau(tmp);
+                    string[] a = tmp.Split('\t');
+                    return int.Parse(a[0]);
+                }
+            }
+        }
+        public void Insert(HDNhap hdn)
+        {
+            int mahdn = maHDN + 1;
+            StreamWriter sw = File.AppendText(txtfile);
+            sw.WriteLine();
+            sw.Write(mahdn + "\t" + hdn.maNV + "\t" + hdn.maNCC + "\t" + hdn.ngayNhap + "\t" + hdn.tongTien);
+            sw.Close();
+        }
+        public void Update(List<HDNhap> list)
+        {
+            StreamWriter sw = File.CreateText(txtfile);
+            for (int i = 0; i < list.Count; ++i)
+                sw.WriteLine(list[i].maHDN + "\t" + list[i].maNV + "\t" + list[i].maNCC + "\t" + list[i].ngayNhap + "\t" + list[i].tongTien);
+            sw.Close();
         }
     }
 }

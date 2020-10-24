@@ -4,66 +4,69 @@ using System.Text;
 using System.IO;
 using ComputerStore.Utility;
 using ComputerStore.Entities;
+using ComputerStore.DataAccessLayer.Interface;
 
 namespace ComputerStore.DataAccessLayer
 {
-    class NCC_DAL
+    class NCC_DAL : INCC_DAL
     {
-        DataAccessHelper dah = new DataAccessHelper("Data/NCC.txt");
-        public string toString(NCC n)
+        private string txtfile = "Data/NCC.txt";
+        public List<NCC> GetData()
         {
-            return n.maNCC + "\t" + n.tenNCC + "\t" + n.diaChi + "\t" + n.soDT;
-        }
-        public NCC tostring(string s)
-        {
-            s = CongCu.CatXau(s);
-            string[] tmp = s.Split('\t');
-            NCC n = new NCC(int.Parse(tmp[0]), tmp[1], tmp[2], tmp[3]);
-            return n;
-        }
-        public void Write(string filename, NCC n)
-        {
-            FileStream f = new FileStream(filename, FileMode.Append, FileAccess.Write);
-            StreamWriter sw = new StreamWriter(f);
-            sw.WriteLine(toString(n));
-            sw.Close();
-            f.Close();
-        }
-        public NCC Read(string filename)
-        {
-            FileStream f = new FileStream(filename, FileMode.Open, FileAccess.Read);
-            StreamReader sr = new StreamReader(f);
-            string kq = sr.ReadLine();
-            return tostring(kq);
-        }
-        public void WriteList(string filename, List<NCC> n)
-        {
-            FileStream f = new FileStream(filename, FileMode.Create, FileAccess.Write);
-            StreamWriter sw = new StreamWriter(f);
-            Node<NCC> tg = n.Head;
-            while (tg != null)
-            {
-                sw.WriteLine(toString(tg.Info));
-                tg = tg.Link;
-            }
-            sw.Close();
-            f.Close();
-        }
-        public List<NCC> ReadList(string filename)
-        {
-            FileStream f = new FileStream(filename, FileMode.Open, FileAccess.Read);
-            StreamReader sr = new StreamReader(f);
             List<NCC> list = new List<NCC>();
+            StreamReader sr = File.OpenText(txtfile);
             string s = sr.ReadLine();
             while (s != null)
             {
                 if (s != "")
-                    list.AddTail(tostring(s));
+                {
+                    s = ComputerStore.Utility.CongCu.CatXau(s);
+                    string[] a = s.Split('\t');
+                    list.Add(new NCC(int.Parse(a[0]), a[1], a[2], a[3]));
+                }
                 s = sr.ReadLine();
             }
             sr.Close();
-            f.Close();
             return list;
+        }
+        public int maNCC
+        {
+            get
+            {
+                StreamReader sr = File.OpenText(txtfile);
+                string s = sr.ReadLine();
+                string tmp = "";
+                while (s != null)
+                {
+                    if (s != "")
+                        tmp = s;
+                    s = sr.ReadLine();
+                }
+                sr.Close();
+                if (tmp == "")
+                    return 0;
+                else
+                {
+                    tmp = ComputerStore.Utility.CongCu.ChuanHoaXau(tmp);
+                    string[] a = tmp.Split('\t');
+                    return int.Parse(a[0]);
+                }
+            }
+        }
+        public void Insert(NCC n)
+        {
+            int mancc = maNCC + 1;
+            StreamWriter sw = File.AppendText(txtfile);
+            sw.WriteLine();
+            sw.Write(mancc + "\t" + n.tenNCC + "\t" + n.diaChi + "\t" + n.soDT);
+            sw.Close();
+        }
+        public void Update(List<NCC> list)
+        {
+            StreamWriter sw = File.CreateText(txtfile);
+            for (int i = 0; i < list.Count; ++i)
+                sw.WriteLine(list[i].maNCC + "\t" + list[i].tenNCC + "\t" + list[i].diaChi + "\t" + list[i].soDT);
+            sw.Close();
         }
     }
 }

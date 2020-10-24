@@ -4,66 +4,69 @@ using System.Collections;
 using System.Text;
 using ComputerStore.Utility;
 using System.IO;
+using ComputerStore.DataAccessLayer.Interface;
 
 namespace ComputerStore.DataAccessLayer
 {
-    class LoaiMayDAL
+    class LoaiMayDAL : ILoaiMayDAL
     {
-        DataAccessHelper dah = new DataAccessHelper("Data/LoaiHang.txt");
-        public string toString(LoaiMay lm)
+        private string txtfile = "Data/LoaiMay.txt";
+        public List<LoaiMay> GetData()
         {
-            return lm.maLM + "\t" + lm.tenLM + "\t" + lm.dacDiem;
-        }
-        public LoaiMay tostring(string s)
-        {
-            s = CongCu.CatXau(s);
-            string[] tmp = s.Split('\t');
-            LoaiMay lm = new LoaiMay(int.Parse(tmp[0]), tmp[1], tmp[2]);
-            return lm;
-        }
-        public void Write(string filename, LoaiMay lm)
-        {
-            FileStream f = new FileStream(filename, FileMode.Append, FileAccess.Write);
-            StreamWriter sw = new StreamWriter(f);
-            sw.WriteLine(toString(lm));
-            sw.Close();
-            f.Close();
-        }
-        public LoaiMay Read(string filename)
-        {
-            FileStream f = new FileStream(filename, FileMode.Open, FileAccess.Read);
-            StreamReader sr = new StreamReader(f);
-            string kq = sr.ReadLine();
-            return tostring(kq);
-        }
-        public void WriteList(string filename, List<LoaiMay> lm)
-        {
-            FileStream f = new FileStream(filename, FileMode.Create, FileAccess.Write);
-            StreamWriter sw = new StreamWriter(f);
-            Node<LoaiMay> tg = lm.Head;
-            while (tg != null)
-            {
-                sw.WriteLine(toString(tg.Info));
-                tg = tg.Link;
-            }
-            sw.Close();
-            f.Close();
-        }
-        public List<LoaiMay> ReadList(string filename)
-        {
-            FileStream f = new FileStream(filename, FileMode.Open, FileAccess.Read);
-            StreamReader sr = new StreamReader(f);
             List<LoaiMay> list = new List<LoaiMay>();
+            StreamReader sr = File.OpenText(txtfile);
             string s = sr.ReadLine();
             while (s != null)
             {
                 if (s != "")
-                    list.AddTail(tostring(s));
+                {
+                    s = ComputerStore.Utility.CongCu.CatXau(s);
+                    string[] a = s.Split('\t');
+                    list.Add(new LoaiMay(int.Parse(a[0]), a[1], a[2]));
+                }
                 s = sr.ReadLine();
             }
             sr.Close();
-            f.Close();
             return list;
+        }
+        public int maLM
+        {
+            get
+            {
+                StreamReader sr = File.OpenText(txtfile);
+                string s = sr.ReadLine();
+                string tmp = "";
+                while (s != null)
+                {
+                    if (s != "")
+                        tmp = s;
+                    s = sr.ReadLine();
+                }
+                sr.Close();
+                if (tmp == "")
+                    return 0;
+                else
+                {
+                    tmp = ComputerStore.Utility.CongCu.ChuanHoaXau(tmp);
+                    string[] a = tmp.Split('\t');
+                    return int.Parse(a[0]);
+                }
+            }
+        }
+        public void Insert(LoaiMay lm)
+        {
+            int malm = maLM + 1;
+            StreamWriter sw = File.AppendText(txtfile);
+            sw.WriteLine();
+            sw.Write(malm + "\t" + lm.tenLM + "\t" + lm.dacDiem);
+            sw.Close();
+        }
+        public void Update(List<LoaiMay> list)
+        {
+            StreamWriter sw = File.CreateText(txtfile);
+            for (int i = 0; i < list.Count; ++i)
+                sw.WriteLine(list[i].maLM + "\t" + list[i].tenLM + "\t" + list[i].dacDiem);
+            sw.Close();
         }
     }
 }

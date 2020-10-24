@@ -8,7 +8,6 @@ namespace ComputerStore.Utility
     {
         private T info;
         private Node<T> link;
-
         public T Info
         {
             get
@@ -20,7 +19,6 @@ namespace ComputerStore.Utility
                 info = value;
             }
         }
-
         public Node<T> Link
         {
             get
@@ -33,8 +31,7 @@ namespace ComputerStore.Utility
             }
         }
         public Node()
-        {
-        }
+        { }
         public Node(T t)
         {
             info = t;
@@ -44,7 +41,6 @@ namespace ComputerStore.Utility
     public class List<T>
     {
         private Node<T> head;
-
         public Node<T> Head
         {
             get
@@ -60,84 +56,116 @@ namespace ComputerStore.Utility
         {
             head = null;
         }
-        public void AddHead(T f)
+        public T this[int i]
         {
-            Node<T> tg = new Node<T>(f);
-            tg.Link = head;
-            head = tg;
-        }
-        public void AddTail(T e)
-        {
-            Node<T> t = new Node<T>(e);
-            if (head == null)
-                head = t;
-            else
+            get
             {
                 Node<T> tg = head;
+                int d = 0;
+                while (tg.Link != null && d != i)
+                {
+                    tg = tg.Link;
+                    d++;
+                }
+                return tg.Info;
+            }
+        }
+        public int Count
+        {
+            get
+            {
+                if (head == null)
+                    return 0;
+                Node<T> tg = head;
+                int d = 0;
                 while (tg.Link != null)
                 {
                     tg = tg.Link;
+                    d++;
                 }
-                tg.Link = t;
+                return d + 1;
             }
         }
-        public void Hien()
+        public void Add(T x)
         {
-            Node<T> tg = head;
-            Console.WriteLine("Các phần tử của danh sách:");
-            while (tg != null)
-            {
-                Console.WriteLine("\t" + tg.Info);
-                tg = tg.Link;
-            }
-            Console.WriteLine();
-        }
-        public void RemoveTail()
-        {
+            Node<T> tg = new Node<T>(x);
             if (head == null)
+                head= tg;
+            else
             {
-                Console.WriteLine("Danh sách rỗng");
+                Node<T> p = head;
+                while (p.Link != null)
+                    p = p.Link;
+                p.Link = tg;
+            }
+        }
+        public void Add(T x, int i)
+        {
+            Node<T> tg = new Node<T>(x);
+            if (Count == 0)
+                head = tg;
+            else if (i >= 0 && i <= Count - 1)
+            {
+                Node<T> p = head;
+                int d = 0;
+                while (p.Link != null && d != i)
+                {
+                    p = p.Link;
+                    d++;
+                }
+                if (p == head)
+                {
+                    tg.Link = head;
+                    head = tg; }
+                else
+                {
+                    Node<T> vt = head;
+                    Node<T> tvt = vt;
+                    while (vt != p)
+                    {
+                        tvt = vt;
+                        vt = vt.Link;
+                    }
+                    tg.Link = vt;
+                    tvt.Link = tg;
+                }
+            }
+        }
+        public void RemoveAt(int i)
+        {
+            if (Count == 0)
                 return;
-            }
-            else if (head.Link == null)
+            else if (i >= 0 && i <= Count - 1)
             {
-                head = null;
-            }
-            else
-            {
-                Console.WriteLine("Danh sách đã được xóa đi phần tử cuối:");
-                Node<T> tg = head;
-                Node<T> t = tg;
-                while (tg.Link != null)
+                Node<T> p = head;
+                int d = 0;
+                while (p.Link != null && d != i)
                 {
-                    t = tg;
-                    tg = tg.Link;
+                    p = p.Link;
+                    d++;
                 }
-                t.Link = null;
-            }
-        }
-        public void Xoa_q(Node<T> q)
-        {
-            Node<T> tg = head;
-            Node<T> t = tg;
-            while (tg.Link != null)
-            {
-                if (tg == q)
-                    break;
+                if (head.Link == null)
+                    head = null;
+                else if (p == head)                
+                    head = head.Link;
+                else if (p.Link == null)
+                {
+                    Node<T> tg = head;
+                    while (tg.Link.Link != null)
+                        tg = tg.Link;
+                    tg.Link = null;
+                }
                 else
                 {
-                    t = tg;
-                    tg = tg.Link;
+                    Node<T> vt = head;
+                    Node<T> tvt = vt;
+                    while (vt != p)
+                    {
+                        tvt = vt;
+                        vt = vt.Link;
+                    }
+                    tvt.Link = vt.Link;
                 }
-            }
-            if (q == head)
-                head = head.Link;
-            else
-            {
-                if (q.Link == null)
-                    t.Link = null;
-                else
-                    t.Link = q.Link;
             }
         }
     }

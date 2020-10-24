@@ -7,10 +7,10 @@ using ComputerStore.Utility;
 namespace ComputerStore.DataAccessLayer.Interface
 {
     //Xác định các yêu cầu cần phải thao tác với cơ sở dữ liệu để phục vụ cho phần xử lý nghiệp vụ
-    public interface ILoaiMayDAL
+    public interface IMayTinhDAL
     {
-        List<LoaiMay> GetData();
-        void Insert(LoaiMay lm);
-        void Update(List<LoaiMay> list);
+        List<MayTinh> GetData();
+        void Insert(MayTinh mt);
+        void Update(List<MayTinh> list);
     }
 }
