@@ -14,9 +14,6 @@ namespace ComputerStore.Entities
         #region Các phương thức khởi tạo
         public LoaiMay()
         {
-            MaLM = 0;
-            TenLM = "";
-            DacDiem = "";
         }
         public LoaiMay(int malm, string tenlm, string dacdiem)
         {

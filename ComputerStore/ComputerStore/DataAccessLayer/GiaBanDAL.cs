@@ -8,12 +8,12 @@ using ComputerStore.DataAccessLayer.Interface;
 
 namespace ComputerStore.DataAccessLayer
 {
-    class NhanVienDAL : INhanVienDAL
+    class GiaBanDAL : IGiaBanDAL
     {
-        private string txtfile = "Data/NhanVien.txt";
-        public List<NhanVien> GetData()
+        private string txtfile = "Data/GiaBan.txt";
+        public List<GiaBan> GetData()
         {
-            List<NhanVien> list = new List<NhanVien>();
+            List<GiaBan> list = new List<GiaBan>();
             StreamReader sr = File.OpenText(txtfile);
             string s = sr.ReadLine();
             while (s != null)
@@ -22,14 +22,14 @@ namespace ComputerStore.DataAccessLayer
                 {
                     s = ComputerStore.Utility.CongCu.CatXau(s);
                     string[] a = s.Split('\t');
-                    list.Add(new NhanVien(int.Parse(a[0]), a[1], a[2], a[3], a[4], a[5], a[6]));
+                    list.Add(new GiaBan(int.Parse(a[0]), a[1], double.Parse(a[2]), DateTime.Parse(a[3]), DateTime.Parse(a[4])));
                 }
                 s = sr.ReadLine();
             }
             sr.Close();
             return list;
         }
-        public int maNV
+        public int maGB
         {
             get
             {
@@ -53,19 +53,19 @@ namespace ComputerStore.DataAccessLayer
                 }
             }
         }
-        public void Insert(NhanVien nv)
+        public void Insert(GiaBan gb)
         {
-            int manv = maNV + 1;
+            int magb = maGB + 1;
             StreamWriter sw = File.AppendText(txtfile);
             sw.WriteLine();
-            sw.Write(manv + "\t" + nv.tenNV + "\t"+ nv.ngaySinh + "\t" + nv.gioiTinh + "\t" + nv.diaChi + "\t" + nv.soDT + "\t" + nv.loaiNV);
+            sw.Write(magb + "\t" + gb.maMT + "\t" + gb.giaBan +"\t" + gb.ngayAD + "\t" + gb.ngayThoiAD);
             sw.Close();
-        }        
-        public void Update(List<NhanVien> list)
+        }
+        public void Update(List<GiaBan> list)
         {
             StreamWriter sw = File.CreateText(txtfile);
             for (int i = 0; i < list.Count; ++i)
-                sw.WriteLine(list[i].maNV + "\t" + list[i].tenNV + "\t" + list[i].ngaySinh + "\t" + list[i].gioiTinh + "\t" + list[i].diaChi + "\t" + list[i].soDT + "\t" + list[i].loaiNV);
+                sw.WriteLine(list[i].maGB + "\t" + list[i].maMT + "\t" + list[i].giaBan + "\t" + list[i].ngayAD + "\t" + list[i].ngayThoiAD);
             sw.Close();
         }
     }

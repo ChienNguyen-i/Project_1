@@ -9,6 +9,7 @@ namespace ComputerStore.Entities
         #region Các thành phần dữ liệu
         private int MaNV;
         private string TenNV;
+        private DateTime NgaySinh;
         private string GioiTinh;
         private string DiaChi;
         private string SoDT;
@@ -17,17 +18,12 @@ namespace ComputerStore.Entities
         #region Các phương thức khởi tạo
         public NhanVien()
         {
-            MaNV = 0;
-            TenNV = "";
-            GioiTinh = "";
-            DiaChi = "";
-            SoDT = "";
-            LoaiNV = "";
         }
-        public NhanVien(int manv, string tennv, string gt, string diachi, string sdt, string loainv)
+        public NhanVien(int manv, string tennv, DateTime ngaysinh, string gt, string diachi, string sdt, string loainv)
         {
             this.MaNV = manv;
             this.TenNV = tennv;
+            this.NgaySinh = ngaysinh;
             this.GioiTinh = gt;
             this.DiaChi = diachi;
             this.SoDT = sdt;
@@ -38,6 +34,7 @@ namespace ComputerStore.Entities
         {
             this.MaNV = nv.MaNV;
             this.TenNV = nv.TenNV;
+            this.NgaySinh = nv.NgaySinh;
             this.GioiTinh = nv.GioiTinh;
             this.DiaChi = nv.DiaChi;
             this.SoDT = nv.SoDT;
@@ -67,6 +64,17 @@ namespace ComputerStore.Entities
             {
                 if (value != "")
                     TenNV = value;
+            }
+        }
+        public DateTime ngaySinh
+        {
+            get
+            {
+                return NgaySinh;
+            }
+            set
+            {
+                NgaySinh = value;
             }
         }
         public string gioiTinh

@@ -4,7 +4,7 @@ using System.Text;
 
 namespace ComputerStore.Utility
 {
-    class CongCu
+    public static class CongCu
     {
         public static string ChuanHoaXau(string xau)
         {

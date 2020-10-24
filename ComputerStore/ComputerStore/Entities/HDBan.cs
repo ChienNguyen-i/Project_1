@@ -16,11 +16,6 @@ namespace ComputerStore.Entities
         #region Các phương thức khởi tạo
         public HDBan()
         {
-            MaHDB = 0;
-            MaNV = "";
-            MaKH = "";
-            NgayBan = DateTime.Now;
-            TongTien = 0;
         }
         public HDBan(int mahdb, string manv, string makh, DateTime ngayban, double tongtien)
         {

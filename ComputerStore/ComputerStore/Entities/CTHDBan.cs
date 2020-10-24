@@ -17,12 +17,6 @@ namespace ComputerStore.Entities
         #region Các phương thức khởi tạo
         public CTHDBan()
         {
-            MaCTHDB = 0;
-            MaHDB = "";
-            MaMT = "";
-            SoLuong = 0;
-            DonGia = 0;
-            ThanhTien = 0;
         }
         public CTHDBan(int macthdb, string mahdb, string mamt, int soluong, double dongia, double thanhtien)
         {

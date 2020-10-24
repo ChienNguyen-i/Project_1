@@ -16,11 +16,6 @@ namespace ComputerStore.Entities
         #region Các phương thức khởi tạo
         public GiaBan()
         {
-            MaGB = 0;
-            MaMT = "";
-            Giaban = 0;
-            NgayAD = DateTime.Now;
-            NgayThoiAD = DateTime.Now;
         }
         public GiaBan(int magb, string mamt, double giaban, DateTime ngayad, DateTime ngaythoiad)
         {

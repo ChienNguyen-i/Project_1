@@ -17,12 +17,6 @@ namespace ComputerStore.Entities
         #region Các phương thức khởi tạo
         public CTHDNhap()
         {
-            MaCTHDN = 0;
-            MaHDN = "";
-            MaMT = "";
-            SoLuong = 0;
-            DonGia = 0;
-            ThanhTien = 0;
         }
         public CTHDNhap(int macthdn, string mahdn, string mamt, int soluong, double dongia, double thanhtien)
         {

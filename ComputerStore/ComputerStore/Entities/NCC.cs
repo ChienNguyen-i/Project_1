@@ -15,10 +15,6 @@ namespace ComputerStore.Entities
         #region Các phương thức khởi tạo
         public NCC()
         {
-            MaNCC = 0;
-            TenNCC = "";
-            DiaChi = "";
-            SoDT = "";
         }
         public NCC(int mancc, string tenncc, string diachi, string sdt)
         {

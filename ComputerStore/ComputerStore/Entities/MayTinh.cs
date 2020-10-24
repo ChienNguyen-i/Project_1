@@ -17,12 +17,6 @@ namespace ComputerStore.Entities
         #region Các phương thức khởi tạo
         public MayTinh()
         {
-            MaMT = 0;
-            MaLM = "";
-            TenLM = "";
-            MaNCC = "";
-            SLNhap = 0;
-            SLCon = 0;
         }
         public MayTinh(int mamt, string malm, string tenlm, string mancc, int sln, int slc)
         {

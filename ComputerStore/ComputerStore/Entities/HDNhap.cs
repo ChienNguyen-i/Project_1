@@ -16,11 +16,6 @@ namespace ComputerStore.Entities
         #region Các phương thức khởi tạo
         public HDNhap()
         {
-            MaHDN = 0;
-            MaNV = "";
-            MaNCC = "";
-            NgayNhap = DateTime.Now;
-            TongTien = 0;
         }
         public HDNhap(int mahdn, string manv, string mancc, DateTime ngaynhap, double tongtien)
         {

@@ -8,12 +8,12 @@ using ComputerStore.DataAccessLayer.Interface;
 
 namespace ComputerStore.DataAccessLayer
 {
-    class NhanVienDAL : INhanVienDAL
+    class CTHDBanDAL : ICTHDBanDAL
     {
-        private string txtfile = "Data/NhanVien.txt";
-        public List<NhanVien> GetData()
+        private string txtfile = "Data/CTHDBan.txt";
+        public List<CTHDBan> GetData()
         {
-            List<NhanVien> list = new List<NhanVien>();
+            List<CTHDBan> list = new List<CTHDBan>();
             StreamReader sr = File.OpenText(txtfile);
             string s = sr.ReadLine();
             while (s != null)
@@ -22,14 +22,14 @@ namespace ComputerStore.DataAccessLayer
                 {
                     s = ComputerStore.Utility.CongCu.CatXau(s);
                     string[] a = s.Split('\t');
-                    list.Add(new NhanVien(int.Parse(a[0]), a[1], a[2], a[3], a[4], a[5], a[6]));
+                    list.Add(new CTHDBan(int.Parse(a[0]), a[1], a[2], int.Parse(a[3]), double.Parse(a[4]), double.Parse(a[5])));
                 }
                 s = sr.ReadLine();
             }
             sr.Close();
             return list;
         }
-        public int maNV
+        public int maCTHDB
         {
             get
             {
@@ -53,19 +53,19 @@ namespace ComputerStore.DataAccessLayer
                 }
             }
         }
-        public void Insert(NhanVien nv)
+        public void Insert(CTHDBan cthdb)
         {
-            int manv = maNV + 1;
+            int macthdb = maCTHDB + 1;
             StreamWriter sw = File.AppendText(txtfile);
             sw.WriteLine();
-            sw.Write(manv + "\t" + nv.tenNV + "\t"+ nv.ngaySinh + "\t" + nv.gioiTinh + "\t" + nv.diaChi + "\t" + nv.soDT + "\t" + nv.loaiNV);
+            sw.Write(macthdb + "\t" + cthdb.maHDB + "\t" + cthdb.maMT + "\t" + cthdb.soLuong + "\t" + cthdb.donGia + "\t" + cthdb.thanhTien);
             sw.Close();
-        }        
-        public void Update(List<NhanVien> list)
+        }
+        public void Update(List<CTHDBan> list)
         {
             StreamWriter sw = File.CreateText(txtfile);
             for (int i = 0; i < list.Count; ++i)
-                sw.WriteLine(list[i].maNV + "\t" + list[i].tenNV + "\t" + list[i].ngaySinh + "\t" + list[i].gioiTinh + "\t" + list[i].diaChi + "\t" + list[i].soDT + "\t" + list[i].loaiNV);
+                sw.WriteLine(list[i].maCTHDB + "\t" + list[i].maHDB + "\t" + list[i].maMT + "\t" + list[i].soLuong + "\t" + list[i].donGia + "\t" + list[i].thanhTien);
             sw.Close();
         }
     }

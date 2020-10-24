@@ -4,7 +4,7 @@ using System.Text;
 
 namespace ComputerStore.Utility
 {
-    class IO
+    public class IO
     {
         public static string ReadPassword(int x, int y)
         {
