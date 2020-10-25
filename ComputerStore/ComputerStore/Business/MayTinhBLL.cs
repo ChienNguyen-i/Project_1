@@ -19,11 +19,9 @@ namespace ComputerStore.Business
         }
         public void ThemMayTinh(MayTinh mt)
         {
-            if (mt.maLM != "" && mt.tenMT != "" && mt.maNCC != "")
+            if (mt.tenMT != "")
             {
-                mt.maLM = ComputerStore.Utility.CongCu.ChuanHoaXau(mt.maLM);
-                mt.tenMT = ComputerStore.Utility.CongCu.ChuanHoaXau(mt.tenMT);
-                mt.maNCC = ComputerStore.Utility.CongCu.ChuanHoaXau(mt.maNCC);
+                mt.tenMT = ComputerStore.Utility.CongCu.HoaDau(mt.tenMT);
                 mtDAL.Insert(mt);
             }
             else

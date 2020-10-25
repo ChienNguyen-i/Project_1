@@ -8,8 +8,8 @@ namespace ComputerStore.Entities
     {
         #region Các thành phần dữ liệu
         private int MaHDN;
-        private string MaNV;
-        private string MaNCC;
+        private int MaNV;
+        private int MaNCC;
         private DateTime NgayNhap;
         private double TongTien;
         #endregion
@@ -17,7 +17,7 @@ namespace ComputerStore.Entities
         public HDNhap()
         {
         }
-        public HDNhap(int mahdn, string manv, string mancc, DateTime ngaynhap, double tongtien)
+        public HDNhap(int mahdn, int manv, int mancc, DateTime ngaynhap, double tongtien)
         {
             this.MaHDN = mahdn;
             this.MaNV = manv;
@@ -48,7 +48,7 @@ namespace ComputerStore.Entities
                     MaHDN = value;
             }
         }
-        public string maNV
+        public int maNV
         {
             get
             {
@@ -56,11 +56,11 @@ namespace ComputerStore.Entities
             }
             set
             {
-                if (value != "")
+                if (value > 0)
                     MaNV = value;
             }
         }
-        public string maNCC
+        public int maNCC
         {
             get
             {
@@ -68,7 +68,7 @@ namespace ComputerStore.Entities
             }
             set
             {
-                if (value != "")
+                if (value > 0)
                     MaNCC = value;
             }
         }

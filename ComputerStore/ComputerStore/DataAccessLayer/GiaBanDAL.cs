@@ -22,7 +22,7 @@ namespace ComputerStore.DataAccessLayer
                 {
                     s = ComputerStore.Utility.CongCu.CatXau(s);
                     string[] a = s.Split('\t');
-                    list.Add(new GiaBan(int.Parse(a[0]), a[1], double.Parse(a[2]), DateTime.Parse(a[3]), DateTime.Parse(a[4])));
+                    list.Add(new GiaBan(int.Parse(a[0]), int.Parse(a[1]), double.Parse(a[2]), DateTime.Parse(a[3]), DateTime.Parse(a[4])));
                 }
                 s = sr.ReadLine();
             }

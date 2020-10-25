@@ -25,7 +25,7 @@ namespace ComputerStore.Business
                 nv.gioiTinh = ComputerStore.Utility.CongCu.ChuanHoaXau(nv.gioiTinh);
                 nv.diaChi = ComputerStore.Utility.CongCu.ChuanHoaXau(nv.diaChi);
                 nv.soDT = ComputerStore.Utility.CongCu.CatXau(nv.soDT);
-                nv.loaiNV = ComputerStore.Utility.CongCu.HoaDau(nv.loaiNV);
+                nv.loaiNV = ComputerStore.Utility.CongCu.HoaDau_1(nv.loaiNV);
                 nvDAL.Insert(nv);
             }
             else

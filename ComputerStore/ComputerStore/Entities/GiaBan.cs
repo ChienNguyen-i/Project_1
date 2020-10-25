@@ -8,7 +8,7 @@ namespace ComputerStore.Entities
     {
         #region Các thành phần dữ liệu
         private int MaGB;
-        private string MaMT;
+        private int MaMT;
         private double Giaban;
         private DateTime NgayAD;
         private DateTime NgayThoiAD;
@@ -17,7 +17,7 @@ namespace ComputerStore.Entities
         public GiaBan()
         {
         }
-        public GiaBan(int magb, string mamt, double giaban, DateTime ngayad, DateTime ngaythoiad)
+        public GiaBan(int magb, int mamt, double giaban, DateTime ngayad, DateTime ngaythoiad)
         {
             this.MaGB = magb;
             this.MaMT = mamt;
@@ -48,7 +48,7 @@ namespace ComputerStore.Entities
                     MaGB = value;
             }
         }
-        public string maMT
+        public int maMT
         {
             get
             {
@@ -56,7 +56,7 @@ namespace ComputerStore.Entities
             }
             set
             {
-                if (value != "")
+                if (value > 0)
                     MaMT = value;
             }
         }

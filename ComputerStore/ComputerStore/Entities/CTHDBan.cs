@@ -8,8 +8,8 @@ namespace ComputerStore.Entities
     {
         #region Các thành phần dữ liệu
         private int MaCTHDB;
-        private string MaHDB;
-        private string MaMT;
+        private int MaHDB;
+        private int MaMT;
         private int SoLuong;
         private double DonGia;
         private double ThanhTien;
@@ -18,7 +18,7 @@ namespace ComputerStore.Entities
         public CTHDBan()
         {
         }
-        public CTHDBan(int macthdb, string mahdb, string mamt, int soluong, double dongia, double thanhtien)
+        public CTHDBan(int macthdb, int mahdb, int mamt, int soluong, double dongia, double thanhtien)
         {
             this.MaCTHDB = macthdb;
             this.MaHDB = mahdb;
@@ -51,7 +51,7 @@ namespace ComputerStore.Entities
                     MaCTHDB = value;
             }
         }
-        public string maHDB
+        public int maHDB
         {
             get
             {
@@ -59,11 +59,11 @@ namespace ComputerStore.Entities
             }
             set
             {
-                if (value != "")
+                if (value > 0)
                     MaHDB = value;
             }
         }
-        public string maMT
+        public int maMT
         {
             get
             {
@@ -71,7 +71,7 @@ namespace ComputerStore.Entities
             }
             set
             {
-                if (value != "")
+                if (value > 0)
                     MaMT = value;
             }
         }
