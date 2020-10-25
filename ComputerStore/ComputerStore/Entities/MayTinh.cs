@@ -9,7 +9,7 @@ namespace ComputerStore.Entities
         #region Các thành phần dữ liệu
         private int MaMT;
         private string MaLM;
-        private string TenLM;
+        private string TenMT;
         private string MaNCC;
         private int SLNhap;
         private int SLCon;
@@ -18,11 +18,11 @@ namespace ComputerStore.Entities
         public MayTinh()
         {
         }
-        public MayTinh(int mamt, string malm, string tenlm, string mancc, int sln, int slc)
+        public MayTinh(int mamt, string malm, string tenmt, string mancc, int sln, int slc)
         {
             this.MaMT = mamt;
             this.MaLM = malm;
-            this.TenLM = tenlm;
+            this.TenMT = tenmt;
             this.MaNCC = mancc;
             this.SLNhap = sln;
             this.SLCon = slc;
@@ -32,7 +32,7 @@ namespace ComputerStore.Entities
         {
             this.MaMT = mt.MaMT;
             this.MaLM = mt.MaLM;
-            this.TenLM = mt.TenLM;
+            this.TenMT = mt.TenMT;
             this.MaNCC = mt.MaNCC;
             this.SLNhap = mt.SLNhap;
             this.SLCon = mt.SLCon;
@@ -63,16 +63,16 @@ namespace ComputerStore.Entities
                     MaLM = value;
             }
         }
-        public string tenLM
+        public string tenMT
         {
             get
             {
-                return TenLM;
+                return TenMT;
             }
             set
             {
                 if (value != "")
-                    TenLM = value;
+                    TenMT = value;
             }
         }
         public string maNCC

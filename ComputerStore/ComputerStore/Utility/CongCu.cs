@@ -31,5 +31,14 @@ namespace ComputerStore.Utility
                 s += " ";
             return s;
         }
+        public static string HoaDau(string xau)
+        {
+            string s = xau.Trim();
+            while (s.IndexOf("  ") > 0)
+                s = s.Remove(s.IndexOf("  "), 1);
+            s += " ";
+            s = s.Substring(0, 1).ToUpper() + s.Substring(1);
+            return s.Trim();
+        }
     }
 }

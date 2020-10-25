@@ -59,14 +59,14 @@ namespace ComputerStore.DataAccessLayer
             int mamt = maMT + 1;
             StreamWriter sw = File.AppendText(txtfile);
             sw.WriteLine();
-            sw.Write(mamt + "\t" + mt.maLM + "\t" + mt.tenLM + "\t" + mt.maNCC + "\t" + mt.sLNhap + "\t" + mt.sLCon);
+            sw.Write(mamt + "\t" + mt.maLM + "\t" + mt.tenMT + "\t" + mt.maNCC + "\t" + mt.sLNhap + "\t" + mt.sLCon);
             sw.Close();
         }
         public void Update(List<MayTinh> list)
         {
             StreamWriter sw = File.CreateText(txtfile);
             for (int i = 0; i < list.Count; ++i)
-                sw.WriteLine(list[i].maMT + "\t" + list[i].maLM + "\t" + list[i].tenLM + "\t" + list[i].maNCC + "\t" + list[i].sLNhap + "\t" + list[i].sLCon);
+                sw.WriteLine(list[i].maMT + "\t" + list[i].maLM + "\t" + list[i].tenMT + "\t" + list[i].maNCC + "\t" + list[i].sLNhap + "\t" + list[i].sLCon);
             sw.Close();
         }
     }
