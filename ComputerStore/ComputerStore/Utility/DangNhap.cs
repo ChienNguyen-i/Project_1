@@ -39,5 +39,33 @@ namespace ComputerStore.Utility
                     Password = value;
             }
         }
+        public bool Hien(int x, int y, string user, string pass)
+        {
+            IO.BoxTitle("                       ĐĂNG NHẬP", x, y, 15, 60);
+            IO.Writexy("Tài khoản:", x + 3, y + 5);
+            IO.Writexy("Mật khẩu:", x + 3, y + 8);
+            do
+            {
+                this.user = IO.ReadString(x + 14, y + 5);
+                this.pass = IO.ReadPassword(x + 13, y + 8);
+                IO.Writexy("Nhấn Enter để đăng nhập hoặc nhấn ESC để thoát", x + 3, y + 12);
+                IO.Writexy("Đăng nhập", x + 40, y + 10, ConsoleColor.Blue, ConsoleColor.White);
+                ConsoleKeyInfo kt = Console.ReadKey();
+                if (kt.Key == ConsoleKey.Enter)
+                {
+                    if (this.user == user && this.pass == pass)
+                        return true;
+                    else
+                    {
+                        IO.Clear(x + 2, y + 12, 55);
+                        IO.Writexy("Tài khoản hoặc Mật khẩu không đúng, mời nhập lại", x + 3, y + 12, ConsoleColor.Black, ConsoleColor.White);
+                        IO.Clear(x + 15, y + 5, 30);
+                        IO.Clear(x + 15, y + 8, 30);
+                    }
+                }
+                else
+                    return false;
+            } while (true);
+        }
     }
 }

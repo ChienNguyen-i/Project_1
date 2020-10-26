@@ -21,7 +21,7 @@ namespace ComputerStore.Utility
                 }
                 else if (kt.Key == ConsoleKey.Backspace)
                 {
-                    Clear(x, y, s.Length, ConsoleColor.Black);
+                    Clear(x, y, s.Length);
                     if (s.Length <= 1)
                         s = "";
                     else
@@ -61,7 +61,7 @@ namespace ComputerStore.Utility
                 }
                 else if (kt.Key == ConsoleKey.Backspace)
                 {
-                    Clear(x, y, s.Length, ConsoleColor.Black);
+                    Clear(x, y, s.Length);
                     if (s.Length <= 1)
                         s = "";
                     else
@@ -96,7 +96,7 @@ namespace ComputerStore.Utility
                 }
                 else if (kt.Key == ConsoleKey.Backspace)
                 {
-                    Clear(x, y, s.Length, ConsoleColor.Black);
+                    Clear(x, y, s.Length);
                     if (s.Length <= 1)
                         s = "";
                     else
@@ -116,10 +116,8 @@ namespace ComputerStore.Utility
             } while (true);
             return s;
         }
-        public static void Clear(int x, int y, int length, ConsoleColor background_color)
+        public static void Clear(int x, int y, int length)
         {
-            ConsoleColor background = Console.BackgroundColor;
-            ConsoleColor text = Console.ForegroundColor;
             int i = x;
             int j = y;
             int d = 0;
@@ -132,11 +130,9 @@ namespace ComputerStore.Utility
                 }
                 else
                     i += 1;
-                Writexy(" ", i, j, background_color, background_color);
+                Writexy(" ", i, j);
                 d++;
             }
-            Console.BackgroundColor = background;
-            Console.ForegroundColor = text;
         }
         public static void Writexy(string s, int x, int y, int length)
         {
