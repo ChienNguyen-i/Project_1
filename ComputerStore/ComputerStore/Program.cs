@@ -18,18 +18,24 @@ namespace ComputerStore
             }
             else
                 Environment.Exit(0);
-            Console.ReadKey();
         }
         public static void Hien()
         {
             Console.WindowHeight = Console.LargestWindowHeight;
             string[] mn =
             {
-                "menu",
+                " F1.Nhap danh sach hoc sinh ",
+                " F2.Tim hoc sinh ",
+                " F3.Xoa thong tin hoc sinh ",
+                " F4.Sua thong tin hoc sinh ",
+                " F5.Hien thi cac hoc sinh ",
+                " F6.Ket thuc "
             };
             Console.BackgroundColor = ConsoleColor.Black;
             Console.Clear();
-            
+            ComputerStore.Presenation.MenuNV mnnv = new ComputerStore.Presenation.MenuNV(mn);
+            mnnv.HienTheoPhimTat(15, 6, ConsoleColor.Black, ConsoleColor.White);
+            Console.ReadKey();
         }
     }
 }

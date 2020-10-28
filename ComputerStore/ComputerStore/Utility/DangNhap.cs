@@ -48,7 +48,7 @@ namespace ComputerStore.Utility
             {
                 this.user = IO.ReadString(x + 14, y + 5);
                 this.pass = IO.ReadPassword(x + 13, y + 8);
-                IO.Writexy("Nhấn Enter để đăng nhập hoặc nhấn ESC để thoát", x + 3, y + 12);
+                IO.Writexy("Nhấn Enter để đăng nhập hoặc nhấn ESC để thoát...", x + 3, y + 12);
                 IO.Writexy("Đăng nhập", x + 40, y + 10, ConsoleColor.Blue, ConsoleColor.White);
                 ConsoleKeyInfo kt = Console.ReadKey();
                 if (kt.Key == ConsoleKey.Enter)
@@ -58,9 +58,9 @@ namespace ComputerStore.Utility
                     else
                     {
                         IO.Clear(x + 2, y + 12, 55);
-                        IO.Writexy("Tài khoản hoặc Mật khẩu không đúng, mời nhập lại", x + 3, y + 12, ConsoleColor.Black, ConsoleColor.White);
-                        IO.Clear(x + 15, y + 5, 30);
-                        IO.Clear(x + 15, y + 8, 30);
+                        IO.Writexy("Tài khoản hoặc Mật khẩu không đúng, mời nhập lại...", x + 3, y + 12, ConsoleColor.Black, ConsoleColor.White);
+                        IO.Clear(x + 14, y + 5, 30);
+                        IO.Clear(x + 13, y + 8, 30);
                     }
                 }
                 else
