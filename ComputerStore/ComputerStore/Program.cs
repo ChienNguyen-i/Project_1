@@ -24,11 +24,11 @@ namespace ComputerStore
             Console.WindowHeight = Console.LargestWindowHeight;
             string[] mn =
             {
-                " F1.Nhap danh sach hoc sinh ",
-                " F2.Tim hoc sinh ",
-                " F3.Xoa thong tin hoc sinh ",
-                " F4.Sua thong tin hoc sinh ",
-                " F5.Hien thi cac hoc sinh ",
+                " F1.Nhap danh sach ",
+                " F2.Tim  ",
+                " F3.Xoa thong tin ",
+                " F4.Sua thong tin ",
+                " F5.Hien thi ",
                 " F6.Ket thuc "
             };
             Console.BackgroundColor = ConsoleColor.Black;

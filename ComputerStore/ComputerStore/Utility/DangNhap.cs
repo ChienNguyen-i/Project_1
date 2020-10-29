@@ -57,10 +57,10 @@ namespace ComputerStore.Utility
                         return true;
                     else
                     {
-                        IO.Clear(x + 2, y + 12, 55);
+                        IO.Clear(x + 2, y + 12, 55, ConsoleColor.Black);
                         IO.Writexy("Tài khoản hoặc Mật khẩu không đúng, mời nhập lại...", x + 3, y + 12, ConsoleColor.Black, ConsoleColor.White);
-                        IO.Clear(x + 14, y + 5, 30);
-                        IO.Clear(x + 13, y + 8, 30);
+                        IO.Clear(x + 14, y + 5, 30, ConsoleColor.Black);
+                        IO.Clear(x + 13, y + 8, 30, ConsoleColor.Black);
                     }
                 }
                 else
