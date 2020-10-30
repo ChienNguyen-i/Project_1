@@ -1,1 +1,1 @@
-1	Nguyễn Thị thúy Nghiêm	22-Dec-00 12:00:00 AM	nữ	TP hồ chí minh	0987654321	NV Quản lý kho
+1	Nguyễn Thị Thúy Nghiêm	22-Dec-00 12:00:00 AM	Nữ	TP Hồ Chí Minh	0987654321	NV quản lý kho

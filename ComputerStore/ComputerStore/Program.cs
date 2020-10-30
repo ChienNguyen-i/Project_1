@@ -25,16 +25,16 @@ namespace ComputerStore
             string[] mn =
             {
                 " F1.Nhap danh sach ",
-                " F2.Tim  ",
+                " F2.Sua thong tin ",
                 " F3.Xoa thong tin ",
-                " F4.Sua thong tin ",
-                " F5.Hien thi ",
+                " F4.Hien thi ",
+                " F5.Tim kiem ",
                 " F6.Ket thuc "
             };
             Console.BackgroundColor = ConsoleColor.Black;
             Console.Clear();
-            ComputerStore.Presenation.MenuNV mnnv = new ComputerStore.Presenation.MenuNV(mn);
-            mnnv.HienTheoPhimTat(15, 6, ConsoleColor.Black, ConsoleColor.White);
+            ComputerStore.Presenation.FormMayTinh.MenuMT mnmt = new ComputerStore.Presenation.FormMayTinh.MenuMT(mn);
+            mnmt.HienTheoPhimTat(15, 6, ConsoleColor.Black, ConsoleColor.White);
             Console.ReadKey();
         }
     }

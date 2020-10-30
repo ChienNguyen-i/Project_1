@@ -46,6 +46,8 @@ namespace ComputerStore.Utility
             IO.Writexy("Mật khẩu:", x + 3, y + 8);
             do
             {
+                IO.Writexy("                                          ", x + 14, y + 5, ConsoleColor.Black, ConsoleColor.White);
+                IO.Writexy("                                           ", x + 13, y + 8, ConsoleColor.Black, ConsoleColor.White);
                 this.user = IO.ReadString(x + 14, y + 5);
                 this.pass = IO.ReadPassword(x + 13, y + 8);
                 IO.Writexy("Nhấn Enter để đăng nhập hoặc nhấn ESC để thoát...", x + 3, y + 12);
