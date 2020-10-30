@@ -10,7 +10,7 @@ namespace ComputerStore.DataAccessLayer
 {
     class HDNhapDAL : IHDNhapDAL
     {
-        private string txtfile = "Data/HDNhap.txt";
+        private string txtfile = @"D:\GITHUB\Project_1\ComputerStore\ComputerStore\bin\Debug\Data\HDNhap.txt";
         public List<HDNhap> GetData()
         {
             List<HDNhap> list = new List<HDNhap>();

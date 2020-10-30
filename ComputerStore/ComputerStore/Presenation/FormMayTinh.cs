@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections;
 using System.Text;
 using ComputerStore.Utility;
 using ComputerStore.Entities;
@@ -46,13 +45,13 @@ namespace ComputerStore.Presenation
         {
             IMayTinhBLL maytinh = new MayTinhBLL();
             Console.Clear();
-            IO.BoxTitle("                                  CẬP NHẬT THÔNG TIN MÁY TÍNH", 1, 1, 10, 100);
+            IO.BoxTitle("                                   CẬP NHẬT THÔNG TIN MÁY TÍNH", 1, 1, 10, 100);
             IO.Writexy("Mã MT:", 3, 4);
-            IO.Writexy("Mã loại máy:", 18, 4);
-            IO.Writexy("Tên máy:", 51, 4);
-            IO.Writexy("Mã nhà CC:", 80, 4);
-            IO.Writexy("Số lượng nhập:", 3, 6);
-            IO.Writexy("Số lượng còn:", 32, 6);
+            IO.Writexy("Mã loại máy:", 24, 4);
+            IO.Writexy("Tên máy:", 55, 4);
+            IO.Writexy("Mã nhà CC:", 3, 6);
+            IO.Writexy("Số lượng nhập:", 32, 6);
+            IO.Writexy("Số lượng còn:", 63, 6);
             IO.Writexy("--------------------------------------------------------------------------------------------------", 2, 7);
             IO.Writexy("Enter để cập nhật, Esc để thoát, X để xem chi tiết...", 5, 8);
             Hien(1, 13, maytinh.LayDSMayTinh(), 5, 0);
@@ -65,25 +64,25 @@ namespace ComputerStore.Presenation
 
             mamt = int.Parse(IO.ReadNumber(10, 4));
             MayTinh mt = maytinh.LayMayTinh(mamt);
-            IO.Writexy(mt.maLM.ToString(), 26, 4);
-            IO.Writexy(mt.tenMT, 62, 4);
-            IO.Writexy(mt.maNCC.ToString(), 91, 4);
-            IO.Writexy(mt.sLNhap.ToString(), 12, 6);
-            IO.Writexy(mt.sLCon.ToString(), 47, 6);
+            IO.Writexy(mt.maLM.ToString(), 37, 4);
+            IO.Writexy(mt.tenMT, 64, 4);
+            IO.Writexy(mt.maNCC.ToString(), 14, 6);
+            IO.Writexy(mt.sLNhap.ToString(), 47, 6);
+            IO.Writexy(mt.sLCon.ToString(), 77, 6);
 
-            malm = int.Parse(IO.ReadNumber(26, 4));
+            malm = int.Parse(IO.ReadNumber(37, 4));
             if (malm != mt.maLM && malm != 0)
                 mt.maLM = malm;
-            tenmay = IO.ReadString(62, 4);
+            tenmay = IO.ReadString(64, 4);
             if (tenmay != mt.tenMT && tenmay != null)
                 mt.tenMT = tenmay;
-            mancc = int.Parse(IO.ReadNumber(91, 4));
+            mancc = int.Parse(IO.ReadNumber(14, 6));
             if (mancc != mt.maNCC && mancc != 0)
                 mt.maNCC = mancc;
-            sln = int.Parse(IO.ReadNumber(12, 6));
+            sln = int.Parse(IO.ReadNumber(47, 6));
             if (sln != mt.sLNhap && sln != 0)
                 mt.sLNhap = sln;
-            slc = int.Parse(IO.ReadNumber(47, 6));
+            slc = int.Parse(IO.ReadNumber(77, 6));
             if (slc != mt.sLCon && slc != 0)
                 mt.sLCon = slc;
 
@@ -111,7 +110,7 @@ namespace ComputerStore.Presenation
                 IO.BoxTitle("                                        XÓA MÁY TÍNH", 1, 1, 5, 100);
                 IO.Writexy("Nhập mã máy tính cần xóa:", 5, 4);
                 Hien(1, 8, maytinh.LayDSMayTinh(), 5, 0);
-                mamt = int.Parse(IO.ReadNumber(32, 4));
+                mamt = int.Parse(IO.ReadNumber(31, 4));
                 if (mamt == 0)
                     break;
                 else
@@ -138,7 +137,7 @@ namespace ComputerStore.Presenation
                 IO.BoxTitle("                                      TÌM KIẾM MÁY TÍNH", 1, 1, 5, 100);
                 IO.Writexy("Nhập tên máy tính cần tìm:", 3, 4);
                 Hien(1, 8, maytinh.LayDSMayTinh(), 5, 0);
-                tenmt = IO.ReadString(34, 4);
+                tenmt = IO.ReadString(30, 4);
                 List<MayTinh> list = maytinh.TimMayTinh(new MayTinh(0, 0, tenmt, 0, 0, 0));
                 Hien(1, 8, list, 5, 1);
                 if (tenmt == "")

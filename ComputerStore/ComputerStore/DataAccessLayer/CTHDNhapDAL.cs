@@ -10,7 +10,7 @@ namespace ComputerStore.DataAccessLayer
 {
     class CTHDNhapDAL : ICTHDNhapDAL
     {
-        private string txtfile = "Data/CTHDNhap.txt";
+        private string txtfile = @"D:\GITHUB\Project_1\ComputerStore\ComputerStore\bin\Debug\Data\CTHDNhap.txt";
         public List<CTHDNhap> GetData()
         {
             List<CTHDNhap> list = new List<CTHDNhap>();

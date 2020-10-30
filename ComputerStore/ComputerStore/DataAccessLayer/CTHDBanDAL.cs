@@ -10,7 +10,7 @@ namespace ComputerStore.DataAccessLayer
 {
     class CTHDBanDAL : ICTHDBanDAL
     {
-        private string txtfile = "Data/CTHDBan.txt";
+        private string txtfile = @"D:\GITHUB\Project_1\ComputerStore\ComputerStore\bin\Debug\Data\CTHDBan.txt";
         public List<CTHDBan> GetData()
         {
             List<CTHDBan> list = new List<CTHDBan>();

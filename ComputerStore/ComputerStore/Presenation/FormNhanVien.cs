@@ -219,35 +219,35 @@ namespace ComputerStore.Presenation
                     break;
             } while (true);
         }
-    }
-    public class MenuNV : Menu
-    {
-        public MenuNV(string[] mn) : base(mn)
+        public class MenuNV : Menu
         {
-        }
-        public override void ThucHien(int location)
-        {
-            FormNhanVien nhanvien = new FormNhanVien();
-            switch (location)
+            public MenuNV(string[] mn) : base(mn)
             {
-                case 0:
-                    nhanvien.Nhap();
-                    break;
-                case 1:
-                    nhanvien.Sua();
-                    break;
-                case 2:
-                    nhanvien.Xoa();
-                    break;
-                case 3:
-                    nhanvien.Xem();
-                    break;
-                case 4:
-                    nhanvien.Tim();
-                    break;
-                case 5:
-                    Environment.Exit(0);
-                    break;
+            }
+            public override void ThucHien(int location)
+            {
+                FormNhanVien nhanvien = new FormNhanVien();
+                switch (location)
+                {
+                    case 0:
+                        nhanvien.Nhap();
+                        break;
+                    case 1:
+                        nhanvien.Sua();
+                        break;
+                    case 2:
+                        nhanvien.Xoa();
+                        break;
+                    case 3:
+                        nhanvien.Xem();
+                        break;
+                    case 4:
+                        nhanvien.Tim();
+                        break;
+                    case 5:
+                        Environment.Exit(0);
+                        break;
+                }
             }
         }
     }

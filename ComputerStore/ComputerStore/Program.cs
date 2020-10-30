@@ -10,14 +10,15 @@ namespace ComputerStore
         {
             Console.OutputEncoding = Encoding.UTF8;
             Console.InputEncoding = Encoding.Unicode;
-            DangNhap dn = new DangNhap();
+            /*DangNhap dn = new DangNhap();
             bool ok = dn.Hien(10, 5, "1", "1");
             if (ok)
             {
                 Hien();
             }
             else
-                Environment.Exit(0);
+                Environment.Exit(0);*/
+            Hien();
         }
         public static void Hien()
         {
@@ -33,8 +34,8 @@ namespace ComputerStore
             };
             Console.BackgroundColor = ConsoleColor.Black;
             Console.Clear();
-            ComputerStore.Presenation.FormMayTinh.MenuMT mnmt = new ComputerStore.Presenation.FormMayTinh.MenuMT(mn);
-            mnmt.HienTheoPhimTat(15, 6, ConsoleColor.Black, ConsoleColor.White);
+            ComputerStore.Presenation.FormKhachHang.MenuKH mnkh = new ComputerStore.Presenation.FormKhachHang.MenuKH(mn);
+            mnkh.HienTheoPhimTat(15, 6, ConsoleColor.Black, ConsoleColor.White);
             Console.ReadKey();
         }
     }
