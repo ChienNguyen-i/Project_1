@@ -19,7 +19,7 @@ namespace ComputerStore.Business
         }
         public void ThemCTHDBan(CTHDBan cthdb)
         {
-
+            cthdbDAL.Insert(cthdb);
         }
         public CTHDBan LayCTHDBan(int macthdb)
         {

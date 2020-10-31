@@ -4,7 +4,7 @@ using System.Text;
 
 namespace ComputerStore.Utility
 {
-    public  abstract class Menu
+    public abstract class Menu
     {
         private string[] mn;
         public Menu(string[] mn)
@@ -40,7 +40,7 @@ namespace ComputerStore.Utility
         public void HienTheoPhimTat(int x, int y, ConsoleColor background_color, ConsoleColor text_color)
         {
             ChuanHoaMenu();
-            IO.BoxTitle("                  CÁC CHỨC NĂNG", x, y, mn.Length * 2 + 5, MaxMuc() + 26);
+            IO.BoxTitle("             CÁC CHỨC NĂNG", x, y, mn.Length * 2 + 5, MaxMuc() + 26);
             x += 5;
             y += 3;
             for (int i = 0; i < mn.Length; ++i)

@@ -205,7 +205,7 @@ namespace ComputerStore.Presenation
             }
             public override void ThucHien(int location)
             {
-                FromKhachHang khachang = new FromKhachHang();
+                FormKhachHang khachang = new FormKhachHang();
                 switch (location)
                 {
                     case 0:

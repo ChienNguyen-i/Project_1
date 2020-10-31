@@ -19,7 +19,7 @@ namespace ComputerStore.Business
         }
         public void ThemGiaBan(GiaBan gb)
         {
-
+            gbDAL.Insert(gb);
         }
         public GiaBan LayGiaBan(int magb)
         {

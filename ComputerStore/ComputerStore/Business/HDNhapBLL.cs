@@ -19,7 +19,7 @@ namespace ComputerStore.Business
         }
         public void ThemHDNhap(HDNhap hdn)
         {
-            
+            hdnDAL.Insert(hdn);
         }
         public HDNhap LayHDNhap(int mahdn)
         {

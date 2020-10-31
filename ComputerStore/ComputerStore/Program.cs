@@ -34,8 +34,8 @@ namespace ComputerStore
             };
             Console.BackgroundColor = ConsoleColor.Black;
             Console.Clear();
-            ComputerStore.Presenation.FormKhachHang.MenuKH mnkh = new ComputerStore.Presenation.FormKhachHang.MenuKH(mn);
-            mnkh.HienTheoPhimTat(15, 6, ConsoleColor.Black, ConsoleColor.White);
+            ComputerStore.Presenation.FormGiaBan.MenuGB mngb = new ComputerStore.Presenation.FormGiaBan.MenuGB(mn);
+            mngb.HienTheoPhimTat(15, 6, ConsoleColor.Black, ConsoleColor.White);
             Console.ReadKey();
         }
     }

@@ -19,7 +19,7 @@ namespace ComputerStore.Business
         }
         public void ThemHDBan(HDBan hdb)
         {
-
+            hdbDAL.Insert(hdb);
         }
         public HDBan LayHDBan(int mahdb)
         {

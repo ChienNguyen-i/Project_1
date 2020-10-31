@@ -19,7 +19,7 @@ namespace ComputerStore.Business
         }
         public void ThemCTHDNhap(CTHDNhap cthdn)
         {
-
+            cthdnDAL.Insert(cthdn);
         }
         public CTHDNhap LayCTHDNhap(int macthdn)
         {
