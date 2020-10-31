@@ -71,19 +71,19 @@ namespace ComputerStore.Presenation
             IO.Writexy(mt.sLCon.ToString(), 77, 6);
 
             malm = int.Parse(IO.ReadNumber(37, 4));
-            if (malm != mt.maLM && malm != 0)
+            if (malm != mt.maLM && malm > 0)
                 mt.maLM = malm;
             tenmay = IO.ReadString(64, 4);
             if (tenmay != mt.tenMT && tenmay != null)
                 mt.tenMT = tenmay;
             mancc = int.Parse(IO.ReadNumber(14, 6));
-            if (mancc != mt.maNCC && mancc != 0)
+            if (mancc != mt.maNCC && mancc > 0)
                 mt.maNCC = mancc;
             sln = int.Parse(IO.ReadNumber(47, 6));
-            if (sln != mt.sLNhap && sln != 0)
+            if (sln != mt.sLNhap && sln > 0)
                 mt.sLNhap = sln;
             slc = int.Parse(IO.ReadNumber(77, 6));
-            if (slc != mt.sLCon && slc != 0)
+            if (slc != mt.sLCon && slc >= 0)
                 mt.sLCon = slc;
 
             Console.SetCursorPosition(58, 8);

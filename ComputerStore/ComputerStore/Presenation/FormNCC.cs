@@ -121,7 +121,7 @@ namespace ComputerStore.Presenation
                 IO.BoxTitle("                                     TÌM KIẾM NHÀ CUNG CẤP", 1, 1, 5, 100);
                 IO.Writexy("Nhập tên nhà cung cấp cần tìm:", 3, 4);
                 Hien(1, 8, nhacc.LayDSNCC(), 5, 0);
-                tenncc = IO.ReadString(34, 4);
+                tenncc = ComputerStore.Utility.CongCu.ChuanHoaXau(IO.ReadString(34, 4));
                 List<NCC> list = nhacc.TimNCC(new NCC(0, tenncc, null, null));
                 Hien(1, 8, list, 5, 1);
                 if (tenncc == "")

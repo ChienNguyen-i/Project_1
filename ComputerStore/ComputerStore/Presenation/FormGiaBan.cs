@@ -66,10 +66,10 @@ namespace ComputerStore.Presenation
             IO.Writexy(gb.ngayThoiAD.ToString("dd/MM/yyyy"), 69, 6);
 
             mamt = int.Parse(IO.ReadNumber(43, 4));
-            if (mamt != gb.maMT && mamt != 0)
+            if (mamt != gb.maMT && mamt > 0)
                 gb.maMT = mamt;
             gia_ban = double.Parse(IO.ReadNumber(74, 4));
-            if (gia_ban != gb.giaBan && gia_ban != 0)
+            if (gia_ban != gb.giaBan && gia_ban > 0)
                 gb.giaBan = gia_ban;
             ngayad = DateTime.Parse(IO.ReadString(19, 6));
             if (ngayad != gb.ngayAD && ngayad != null)

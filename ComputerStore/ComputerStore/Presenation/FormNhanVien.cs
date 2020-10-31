@@ -145,7 +145,7 @@ namespace ComputerStore.Presenation
                 IO.BoxTitle("                                      TÌM KIẾM NHÂN VIÊN", 1, 1, 5, 100);
                 IO.Writexy("Nhập họ tên nhân viên cần tìm:", 3, 4);
                 Hien(1, 8, nhanvien.LayDSNhanVien(), 5, 0);
-                hoten = IO.ReadString(34, 4);
+                hoten = ComputerStore.Utility.CongCu.ChuanHoaXau(IO.ReadString(34, 4));
                 List<NhanVien> list = nhanvien.TimNhanVien(new NhanVien(0, hoten, DateTime.Now, null, null, null, null));
                 Hien(1, 8, list, 5, 1);
                 if (hoten == "")

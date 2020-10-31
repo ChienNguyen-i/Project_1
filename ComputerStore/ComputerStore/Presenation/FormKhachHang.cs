@@ -7,7 +7,7 @@ using ComputerStore.Business.Interface;
 namespace ComputerStore.Presenation
 {
     //Giao tiếp với người sử dụng để giải quyết vấn đề của bài toán với các yêu cầu được đặt ra trong Interface của Business
-    class FormKhachHang
+    public class FormKhachHang
     {
         public void Nhap()
         {
@@ -128,7 +128,7 @@ namespace ComputerStore.Presenation
                 IO.BoxTitle("                                     TÌM KIẾM KHÁCH HÀNG", 1, 1, 5, 100);
                 IO.Writexy("Nhập họ tên khách hàng cần tìm:", 3, 4);
                 Hien(1, 8, khachhang.LayDSKhachHang(), 5, 0);
-                hoten = IO.ReadString(35, 4);
+                hoten = ComputerStore.Utility.CongCu.ChuanHoaXau(IO.ReadString(35, 4));
                 List<KhachHang> list = khachhang.TimKhachHang(new KhachHang(0, hoten, null, null, null));
                 Hien(1, 8, list, 5, 1);
                 if (hoten == "")
