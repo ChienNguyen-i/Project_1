@@ -32,7 +32,7 @@ namespace ComputerStore.Presenation
                 Console.SetCursorPosition(54, 8);
                 ConsoleKeyInfo kt = Console.ReadKey();
                 if (kt.Key == ConsoleKey.Escape)
-                    ComputerStore.Program.Hien();
+                    HienChucNang();
                 else if (kt.Key == ConsoleKey.X)
                     Hien(1, 13, hdnhap.LayDSHDNhap(), 5, 1);
                 else if (kt.Key == ConsoleKey.Enter)
@@ -81,7 +81,7 @@ namespace ComputerStore.Presenation
             Console.SetCursorPosition(58, 8);
             ConsoleKeyInfo kt = Console.ReadKey();
             if (kt.Key == ConsoleKey.Escape)
-                ComputerStore.Program.Hien();
+                HienChucNang();
             else if (kt.Key == ConsoleKey.X)
                 Hien(1, 13, hdnhap.LayDSHDNhap(), 5, 1);
             else if (kt.Key == ConsoleKey.Enter)
@@ -89,7 +89,7 @@ namespace ComputerStore.Presenation
                 hdnhap.SuaHDNhap(hdn);
                 Hien(1, 13, hdnhap.LayDSHDNhap(), 5, 1);
             }
-            ComputerStore.Program.Hien();
+            HienChucNang();
         }
         public void Xoa()
         {
@@ -109,14 +109,14 @@ namespace ComputerStore.Presenation
                     hdnhap.XoaHDNhap(mahdn);
                 Hien(1, 8, hdnhap.LayDSHDNhap(), 5, 1);
             } while (true);
-            ComputerStore.Program.Hien();
+            HienChucNang();
         }
         public void Xem()
         {
             IHDNhapBLL hdnhap = new HDNhapBLL();
             Console.Clear();
             Hien(1, 1, hdnhap.LayDSHDNhap(), 5, 1);
-            ComputerStore.Program.Hien();
+            HienChucNang();
         }
         public void Tim()
         {
@@ -135,7 +135,7 @@ namespace ComputerStore.Presenation
                 if (mahdn == 0)
                     break;
             } while (true);
-            ComputerStore.Program.Hien();
+            HienChucNang();
         }
         public void Hien(int xx, int yy, List<HDNhap> list, int n, int type)
         {
@@ -199,6 +199,24 @@ namespace ComputerStore.Presenation
                     break;
             } while (true);
         }
+        public void HienChucNang()
+        {
+            Console.WindowHeight = Console.LargestWindowHeight;
+            string[] mn =
+            {
+                " F1.Nhập danh sách hóa đơn nhập ",
+                " F2.Sửa thông tin hóa đơn nhập ",
+                " F3.Xóa hóa đơn nhập ",
+                " F4.Hiển thị danh sách hóa đơn nhập ",
+                " F5.Tìm kiếm hóa đơn nhập ",
+                " F6.Quay lại trang chính "
+            };
+            Console.BackgroundColor = ConsoleColor.Black;
+            Console.Clear();
+            ComputerStore.Presenation.FormHDNhap.MenuHDN mnhdn = new ComputerStore.Presenation.FormHDNhap.MenuHDN(mn);
+            mnhdn.HienTheoPhimTat(15, 6, ConsoleColor.Black, ConsoleColor.White);
+            Console.ReadKey();
+        }
         public class MenuHDN : Menu
         {
             public MenuHDN(string[] mn) : base(mn)
@@ -225,7 +243,7 @@ namespace ComputerStore.Presenation
                         hdnhap.Tim();
                         break;
                     case 5:
-                        Environment.Exit(0);
+                        ComputerStore.Presenation.FormMenuChinh.Hien();
                         break;
                 }
             }

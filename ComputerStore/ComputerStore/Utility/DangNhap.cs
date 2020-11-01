@@ -44,6 +44,7 @@ namespace ComputerStore.Utility
             IO.BoxTitle("                       ĐĂNG NHẬP", x, y, 15, 60);
             IO.Writexy("Tài khoản:", x + 3, y + 5);
             IO.Writexy("Mật khẩu:", x + 3, y + 8);
+            IO.Writexy("Đăng nhập", x + 40, y + 10);
             do
             {
                 IO.Writexy("                                          ", x + 14, y + 5, ConsoleColor.Black, ConsoleColor.White);

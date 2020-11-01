@@ -8,7 +8,7 @@ using ComputerStore.Business.Interface;
 namespace ComputerStore.Presenation
 {
     //Giao tiếp với người sử dụng để giải quyết vấn đề của bài toán với các yêu cầu được đặt ra trong Interface của Business
-    class FormCTHDBan
+    public class FormCTHDBan
     {
         public void Nhap()
         {
@@ -34,7 +34,7 @@ namespace ComputerStore.Presenation
                 Console.SetCursorPosition(54, 8);
                 ConsoleKeyInfo kt = Console.ReadKey();
                 if (kt.Key == ConsoleKey.Escape)
-                    ComputerStore.Program.Hien();
+                    HienChucNang();
                 else if (kt.Key == ConsoleKey.X)
                     Hien(1, 13, cthdban.LayDSCTHDBan(), 5, 1);
                 else if (kt.Key == ConsoleKey.Enter)
@@ -89,7 +89,7 @@ namespace ComputerStore.Presenation
             Console.SetCursorPosition(58, 8);
             ConsoleKeyInfo kt = Console.ReadKey();
             if (kt.Key == ConsoleKey.Escape)
-                ComputerStore.Program.Hien();
+                HienChucNang();
             else if (kt.Key == ConsoleKey.X)
                 Hien(1, 13, cthdban.LayDSCTHDBan(), 5, 1);
             else if (kt.Key == ConsoleKey.Enter)
@@ -97,7 +97,7 @@ namespace ComputerStore.Presenation
                 cthdban.SuaCTHDBan(cthdb);
                 Hien(1, 13, cthdban.LayDSCTHDBan(), 5, 1);
             }
-            ComputerStore.Program.Hien();
+            HienChucNang();
         }
         public void Xoa()
         {
@@ -117,14 +117,14 @@ namespace ComputerStore.Presenation
                     cthdban.XoaCTHDBan(macthdb);
                 Hien(1, 8, cthdban.LayDSCTHDBan(), 5, 1);
             } while (true);
-            ComputerStore.Program.Hien();
+            HienChucNang();
         }
         public void Xem()
         {
             ICTHDBanBLL cthdban = new CTHDBanBLL();
             Console.Clear();
             Hien(1, 1, cthdban.LayDSCTHDBan(), 5, 1);
-            ComputerStore.Program.Hien();
+            HienChucNang();
         }
         public void Tim()
         {
@@ -143,7 +143,7 @@ namespace ComputerStore.Presenation
                 if (macthdb == 0)
                     break;
             } while (true);
-            ComputerStore.Program.Hien();
+            HienChucNang();
         }
         public void Hien(int xx, int yy, List<CTHDBan> list, int n, int type)
         {
@@ -209,6 +209,24 @@ namespace ComputerStore.Presenation
                     break;
             } while (true);
         }
+        public void HienChucNang()
+        {
+            Console.WindowHeight = Console.LargestWindowHeight;
+            string[] mn =
+            {
+                " F1.Nhập danh sách chi tiết hóa đơn bán ",
+                " F2.Sửa thông tin chi tiết hóa đơn bán ",
+                " F3.Xóa chi tiết hóa đơn bán ",
+                " F4.Hiển thị danh sách chi tiết hóa đơn bán ",
+                " F5.Tìm kiếm chi tiết hóa đơn bán ",
+                " F6.Quay lại trang chính "
+            };
+            Console.BackgroundColor = ConsoleColor.Black;
+            Console.Clear();
+            ComputerStore.Presenation.FormCTHDBan.MenuCTHDB mncthdb = new ComputerStore.Presenation.FormCTHDBan.MenuCTHDB(mn);
+            mncthdb.HienTheoPhimTat(15, 6, ConsoleColor.Black, ConsoleColor.White);
+            Console.ReadKey();
+        }
         public class MenuCTHDB : Menu
         {
             public MenuCTHDB(string[] mn) : base(mn)
@@ -235,7 +253,7 @@ namespace ComputerStore.Presenation
                         cthdban.Tim();
                         break;
                     case 5:
-                        Environment.Exit(0);
+                        ComputerStore.Presenation.FormMenuChinh.Hien();
                         break;
                 }
             }

@@ -77,7 +77,7 @@ namespace ComputerStore.Utility
                 else if (kt.Key == ConsoleKey.Enter)
                     break;
                 else if (kt.Key == ConsoleKey.Escape)
-                    ComputerStore.Program.Hien();
+                    ComputerStore.Presenation.FormMenuChinh.Hien();
             } while (true);
             return s;
         }
@@ -112,7 +112,7 @@ namespace ComputerStore.Utility
                 else if (kt.Key == ConsoleKey.Enter)
                     break;
                 else if (kt.Key == ConsoleKey.Escape)
-                    ComputerStore.Program.Hien();
+                    ComputerStore.Presenation.FormMenuChinh.Hien();
             } while (true);
             return s;
         }

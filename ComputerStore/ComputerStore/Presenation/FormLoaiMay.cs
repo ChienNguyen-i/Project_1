@@ -28,7 +28,7 @@ namespace ComputerStore.Presenation
                 Console.SetCursorPosition(54, 8);
                 ConsoleKeyInfo kt = Console.ReadKey();
                 if (kt.Key == ConsoleKey.Escape)
-                    ComputerStore.Program.Hien();
+                    HienChucNang();
                 else if (kt.Key == ConsoleKey.X)
                     Hien(1, 13, loaimay.LayDSLoaiMay(), 5, 1);
                 else if (kt.Key == ConsoleKey.Enter)
@@ -65,7 +65,7 @@ namespace ComputerStore.Presenation
             Console.SetCursorPosition(58, 8);
             ConsoleKeyInfo kt = Console.ReadKey();
             if (kt.Key == ConsoleKey.Escape)
-                ComputerStore.Program.Hien();
+                HienChucNang();
             else if (kt.Key == ConsoleKey.X)
                 Hien(1, 13, loaimay.LayDSLoaiMay(), 5, 1);
             else if (kt.Key == ConsoleKey.Enter)
@@ -73,7 +73,7 @@ namespace ComputerStore.Presenation
                 loaimay.SuaLoaiMay(lm);
                 Hien(1, 13, loaimay.LayDSLoaiMay(), 5, 1);
             }
-            ComputerStore.Program.Hien();
+            HienChucNang();
         }
         public void Xoa()
         {
@@ -93,16 +93,16 @@ namespace ComputerStore.Presenation
                     loaimay.XoaLoaiMay(malm);
                 Hien(1, 8, loaimay.LayDSLoaiMay(), 5, 1);
             } while (true);
-            ComputerStore.Program.Hien();
+            HienChucNang();
         }
         public void Xem()
         {
             ILoaiMayBLL loaimay = new LoaiMayBLL();
             Console.Clear();
             Hien(1, 1, loaimay.LayDSLoaiMay(), 5, 1);
-            ComputerStore.Program.Hien();
+            HienChucNang();
         }
-        public void Tim()
+        public void TimTen()
         {
             string tenlm = "";
             do
@@ -113,13 +113,32 @@ namespace ComputerStore.Presenation
                 IO.BoxTitle("                                      TÌM KIẾM LOẠI MÁY", 1, 1, 5, 100);
                 IO.Writexy("Nhập tên loại máy cần tìm:", 3, 4);
                 Hien(1, 8, loaimay.LayDSLoaiMay(), 5, 0);
-                tenlm = IO.ReadString(30, 4);
+                tenlm = ComputerStore.Utility.CongCu.HoaDau(IO.ReadString(30, 4));
                 List<LoaiMay> list = loaimay.TimLoaiMay(new LoaiMay(0, tenlm, null));
                 Hien(1, 8, list, 5, 1);
                 if (tenlm == "")
                     break;
             } while (true);
-            ComputerStore.Program.Hien();
+            HienChucNang();
+        }
+        public void TimMa()
+        {
+            int malm = 0;
+            do
+            {
+                Console.Clear();
+                ILoaiMayBLL loaimay = new LoaiMayBLL();
+                Console.Clear();
+                IO.BoxTitle("                                      TÌM KIẾM LOẠI MÁY", 1, 1, 5, 100);
+                IO.Writexy("Nhập mã loại máy cần tìm:", 3, 4);
+                Hien(1, 8, loaimay.LayDSLoaiMay(), 5, 0);
+                malm = int.Parse(IO.ReadNumber(29, 4));
+                List<LoaiMay> list = loaimay.TimLoaiMay(new LoaiMay(malm, null, null));
+                Hien(1, 8, list, 5, 1);
+                if (malm == 0)
+                    break;
+            } while (true);
+            HienChucNang();
         }
         public void Hien(int xx, int yy, List<LoaiMay> list, int n, int type)
         {
@@ -179,6 +198,24 @@ namespace ComputerStore.Presenation
                     break;
             } while (true);
         }
+        public void HienChucNang()
+        {
+            Console.WindowHeight = Console.LargestWindowHeight;
+            string[] mn =
+            {
+                " F1.Nhập danh sách loại máy ",
+                " F2.Sửa thông tin loại máy ",
+                " F3.Xóa loại máy ",
+                " F4.Hiển thị danh sách loại máy ",
+                " F5.Tìm kiếm loại máy ",
+                " F6.Quay lại "
+            };
+            Console.BackgroundColor = ConsoleColor.Black;
+            Console.Clear();
+            ComputerStore.Presenation.FormLoaiMay.MenuLM mnlm = new ComputerStore.Presenation.FormLoaiMay.MenuLM(mn);
+            mnlm.HienTheoPhimTat(15, 6, ConsoleColor.Black, ConsoleColor.White);
+            Console.ReadKey();
+        }
         public class MenuLM : Menu
         {
             public MenuLM(string[] mn) : base(mn)
@@ -202,10 +239,47 @@ namespace ComputerStore.Presenation
                         loaimay.Xem();
                         break;
                     case 4:
-                        loaimay.Tim();
+                        loaimay.HienTimKiem();
                         break;
                     case 5:
-                        Environment.Exit(0);
+                        ComputerStore.Presenation.FormMenuChinh.Hien();
+                        break;
+                }
+            }
+        }
+        public void HienTimKiem()
+        {
+            Console.WindowHeight = Console.LargestWindowHeight;
+            string[] mn =
+            {
+                " F1.Tìm kiếm loại máy theo mã ",
+                " F2.Tìm kiếm loại máy theo tên ",
+                " F3.Quay lại "
+            };
+            Console.BackgroundColor = ConsoleColor.Black;
+            Console.Clear();
+            ComputerStore.Presenation.FormLoaiMay.MenuTimKiem mntk = new ComputerStore.Presenation.FormLoaiMay.MenuTimKiem(mn);
+            mntk.HienTheoPhimTat(15, 6, ConsoleColor.Black, ConsoleColor.White);
+            Console.ReadKey();
+        }
+        public class MenuTimKiem : Menu
+        {
+            public MenuTimKiem(string[] mn) : base(mn)
+            {
+            }
+            public override void ThucHien(int location)
+            {
+                FormLoaiMay loaimay = new FormLoaiMay();
+                switch (location)
+                {
+                    case 0:
+                        loaimay.TimMa();
+                        break;
+                    case 1:
+                        loaimay.TimTen();
+                        break;
+                    case 2:
+                        loaimay.HienChucNang();
                         break;
                 }
             }

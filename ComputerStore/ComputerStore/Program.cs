@@ -1,6 +1,7 @@
-﻿using ComputerStore.Utility;
-using System;
+﻿using System;
 using System.Text;
+using ComputerStore.Utility;
+using ComputerStore.Presenation;
 
 namespace ComputerStore
 {
@@ -14,29 +15,11 @@ namespace ComputerStore
             bool ok = dn.Hien(10, 5, "1", "1");
             if (ok)
             {
-                Hien();
+                FormMenuChinh.Hien();
             }
             else
                 Environment.Exit(0);*/
-            Hien();
-        }
-        public static void Hien()
-        {
-            Console.WindowHeight = Console.LargestWindowHeight;
-            string[] mn =
-            {
-                " F1.Nhap danh sach ",
-                " F2.Sua thong tin ",
-                " F3.Xoa thong tin ",
-                " F4.Hien thi ",
-                " F5.Tim kiem ",
-                " F6.Ket thuc "
-            };
-            Console.BackgroundColor = ConsoleColor.Black;
-            Console.Clear();
-            ComputerStore.Presenation.FormHDBan.MenuHDB mnhdb = new ComputerStore.Presenation.FormHDBan.MenuHDB(mn);
-            mnhdb.HienTheoPhimTat(15, 6, ConsoleColor.Black, ConsoleColor.White);
-            Console.ReadKey();
+            FormMenuChinh.Hien();
         }
     }
 }

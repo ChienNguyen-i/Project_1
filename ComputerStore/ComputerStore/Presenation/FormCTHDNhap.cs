@@ -8,7 +8,7 @@ using ComputerStore.Business.Interface;
 namespace ComputerStore.Presenation
 {
     //Giao tiếp với người sử dụng để giải quyết vấn đề của bài toán với các yêu cầu được đặt ra trong Interface của Business
-    class FormCTHDNhap
+    public class FormCTHDNhap
     {
         public void Nhap()
         {
@@ -34,7 +34,7 @@ namespace ComputerStore.Presenation
                 Console.SetCursorPosition(54, 8);
                 ConsoleKeyInfo kt = Console.ReadKey();
                 if (kt.Key == ConsoleKey.Escape)
-                    ComputerStore.Program.Hien();
+                    HienChucNang();
                 else if (kt.Key == ConsoleKey.X)
                     Hien(1, 13, cthdnhap.LayDSCTHDNhap(), 5, 1);
                 else if (kt.Key == ConsoleKey.Enter)
@@ -89,7 +89,7 @@ namespace ComputerStore.Presenation
             Console.SetCursorPosition(58, 8);
             ConsoleKeyInfo kt = Console.ReadKey();
             if (kt.Key == ConsoleKey.Escape)
-                ComputerStore.Program.Hien();
+                HienChucNang();
             else if (kt.Key == ConsoleKey.X)
                 Hien(1, 13, cthdnhap.LayDSCTHDNhap(), 5, 1);
             else if (kt.Key == ConsoleKey.Enter)
@@ -97,7 +97,7 @@ namespace ComputerStore.Presenation
                 cthdnhap.SuaCTHDNhap(cthdn);
                 Hien(1, 13, cthdnhap.LayDSCTHDNhap(), 5, 1);
             }
-            ComputerStore.Program.Hien();
+            HienChucNang();
         }
         public void Xoa()
         {
@@ -117,14 +117,14 @@ namespace ComputerStore.Presenation
                     cthdnhap.XoaCTHDNhap(macthdn);
                 Hien(1, 8, cthdnhap.LayDSCTHDNhap(), 5, 1);
             } while (true);
-            ComputerStore.Program.Hien();
+            HienChucNang();
         }
         public void Xem()
         {
             ICTHDNhapBLL cthdnhap = new CTHDNhapBLL();
             Console.Clear();
             Hien(1, 1, cthdnhap.LayDSCTHDNhap(), 5, 1);
-            ComputerStore.Program.Hien();
+            HienChucNang();
         }
         public void Tim()
         {
@@ -143,7 +143,7 @@ namespace ComputerStore.Presenation
                 if (macthdn == 0)
                     break;
             } while (true);
-            ComputerStore.Program.Hien();
+            HienChucNang();
         }
         public void Hien(int xx, int yy, List<CTHDNhap> list, int n, int type)
         {
@@ -209,6 +209,24 @@ namespace ComputerStore.Presenation
                     break;
             } while (true);
         }
+        public void HienChucNang()
+        {
+            Console.WindowHeight = Console.LargestWindowHeight;
+            string[] mn =
+            {
+                " F1.Nhập danh sách chi tiết hóa đơn nhập ",
+                " F2.Sửa thông tin chi tiết hóa đơn nhập ",
+                " F3.Xóa chi tiết hóa đơn nhập ",
+                " F4.Hiển thị danh sách chi tiết hóa đơn nhập ",
+                " F5.Tìm kiếm chi tiết hóa đơn nhập ",
+                " F6.Quay lại trang chính "
+            };
+            Console.BackgroundColor = ConsoleColor.Black;
+            Console.Clear();
+            ComputerStore.Presenation.FormCTHDNhap.MenuCTHDN mncthdn = new ComputerStore.Presenation.FormCTHDNhap.MenuCTHDN(mn);
+            mncthdn.HienTheoPhimTat(15, 6, ConsoleColor.Black, ConsoleColor.White);
+            Console.ReadKey();
+        }
         public class MenuCTHDN : Menu
         {
             public MenuCTHDN(string[] mn) : base(mn)
@@ -235,7 +253,7 @@ namespace ComputerStore.Presenation
                         cthdnhap.Tim();
                         break;
                     case 5:
-                        Environment.Exit(0);
+                        ComputerStore.Presenation.FormMenuChinh.Hien();
                         break;
                 }
             }

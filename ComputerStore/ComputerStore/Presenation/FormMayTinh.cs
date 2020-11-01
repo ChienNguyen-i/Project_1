@@ -34,7 +34,7 @@ namespace ComputerStore.Presenation
                 Console.SetCursorPosition(54, 8);
                 ConsoleKeyInfo kt = Console.ReadKey();
                 if (kt.Key == ConsoleKey.Escape)
-                    ComputerStore.Program.Hien();
+                    HienChucNang();
                 else if (kt.Key == ConsoleKey.X)
                     Hien(1, 13, maytinh.LayDSMayTinh(), 5, 1);
                 else if (kt.Key == ConsoleKey.Enter)
@@ -89,7 +89,7 @@ namespace ComputerStore.Presenation
             Console.SetCursorPosition(58, 8);
             ConsoleKeyInfo kt = Console.ReadKey();
             if (kt.Key == ConsoleKey.Escape)
-                ComputerStore.Program.Hien();
+                HienChucNang();
             else if (kt.Key == ConsoleKey.X)
                 Hien(1, 13, maytinh.LayDSMayTinh(), 5, 1);
             else if (kt.Key == ConsoleKey.Enter)
@@ -97,7 +97,7 @@ namespace ComputerStore.Presenation
                 maytinh.SuaMayTinh(mt);
                 Hien(1, 13, maytinh.LayDSMayTinh(), 5, 1);
             }
-            ComputerStore.Program.Hien();
+            HienChucNang();
         }
         public void Xoa()
         {
@@ -117,16 +117,16 @@ namespace ComputerStore.Presenation
                     maytinh.XoaMayTinh(mamt);
                 Hien(1, 8, maytinh.LayDSMayTinh(), 5, 1);
             } while (true);
-            ComputerStore.Program.Hien();
+            HienChucNang();
         }
         public void Xem()
         {
             IMayTinhBLL maytinh = new MayTinhBLL();
             Console.Clear();
             Hien(1, 1, maytinh.LayDSMayTinh(), 5, 1);
-            ComputerStore.Program.Hien();
+            HienChucNang();
         }
-        public void Tim()
+        public void TimTen()
         {
             string tenmt = "";
             do
@@ -137,13 +137,32 @@ namespace ComputerStore.Presenation
                 IO.BoxTitle("                                      TÌM KIẾM MÁY TÍNH", 1, 1, 5, 100);
                 IO.Writexy("Nhập tên máy tính cần tìm:", 3, 4);
                 Hien(1, 8, maytinh.LayDSMayTinh(), 5, 0);
-                tenmt = IO.ReadString(30, 4);
+                tenmt = ComputerStore.Utility.CongCu.HoaDau(IO.ReadString(30, 4));
                 List<MayTinh> list = maytinh.TimMayTinh(new MayTinh(0, 0, tenmt, 0, 0, 0));
                 Hien(1, 8, list, 5, 1);
                 if (tenmt == "")
                     break;
             } while (true);
-            ComputerStore.Program.Hien();
+            HienChucNang();
+        }
+        public void TimMa()
+        {
+            int mamt = 0;
+            do
+            {
+                Console.Clear();
+                IMayTinhBLL maytinh = new MayTinhBLL();
+                Console.Clear();
+                IO.BoxTitle("                                      TÌM KIẾM MÁY TÍNH", 1, 1, 5, 100);
+                IO.Writexy("Nhập mã máy tính cần tìm:", 3, 4);
+                Hien(1, 8, maytinh.LayDSMayTinh(), 5, 0);
+                mamt = int.Parse(IO.ReadString(29, 4));
+                List<MayTinh> list = maytinh.TimMayTinh(new MayTinh(mamt, 0, null, 0, 0, 0));
+                Hien(1, 8, list, 5, 1);
+                if (mamt == 0)
+                    break;
+            } while (true);
+            HienChucNang();
         }
         public void Hien(int xx, int yy, List<MayTinh> list, int n, int type)
         {
@@ -209,6 +228,24 @@ namespace ComputerStore.Presenation
                     break;
             } while (true);
         }
+        public void HienChucNang()
+        {
+            Console.WindowHeight = Console.LargestWindowHeight;
+            string[] mn =
+            {
+                " F1.Nhập danh sách máy tính ",
+                " F2.Sửa thông tin máy tính ",
+                " F3.Xóa máy tính ",
+                " F4.Hiển thị danh sách máy tính ",
+                " F5.Tìm kiếm máy tính ",
+                " F6.Quay lại "
+            };
+            Console.BackgroundColor = ConsoleColor.Black;
+            Console.Clear();
+            ComputerStore.Presenation.FormMayTinh.MenuMT mnmt = new ComputerStore.Presenation.FormMayTinh.MenuMT(mn);
+            mnmt.HienTheoPhimTat(15, 6, ConsoleColor.Black, ConsoleColor.White);
+            Console.ReadKey();
+        }
         public class MenuMT : Menu
         {
             public MenuMT(string[] mn) : base(mn)
@@ -232,10 +269,47 @@ namespace ComputerStore.Presenation
                         maytinh.Xem();
                         break;
                     case 4:
-                        maytinh.Tim();
+                        maytinh.HienTimKiem();
                         break;
                     case 5:
-                        Environment.Exit(0);
+                        ComputerStore.Presenation.FormMenuChinh.Hien();
+                        break;
+                }
+            }
+        }
+        public void HienTimKiem()
+        {
+            Console.WindowHeight = Console.LargestWindowHeight;
+            string[] mn =
+            {
+                " F1.Tìm kiếm máy tính theo mã ",
+                " F2.Tìm kiếm máy tính theo tên ",
+                " F3.Quay lại "
+            };
+            Console.BackgroundColor = ConsoleColor.Black;
+            Console.Clear();
+            ComputerStore.Presenation.FormMayTinh.MenuTimKiem mntk = new ComputerStore.Presenation.FormMayTinh.MenuTimKiem(mn);
+            mntk.HienTheoPhimTat(15, 6, ConsoleColor.Black, ConsoleColor.White);
+            Console.ReadKey();
+        }
+        public class MenuTimKiem : Menu
+        {
+            public MenuTimKiem(string[] mn) : base(mn)
+            {
+            }
+            public override void ThucHien(int location)
+            {
+                FormMayTinh maytinh = new FormMayTinh();
+                switch (location)
+                {
+                    case 0:
+                        maytinh.TimMa();
+                        break;
+                    case 1:
+                        maytinh.TimTen();
+                        break;
+                    case 2:
+                        maytinh.HienChucNang();
                         break;
                 }
             }

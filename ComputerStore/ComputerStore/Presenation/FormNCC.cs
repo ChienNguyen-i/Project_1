@@ -30,7 +30,7 @@ namespace ComputerStore.Presenation
                 Console.SetCursorPosition(54, 8);
                 ConsoleKeyInfo kt = Console.ReadKey();
                 if (kt.Key == ConsoleKey.Escape)
-                    ComputerStore.Program.Hien();
+                    HienChucNang();
                 else if (kt.Key == ConsoleKey.X)
                     Hien(1, 13, nhacc.LayDSNCC(), 5, 1);
                 else if (kt.Key == ConsoleKey.Enter)
@@ -73,7 +73,7 @@ namespace ComputerStore.Presenation
             Console.SetCursorPosition(58, 8);
             ConsoleKeyInfo kt = Console.ReadKey();
             if (kt.Key == ConsoleKey.Escape)
-                ComputerStore.Program.Hien();
+                HienChucNang();
             else if (kt.Key == ConsoleKey.X)
                 Hien(1, 13, nhacc.LayDSNCC(), 5, 1);
             else if (kt.Key == ConsoleKey.Enter)
@@ -81,7 +81,7 @@ namespace ComputerStore.Presenation
                 nhacc.SuaNCC(ncc);
                 Hien(1, 13, nhacc.LayDSNCC(), 5, 1);
             }
-            ComputerStore.Program.Hien();
+            HienChucNang();
         }
         public void Xoa()
         {
@@ -101,16 +101,16 @@ namespace ComputerStore.Presenation
                     nhacc.XoaNCC(mancc);
                 Hien(1, 8, nhacc.LayDSNCC(), 5, 1);
             } while (true);
-            ComputerStore.Program.Hien();
+            HienChucNang();
         }
         public void Xem()
         {
             INCC_BLL nhacc = new NCC_BLL();
             Console.Clear();
             Hien(1, 1, nhacc.LayDSNCC(), 5, 1);
-            ComputerStore.Program.Hien();
+            HienChucNang();
         }
-        public void Tim()
+        public void TimTen()
         {
             string tenncc = "";
             do
@@ -127,7 +127,26 @@ namespace ComputerStore.Presenation
                 if (tenncc == "")
                     break;
             } while (true);
-            ComputerStore.Program.Hien();
+            HienChucNang();
+        }
+        public void TimMa()
+        {
+            int mancc = 0;
+            do
+            {
+                Console.Clear();
+                INCC_BLL nhacc = new NCC_BLL();
+                Console.Clear();
+                IO.BoxTitle("                                     TÌM KIẾM NHÀ CUNG CẤP", 1, 1, 5, 100);
+                IO.Writexy("Nhập mã nhà cung cấp cần tìm:", 3, 4);
+                Hien(1, 8, nhacc.LayDSNCC(), 5, 0);
+                mancc = int.Parse(IO.ReadNumber(33, 4));
+                List<NCC> list = nhacc.TimNCC(new NCC(mancc, null, null, null));
+                Hien(1, 8, list, 5, 1);
+                if (mancc == 0)
+                    break;
+            } while (true);
+            HienChucNang();
         }
         public void Hien(int xx, int yy, List<NCC> list, int n, int type)
         {
@@ -189,6 +208,24 @@ namespace ComputerStore.Presenation
                     break;
             } while (true);
         }
+        public void HienChucNang()
+        {
+            Console.WindowHeight = Console.LargestWindowHeight;
+            string[] mn =
+            {
+                " F1.Nhập danh sách nhà cung cấp ",
+                " F2.Sửa thông tin nhà cung cấp ",
+                " F3.Xóa nhà cung cấp ",
+                " F4.Hiển thị danh sách nhà cung cấp ",
+                " F5.Tìm kiếm nhà cung cấp ",
+                " F6.Quay lại "
+            };
+            Console.BackgroundColor = ConsoleColor.Black;
+            Console.Clear();
+            ComputerStore.Presenation.FormNCC.MenuNCC mnncc = new ComputerStore.Presenation.FormNCC.MenuNCC(mn);
+            mnncc.HienTheoPhimTat(15, 6, ConsoleColor.Black, ConsoleColor.White);
+            Console.ReadKey();
+        }
         public class MenuNCC : Menu
         {
             public MenuNCC(string[] mn) : base(mn)
@@ -212,10 +249,47 @@ namespace ComputerStore.Presenation
                         nhacc.Xem();
                         break;
                     case 4:
-                        nhacc.Tim();
+                        nhacc.HienTimKiem();
                         break;
                     case 5:
-                        Environment.Exit(0);
+                        ComputerStore.Presenation.FormMenuChinh.Hien();
+                        break;
+                }
+            }
+        }
+        public void HienTimKiem()
+        {
+            Console.WindowHeight = Console.LargestWindowHeight;
+            string[] mn =
+            {
+                " F1.Tìm kiếm nhà cung cấp theo mã ",
+                " F2.Tìm kiếm nhà cung cấp theo tên ",
+                " F3.Quay lại "
+            };
+            Console.BackgroundColor = ConsoleColor.Black;
+            Console.Clear();
+            ComputerStore.Presenation.FormNCC.MenuTimKiem mntk = new ComputerStore.Presenation.FormNCC.MenuTimKiem(mn);
+            mntk.HienTheoPhimTat(15, 6, ConsoleColor.Black, ConsoleColor.White);
+            Console.ReadKey();
+        }
+        public class MenuTimKiem : Menu
+        {
+            public MenuTimKiem(string[] mn) : base(mn)
+            {
+            }
+            public override void ThucHien(int location)
+            {
+                FormNCC nhacc = new FormNCC();
+                switch (location)
+                {
+                    case 0:
+                        nhacc.TimMa();
+                        break;
+                    case 1:
+                        nhacc.TimTen();
+                        break;
+                    case 2:
+                        nhacc.HienChucNang();
                         break;
                 }
             }

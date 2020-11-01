@@ -8,7 +8,7 @@ using ComputerStore.Business.Interface;
 namespace ComputerStore.Presenation
 {
     //Giao tiếp với người sử dụng để giải quyết vấn đề của bài toán với các yêu cầu được đặt ra trong Interface của Business
-    class FormGiaBan
+    public class FormGiaBan
     {
         public void Nhap()
         {
@@ -32,7 +32,7 @@ namespace ComputerStore.Presenation
                 Console.SetCursorPosition(54, 8);
                 ConsoleKeyInfo kt = Console.ReadKey();
                 if (kt.Key == ConsoleKey.Escape)
-                    ComputerStore.Program.Hien();
+                    HienChucNang();
                 else if (kt.Key == ConsoleKey.X)
                     Hien(1, 13, giaban.LayDSGiaBan(), 5, 1);
                 else if (kt.Key == ConsoleKey.Enter)
@@ -81,7 +81,7 @@ namespace ComputerStore.Presenation
             Console.SetCursorPosition(58, 8);
             ConsoleKeyInfo kt = Console.ReadKey();
             if (kt.Key == ConsoleKey.Escape)
-                ComputerStore.Program.Hien();
+                HienChucNang();
             else if (kt.Key == ConsoleKey.X)
                 Hien(1, 13, giaban.LayDSGiaBan(), 5, 1);
             else if (kt.Key == ConsoleKey.Enter)
@@ -89,7 +89,7 @@ namespace ComputerStore.Presenation
                 giaban.SuaGiaBan(gb);
                 Hien(1, 13, giaban.LayDSGiaBan(), 5, 1);
             }
-            ComputerStore.Program.Hien();
+            HienChucNang();
         }
         public void Xoa()
         {
@@ -109,14 +109,14 @@ namespace ComputerStore.Presenation
                     giaban.XoaGiaBan(magb);
                 Hien(1, 8, giaban.LayDSGiaBan(), 5, 1);
             } while (true);
-            ComputerStore.Program.Hien();
+            HienChucNang();
         }
         public void Xem()
         {
             IGiaBanBLL giaban = new GiaBanBLL();
             Console.Clear();
             Hien(1, 1, giaban.LayDSGiaBan(), 5, 1);
-            ComputerStore.Program.Hien();
+            HienChucNang();
         }
         public void Tim()
         {
@@ -135,7 +135,7 @@ namespace ComputerStore.Presenation
                 if (magb == 0)
                     break;
             } while (true);
-            ComputerStore.Program.Hien();
+            HienChucNang();
         }
         public void Hien(int xx, int yy, List<GiaBan> list, int n, int type)
         {
@@ -199,6 +199,24 @@ namespace ComputerStore.Presenation
                     break;
             } while (true);
         }
+        public void HienChucNang()
+        {
+            Console.WindowHeight = Console.LargestWindowHeight;
+            string[] mn =
+            {
+                " F1.Nhập danh sách giá bán ",
+                " F2.Sửa thông tin giá bán ",
+                " F3.Xóa giá bán ",
+                " F4.Hiển thị danh sách giá bán ",
+                " F5.Tìm kiếm giá bán ",
+                " F6.Quay lại trang chính "
+            };
+            Console.BackgroundColor = ConsoleColor.Black;
+            Console.Clear();
+            ComputerStore.Presenation.FormHDBan.MenuHDB mnhdb = new ComputerStore.Presenation.FormHDBan.MenuHDB(mn);
+            mnhdb.HienTheoPhimTat(15, 6, ConsoleColor.Black, ConsoleColor.White);
+            Console.ReadKey();
+        }
         public class MenuGB : Menu
         {
             public MenuGB(string[] mn) : base(mn)
@@ -225,7 +243,7 @@ namespace ComputerStore.Presenation
                         giaban.Tim();
                         break;
                     case 5:
-                        Environment.Exit(0);
+                        ComputerStore.Presenation.FormMenuChinh.Hien();
                         break;
                 }
             }

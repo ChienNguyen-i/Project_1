@@ -31,7 +31,7 @@ namespace ComputerStore.Presenation
                 Console.SetCursorPosition(54, 8);
                 ConsoleKeyInfo kt = Console.ReadKey();
                 if (kt.Key == ConsoleKey.Escape)
-                    ComputerStore.Program.Hien();
+                    HienChucNang();
                 else if (kt.Key == ConsoleKey.X)
                     Hien(1, 13, khachhang.LayDSKhachHang(), 5, 1);
                 else if (kt.Key == ConsoleKey.Enter)
@@ -80,7 +80,7 @@ namespace ComputerStore.Presenation
             Console.SetCursorPosition(58, 8);
             ConsoleKeyInfo kt = Console.ReadKey();
             if (kt.Key == ConsoleKey.Escape)
-                ComputerStore.Program.Hien();
+                HienChucNang();
             else if (kt.Key == ConsoleKey.X)
                 Hien(1, 13, khachhang.LayDSKhachHang(), 5, 1);
             else if (kt.Key == ConsoleKey.Enter)
@@ -88,7 +88,7 @@ namespace ComputerStore.Presenation
                 khachhang.SuaKhachHang(kh);
                 Hien(1, 13, khachhang.LayDSKhachHang(), 5, 1);
             }
-            ComputerStore.Program.Hien();
+            HienChucNang();
         }
         public void Xoa()
         {
@@ -108,16 +108,16 @@ namespace ComputerStore.Presenation
                     khachhang.XoaKhachHang(makh);
                 Hien(1, 8, khachhang.LayDSKhachHang(), 5, 1);
             } while (true);
-            ComputerStore.Program.Hien();
+            HienChucNang();
         }
         public void Xem()
         {
             IKhachHangBLL khachhang = new KhachHangBLL();
             Console.Clear();
             Hien(1, 1, khachhang.LayDSKhachHang(), 5, 1);
-            ComputerStore.Program.Hien();
+            HienChucNang();
         }
-        public void Tim()
+        public void TimTen()
         {
             string hoten = "";
             do
@@ -134,7 +134,26 @@ namespace ComputerStore.Presenation
                 if (hoten == "")
                     break;
             } while (true);
-            ComputerStore.Program.Hien();
+            HienChucNang();
+        }
+        public void TimMa()
+        {
+            int makh = 0;
+            do
+            {
+                Console.Clear();
+                IKhachHangBLL khachhang = new KhachHangBLL();
+                Console.Clear();
+                IO.BoxTitle("                                     TÌM KIẾM KHÁCH HÀNG", 1, 1, 5, 100);
+                IO.Writexy("Nhập mã khách hàng cần tìm:", 3, 4);
+                Hien(1, 8, khachhang.LayDSKhachHang(), 5, 0);
+                makh = int.Parse(IO.ReadNumber(31, 4));
+                List<KhachHang> list = khachhang.TimKhachHang(new KhachHang(makh, null, null, null, null));
+                Hien(1, 8, list, 5, 1);
+                if (makh == 0)
+                    break;
+            } while (true);
+            HienChucNang();
         }
         public void Hien(int xx, int yy, List<KhachHang> list, int n, int type)
         {
@@ -198,6 +217,24 @@ namespace ComputerStore.Presenation
                     break;
             } while (true);
         }
+        public void HienChucNang()
+        {
+            Console.WindowHeight = Console.LargestWindowHeight;
+            string[] mn =
+            {
+                " F1.Nhập danh sách khách hàng ",
+                " F2.Sửa thông tin khách hàng ",
+                " F3.Xóa khách hàng ",
+                " F4.Hiển thị danh sách khách hàng ",
+                " F5.Tìm kiếm khách hàng ",
+                " F6.Quay lại "
+            };
+            Console.BackgroundColor = ConsoleColor.Black;
+            Console.Clear();
+            ComputerStore.Presenation.FormKhachHang.MenuKH mnkh = new ComputerStore.Presenation.FormKhachHang.MenuKH(mn);
+            mnkh.HienTheoPhimTat(15, 6, ConsoleColor.Black, ConsoleColor.White);
+            Console.ReadKey();
+        }
         public class MenuKH : Menu
         {
             public MenuKH(string[] mn) : base(mn)
@@ -221,10 +258,47 @@ namespace ComputerStore.Presenation
                         khachang.Xem();
                         break;
                     case 4:
-                        khachang.Tim();
+                        khachang.HienTimKiem();
                         break;
                     case 5:
-                        Environment.Exit(0);
+                        ComputerStore.Presenation.FormMenuChinh.Hien();
+                        break;
+                }
+            }
+        }
+        public void HienTimKiem()
+        {
+            Console.WindowHeight = Console.LargestWindowHeight;
+            string[] mn =
+            {
+                " F1.Tìm kiếm khách hàng theo mã ",
+                " F2.Tìm kiếm khách hàng theo tên ",
+                " F3.Quay lại "
+            };
+            Console.BackgroundColor = ConsoleColor.Black;
+            Console.Clear();
+            ComputerStore.Presenation.FormKhachHang.MenuTimKiem mntk = new ComputerStore.Presenation.FormKhachHang.MenuTimKiem(mn);
+            mntk.HienTheoPhimTat(15, 6, ConsoleColor.Black, ConsoleColor.White);
+            Console.ReadKey();
+        }
+        public class MenuTimKiem : Menu
+        {
+            public MenuTimKiem(string[] mn) : base(mn)
+            {
+            }
+            public override void ThucHien(int location)
+            {
+                FormKhachHang khachhang = new FormKhachHang();
+                switch (location)
+                {
+                    case 0:
+                        khachhang.TimMa();
+                        break;
+                    case 1:
+                        khachhang.TimTen();
+                        break;
+                    case 2:
+                        khachhang.HienChucNang();
                         break;
                 }
             }
