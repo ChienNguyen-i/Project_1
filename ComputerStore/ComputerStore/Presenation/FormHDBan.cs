@@ -17,18 +17,24 @@ namespace ComputerStore.Presenation
                 IHDBanBLL hdban = new HDBanBLL();
                 Console.Clear();
                 IO.BoxTitle("                                 NHẬP THÔNG TIN HÓA ĐƠN BÁN", 1, 1, 10, 100);
-                IO.Writexy("Mã nhân viên:", 5, 4);
-                IO.Writexy("Mã khách hàng:", 45, 4);
-                IO.Writexy("Ngày bán:", 5, 6);
-                IO.Writexy("Tổng tiền:", 45, 6);
+                IO.Writexy("Mã nhân viên:", 3, 4);
+                IO.Writexy("Mã khách hàng:", 25, 4);
+                IO.Writexy("Mã máy tính:", 51, 4);
+                IO.Writexy("Ngày bán:", 75, 4);
+                IO.Writexy("Số lượng:", 3, 6);
+                IO.Writexy("Đơn giá:", 33, 6);
+                IO.Writexy("Tổng tiền:", 68, 6);
                 IO.Writexy("--------------------------------------------------------------------------------------------------", 2, 7);
                 IO.Writexy("Enter để nhập, Esc để thoát, X để xem chi tiết...", 5, 8);
                 Hien(1, 13, hdban.LayDSHDBan(), 5, 0);
                 HDBan hdb = new HDBan();
-                hdb.maNV = int.Parse(IO.ReadNumber(19, 4));
-                hdb.maKH = int.Parse(IO.ReadNumber(60, 4));
-                hdb.ngayBan = DateTime.Parse(IO.ReadString(15, 6));
-                hdb.tongTien = double.Parse(IO.ReadNumber(56, 6));
+                hdb.maNV = int.Parse(IO.ReadNumber(17, 4));
+                hdb.maKH = int.Parse(IO.ReadNumber(40, 4));
+                hdb.maMT = int.Parse(IO.ReadNumber(64, 4));
+                hdb.ngayBan = DateTime.Parse(IO.ReadString(85, 4));
+                hdb.soLuong = int.Parse(IO.ReadNumber(13, 6));
+                hdb.donGia = double.Parse(IO.ReadNumber(42, 6));
+                hdb.tongTien = double.Parse(IO.ReadNumber(79, 6));
                 Console.SetCursorPosition(54, 8);
                 ConsoleKeyInfo kt = Console.ReadKey();
                 if (kt.Key == ConsoleKey.Escape)
@@ -44,37 +50,55 @@ namespace ComputerStore.Presenation
             IHDBanBLL hdban = new HDBanBLL();
             Console.Clear();
             IO.BoxTitle("                               CẬP NHẬT THÔNG TIN HÓA ĐƠN BÁN", 1, 1, 10, 100);
-            IO.Writexy("Mã hóa đơn bán:", 3, 4);
-            IO.Writexy("Mã nhân viên:", 35, 4);
-            IO.Writexy("Mã khách hàng:", 68, 4);
+            IO.Writexy("Mã HD bán:", 3, 4);
+            IO.Writexy("Mã nhân viên:", 23, 4);
+            IO.Writexy("Mã khách hàng:", 50, 4);
+            IO.Writexy("Mã máy tính:", 76, 4);
             IO.Writexy("Ngày bán:", 3, 6);
-            IO.Writexy("Tổng tiền:", 50, 6);
+            IO.Writexy("Số lượng:", 28, 6);
+            IO.Writexy("Đơn giá:", 50, 6);
+            IO.Writexy("Tổng tiền:", 74, 6);
             IO.Writexy("--------------------------------------------------------------------------------------------------", 2, 7);
             IO.Writexy("Enter để cập nhật, Esc để thoát, X để xem chi tiết...", 5, 8);
             Hien(1, 13, hdban.LayDSHDBan(), 5, 0);
             int mahdb;
             int manv;
             int makh;
+            int mamt;
             DateTime ngayban;
+            int soluong;
+            double dongia;
             double tongtien;
 
-            mahdb = int.Parse(IO.ReadNumber(19, 4));
+            mahdb = int.Parse(IO.ReadNumber(14, 4));
             HDBan hdb = hdban.LayHDBan(mahdb);
-            IO.Writexy(hdb.maNV.ToString(), 49, 4);
-            IO.Writexy(hdb.maKH.ToString(), 83, 4);
+            IO.Writexy(hdb.maNV.ToString(), 37, 4);
+            IO.Writexy(hdb.maKH.ToString(), 65, 4);
+            IO.Writexy(hdb.maMT.ToString(), 89, 4);
             IO.Writexy(hdb.ngayBan.ToString("dd/MM/yyyy"), 13, 6);
-            IO.Writexy(hdb.tongTien.ToString(), 61, 6);
+            IO.Writexy(hdb.soLuong.ToString(), 38, 6);
+            IO.Writexy(hdb.donGia.ToString(), 59, 6);
+            IO.Writexy(hdb.tongTien.ToString(), 85, 6);
 
-            manv = int.Parse(IO.ReadNumber(49, 4));
+            manv = int.Parse(IO.ReadNumber(37, 4));
             if (manv != hdb.maNV && manv > 0)
                 hdb.maNV = manv;
-            makh = int.Parse(IO.ReadNumber(83, 4));
+            makh = int.Parse(IO.ReadNumber(65, 4));
             if (makh != hdb.maKH && makh > 0)
                 hdb.maKH = makh;
+            mamt = int.Parse(IO.ReadNumber(89, 4));
+            if (mamt != hdb.maMT && mamt > 0)
+                hdb.maMT = mamt;
             ngayban = DateTime.Parse(IO.ReadString(13, 6));
             if (ngayban != hdb.ngayBan && ngayban != null)
                 hdb.ngayBan = ngayban;
-            tongtien = double.Parse(IO.ReadNumber(61, 6));
+            soluong = int.Parse(IO.ReadNumber(38, 6));
+            if (soluong != hdb.soLuong && soluong > 0)
+                hdb.soLuong = soluong;
+            dongia = double.Parse(IO.ReadNumber(59, 6));
+            if (dongia != hdb.donGia && dongia > 0)
+                hdb.donGia = dongia;
+            tongtien = double.Parse(IO.ReadNumber(85, 6));
             if (tongtien != hdb.tongTien && tongtien > 0)
                 hdb.tongTien = tongtien;
 
@@ -130,7 +154,7 @@ namespace ComputerStore.Presenation
                 IO.Writexy("Nhập mã hóa đơn bán cần tìm:", 3, 4);
                 Hien(1, 8, hdban.LayDSHDBan(), 5, 0);
                 mahdb = int.Parse(IO.ReadNumber(32, 4));
-                List<HDBan> list = hdban.TimHDBan(new HDBan(mahdb, 0, 0, DateTime.Now, 0));
+                List<HDBan> list = hdban.TimHDBan(new HDBan(mahdb, 0, 0, 0, DateTime.Now, 0, 0, 0));
                 Hien(1, 8, list, 5, 1);
                 if (mahdb == 0)
                     break;
@@ -152,30 +176,36 @@ namespace ComputerStore.Presenation
                 x = xx;
                 y = yy;
                 d = 0;
-                IO.Writexy("                     DANH SÁCH CHI TIẾT HÓA ĐƠN BÁN", x, y);
-                IO.Writexy("┌──────────┬──────────────┬───────────────┬─────────────────┬───────────────────┐", x, y + 1);
-                IO.Writexy("│  Mã HDB  │ Mã nhân viên │ Mã khách hàng │    Ngày nhập    │     Tổng tiền     │", x, y + 2);
-                IO.Writexy("├──────────┼──────────────┼───────────────┼─────────────────┼───────────────────┤", x, y + 3);
+                IO.Writexy("                                    DANH SÁCH HÓA ĐƠN BÁN", x, y);
+                IO.Writexy("┌──────────┬──────────┬──────────┬──────────┬─────────────────┬────────────┬──────────────────┬─────────────────┐", x, y + 1);
+                IO.Writexy("│  Mã HDB  │  Mã NV   │  Mã KH   │  Mã MT   │    Ngày nhập    │  Số lượng  │    Thành tiền    │    Tổng tiền    │", x, y + 2);
+                IO.Writexy("├──────────┼──────────┼──────────┼──────────┼─────────────────┼────────────┼──────────────────┼─────────────────┤", x, y + 3);
                 y += 4;
                 for (int i = head; i < final; i++)
                 {
                     IO.Writexy("│", x, y + d, 11);
                     IO.Writexy(list[i].maHDB.ToString(), x + 1, y + d, 11);
                     IO.Writexy("│", x + 11, y + d);
-                    IO.Writexy(list[i].maNV.ToString(), x + 12, y + d, 15);
-                    IO.Writexy("│", x + 26, y + d);
-                    IO.Writexy(list[i].maKH.ToString(), x + 27, y + d, 16);
-                    IO.Writexy("│", x + 42, y + d);
-                    IO.Writexy(list[i].ngayBan.ToString("dd/MM/yyyy"), x + 43, y + d, 18);
-                    IO.Writexy("│", x + 60, y + d);
-                    IO.Writexy(list[i].tongTien.ToString(), x + 61, y + d, 20);
-                    IO.Writexy("│", x + 80, y + d);
+                    IO.Writexy(list[i].maNV.ToString(), x + 12, y + d, 11);
+                    IO.Writexy("│", x + 22, y + d);
+                    IO.Writexy(list[i].maKH.ToString(), x + 23, y + d, 11);
+                    IO.Writexy("│", x + 33, y + d);
+                    IO.Writexy(list[i].maMT.ToString(), x + 34, y + d, 11);
+                    IO.Writexy("│", x + 44, y + d);
+                    IO.Writexy(list[i].ngayBan.ToString("dd/MM/yyyy"), x + 45, y + d, 18);
+                    IO.Writexy("│", x + 62, y + d);
+                    IO.Writexy(list[i].soLuong.ToString(), x + 63, y + d, 13);
+                    IO.Writexy("│", x + 75, y + d);
+                    IO.Writexy(list[i].donGia.ToString(), x + 76, y + d, 18);
+                    IO.Writexy("│", x + 93, y + d);
+                    IO.Writexy(list[i].tongTien.ToString(), x + 94, y + d, 18);
+                    IO.Writexy("│", x + 111, y + d);
                     if (i < final - 1)
-                        IO.Writexy("├──────────┼──────────────┼───────────────┼─────────────────┼───────────────────┤", x, y + d + 1);
+                        IO.Writexy("├──────────┼──────────┼──────────┼──────────┼─────────────────┼────────────┼──────────────────┼─────────────────┤", x, y + d + 1);
                     y += 1;
                     d += 1;
                 }
-                IO.Writexy("└──────────┴──────────────┴───────────────┴─────────────────┴───────────────────┘", x, y + d - 1);
+                IO.Writexy("└──────────┴──────────┴──────────┴──────────┴─────────────────┴────────────┴──────────────────┴─────────────────┘", x, y + d - 1);
                 IO.Writexy(" Trang " + curpage + "/" + totalpage, x, y + d);
                 IO.Writexy(" Trang " + curpage + "/" + totalpage + "          Nhấn PagegUp để xem trước, PagegDown để xem tiep, Esc để thoát...", x, y + d);
                 if (type == 0)
@@ -209,7 +239,7 @@ namespace ComputerStore.Presenation
                 " F3.Xóa hóa đơn bán ",
                 " F4.Hiển thị danh sách hóa đơn bán ",
                 " F5.Tìm kiếm hóa đơn bán ",
-                " F6.Quay lại trang chính "
+                " F6.Quay lại "
             };
             Console.BackgroundColor = ConsoleColor.Black;
             Console.Clear();

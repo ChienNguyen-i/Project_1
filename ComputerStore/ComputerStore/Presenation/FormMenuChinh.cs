@@ -20,9 +20,7 @@ namespace ComputerStore.Presenation
                 " F6.Quản lý giá bán ",
                 " F7.Quản lý hóa đơn nhập ",
                 " F8.Quản lý hóa đơn bán ",
-                " F9.Quản lý chi tiết hóa đơn nhập ",
-                " F9.Quản lý chi tiết hóa đơn bán ",
-                " F10.Kết thúc "
+                " F9.Kết thúc "
             };
             Console.BackgroundColor = ConsoleColor.Black;
             Console.Clear();
@@ -45,8 +43,6 @@ namespace ComputerStore.Presenation
                 FormGiaBan fgb = new FormGiaBan();
                 FormHDNhap fhdn = new FormHDNhap();
                 FormHDBan fhdb = new FormHDBan();
-                FormCTHDNhap fn = new FormCTHDNhap();
-                FormCTHDBan fb = new FormCTHDBan();
                 switch (location)
                 {
                     case 0:
@@ -74,12 +70,6 @@ namespace ComputerStore.Presenation
                         fhdb.HienChucNang();
                         break;
                     case 8:
-                        fn.HienChucNang();
-                        break;
-                    case 9:
-                        fb.HienChucNang();
-                        break;
-                    case 10:
                         Environment.Exit(0);
                         break;
                 }

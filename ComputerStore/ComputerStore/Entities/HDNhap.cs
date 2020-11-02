@@ -10,19 +10,25 @@ namespace ComputerStore.Entities
         private int MaHDN;
         private int MaNV;
         private int MaNCC;
+        private int MaMT;
         private DateTime NgayNhap;
+        private int SoLuong;
+        private double DonGia;
         private double TongTien;
         #endregion
         #region Các phương thức khởi tạo
         public HDNhap()
         {
         }
-        public HDNhap(int mahdn, int manv, int mancc, DateTime ngaynhap, double tongtien)
+        public HDNhap(int mahdn, int manv, int mancc, int mamt, DateTime ngaynhap, int soluong, double dongia, double tongtien)
         {
             this.MaHDN = mahdn;
             this.MaNV = manv;
             this.MaNCC = mancc;
+            this.MaMT = mamt;
             this.NgayNhap = ngaynhap;
+            this.SoLuong = soluong;
+            this.DonGia = dongia;
             this.TongTien = tongtien;
         }
         //Phương thức sao chép
@@ -31,7 +37,10 @@ namespace ComputerStore.Entities
             this.MaHDN = hdn.MaHDN;
             this.MaNV = hdn.MaNV;
             this.MaNCC = hdn.MaNCC;
+            this.MaMT = hdn.MaMT;
             this.NgayNhap = hdn.NgayNhap;
+            this.SoLuong = hdn.SoLuong;
+            this.DonGia = hdn.DonGia;
             this.TongTien = hdn.TongTien;
         }
         #endregion
@@ -72,6 +81,18 @@ namespace ComputerStore.Entities
                     MaNCC = value;
             }
         }
+        public int maMT
+        {
+            get
+            {
+                return MaMT;
+            }
+            set
+            {
+                if (value > 0)
+                    MaMT = value;
+            }
+        }
         public DateTime ngayNhap
         {
             get
@@ -81,6 +102,30 @@ namespace ComputerStore.Entities
             set
             {
                 NgayNhap = value;
+            }
+        }
+        public int soLuong
+        {
+            get
+            {
+                return SoLuong;
+            }
+            set
+            {
+                if (value > 0)
+                    SoLuong = value;
+            }
+        }
+        public double donGia
+        {
+            get
+            {
+                return DonGia;
+            }
+            set
+            {
+                if (value > 0)
+                    DonGia = value;
             }
         }
         public double tongTien

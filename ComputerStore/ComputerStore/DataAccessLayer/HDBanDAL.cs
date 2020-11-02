@@ -22,7 +22,7 @@ namespace ComputerStore.DataAccessLayer
                 {
                     s = ComputerStore.Utility.CongCu.CatXau(s);
                     string[] a = s.Split('\t');
-                    list.Add(new HDBan(int.Parse(a[0]), int.Parse(a[1]), int.Parse(a[2]), DateTime.Parse(a[3]), double.Parse(a[4])));
+                    list.Add(new HDBan(int.Parse(a[0]), int.Parse(a[1]), int.Parse(a[2]), int.Parse(a[3]), DateTime.Parse(a[4]), int.Parse(a[5]), double.Parse(a[6]), double.Parse(a[7])));
                 }
                 s = sr.ReadLine();
             }
@@ -58,14 +58,14 @@ namespace ComputerStore.DataAccessLayer
             int mahdb = maHDB + 1;
             StreamWriter sw = File.AppendText(txtfile);
             sw.WriteLine();
-            sw.Write(mahdb + "\t" + hdb.maNV + "\t" + hdb.maKH + "\t" + hdb.ngayBan + "\t" + hdb.tongTien);
+            sw.Write(mahdb + "\t" + hdb.maNV + "\t" + hdb.maKH + "\t" + hdb.maMT + "\t" + hdb.ngayBan + "\t" + hdb.soLuong + "\t" + hdb.donGia + "\t" + hdb.tongTien);
             sw.Close();
         }
         public void Update(List<HDBan> list)
         {
             StreamWriter sw = File.CreateText(txtfile);
             for (int i = 0; i < list.Count; ++i)
-                sw.WriteLine(list[i].maHDB + "\t" + list[i].maNV + "\t" + list[i].maKH + "\t" + list[i].ngayBan + "\t" + list[i].tongTien);
+                sw.WriteLine(list[i].maHDB + "\t" + list[i].maNV + "\t" + list[i].maKH + "\t"+ list[i].maMT + "\t" + list[i].ngayBan + "\t"+ list[i].soLuong + "\t" + list[i].donGia + "\t" + list[i].tongTien);
             sw.Close();
         }
     }

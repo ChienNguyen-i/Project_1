@@ -209,7 +209,7 @@ namespace ComputerStore.Presenation
                 " F3.Xóa giá bán ",
                 " F4.Hiển thị danh sách giá bán ",
                 " F5.Tìm kiếm giá bán ",
-                " F6.Quay lại trang chính "
+                " F6.Quay lại "
             };
             Console.BackgroundColor = ConsoleColor.Black;
             Console.Clear();
