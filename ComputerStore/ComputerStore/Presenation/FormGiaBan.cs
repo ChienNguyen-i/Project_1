@@ -213,8 +213,8 @@ namespace ComputerStore.Presenation
             };
             Console.BackgroundColor = ConsoleColor.Black;
             Console.Clear();
-            ComputerStore.Presenation.FormHDBan.MenuHDB mnhdb = new ComputerStore.Presenation.FormHDBan.MenuHDB(mn);
-            mnhdb.HienTheoPhimTat(15, 6, ConsoleColor.Black, ConsoleColor.White);
+            ComputerStore.Presenation.FormGiaBan.MenuGB mngb = new ComputerStore.Presenation.FormGiaBan.MenuGB(mn);
+            mngb.HienTheoPhimTat(15, 6, ConsoleColor.Black, ConsoleColor.White);
             Console.ReadKey();
         }
         public class MenuGB : Menu

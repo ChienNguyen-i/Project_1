@@ -18,9 +18,8 @@ namespace ComputerStore.Presenation
                 " F4.Quản lý loại máy ",
                 " F5.Quản lý máy tính ",
                 " F6.Quản lý giá bán ",
-                " F7.Quản lý hóa đơn nhập ",
-                " F8.Quản lý hóa đơn bán ",
-                " F9.Kết thúc "
+                " F7.Quản lý hóa đơn ",
+                " F8.Kết thúc "
             };
             Console.BackgroundColor = ConsoleColor.Black;
             Console.Clear();
@@ -41,8 +40,7 @@ namespace ComputerStore.Presenation
                 FormLoaiMay flm = new FormLoaiMay();
                 FormMayTinh fmt = new FormMayTinh();
                 FormGiaBan fgb = new FormGiaBan();
-                FormHDNhap fhdn = new FormHDNhap();
-                FormHDBan fhdb = new FormHDBan();
+                FormMenuChinh fhd = new FormMenuChinh();
                 switch (location)
                 {
                     case 0:
@@ -64,13 +62,48 @@ namespace ComputerStore.Presenation
                         fgb.HienChucNang();
                         break;
                     case 6:
-                        fhdn.HienChucNang();
+                        fhd.HienHoaDon();
                         break;
                     case 7:
-                        fhdb.HienChucNang();
-                        break;
-                    case 8:
                         Environment.Exit(0);
+                        break;
+                }
+            }
+        }
+        public void HienHoaDon()
+        {
+            Console.WindowHeight = Console.LargestWindowHeight;
+            string[] mn =
+            {
+                " F1.Quản lý hóa đơn nhập ",
+                " F2.Quản lý hóa đơn bán ",
+                " F3.Quay lại "
+            };
+            Console.BackgroundColor = ConsoleColor.Black;
+            Console.Clear();
+            ComputerStore.Presenation.FormMenuChinh.MenuHD mnhd = new ComputerStore.Presenation.FormMenuChinh.MenuHD(mn);
+            mnhd.HienTheoPhimTat(15, 6, ConsoleColor.Black, ConsoleColor.White);
+            Console.ReadKey();
+        }
+        public class MenuHD : Menu
+        {
+            public MenuHD(string[] mn) : base(mn)
+            {
+            }
+            public override void ThucHien(int location)
+            {
+                FormHDNhap hdnhap = new FormHDNhap();
+                FormHDBan hdban = new FormHDBan();
+                switch (location)
+                {
+                    case 0:
+                        hdnhap.HienChucNang();
+                        break;
+                    case 1:
+                        hdban.HienChucNang();
+                        break;
+                    case 2:
+                        ComputerStore.Presenation.FormMenuChinh.Hien();
                         break;
                 }
             }
