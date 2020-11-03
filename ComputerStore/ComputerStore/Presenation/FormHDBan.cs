@@ -34,7 +34,8 @@ namespace ComputerStore.Presenation
                 hdb.ngayBan = DateTime.Parse(IO.ReadString(85, 4));
                 hdb.soLuong = int.Parse(IO.ReadNumber(13, 6));
                 hdb.donGia = double.Parse(IO.ReadNumber(42, 6));
-                hdb.tongTien = double.Parse(IO.ReadNumber(79, 6));
+                //hdb.tongTien = double.Parse(IO.ReadNumber(79, 6));
+                IO.Writexy(hdb.tongTien.ToString(), 79, 6);
                 Console.SetCursorPosition(54, 8);
                 ConsoleKeyInfo kt = Console.ReadKey();
                 if (kt.Key == ConsoleKey.Escape)
@@ -68,7 +69,7 @@ namespace ComputerStore.Presenation
             DateTime ngayban;
             int soluong;
             double dongia;
-            double tongtien;
+            //double tongtien;
 
             mahdb = int.Parse(IO.ReadNumber(14, 4));
             HDBan hdb = hdban.LayHDBan(mahdb);
@@ -98,9 +99,10 @@ namespace ComputerStore.Presenation
             dongia = double.Parse(IO.ReadNumber(59, 6));
             if (dongia != hdb.donGia && dongia > 0)
                 hdb.donGia = dongia;
-            tongtien = double.Parse(IO.ReadNumber(85, 6));
+            /*tongtien = double.Parse(IO.ReadNumber(85, 6));
             if (tongtien != hdb.tongTien && tongtien > 0)
-                hdb.tongTien = tongtien;
+                hdb.tongTien = tongtien;*/
+            IO.Writexy(hdb.tongTien.ToString(), 85, 6);
 
             Console.SetCursorPosition(58, 8);
             ConsoleKeyInfo kt = Console.ReadKey();

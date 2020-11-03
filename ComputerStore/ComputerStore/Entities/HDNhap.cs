@@ -132,12 +132,11 @@ namespace ComputerStore.Entities
         {
             get
             {
-                return TongTien;
+                return donGia * soLuong;
             }
             set
             {
-                if (value > 0)
-                    TongTien = value;
+                TongTien = value;
             }
         }
         #endregion

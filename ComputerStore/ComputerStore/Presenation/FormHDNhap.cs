@@ -34,7 +34,8 @@ namespace ComputerStore.Presenation
                 hdn.ngayNhap = DateTime.Parse(IO.ReadString(86, 4));
                 hdn.soLuong = int.Parse(IO.ReadNumber(13, 6));
                 hdn.donGia = double.Parse(IO.ReadNumber(42, 6));
-                hdn.tongTien = double.Parse(IO.ReadNumber(79, 6));
+                //hdn.tongTien = double.Parse(IO.ReadNumber(79, 6));
+                IO.Writexy(hdn.tongTien.ToString(), 79, 6);
                 Console.SetCursorPosition(54, 8);
                 ConsoleKeyInfo kt = Console.ReadKey();
                 if (kt.Key == ConsoleKey.Escape)
@@ -68,7 +69,7 @@ namespace ComputerStore.Presenation
             DateTime ngaynhap;
             int soluong;
             double dongia;
-            double tongtien;
+            //double tongtien;
 
             mahdn = int.Parse(IO.ReadNumber(15, 4));
             HDNhap hdn = hdnhap.LayHDNhap(mahdn);
@@ -98,9 +99,10 @@ namespace ComputerStore.Presenation
             dongia = double.Parse(IO.ReadNumber(59, 6));
             if (dongia != hdn.donGia && dongia > 0)
                 hdn.donGia = dongia;
-            tongtien = double.Parse(IO.ReadNumber(85, 6));
+            /*tongtien = double.Parse(IO.ReadNumber(85, 6));
             if (tongtien != hdn.tongTien && tongtien > 0)
-                hdn.tongTien = tongtien;
+                hdn.tongTien = tongtien;*/
+            IO.Writexy(hdn.tongTien.ToString(), 85, 6);
 
             Console.SetCursorPosition(58, 8);
             ConsoleKeyInfo kt = Console.ReadKey();
