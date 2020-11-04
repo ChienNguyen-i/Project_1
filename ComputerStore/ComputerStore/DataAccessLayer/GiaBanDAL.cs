@@ -10,7 +10,7 @@ namespace ComputerStore.DataAccessLayer
 {
     class GiaBanDAL : IGiaBanDAL
     {
-        private string txtfile = @"D:\GITHUB\Project_1\ComputerStore\ComputerStore\bin\Debug\Data\GiaBan.txt";
+        private string txtfile = @"D:\GITHUB\Project_1\ComputerStore\ComputerStore\Data\GiaBan.txt";
         public List<GiaBan> GetData()
         {
             List<GiaBan> list = new List<GiaBan>();

@@ -19,10 +19,9 @@ namespace ComputerStore.Business
         }
         public void ThemKhachHang(KhachHang kh)
         {
-            if (kh.tenKH != "" && kh.gioiTinh != "" && kh.diaChi != "" && kh.soDT != "")
+            if (kh.tenKH != "" && kh.diaChi != "" && kh.soDT != "")
             {
                 kh.tenKH = ComputerStore.Utility.CongCu.ChuanHoaXau(kh.tenKH);
-                kh.gioiTinh = ComputerStore.Utility.CongCu.ChuanHoaXau(kh.gioiTinh);
                 kh.diaChi = ComputerStore.Utility.CongCu.ChuanHoaXau(kh.diaChi);
                 kh.soDT = ComputerStore.Utility.CongCu.CatXau(kh.soDT);
                 khDAL.Insert(kh);

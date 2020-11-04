@@ -10,7 +10,7 @@ namespace ComputerStore.DataAccessLayer
 {
     class NhanVienDAL : INhanVienDAL
     {
-        private string txtfile = @"D:\GITHUB\Project_1\ComputerStore\ComputerStore\bin\Debug\Data\NhanVien.txt";
+        private string txtfile = @"D:\GITHUB\Project_1\ComputerStore\ComputerStore\Data\NhanVien.txt";
         public List<NhanVien> GetData()
         {
             List<NhanVien> list = new List<NhanVien>();

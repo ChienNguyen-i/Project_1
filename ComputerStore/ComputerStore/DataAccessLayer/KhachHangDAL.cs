@@ -10,7 +10,7 @@ namespace ComputerStore.DataAccessLayer
 {
     class KhachHangDAL : IKhachHangDAL
     {
-        private string txtfile = @"D:\GITHUB\Project_1\ComputerStore\ComputerStore\bin\Debug\Data\KhachHang.txt";
+        private string txtfile = @"D:\GITHUB\Project_1\ComputerStore\ComputerStore\Data\KhachHang.txt";
         public List<KhachHang> GetData()
         {
             List<KhachHang> list = new List<KhachHang>();
@@ -22,7 +22,7 @@ namespace ComputerStore.DataAccessLayer
                 {
                     s = ComputerStore.Utility.CongCu.CatXau(s);
                     string[] a = s.Split('\t');
-                    list.Add(new KhachHang(int.Parse(a[0]), a[1], a[2], a[3], a[4]));
+                    list.Add(new KhachHang(int.Parse(a[0]), a[1], a[2], a[3]));
                 }
                 s = sr.ReadLine();
             }
@@ -58,14 +58,14 @@ namespace ComputerStore.DataAccessLayer
             int makh = maKH + 1;
             StreamWriter sw = File.AppendText(txtfile);
             sw.WriteLine();
-            sw.Write(makh + "\t" + kh.tenKH + "\t" + kh.gioiTinh + "\t" + kh.diaChi + "\t" + kh.soDT);
+            sw.Write(makh + "\t" + kh.tenKH + "\t" + kh.diaChi + "\t" + kh.soDT);
             sw.Close();
         }
         public void Update(List<KhachHang> list)
         {
             StreamWriter sw = File.CreateText(txtfile);
             for (int i = 0; i < list.Count; ++i)
-                sw.WriteLine(list[i].maKH + "\t" + list[i].tenKH + "\t" + list[i].gioiTinh + "\t" + list[i].diaChi + "\t" + list[i].soDT);
+                sw.WriteLine(list[i].maKH + "\t" + list[i].tenKH + "\t" + list[i].diaChi + "\t" + list[i].soDT);
             sw.Close();
         }
     }

@@ -11,7 +11,7 @@ namespace ComputerStore.DataAccessLayer
 {
     class MayTinhDAL : IMayTinhDAL
     {
-        private string txtfile = @"D:\GITHUB\Project_1\ComputerStore\ComputerStore\bin\Debug\Data\MayTinh.txt";
+        private string txtfile = @"D:\GITHUB\Project_1\ComputerStore\ComputerStore\Data\MayTinh.txt";
         public List<MayTinh> GetData()
         {
             List<MayTinh> list = new List<MayTinh>();

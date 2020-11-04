@@ -10,7 +10,7 @@ namespace ComputerStore.DataAccessLayer
 {
     class NCC_DAL : INCC_DAL
     {
-        private string txtfile = @"D:\GITHUB\Project_1\ComputerStore\ComputerStore\bin\Debug\Data\NCC.txt";
+        private string txtfile = @"D:\GITHUB\Project_1\ComputerStore\ComputerStore\Data\NCC.txt";
         public List<NCC> GetData()
         {
             List<NCC> list = new List<NCC>();

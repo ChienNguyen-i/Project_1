@@ -10,7 +10,7 @@ namespace ComputerStore.DataAccessLayer
 {
     class LoaiMayDAL : ILoaiMayDAL
     {
-        private string txtfile = @"D:\GITHUB\Project_1\ComputerStore\ComputerStore\bin\Debug\Data\LoaiMay.txt";
+        private string txtfile = @"D:\GITHUB\Project_1\ComputerStore\ComputerStore\Data\LoaiMay.txt";
         public List<LoaiMay> GetData()
         {
             List<LoaiMay> list = new List<LoaiMay>();
