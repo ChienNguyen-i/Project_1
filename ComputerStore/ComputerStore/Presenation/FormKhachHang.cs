@@ -59,13 +59,13 @@ namespace ComputerStore.Presenation
             IO.Writexy(kh.diaChi, 14, 6);
             IO.Writexy(kh.soDT, 65, 6);
 
-            tenkh = IO.ReadString(40, 4);
+            tenkh = CongCu.ChuanHoaXau(IO.ReadString(40, 4));
             if (tenkh != kh.tenKH && tenkh != null)
                 kh.tenKH = tenkh;
-            diachi = IO.ReadString(14, 6);
+            diachi = CongCu.ChuanHoaXau(IO.ReadString(14, 6));
             if (diachi != kh.diaChi && diachi != null)
                 kh.diaChi = diachi;
-            sdt = IO.ReadNumber(65, 6);
+            sdt = CongCu.CatXau(IO.ReadNumber(65, 6));
             if (sdt != kh.soDT && sdt != null)
                 kh.soDT = sdt;
 
@@ -120,7 +120,7 @@ namespace ComputerStore.Presenation
                 IO.BoxTitle("                                     TÌM KIẾM KHÁCH HÀNG", 1, 1, 5, 100);
                 IO.Writexy("Nhập họ tên khách hàng cần tìm:", 3, 4);
                 Hien(1, 8, khachhang.LayDSKhachHang(), 5, 0);
-                hoten = ComputerStore.Utility.CongCu.ChuanHoaXau(IO.ReadString(35, 4));
+                hoten = CongCu.ChuanHoaXau(IO.ReadString(35, 4));
                 List<KhachHang> list = khachhang.TimKhachHang(new KhachHang(0, hoten, null, null));
                 Hien(1, 8, list, 5, 1);
                 if (hoten == "")
@@ -221,7 +221,7 @@ namespace ComputerStore.Presenation
             };
             Console.BackgroundColor = ConsoleColor.Black;
             Console.Clear();
-            ComputerStore.Presenation.FormKhachHang.MenuKH mnkh = new ComputerStore.Presenation.FormKhachHang.MenuKH(mn);
+            MenuKH mnkh = new MenuKH(mn);
             mnkh.HienTheoPhimTat(15, 6, ConsoleColor.Black, ConsoleColor.White);
             Console.ReadKey();
         }
@@ -251,7 +251,7 @@ namespace ComputerStore.Presenation
                         khachang.HienTimKiem();
                         break;
                     case 5:
-                        ComputerStore.Presenation.FormMenuChinh.Hien();
+                        FormMenuChinh.Hien();
                         break;
                 }
             }
@@ -267,7 +267,7 @@ namespace ComputerStore.Presenation
             };
             Console.BackgroundColor = ConsoleColor.Black;
             Console.Clear();
-            ComputerStore.Presenation.FormKhachHang.MenuTimKiem mntk = new ComputerStore.Presenation.FormKhachHang.MenuTimKiem(mn);
+            MenuTimKiem mntk = new MenuTimKiem(mn);
             mntk.HienTheoPhimTat(15, 6, ConsoleColor.Black, ConsoleColor.White);
             Console.ReadKey();
         }

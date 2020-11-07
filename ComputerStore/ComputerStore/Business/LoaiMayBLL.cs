@@ -21,8 +21,8 @@ namespace ComputerStore.Business
         {
             if (lm.tenLM != "" && lm.dacDiem != "")
             {
-                lm.tenLM = ComputerStore.Utility.CongCu.HoaDau(lm.tenLM);
-                lm.dacDiem = ComputerStore.Utility.CongCu.HoaDau(lm.dacDiem);
+                lm.tenLM = CongCu.HoaDau(lm.tenLM);
+                lm.dacDiem = CongCu.HoaDau(lm.dacDiem);
                 lmDAL.Insert(lm);
             }
             else
@@ -87,7 +87,7 @@ namespace ComputerStore.Business
                         kq.Add(new LoaiMay(list[i]));
             }
             //Tìm theo mã
-            else if (lm.tenLM == null && lm.maLM != 0)
+            else if (lm.tenLM == null && lm.maLM > 0)
             {
                 for (int i = 0; i < list.Count; ++i)
                     if (list[i].maLM == lm.maLM)

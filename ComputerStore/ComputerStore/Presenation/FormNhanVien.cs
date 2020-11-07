@@ -75,22 +75,22 @@ namespace ComputerStore.Presenation
             IO.Writexy(nv.soDT, 47, 6);
             IO.Writexy(nv.loaiNV, 81, 6);
 
-            tennv = IO.ReadString(26, 4);
+            tennv = CongCu.ChuanHoaXau(IO.ReadString(26, 4));
             if (tennv != nv.tenNV && tennv != null)
                 nv.tenNV = tennv;
             ngaysinh = DateTime.Parse(IO.ReadString(62, 4));
             if (ngaysinh != nv.ngaySinh && ngaysinh != null)
                 nv.ngaySinh = ngaysinh;
-            gioitinh = IO.ReadString(91, 4);
+            gioitinh = CongCu.ChuanHoaXau(IO.ReadString(91, 4));
             if (gioitinh != nv.gioiTinh && gioitinh != null)
                 nv.gioiTinh = gioitinh;
-            diachi = IO.ReadString(12, 6);
+            diachi = CongCu.ChuanHoaXau(IO.ReadString(12, 6));
             if (diachi != nv.diaChi && diachi != null)
                 nv.diaChi = diachi;
-            sdt = IO.ReadNumber(47, 6);
+            sdt = CongCu.CatXau(IO.ReadNumber(47, 6));
             if (sdt != nv.soDT && sdt != null)
                 nv.soDT = sdt;
-            loainv = IO.ReadString(81, 6);
+            loainv = CongCu.HoaDau_1(IO.ReadString(81, 6));
             if (loainv != nv.loaiNV && loainv != null)
                 nv.loaiNV = loainv;
 
@@ -145,7 +145,7 @@ namespace ComputerStore.Presenation
                 IO.BoxTitle("                                      TÌM KIẾM NHÂN VIÊN", 1, 1, 5, 100);
                 IO.Writexy("Nhập họ tên nhân viên cần tìm:", 3, 4);
                 Hien(1, 8, nhanvien.LayDSNhanVien(), 5, 0);
-                hoten = ComputerStore.Utility.CongCu.ChuanHoaXau(IO.ReadString(34, 4));
+                hoten = CongCu.ChuanHoaXau(IO.ReadString(34, 4));
                 List<NhanVien> list = nhanvien.TimNhanVien(new NhanVien(0, hoten, DateTime.Now, null, null, null, null));
                 Hien(1, 8, list, 5, 1);
                 if (hoten == "")
@@ -188,9 +188,9 @@ namespace ComputerStore.Presenation
                 y = yy;
                 d = 0;
                 IO.Writexy("                                            DANH SÁCH NHÂN VIÊN", x, y);
-                IO.Writexy("┌───────┬───────────────────────┬───────────────┬───────────┬───────────────┬─────────────┬───────────────┐", x, y + 1);
-                IO.Writexy("│ Mã NV │         Họ tên        │   Ngày sinh   │ Giới tính │    Địa chỉ    │    Số ĐT    │    Loại NV    │", x, y + 2);
-                IO.Writexy("├───────┼───────────────────────┼───────────────┼───────────┼───────────────┼─────────────┼───────────────┤", x, y + 3);
+                IO.Writexy("┌───────┬───────────────────────┬───────────────┬───────────┬───────────────┬─────────────┬─────────────────┐", x, y + 1);
+                IO.Writexy("│ Mã NV │         Họ tên        │   Ngày sinh   │ Giới tính │    Địa chỉ    │    Số ĐT    │     Loại NV     │", x, y + 2);
+                IO.Writexy("├───────┼───────────────────────┼───────────────┼───────────┼───────────────┼─────────────┼─────────────────┤", x, y + 3);
                 y += 4;
                 for (int i = head; i < final; i++)
                 {
@@ -207,14 +207,14 @@ namespace ComputerStore.Presenation
                     IO.Writexy("│", x + 76, y + d);
                     IO.Writexy(list[i].soDT, x + 77, y + d, 14);
                     IO.Writexy("│", x + 90, y + d);
-                    IO.Writexy(list[i].loaiNV, x + 91, y + d, 16);
-                    IO.Writexy("│", x + 106, y + d);
+                    IO.Writexy(list[i].loaiNV, x + 91, y + d, 18);
+                    IO.Writexy("│", x + 108, y + d);
                     if (i < final - 1)
-                        IO.Writexy("├───────┼───────────────────────┼───────────────┼───────────┼───────────────┼─────────────┼───────────────┤", x, y + d + 1);
+                        IO.Writexy("├───────┼───────────────────────┼───────────────┼───────────┼───────────────┼─────────────┼─────────────────┤", x, y + d + 1);
                     y += 1;
                     d += 1;
                 }
-                IO.Writexy("└───────┴───────────────────────┴───────────────┴───────────┴───────────────┴─────────────┴───────────────┘", x, y + d - 1);
+                IO.Writexy("└───────┴───────────────────────┴───────────────┴───────────┴───────────────┴─────────────┴─────────────────┘", x, y + d - 1);
                 IO.Writexy(" Trang " + curpage + "/" + totalpage, x, y + d);
                 IO.Writexy(" Trang " + curpage + "/" + totalpage + "          Nhấn PagegUp để xem trước, PagegDown để xem tiep, Esc để thoát...", x, y + d);
                 if (type == 0)
@@ -252,7 +252,7 @@ namespace ComputerStore.Presenation
             };
             Console.BackgroundColor = ConsoleColor.Black;
             Console.Clear();
-            ComputerStore.Presenation.FormNhanVien.MenuNV mnnv = new ComputerStore.Presenation.FormNhanVien.MenuNV(mn);
+            MenuNV mnnv = new MenuNV(mn);
             mnnv.HienTheoPhimTat(15, 6, ConsoleColor.Black, ConsoleColor.White);
             Console.ReadKey();
         }
@@ -282,7 +282,7 @@ namespace ComputerStore.Presenation
                         nhanvien.HienTimKiem();
                         break;
                     case 5:
-                        ComputerStore.Presenation.FormMenuChinh.Hien();
+                        FormMenuChinh.Hien();
                         break;
                 }
             }
@@ -298,7 +298,7 @@ namespace ComputerStore.Presenation
             };
             Console.BackgroundColor = ConsoleColor.Black;
             Console.Clear();
-            ComputerStore.Presenation.FormNhanVien.MenuTimKiem mntk = new ComputerStore.Presenation.FormNhanVien.MenuTimKiem(mn);
+            MenuTimKiem mntk = new MenuTimKiem(mn);
             mntk.HienTheoPhimTat(15, 6, ConsoleColor.Black, ConsoleColor.White);
             Console.ReadKey();
         }

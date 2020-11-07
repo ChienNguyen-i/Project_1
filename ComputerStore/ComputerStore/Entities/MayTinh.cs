@@ -1,20 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Xml.Serialization;
 
 namespace ComputerStore.Entities
 {
     public class MayTinh
     {
-        #region Các thành phần dữ liệu
         private int MaMT;
         private int MaLM;
         private string TenMT;
         private int MaNCC;
         private int SLNhap;
         private int SLCon;
-        #endregion
-        #region Các phương thức khởi tạo
+
         public MayTinh()
         {
         }
@@ -37,8 +36,7 @@ namespace ComputerStore.Entities
             this.SLNhap = mt.SLNhap;
             this.SLCon = mt.SLCon;
         }
-        #endregion
-        #region Các thuộc tính
+
         public int maMT
         {
             get
@@ -111,6 +109,5 @@ namespace ComputerStore.Entities
                     SLCon = value;
             }
         }
-        #endregion
     }
 }

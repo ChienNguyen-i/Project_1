@@ -46,6 +46,7 @@ namespace ComputerStore.Presenation
             IO.Writexy("--------------------------------------------------------------------------------------------------", 2, 7);
             IO.Writexy("Enter để cập nhật, Esc để thoát, X để xem chi tiết...", 5, 8);
             Hien(1, 13, loaimay.LayDSLoaiMay(), 5, 0);
+
             int malm;
             string tenlm;
             string daciem;
@@ -55,10 +56,10 @@ namespace ComputerStore.Presenation
             IO.Writexy(lm.tenLM, 54, 4);
             IO.Writexy(lm.dacDiem, 15, 6);
 
-            tenlm = IO.ReadString(54, 4);
+            tenlm = CongCu.HoaDau(IO.ReadString(54, 4));
             if (tenlm != lm.tenLM && tenlm != null)
                 lm.tenLM = tenlm;
-            daciem = IO.ReadString(15, 6);
+            daciem = CongCu.HoaDau(IO.ReadString(15, 6));
             if (daciem != lm.dacDiem && daciem != null)
                 lm.dacDiem = daciem;
 
@@ -113,7 +114,7 @@ namespace ComputerStore.Presenation
                 IO.BoxTitle("                                      TÌM KIẾM LOẠI MÁY", 1, 1, 5, 100);
                 IO.Writexy("Nhập tên loại máy cần tìm:", 3, 4);
                 Hien(1, 8, loaimay.LayDSLoaiMay(), 5, 0);
-                tenlm = ComputerStore.Utility.CongCu.HoaDau(IO.ReadString(30, 4));
+                tenlm = IO.ReadString(30, 4);
                 List<LoaiMay> list = loaimay.TimLoaiMay(new LoaiMay(0, tenlm, null));
                 Hien(1, 8, list, 5, 1);
                 if (tenlm == "")
@@ -212,7 +213,7 @@ namespace ComputerStore.Presenation
             };
             Console.BackgroundColor = ConsoleColor.Black;
             Console.Clear();
-            ComputerStore.Presenation.FormLoaiMay.MenuLM mnlm = new ComputerStore.Presenation.FormLoaiMay.MenuLM(mn);
+            MenuLM mnlm = new MenuLM(mn);
             mnlm.HienTheoPhimTat(15, 6, ConsoleColor.Black, ConsoleColor.White);
             Console.ReadKey();
         }
@@ -242,7 +243,7 @@ namespace ComputerStore.Presenation
                         loaimay.HienTimKiem();
                         break;
                     case 5:
-                        ComputerStore.Presenation.FormMenuChinh.Hien();
+                        FormMenuChinh.Hien();
                         break;
                 }
             }
@@ -258,7 +259,7 @@ namespace ComputerStore.Presenation
             };
             Console.BackgroundColor = ConsoleColor.Black;
             Console.Clear();
-            ComputerStore.Presenation.FormLoaiMay.MenuTimKiem mntk = new ComputerStore.Presenation.FormLoaiMay.MenuTimKiem(mn);
+            MenuTimKiem mntk = new MenuTimKiem(mn);
             mntk.HienTheoPhimTat(15, 6, ConsoleColor.Black, ConsoleColor.White);
             Console.ReadKey();
         }

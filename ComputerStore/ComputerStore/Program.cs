@@ -11,15 +11,9 @@ namespace ComputerStore
         {
             Console.OutputEncoding = Encoding.UTF8;
             Console.InputEncoding = Encoding.Unicode;
-            /*DangNhap dn = new DangNhap();
-            bool ok = dn.Hien(10, 5, "1", "1");
-            if (ok)
-            {
-                FormMenuChinh.Hien();
-            }
-            else
-                Environment.Exit(0);*/
-            FormMenuChinh.Hien();
+            DangNhap dn = new DangNhap();
+            dn.Dang_Nhap();
+            Console.ReadKey();
         }
     }
 }

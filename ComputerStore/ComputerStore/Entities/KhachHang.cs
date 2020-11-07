@@ -6,13 +6,11 @@ namespace ComputerStore.Entities
 {
     public class KhachHang
     {
-        #region Các thành phần dữ liệu
         private int MaKH;
         private string TenKH;
         private string DiaChi;
         private string SoDT;
-        #endregion
-        #region Các phương thức khởi tạo
+
         public KhachHang()
         {
         }
@@ -31,8 +29,7 @@ namespace ComputerStore.Entities
             this.DiaChi = kh.DiaChi;
             this.SoDT = kh.SoDT;
         }
-        #endregion
-        #region Các thuộc tính
+
         public int maKH
         {
             get
@@ -81,6 +78,5 @@ namespace ComputerStore.Entities
                     SoDT = value;
             }
         }
-        #endregion
     }
 }

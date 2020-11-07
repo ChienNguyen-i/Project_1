@@ -73,7 +73,7 @@ namespace ComputerStore.Business
                 kq = list;
             }
             //Tìm theo mã
-            if (hdb.maHDB != 0)
+            if (hdb.maHDB > 0)
             {
                 for (int i = 0; i < list.Count; ++i)
                     if (list[i].maHDB == hdb.maHDB)

@@ -6,12 +6,10 @@ namespace ComputerStore.Entities
 {
     public class LoaiMay
     {
-        #region Các thành phần dữ liệu
         private int MaLM;
         private string TenLM;
         private string DacDiem;
-        #endregion
-        #region Các phương thức khởi tạo
+
         public LoaiMay()
         {
         }
@@ -28,8 +26,7 @@ namespace ComputerStore.Entities
             this.TenLM = lm.TenLM;
             this.DacDiem = lm.DacDiem;
         }
-        #endregion
-        #region Các thuộc tính
+
         public int maLM
         {
             get
@@ -66,6 +63,5 @@ namespace ComputerStore.Entities
                     DacDiem = value;
             }
         }
-        #endregion
     }
 }

@@ -6,13 +6,11 @@ namespace ComputerStore.Entities
 {
     public class NCC
     {
-        #region Các thành phần dữ liệu
         private int MaNCC;
         private string TenNCC;
         private string DiaChi;
         private string SoDT;
-        #endregion
-        #region Các phương thức khởi tạo
+
         public NCC()
         {
         }
@@ -31,8 +29,7 @@ namespace ComputerStore.Entities
             this.DiaChi = ncc.DiaChi;
             this.SoDT = ncc.SoDT;
         }
-        #endregion
-        #region Các thuộc tính
+
         public int maNCC
         {
             get
@@ -81,6 +78,5 @@ namespace ComputerStore.Entities
                     SoDT = value;
             }
         }
-        #endregion
     }
 }

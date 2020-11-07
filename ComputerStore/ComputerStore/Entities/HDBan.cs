@@ -6,7 +6,6 @@ namespace ComputerStore.Entities
 {
     public class HDBan
     {
-        #region Các thành phần dữ liệu
         private int MaHDB;
         private int MaNV;
         private int MaKH;
@@ -15,8 +14,7 @@ namespace ComputerStore.Entities
         private int SoLuong;
         private double DonGia;
         private double TongTien;
-        #endregion
-        #region Các phương thức khởi tạo
+
         public HDBan()
         {
         }
@@ -43,8 +41,7 @@ namespace ComputerStore.Entities
             this.DonGia = hdb.DonGia;
             this.TongTien = hdb.TongTien;
         }
-        #endregion
-        #region Các thuộc tính
+
         public int maHDB
         {
             get
@@ -112,7 +109,7 @@ namespace ComputerStore.Entities
             }
             set
             {
-                if (value >= 0)
+                if (value > 0)
                     SoLuong = value;
             }
         }
@@ -139,6 +136,5 @@ namespace ComputerStore.Entities
                 TongTien = value;
             }
         }
-        #endregion
     }
 }

@@ -6,7 +6,6 @@ namespace ComputerStore.Entities
 {
     public class NhanVien
     {
-        #region Các thành phần dữ liệu
         private int MaNV;
         private string TenNV;
         private DateTime NgaySinh;
@@ -14,8 +13,7 @@ namespace ComputerStore.Entities
         private string DiaChi;
         private string SoDT;
         private string LoaiNV;
-        #endregion
-        #region Các phương thức khởi tạo
+
         public NhanVien()
         {
         }
@@ -40,8 +38,7 @@ namespace ComputerStore.Entities
             this.SoDT = nv.SoDT;
             this.LoaiNV = nv.LoaiNV;
         }
-        #endregion
-        #region Các thuộc tính
+
         public int maNV
         {
             get
@@ -125,6 +122,5 @@ namespace ComputerStore.Entities
                     LoaiNV = value;
             }
         }
-        #endregion
     }
 }

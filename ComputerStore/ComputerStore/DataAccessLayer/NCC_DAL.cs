@@ -20,7 +20,7 @@ namespace ComputerStore.DataAccessLayer
             {
                 if (s != "")
                 {
-                    s = ComputerStore.Utility.CongCu.CatXau(s);
+                    s = CongCu.CatXau(s);
                     string[] a = s.Split('\t');
                     list.Add(new NCC(int.Parse(a[0]), a[1], a[2], a[3]));
                 }
@@ -47,7 +47,7 @@ namespace ComputerStore.DataAccessLayer
                     return 0;
                 else
                 {
-                    tmp = ComputerStore.Utility.CongCu.ChuanHoaXau(tmp);
+                    tmp = CongCu.ChuanHoaXau(tmp);
                     string[] a = tmp.Split('\t');
                     return int.Parse(a[0]);
                 }

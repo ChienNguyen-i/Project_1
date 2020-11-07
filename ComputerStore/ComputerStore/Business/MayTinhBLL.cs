@@ -21,7 +21,7 @@ namespace ComputerStore.Business
         {
             if (mt.tenMT != "")
             {
-                mt.tenMT = ComputerStore.Utility.CongCu.HoaDau(mt.tenMT);
+                mt.tenMT = CongCu.HoaDau(mt.tenMT);
                 mtDAL.Insert(mt);
             }
             else
@@ -86,7 +86,7 @@ namespace ComputerStore.Business
                         kq.Add(new MayTinh(list[i]));
             }
             //Tìm theo mã
-            else if (mt.tenMT == null && mt.maMT != 0)
+            else if (mt.tenMT == null && mt.maMT > 0)
             {
                 for (int i = 0; i < list.Count; ++i)
                     if (list[i].maMT == mt.maMT)

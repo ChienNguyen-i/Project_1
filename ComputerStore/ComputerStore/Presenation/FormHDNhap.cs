@@ -34,7 +34,6 @@ namespace ComputerStore.Presenation
                 hdn.ngayNhap = DateTime.Parse(IO.ReadString(86, 4));
                 hdn.soLuong = int.Parse(IO.ReadNumber(13, 6));
                 hdn.donGia = double.Parse(IO.ReadNumber(42, 6));
-                //hdn.tongTien = double.Parse(IO.ReadNumber(79, 6));
                 IO.Writexy(hdn.tongTien.ToString(), 79, 6);
                 Console.SetCursorPosition(54, 8);
                 ConsoleKeyInfo kt = Console.ReadKey();
@@ -62,6 +61,7 @@ namespace ComputerStore.Presenation
             IO.Writexy("--------------------------------------------------------------------------------------------------", 2, 7);
             IO.Writexy("Enter để cập nhật, Esc để thoát, X để xem chi tiết...", 5, 8);
             Hien(1, 13, hdnhap.LayDSHDNhap(), 5, 0);
+
             int mahdn;
             int manv;
             int mancc;
@@ -245,7 +245,7 @@ namespace ComputerStore.Presenation
             };
             Console.BackgroundColor = ConsoleColor.Black;
             Console.Clear();
-            ComputerStore.Presenation.FormHDNhap.MenuHDN mnhdn = new ComputerStore.Presenation.FormHDNhap.MenuHDN(mn);
+            MenuHDN mnhdn = new MenuHDN(mn);
             mnhdn.HienTheoPhimTat(15, 6, ConsoleColor.Black, ConsoleColor.White);
             Console.ReadKey();
         }
@@ -257,6 +257,7 @@ namespace ComputerStore.Presenation
             public override void ThucHien(int location)
             {
                 FormHDNhap hdnhap = new FormHDNhap();
+                FormMenuChinh fhd = new FormMenuChinh();
                 switch (location)
                 {
                     case 0:
@@ -275,7 +276,7 @@ namespace ComputerStore.Presenation
                         hdnhap.Tim();
                         break;
                     case 5:
-                        ComputerStore.Presenation.FormMenuChinh.Hien();
+                        fhd.HienHoaDon();
                         break;
                 }
             }

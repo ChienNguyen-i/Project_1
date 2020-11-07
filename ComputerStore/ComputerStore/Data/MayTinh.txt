@@ -1,0 +1,5 @@
+1	2	Dell OptiPlex 5070 SFF	1	30	20
+2	1	PC Designer D008	2	20	15
+3	5	Asus ROG Strix G15DH	4	35	10
+4	4	Asus All in One V241F	3	33	21
+5	3	Apple Mac Mini MXNG2	5	15	6

@@ -23,7 +23,7 @@ namespace ComputerStore.Utility
         {
             int max = MaxMuc();
             for (int i = 0; i < mn.Length; ++i)
-                mn[i] = ComputerStore.Utility.CongCu.ChuanHoaXau(mn[i], max);
+                mn[i] = CongCu.ChuanHoaXau(mn[i], max);
         }
         public void Writexy(int x, int y, int location, ConsoleColor background_color, ConsoleColor text_color)
         {

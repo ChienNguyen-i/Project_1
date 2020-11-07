@@ -21,11 +21,11 @@ namespace ComputerStore.Business
         {
             if (nv.tenNV != "" && nv.gioiTinh != "" && nv.diaChi != "" && nv.soDT != "" && nv.loaiNV != "")
             {
-                nv.tenNV = ComputerStore.Utility.CongCu.ChuanHoaXau(nv.tenNV);
-                nv.gioiTinh = ComputerStore.Utility.CongCu.ChuanHoaXau(nv.gioiTinh);
-                nv.diaChi = ComputerStore.Utility.CongCu.ChuanHoaXau(nv.diaChi);
-                nv.soDT = ComputerStore.Utility.CongCu.CatXau(nv.soDT);
-                nv.loaiNV = ComputerStore.Utility.CongCu.HoaDau_1(nv.loaiNV);
+                nv.tenNV = CongCu.ChuanHoaXau(nv.tenNV);
+                nv.gioiTinh = CongCu.ChuanHoaXau(nv.gioiTinh);
+                nv.diaChi = CongCu.ChuanHoaXau(nv.diaChi);
+                nv.soDT = CongCu.CatXau(nv.soDT);
+                nv.loaiNV = CongCu.HoaDau_1(nv.loaiNV);
                 nvDAL.Insert(nv);
             }
             else
@@ -90,7 +90,7 @@ namespace ComputerStore.Business
                         kq.Add(new NhanVien(list[i]));
             }
             //Tìm theo mã
-            else if (nv.tenNV == null && nv.maNV != 0)
+            else if (nv.tenNV == null && nv.maNV > 0)
             {
                 for (int i = 0; i < list.Count; ++i)
                     if (list[i].maNV == nv.maNV)

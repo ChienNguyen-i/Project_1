@@ -49,6 +49,7 @@ namespace ComputerStore.Presenation
             IO.Writexy("--------------------------------------------------------------------------------------------------", 2, 7);
             IO.Writexy("Enter để cập nhật, Esc để thoát, X để xem chi tiết...", 5, 8);
             Hien(1, 13, nhacc.LayDSNCC(), 5, 0);
+
             int mancc;
             string tenncc;
             string diachi;
@@ -60,13 +61,13 @@ namespace ComputerStore.Presenation
             IO.Writexy(ncc.diaChi, 14, 6);
             IO.Writexy(ncc.soDT, 55, 6);
 
-            tenncc = IO.ReadString(48, 4);
+            tenncc = CongCu.ChuanHoaXau(IO.ReadString(48, 4));
             if (tenncc != ncc.tenNCC && tenncc != null)
                 ncc.tenNCC = tenncc;
-            diachi = IO.ReadString(14, 6);
+            diachi = CongCu.ChuanHoaXau(IO.ReadString(14, 6));
             if (diachi != ncc.diaChi && diachi != null)
                 ncc.diaChi = diachi;
-            sdt = IO.ReadNumber(55, 6);
+            sdt = CongCu.CatXau(IO.ReadNumber(55, 6));
             if (sdt != ncc.soDT && sdt != null)
                 ncc.soDT = sdt;
 
@@ -121,7 +122,7 @@ namespace ComputerStore.Presenation
                 IO.BoxTitle("                                     TÌM KIẾM NHÀ CUNG CẤP", 1, 1, 5, 100);
                 IO.Writexy("Nhập tên nhà cung cấp cần tìm:", 3, 4);
                 Hien(1, 8, nhacc.LayDSNCC(), 5, 0);
-                tenncc = ComputerStore.Utility.CongCu.ChuanHoaXau(IO.ReadString(34, 4));
+                tenncc = CongCu.ChuanHoaXau(IO.ReadString(34, 4));
                 List<NCC> list = nhacc.TimNCC(new NCC(0, tenncc, null, null));
                 Hien(1, 8, list, 5, 1);
                 if (tenncc == "")
@@ -222,7 +223,7 @@ namespace ComputerStore.Presenation
             };
             Console.BackgroundColor = ConsoleColor.Black;
             Console.Clear();
-            ComputerStore.Presenation.FormNCC.MenuNCC mnncc = new ComputerStore.Presenation.FormNCC.MenuNCC(mn);
+            MenuNCC mnncc = new MenuNCC(mn);
             mnncc.HienTheoPhimTat(15, 6, ConsoleColor.Black, ConsoleColor.White);
             Console.ReadKey();
         }
@@ -252,7 +253,7 @@ namespace ComputerStore.Presenation
                         nhacc.HienTimKiem();
                         break;
                     case 5:
-                        ComputerStore.Presenation.FormMenuChinh.Hien();
+                        FormMenuChinh.Hien();
                         break;
                 }
             }
@@ -268,7 +269,7 @@ namespace ComputerStore.Presenation
             };
             Console.BackgroundColor = ConsoleColor.Black;
             Console.Clear();
-            ComputerStore.Presenation.FormNCC.MenuTimKiem mntk = new ComputerStore.Presenation.FormNCC.MenuTimKiem(mn);
+            MenuTimKiem mntk = new MenuTimKiem(mn);
             mntk.HienTheoPhimTat(15, 6, ConsoleColor.Black, ConsoleColor.White);
             Console.ReadKey();
         }

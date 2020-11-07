@@ -28,13 +28,12 @@ namespace ComputerStore.Presenation
                 IO.Writexy("Enter để nhập, Esc để thoát, X để xem chi tiết...", 5, 8);
                 Hien(1, 13, hdban.LayDSHDBan(), 5, 0);
                 HDBan hdb = new HDBan();
-                hdb.maNV = int.Parse(IO.ReadNumber(17, 4));
-                hdb.maKH = int.Parse(IO.ReadNumber(40, 4));
-                hdb.maMT = int.Parse(IO.ReadNumber(64, 4));
+                hdb.maNV = int.Parse(IO.ReadString(17, 4));
+                hdb.maKH = int.Parse(IO.ReadString(40, 4));
+                hdb.maMT = int.Parse(IO.ReadString(64, 4));
                 hdb.ngayBan = DateTime.Parse(IO.ReadString(85, 4));
                 hdb.soLuong = int.Parse(IO.ReadNumber(13, 6));
                 hdb.donGia = double.Parse(IO.ReadNumber(42, 6));
-                //hdb.tongTien = double.Parse(IO.ReadNumber(79, 6));
                 IO.Writexy(hdb.tongTien.ToString(), 79, 6);
                 Console.SetCursorPosition(54, 8);
                 ConsoleKeyInfo kt = Console.ReadKey();
@@ -62,6 +61,7 @@ namespace ComputerStore.Presenation
             IO.Writexy("--------------------------------------------------------------------------------------------------", 2, 7);
             IO.Writexy("Enter để cập nhật, Esc để thoát, X để xem chi tiết...", 5, 8);
             Hien(1, 13, hdban.LayDSHDBan(), 5, 0);
+
             int mahdb;
             int manv;
             int makh;
@@ -156,7 +156,7 @@ namespace ComputerStore.Presenation
                 IO.Writexy("Nhập mã hóa đơn bán cần tìm:", 3, 4);
                 Hien(1, 8, hdban.LayDSHDBan(), 5, 0);
                 mahdb = int.Parse(IO.ReadNumber(32, 4));
-                List<HDBan> list = hdban.TimHDBan(new HDBan(mahdb, 0, 0, 0, DateTime.Now, 0, 0, 0));
+                List<HDBan> list = hdban.TimHDBan(new HDBan(mahdb, 0, 0,0, DateTime.Now, 0, 0, 0));
                 Hien(1, 8, list, 5, 1);
                 if (mahdb == 0)
                     break;
@@ -245,7 +245,7 @@ namespace ComputerStore.Presenation
             };
             Console.BackgroundColor = ConsoleColor.Black;
             Console.Clear();
-            ComputerStore.Presenation.FormHDBan.MenuHDB mnhdb = new ComputerStore.Presenation.FormHDBan.MenuHDB(mn);
+            MenuHDB mnhdb = new MenuHDB(mn);
             mnhdb.HienTheoPhimTat(15, 6, ConsoleColor.Black, ConsoleColor.White);
             Console.ReadKey();
         }
@@ -257,6 +257,7 @@ namespace ComputerStore.Presenation
             public override void ThucHien(int location)
             {
                 FormHDBan hdban = new FormHDBan();
+                FormMenuChinh fhd = new FormMenuChinh();
                 switch (location)
                 {
                     case 0:
@@ -275,7 +276,7 @@ namespace ComputerStore.Presenation
                         hdban.Tim();
                         break;
                     case 5:
-                        ComputerStore.Presenation.FormMenuChinh.Hien();
+                        fhd.HienHoaDon();
                         break;
                 }
             }

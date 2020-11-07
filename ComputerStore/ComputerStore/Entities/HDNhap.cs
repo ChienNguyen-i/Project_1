@@ -6,7 +6,6 @@ namespace ComputerStore.Entities
 {
     public class HDNhap
     {
-        #region Các thành phần dữ liệu
         private int MaHDN;
         private int MaNV;
         private int MaNCC;
@@ -15,8 +14,7 @@ namespace ComputerStore.Entities
         private int SoLuong;
         private double DonGia;
         private double TongTien;
-        #endregion
-        #region Các phương thức khởi tạo
+
         public HDNhap()
         {
         }
@@ -43,10 +41,9 @@ namespace ComputerStore.Entities
             this.DonGia = hdn.DonGia;
             this.TongTien = hdn.TongTien;
         }
-        #endregion
-        #region Các thuộc tính
+
         public int maHDN
-        { 
+        {
             get
             {
                 return MaHDN;
@@ -139,6 +136,5 @@ namespace ComputerStore.Entities
                 TongTien = value;
             }
         }
-        #endregion
     }
 }

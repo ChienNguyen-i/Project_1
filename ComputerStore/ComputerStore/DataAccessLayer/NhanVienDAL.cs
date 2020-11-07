@@ -5,6 +5,7 @@ using System.IO;
 using ComputerStore.Utility;
 using ComputerStore.Entities;
 using ComputerStore.DataAccessLayer.Interface;
+using System.Text.RegularExpressions;
 
 namespace ComputerStore.DataAccessLayer
 {
@@ -20,7 +21,7 @@ namespace ComputerStore.DataAccessLayer
             {
                 if (s != "")
                 {
-                    s = ComputerStore.Utility.CongCu.CatXau(s);
+                    s = CongCu.CatXau(s);
                     string[] a = s.Split('\t');
                     list.Add(new NhanVien(int.Parse(a[0]), a[1], DateTime.Parse(a[2]), a[3], a[4], a[5], a[6]));
                 }
@@ -47,12 +48,31 @@ namespace ComputerStore.DataAccessLayer
                     return 0;
                 else
                 {
-                    tmp = ComputerStore.Utility.CongCu.ChuanHoaXau(tmp);
+                    tmp = CongCu.ChuanHoaXau(tmp);
                     string[] a = tmp.Split('\t');
                     return int.Parse(a[0]);
                 }
             }
         }
+        
+        //public static int TachSo(string input)
+        //{
+        //    int i = 0;
+        //    string[] numbers = Regex.Split(input, @"\D+");
+        //    foreach (string value in numbers)
+        //    {
+        //        if (!string.IsNullOrEmpty(value))
+        //        {
+        //            i = int.Parse(value);
+        //        }
+        //    }
+        //    return i;
+        //}
+        //public string ma()
+        //{
+        //    int a = TachSo(maNV);
+        //    return "NV" + (a + 1).ToString();
+        //}
         public void Insert(NhanVien nv)
         {
             int manv = maNV + 1;

@@ -55,6 +55,7 @@ namespace ComputerStore.Presenation
             IO.Writexy("--------------------------------------------------------------------------------------------------", 2, 7);
             IO.Writexy("Enter để cập nhật, Esc để thoát, X để xem chi tiết...", 5, 8);
             Hien(1, 13, maytinh.LayDSMayTinh(), 5, 0);
+
             int mamt;
             int malm;
             string tenmay;
@@ -73,7 +74,7 @@ namespace ComputerStore.Presenation
             malm = int.Parse(IO.ReadNumber(37, 4));
             if (malm != mt.maLM && malm > 0)
                 mt.maLM = malm;
-            tenmay = IO.ReadString(64, 4);
+            tenmay = CongCu.HoaDau(IO.ReadString(64, 4));
             if (tenmay != mt.tenMT && tenmay != null)
                 mt.tenMT = tenmay;
             mancc = int.Parse(IO.ReadNumber(14, 6));
@@ -137,7 +138,7 @@ namespace ComputerStore.Presenation
                 IO.BoxTitle("                                      TÌM KIẾM MÁY TÍNH", 1, 1, 5, 100);
                 IO.Writexy("Nhập tên máy tính cần tìm:", 3, 4);
                 Hien(1, 8, maytinh.LayDSMayTinh(), 5, 0);
-                tenmt = ComputerStore.Utility.CongCu.HoaDau(IO.ReadString(30, 4));
+                tenmt = CongCu.HoaDau(IO.ReadString(30, 4));
                 List<MayTinh> list = maytinh.TimMayTinh(new MayTinh(0, 0, tenmt, 0, 0, 0));
                 Hien(1, 8, list, 5, 1);
                 if (tenmt == "")
@@ -156,7 +157,7 @@ namespace ComputerStore.Presenation
                 IO.BoxTitle("                                      TÌM KIẾM MÁY TÍNH", 1, 1, 5, 100);
                 IO.Writexy("Nhập mã máy tính cần tìm:", 3, 4);
                 Hien(1, 8, maytinh.LayDSMayTinh(), 5, 0);
-                mamt = int.Parse(IO.ReadString(29, 4));
+                mamt = int.Parse(IO.ReadNumber(29, 4));
                 List<MayTinh> list = maytinh.TimMayTinh(new MayTinh(mamt, 0, null, 0, 0, 0));
                 Hien(1, 8, list, 5, 1);
                 if (mamt == 0)
@@ -242,7 +243,7 @@ namespace ComputerStore.Presenation
             };
             Console.BackgroundColor = ConsoleColor.Black;
             Console.Clear();
-            ComputerStore.Presenation.FormMayTinh.MenuMT mnmt = new ComputerStore.Presenation.FormMayTinh.MenuMT(mn);
+            MenuMT mnmt = new MenuMT(mn);
             mnmt.HienTheoPhimTat(15, 6, ConsoleColor.Black, ConsoleColor.White);
             Console.ReadKey();
         }
@@ -272,7 +273,7 @@ namespace ComputerStore.Presenation
                         maytinh.HienTimKiem();
                         break;
                     case 5:
-                        ComputerStore.Presenation.FormMenuChinh.Hien();
+                        FormMenuChinh.Hien();
                         break;
                 }
             }
@@ -288,7 +289,7 @@ namespace ComputerStore.Presenation
             };
             Console.BackgroundColor = ConsoleColor.Black;
             Console.Clear();
-            ComputerStore.Presenation.FormMayTinh.MenuTimKiem mntk = new ComputerStore.Presenation.FormMayTinh.MenuTimKiem(mn);
+            MenuTimKiem mntk = new MenuTimKiem(mn);
             mntk.HienTheoPhimTat(15, 6, ConsoleColor.Black, ConsoleColor.White);
             Console.ReadKey();
         }

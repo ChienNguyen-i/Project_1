@@ -20,7 +20,7 @@ namespace ComputerStore.DataAccessLayer
             {
                 if (s != "")
                 {
-                    s = ComputerStore.Utility.CongCu.CatXau(s);
+                    s = CongCu.CatXau(s);
                     string[] a = s.Split('\t');
                     list.Add(new HDBan(int.Parse(a[0]), int.Parse(a[1]), int.Parse(a[2]), int.Parse(a[3]), DateTime.Parse(a[4]), int.Parse(a[5]), double.Parse(a[6]), double.Parse(a[7])));
                 }
@@ -47,7 +47,7 @@ namespace ComputerStore.DataAccessLayer
                     return 0;
                 else
                 {
-                    tmp = ComputerStore.Utility.CongCu.ChuanHoaXau(tmp);
+                    tmp = CongCu.ChuanHoaXau(tmp);
                     string[] a = tmp.Split('\t');
                     return int.Parse(a[0]);
                 }

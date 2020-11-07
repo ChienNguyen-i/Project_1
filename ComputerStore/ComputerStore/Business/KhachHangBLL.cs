@@ -21,9 +21,9 @@ namespace ComputerStore.Business
         {
             if (kh.tenKH != "" && kh.diaChi != "" && kh.soDT != "")
             {
-                kh.tenKH = ComputerStore.Utility.CongCu.ChuanHoaXau(kh.tenKH);
-                kh.diaChi = ComputerStore.Utility.CongCu.ChuanHoaXau(kh.diaChi);
-                kh.soDT = ComputerStore.Utility.CongCu.CatXau(kh.soDT);
+                kh.tenKH = CongCu.ChuanHoaXau(kh.tenKH);
+                kh.diaChi = CongCu.ChuanHoaXau(kh.diaChi);
+                kh.soDT = CongCu.CatXau(kh.soDT);
                 khDAL.Insert(kh);
             }
             else
@@ -88,7 +88,7 @@ namespace ComputerStore.Business
                         kq.Add(new KhachHang(list[i]));
             }
             //Tìm theo mã
-            else if (kh.tenKH == null && kh.maKH != 0)
+            else if (kh.tenKH == null && kh.maKH > 0)
             {
                 for (int i = 0; i < list.Count; ++i)
                     if (list[i].maKH == kh.maKH)
