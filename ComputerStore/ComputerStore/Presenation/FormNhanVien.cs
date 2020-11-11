@@ -24,23 +24,62 @@ namespace ComputerStore.Presenation
                 IO.Writexy("Số điện thoại:", 26, 6);
                 IO.Writexy("Loại nhân viên:", 56, 6);
                 IO.Writexy("--------------------------------------------------------------------------------------------------", 2, 7);
-                IO.Writexy("Enter để nhập, Esc để thoát, X để xem chi tiết...", 5, 8);
                 Hien(1, 13, nhanvien.LayDSNhanVien(), 5, 0);
                 NhanVien nv = new NhanVien();
-                nv.tenNV = IO.ReadString(13, 4);
-                nv.ngaySinh = DateTime.Parse(IO.ReadString(50, 4));
-                nv.diaChi = IO.ReadString(74, 4);
-                nv.gioiTinh = IO.ReadString(16, 6);
-                nv.soDT = IO.ReadNumber(41, 6);
-                nv.loaiNV = IO.ReadString(72, 6);
-                Console.SetCursorPosition(54, 8);
+
+                do
+                {
+                    nv.tenNV = IO.ReadString(13, 4);
+                    if (nv.tenNV == null)
+                        IO.Writexy("Nhập lại tên nhân viên...", 5, 8, ConsoleColor.Black, ConsoleColor.White);
+                } while (nv.tenNV == null);
+                IO.Clear(4, 8, 30, ConsoleColor.Black);
+                do
+                {
+                    nv.ngaySinh = IO.ReadString(50, 4);
+                    if (nv.ngaySinh == null)
+                        IO.Writexy("Nhập lại ngày sinh...", 5, 8, ConsoleColor.Black, ConsoleColor.White);
+                } while (nv.ngaySinh == null);
+                IO.Clear(4, 8, 30, ConsoleColor.Black);
+                do
+                {
+                    nv.diaChi = IO.ReadString(74, 4);
+                    if (nv.diaChi == null)
+                        IO.Writexy("Nhập lại địa chỉ...", 5, 8, ConsoleColor.Black, ConsoleColor.White);
+                } while (nv.diaChi == null);
+                IO.Clear(4, 8, 30, ConsoleColor.Black);
+                do
+                {
+                    nv.gioiTinh = IO.ReadString(16, 6);
+                    if (nv.gioiTinh == null || KTraGT(nv.gioiTinh) == false)
+                        IO.Writexy("Nhập lại giới tính...", 5, 8, ConsoleColor.Black, ConsoleColor.White);
+                } while (nv.gioiTinh == null || KTraGT(nv.gioiTinh) == false);
+                IO.Clear(4, 8, 30, ConsoleColor.Black);
+                do
+                {
+                    nv.soDT = IO.ReadNumber(41, 6);
+                    if (nv.soDT == null || nv.soDT.Length < 10 || nv.soDT.Length > 10)
+                        IO.Writexy("Nhập lại số điện thoại...", 5, 8, ConsoleColor.Black, ConsoleColor.White);
+                } while (nv.soDT == null || nv.soDT.Length < 10 || nv.soDT.Length > 10);
+                IO.Clear(4, 8, 30, ConsoleColor.Black);
+                do
+                {
+                     nv.loaiNV = IO.ReadString(72, 6);
+                    if (nv.loaiNV == null)
+                        IO.Writexy("Nhập lại loại nhân viên...", 5, 8, ConsoleColor.Black, ConsoleColor.White);
+                } while (nv.loaiNV == null);
+
+                IO.Clear(4, 8, 30, ConsoleColor.Black);
+                IO.Writexy("Enter để nhập, Esc để thoát...", 5, 8);
+                Console.SetCursorPosition(35, 8);
                 ConsoleKeyInfo kt = Console.ReadKey();
                 if (kt.Key == ConsoleKey.Escape)
                     HienChucNang();
-                else if (kt.Key == ConsoleKey.X)
-                    Hien(1, 13, nhanvien.LayDSNhanVien(), 5, 1);
                 else if (kt.Key == ConsoleKey.Enter)
+                {
                     nhanvien.ThemNhanVien(nv);
+                    Hien(1, 13, nhanvien.LayDSNhanVien(), 5, 1);
+                }
             } while (true);
         }
         public void Sua()
@@ -56,56 +95,104 @@ namespace ComputerStore.Presenation
             IO.Writexy("Số điện thoại:", 32, 6);
             IO.Writexy("Loại nhân viên:", 65, 6);
             IO.Writexy("--------------------------------------------------------------------------------------------------", 2, 7);
-            IO.Writexy("Enter để cập nhật, Esc để thoát, X để xem chi tiết...", 5, 8);
             Hien(1, 13, nhanvien.LayDSNhanVien(), 5, 0);
+
             int manv;
             string tennv;
-            DateTime ngaysinh;
+            string ngaysinh;
             string gioitinh;
             string diachi;
             string sdt;
             string loainv;
 
-            manv = int.Parse(IO.ReadNumber(10, 4));
+            do
+            {
+                manv = int.Parse(IO.ReadNumber(10, 4));
+                if (manv <= 0)
+                    IO.Writexy("Nhập lại mã nhân viên...", 5, 8, ConsoleColor.Black, ConsoleColor.White);
+            } while (manv <= 0);
             NhanVien nv = nhanvien.LayNhanVien(manv);
             IO.Writexy(nv.tenNV, 26, 4);
-            IO.Writexy(nv.ngaySinh.ToString("dd/MM/yyyy"), 62, 4);
+            IO.Writexy(nv.ngaySinh, 62, 4);
             IO.Writexy(nv.gioiTinh, 91, 4);
             IO.Writexy(nv.diaChi, 12, 6);
             IO.Writexy(nv.soDT, 47, 6);
             IO.Writexy(nv.loaiNV, 81, 6);
 
-            tennv = CongCu.ChuanHoaXau(IO.ReadString(26, 4));
-            if (tennv != nv.tenNV && tennv != null)
-                nv.tenNV = tennv;
-            ngaysinh = DateTime.Parse(IO.ReadString(62, 4));
-            if (ngaysinh != nv.ngaySinh && ngaysinh != null)
-                nv.ngaySinh = ngaysinh;
-            gioitinh = CongCu.ChuanHoaXau(IO.ReadString(91, 4));
-            if (gioitinh != nv.gioiTinh && gioitinh != null)
-                nv.gioiTinh = gioitinh;
-            diachi = CongCu.ChuanHoaXau(IO.ReadString(12, 6));
-            if (diachi != nv.diaChi && diachi != null)
-                nv.diaChi = diachi;
-            sdt = CongCu.CatXau(IO.ReadNumber(47, 6));
-            if (sdt != nv.soDT && sdt != null)
-                nv.soDT = sdt;
-            loainv = CongCu.HoaDau_1(IO.ReadString(81, 6));
-            if (loainv != nv.loaiNV && loainv != null)
-                nv.loaiNV = loainv;
+            IO.Clear(4, 8, 30, ConsoleColor.Black);
+            do
+            {
+                tennv = IO.ReadString(26, 4);
+                if (tennv == null)
+                    IO.Writexy("Nhập lại tên máy tính...", 5, 8, ConsoleColor.Black, ConsoleColor.White);
+                else if (tennv != nv.tenNV && tennv != null)
+                    nv.tenNV = CongCu.ChuanHoaXau(tennv);
+            } while (tennv == null);
+            IO.Clear(4, 8, 30, ConsoleColor.Black);
+            do
+            {
+                ngaysinh = IO.ReadString(62, 4);
+                if (ngaysinh == null)
+                    IO.Writexy("Nhập lại ngày sinh...", 5, 8, ConsoleColor.Black, ConsoleColor.White);
+                else if (ngaysinh != nv.ngaySinh && ngaysinh != null)
+                    nv.ngaySinh = CongCu.CatXau(ngaysinh);
+            } while (ngaysinh == null);
+            IO.Clear(4, 8, 30, ConsoleColor.Black);
+            do
+            {
+                gioitinh = IO.ReadString(91, 4);
+                if (gioitinh == null || KTraGT(gioitinh) == false)
+                    IO.Writexy("Nhập lại giới tính...", 5, 8, ConsoleColor.Black, ConsoleColor.White);
+                else if (gioitinh != nv.gioiTinh && gioitinh != null)
+                    nv.gioiTinh = CongCu.ChuanHoaXau(gioitinh);
+            } while (gioitinh == null || KTraGT(gioitinh) == false);
+            IO.Clear(4, 8, 30, ConsoleColor.Black);
+            do
+            {
+                diachi = IO.ReadString(12, 6);
+                if (diachi == null)
+                    IO.Writexy("Nhập lại địa chỉ...", 5, 8, ConsoleColor.Black, ConsoleColor.White);
+                else if (diachi != nv.diaChi && diachi != null)
+                    nv.diaChi = CongCu.ChuanHoaXau(diachi);
+            } while (diachi == null);
+            IO.Clear(4, 8, 30, ConsoleColor.Black);
+            do
+            {
+                sdt = IO.ReadNumber(47, 6);
+                if (sdt == null)
+                    IO.Writexy("Nhập lại số điện thoại...", 5, 8, ConsoleColor.Black, ConsoleColor.White);
+                else if (sdt != nv.soDT && sdt != null)
+                    nv.soDT = CongCu.CatXau(sdt);
+            } while (sdt == null);
+            IO.Clear(4, 8, 30, ConsoleColor.Black);
+            do
+            {
+                loainv = IO.ReadString(81, 6);
+                if (tennv == null)
+                    IO.Writexy("Nhập lại loại nhân viên...", 5, 8, ConsoleColor.Black, ConsoleColor.White);
+                else if (loainv != nv.loaiNV && loainv != null)
+                    nv.loaiNV = CongCu.HoaDau_1(loainv);
+            } while (loainv == null);
 
-            Console.SetCursorPosition(58, 8);
+            IO.Clear(4, 8, 30, ConsoleColor.Black);
+            IO.Writexy("Enter để nhập, Esc để thoát...", 5, 8);
+            Console.SetCursorPosition(35, 8);
             ConsoleKeyInfo kt = Console.ReadKey();
             if (kt.Key == ConsoleKey.Escape)
                 HienChucNang();
-            else if (kt.Key == ConsoleKey.X)
-                Hien(1, 13, nhanvien.LayDSNhanVien(), 5, 1);
             else if (kt.Key == ConsoleKey.Enter)
             {
                 nhanvien.SuaNhanVien(nv);
                 Hien(1, 13, nhanvien.LayDSNhanVien(), 5, 1);
             }
             HienChucNang();
+        }
+        public bool KTraGT(string s)
+        {
+            if (s.ToLower() == "nam" || s.ToLower() == "nữ")
+                return true;
+            else
+                return false;
         }
         public void Xoa()
         {
@@ -115,17 +202,28 @@ namespace ComputerStore.Presenation
                 Console.Clear();
                 INhanVienBLL nhanvien = new NhanVienBLL();
                 Console.Clear();
-                IO.BoxTitle("                                        XÓA NHÂN VIÊN", 1, 1, 5, 100);
+                IO.BoxTitle("                                        XÓA NHÂN VIÊN", 1, 1, 7, 100);
                 IO.Writexy("Nhập mã nhân viên cần xóa:", 5, 4);
+                IO.Writexy("--------------------------------------------------------------------------------------------------", 2, 5);
+                IO.Writexy("Enter để xóa, Esc để thoát...", 5, 6);
                 Hien(1, 8, nhanvien.LayDSNhanVien(), 5, 0);
-                manv = int.Parse(IO.ReadNumber(32, 4));
-                if (manv == 0)
-                    break;
-                else
-                    nhanvien.XoaNhanVien(manv);
+                do
+                {
+                    manv = int.Parse(IO.ReadNumber(32, 4));
+                    if (manv <= 0)
+                    {
+                        IO.Clear(5, 6, 30, ConsoleColor.Black);
+                        IO.Writexy("Nhập lại mã nhân viên...", 5, 6, ConsoleColor.Black, ConsoleColor.White);
+                    }
+                    else
+                    {
+                        IO.Clear(5, 8, 30, ConsoleColor.Black);
+                        IO.Writexy("Enter để xóa, Esc để thoát...", 5, 6);
+                        nhanvien.XoaNhanVien(manv);
+                    }
+                } while (manv <= 0);
                 Hien(1, 8, nhanvien.LayDSNhanVien(), 5, 1);
             } while (true);
-            HienChucNang();
         }
         public void Xem()
         {
@@ -142,16 +240,26 @@ namespace ComputerStore.Presenation
                 Console.Clear();
                 INhanVienBLL nhanvien = new NhanVienBLL();
                 Console.Clear();
-                IO.BoxTitle("                                      TÌM KIẾM NHÂN VIÊN", 1, 1, 5, 100);
+                IO.BoxTitle("                                      TÌM KIẾM NHÂN VIÊN", 1, 1, 7, 100);
                 IO.Writexy("Nhập họ tên nhân viên cần tìm:", 3, 4);
+                IO.Writexy("--------------------------------------------------------------------------------------------------", 2, 5);
+                IO.Writexy("Enter để tìm, Esc để thoát...", 5, 6);
                 Hien(1, 8, nhanvien.LayDSNhanVien(), 5, 0);
-                hoten = CongCu.ChuanHoaXau(IO.ReadString(34, 4));
-                List<NhanVien> list = nhanvien.TimNhanVien(new NhanVien(0, hoten, DateTime.Now, null, null, null, null));
-                Hien(1, 8, list, 5, 1);
-                if (hoten == "")
-                    break;
+                do
+                {
+                    hoten = IO.ReadString(34, 4);
+                    if (hoten == null)
+                    {
+                        IO.Clear(5, 6, 30, ConsoleColor.Black);
+                        IO.Writexy("Nhập lại tên nhân viên...", 5, 6, ConsoleColor.Black, ConsoleColor.White);
+                    }
+                    else
+                    {
+                        List<NhanVien> list = nhanvien.TimNhanVien(new NhanVien(0, CongCu.ChuanHoaXau(hoten), null, null, null, null, null));
+                        Hien(1, 8, list, 5, 1);
+                    }
+                } while (hoten == null);
             } while (true);
-            HienChucNang();
         }
         public void TimMa()
         {
@@ -161,16 +269,26 @@ namespace ComputerStore.Presenation
                 Console.Clear();
                 INhanVienBLL nhanvien = new NhanVienBLL();
                 Console.Clear();
-                IO.BoxTitle("                                      TÌM KIẾM NHÂN VIÊN", 1, 1, 5, 100);
+                IO.BoxTitle("                                      TÌM KIẾM NHÂN VIÊN", 1, 1, 7, 100);
                 IO.Writexy("Nhập mã nhân viên cần tìm:", 3, 4);
+                IO.Writexy("--------------------------------------------------------------------------------------------------", 2, 5);
+                IO.Writexy("Enter để tìm, Esc để thoát...", 5, 6);
                 Hien(1, 8, nhanvien.LayDSNhanVien(), 5, 0);
-                manv = int.Parse(IO.ReadNumber(30, 4));
-                List<NhanVien> list = nhanvien.TimNhanVien(new NhanVien(manv, null, DateTime.Now, null, null, null, null));
-                Hien(1, 8, list, 5, 1);
-                if (manv == 0)
-                    break;
+                do
+                {
+                    manv = int.Parse(IO.ReadNumber(30, 4));
+                    if (manv <= 0)
+                    {
+                        IO.Clear(5, 6, 30, ConsoleColor.Black);
+                        IO.Writexy("Nhập lại mã nhân viên...", 5, 6, ConsoleColor.Black, ConsoleColor.White);
+                    }
+                    else
+                    {
+                        List<NhanVien> list = nhanvien.TimNhanVien(new NhanVien(manv, null, null, null, null, null, null));
+                        Hien(1, 8, list, 5, 1);
+                    }
+                } while (manv <= 0);
             } while (true);
-            HienChucNang();
         }
         public void Hien(int xx, int yy, List<NhanVien> list, int n, int type)
         {
@@ -199,7 +317,7 @@ namespace ComputerStore.Presenation
                     IO.Writexy("│", x + 8, y + d);
                     IO.Writexy(list[i].tenNV, x + 9, y + d, 24);
                     IO.Writexy("│", x + 32, y + d);
-                    IO.Writexy(list[i].ngaySinh.ToString("dd/MM/yyyy"), x + 33, y + d, 16);
+                    IO.Writexy(list[i].ngaySinh, x + 33, y + d, 16);
                     IO.Writexy("│", x + 48, y + d);
                     IO.Writexy(list[i].gioiTinh, x + 49, y + d, 12);
                     IO.Writexy("│", x + 60, y + d);

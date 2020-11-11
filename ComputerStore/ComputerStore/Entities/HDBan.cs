@@ -10,7 +10,7 @@ namespace ComputerStore.Entities
         private int MaNV;
         private int MaKH;
         private int MaMT;
-        private DateTime NgayBan;
+        private string NgayBan;
         private int SoLuong;
         private double DonGia;
         private double TongTien;
@@ -18,7 +18,7 @@ namespace ComputerStore.Entities
         public HDBan()
         {
         }
-        public HDBan(int mahdb, int manv, int makh, int mamt, DateTime ngayban, int soluong, double dongia, double tongtien)
+        public HDBan(int mahdb, int manv, int makh, int mamt, string ngayban, int soluong, double dongia, double tongtien)
         {
             this.MaHDB = mahdb;
             this.MaNV = manv;
@@ -90,7 +90,7 @@ namespace ComputerStore.Entities
                     MaMT = value;
             }
         }
-        public DateTime ngayBan
+        public string ngayBan
         {
             get
             {
@@ -98,7 +98,8 @@ namespace ComputerStore.Entities
             }
             set
             {
-                NgayBan = value;
+                if (value != "")
+                    NgayBan = value;
             }
         }
         public int soLuong

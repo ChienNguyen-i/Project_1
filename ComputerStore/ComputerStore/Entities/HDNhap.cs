@@ -10,7 +10,7 @@ namespace ComputerStore.Entities
         private int MaNV;
         private int MaNCC;
         private int MaMT;
-        private DateTime NgayNhap;
+        private string NgayNhap;
         private int SoLuong;
         private double DonGia;
         private double TongTien;
@@ -18,7 +18,7 @@ namespace ComputerStore.Entities
         public HDNhap()
         {
         }
-        public HDNhap(int mahdn, int manv, int mancc, int mamt, DateTime ngaynhap, int soluong, double dongia, double tongtien)
+        public HDNhap(int mahdn, int manv, int mancc, int mamt, string ngaynhap, int soluong, double dongia, double tongtien)
         {
             this.MaHDN = mahdn;
             this.MaNV = manv;
@@ -90,7 +90,7 @@ namespace ComputerStore.Entities
                     MaMT = value;
             }
         }
-        public DateTime ngayNhap
+        public string ngayNhap
         {
             get
             {
@@ -98,7 +98,8 @@ namespace ComputerStore.Entities
             }
             set
             {
-                NgayNhap = value;
+                if (value != "")
+                    NgayNhap = value;
             }
         }
         public int soLuong

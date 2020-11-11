@@ -12,13 +12,12 @@ namespace ComputerStore.Presenation
             Console.WindowHeight = Console.LargestWindowHeight;
             string[] mn =
             {
-                " F1.Quản lý loại máy ",
-                " F2.Quản lý máy tính ",
-                " F3.Quản lý nhà cung cấp ",
-                " F4.Quản lý khách hàng ",
-                " F5.Quản lý nhân viên ",
-                " F6.Quản lý hóa đơn ",
-                " F7.Kết thúc "
+                " F1.Quản lý máy tính ",
+                " F2.Quản lý nhà cung cấp ",
+                " F3.Quản lý khách hàng ",
+                " F4.Quản lý nhân viên ",
+                " F5.Quản lý hóa đơn ",
+                " F6.Kết thúc "
             };
             Console.BackgroundColor = ConsoleColor.Black;
             Console.Clear();
@@ -33,7 +32,6 @@ namespace ComputerStore.Presenation
             }
             public override void ThucHien(int location)
             {
-                FormLoaiMay flm = new FormLoaiMay();
                 FormMayTinh fmt = new FormMayTinh();
                 FormNCC fncc = new FormNCC();
                 FormKhachHang fkh = new FormKhachHang();
@@ -42,24 +40,21 @@ namespace ComputerStore.Presenation
                 switch (location)
                 {
                     case 0:
-                        flm.HienChucNang();
-                        break;
-                    case 1:
                         fmt.HienChucNang();
                         break;
-                    case 2:
+                    case 1:
                         fncc.HienChucNang();
                         break;
-                    case 3:
+                    case 2:
                         fkh.HienChucNang();
                         break;
-                    case 4:
+                    case 3:
                         fnv.HienChucNang();
                         break;
-                    case 5:
+                    case 4:
                         fhd.HienHoaDon();
                         break;
-                    case 6:
+                    case 5:
                         Environment.Exit(0);
                         break;
                 }

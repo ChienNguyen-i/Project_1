@@ -19,9 +19,10 @@ namespace ComputerStore.Business
         }
         public void ThemNhanVien(NhanVien nv)
         {
-            if (nv.tenNV != "" && nv.gioiTinh != "" && nv.diaChi != "" && nv.soDT != "" && nv.loaiNV != "")
+            if (nv.tenNV != "" && nv.ngaySinh != "" && nv.gioiTinh != "" && nv.diaChi != "" && nv.soDT != "" && nv.loaiNV != "")
             {
                 nv.tenNV = CongCu.ChuanHoaXau(nv.tenNV);
+                nv.ngaySinh = CongCu.CatXau(nv.ngaySinh);
                 nv.gioiTinh = CongCu.ChuanHoaXau(nv.gioiTinh);
                 nv.diaChi = CongCu.ChuanHoaXau(nv.diaChi);
                 nv.soDT = CongCu.CatXau(nv.soDT);
@@ -56,7 +57,7 @@ namespace ComputerStore.Business
                 nvDAL.Update(list);
             }
             else
-                throw new Exception("Không tồn tại mã này.");
+                IO.Writexy("Không tồn tại mã nhân viên này....", 5, 6, ConsoleColor.Black, ConsoleColor.White);
         }
         public void SuaNhanVien(NhanVien nv)
         {
@@ -72,7 +73,7 @@ namespace ComputerStore.Business
                 nvDAL.Update(list);
             }
             else
-                throw new Exception("Không tồn tại nhân viên này.");
+                IO.Writexy("Không tồn tại nhân viên này...", 5, 8, ConsoleColor.Black, ConsoleColor.White);
         }
         public List<NhanVien> TimNhanVien(NhanVien nv)
         {

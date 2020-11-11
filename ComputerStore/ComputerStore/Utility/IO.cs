@@ -158,41 +158,6 @@ namespace ComputerStore.Utility
             Console.ForegroundColor = text_color;
             Console.Write(s);
         }
-        public static void Box(int x, int y, int height, int width)
-        {
-            Writexy("┌", x, y);
-            for (int i = 1; i <= width - 2; ++i)
-                Writexy("─", x + i, y);
-            Writexy("┐", x + (width - 1), y);
-
-            for (int i = 1; i <= height - 2; ++i)
-                Writexy("│", x, y + i);
-            for (int i = 1; i <= height - 2; ++i)
-                Writexy("│", x + (width - 1), y + i);
-
-            Writexy("└", x, y + (height - 1));
-            for (int i = 1; i <= width - 2; ++i)
-                Writexy("─", x + i, y + (height - 1));
-            Writexy("┘", x + (width - 1), y + (height - 1));
-        }
-        public static void Box(int x, int y, int height, int width, ConsoleColor background_color, ConsoleColor text_color)
-        {
-            Writexy("┌", x, y, background_color, text_color);
-            for (int i = 1; i <= width - 2; ++i)
-                Writexy("─", x + i, y, background_color, text_color);
-            Writexy("┐", x + (width - 1), y, background_color, text_color);
-
-            for (int i = 1; i <= height - 2; ++i)
-                Writexy("│", x, y + i, background_color, text_color);
-            for (int i = 1; i <= height - 2; ++i)
-                Writexy("│", x + (width - 1), y + i, background_color, text_color);
-
-            Writexy("└", x, y + (height - 1), background_color, text_color);
-            for (int i = 1; i <= width - 2; ++i)
-                Writexy("─", x + i, y + (height - 1), background_color, text_color);
-            Writexy("┘", x + (width - 1), y + (height - 1), background_color, text_color);
-        }
-
         public static void BoxTitle(string title, int x, int y, int height, int width)
         {
 
@@ -219,31 +184,6 @@ namespace ComputerStore.Utility
             for (int i = 1; i < width - 1; ++i)
                 Writexy("─", x + i, y + (height - 1));
             Writexy("┘", x + (width - 1), y + (height - 1));
-        }
-        public static void BoxTitle(string title, int x, int y, int height, int width, ConsoleColor background_color, ConsoleColor text_color)
-        {
-
-            Writexy("┌", x, y, background_color, text_color);
-            for (int i = 1; i <= width - 2; ++i)
-                Writexy("─", x + i, y, background_color, text_color);
-            Writexy("┐", x + (width - 1), y, background_color, text_color);
-
-            Writexy(title, x + 2, y + 1, background_color, text_color);
-
-            Writexy("├", x, y + 2, background_color, text_color);
-            for (int i = 1; i <= width - 2; ++i)
-                Writexy("─", x + i, y + 2, background_color, text_color);
-            Writexy("┤", x + (width - 1), y + 2, background_color, text_color);
-
-            for (int i = 1; i <= height - 2; ++i)
-                Writexy("│", x, y + i, background_color, text_color);
-            for (int i = 1; i <= height - 2; ++i)
-                Writexy("│", x + (width - 1), y + i, background_color, text_color);
-
-            Writexy("└", x, y + (height - 1), background_color, text_color);
-            for (int i = 1; i < width - 1; ++i)
-                Writexy("─", x + i, y + (height - 1), background_color, text_color);
-            Writexy("┘", x + (width - 1), y + (height - 1), background_color, text_color);
         }
     }
 }

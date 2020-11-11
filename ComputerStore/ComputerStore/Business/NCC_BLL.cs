@@ -54,7 +54,7 @@ namespace ComputerStore.Business
                 nccDAL.Update(list);
             }
             else
-                throw new Exception("Không tồn tại mã này.");
+                IO.Writexy("Không tồn tại mã nhà cung cấp này....", 5, 6, ConsoleColor.Black, ConsoleColor.White);
         }
         public void SuaNCC(NCC ncc)
         {
@@ -70,7 +70,7 @@ namespace ComputerStore.Business
                 nccDAL.Update(list);
             }
             else
-                throw new Exception("Không tồn tại nhà cung cấp này.");
+                IO.Writexy("Không tồn tại nhà cung cấp này...", 5, 8, ConsoleColor.Black, ConsoleColor.White);
         }
         public List<NCC> TimNCC(NCC ncc)
         {

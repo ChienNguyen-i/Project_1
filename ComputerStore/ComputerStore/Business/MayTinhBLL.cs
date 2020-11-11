@@ -52,7 +52,7 @@ namespace ComputerStore.Business
                 mtDAL.Update(list);
             }
             else
-                throw new Exception("Không tồn tại mã này.");
+                IO.Writexy("Không tồn tại mã máy tính này....", 5, 6, ConsoleColor.Black, ConsoleColor.White);
         }
         public void SuaMayTinh(MayTinh mt)
         {
@@ -68,7 +68,7 @@ namespace ComputerStore.Business
                 mtDAL.Update(list);
             }
             else
-                throw new Exception("Không tồn tại máy tính này.");
+                IO.Writexy("Không tồn tại máy tính này...", 5, 8, ConsoleColor.Black, ConsoleColor.White);
         }
         public List<MayTinh> TimMayTinh(MayTinh mt)
         {

@@ -54,7 +54,7 @@ namespace ComputerStore.Business
                 khDAL.Update(list);
             }
             else
-                throw new Exception("Không tồn tại mã này.");
+                IO.Writexy("Không tồn tại mã khách hàng này....", 5, 6, ConsoleColor.Black, ConsoleColor.White);
         }
         public void SuaKhachHang(KhachHang kh)
         {
@@ -70,7 +70,7 @@ namespace ComputerStore.Business
                 khDAL.Update(list);
             }
             else
-                throw new Exception("Không tồn tại khách hàng này.");
+                IO.Writexy("Không tồn tại khách hàng này...", 5, 8, ConsoleColor.Black, ConsoleColor.White);
         }
         public List<KhachHang> TimKhachHang(KhachHang kh)
         {

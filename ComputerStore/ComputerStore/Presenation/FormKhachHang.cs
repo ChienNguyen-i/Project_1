@@ -20,20 +20,41 @@ namespace ComputerStore.Presenation
                 IO.Writexy("Địa chỉ:", 5, 6);
                 IO.Writexy("Số điện thoại:", 49, 6);
                 IO.Writexy("--------------------------------------------------------------------------------------------------", 2, 7);
-                IO.Writexy("Enter để nhập, Esc để thoát, X để xem chi tiết...", 5, 8);
                 Hien(1, 13, khachhang.LayDSKhachHang(), 5, 0);
                 KhachHang kh = new KhachHang();
-                kh.tenKH = IO.ReadString(13, 4);
-                kh.diaChi = IO.ReadString(14, 6);
-                kh.soDT = IO.ReadNumber(64, 6);
-                Console.SetCursorPosition(54, 8);
+
+                do
+                {
+                    kh.tenKH = IO.ReadString(13, 4);
+                    if (kh.tenKH == null)
+                        IO.Writexy("Nhập lại tên khách hàng...", 5, 8, ConsoleColor.Black, ConsoleColor.White);
+                } while (kh.tenKH == null);
+                IO.Clear(4, 8, 30, ConsoleColor.Black);
+                do
+                {
+                    kh.diaChi = IO.ReadString(14, 6);
+                    if (kh.diaChi == null)
+                        IO.Writexy("Nhập lại địa chỉ...", 5, 8, ConsoleColor.Black, ConsoleColor.White);
+                } while (kh.diaChi == null);
+                IO.Clear(4, 8, 30, ConsoleColor.Black);
+                do
+                {
+                    kh.soDT = IO.ReadNumber(64, 6);
+                    if (kh.soDT == null || kh.soDT.Length < 10 || kh.soDT.Length > 10)
+                        IO.Writexy("Nhập lại số điện thoại...", 5, 8, ConsoleColor.Black, ConsoleColor.White);
+                } while (kh.soDT == null || kh.soDT.Length < 10 || kh.soDT.Length > 10);
+                
+                IO.Clear(4, 8, 30, ConsoleColor.Black);
+                IO.Writexy("Enter để nhập, Esc để thoát...", 5, 8);
+                Console.SetCursorPosition(35, 8);
                 ConsoleKeyInfo kt = Console.ReadKey();
                 if (kt.Key == ConsoleKey.Escape)
                     HienChucNang();
-                else if (kt.Key == ConsoleKey.X)
-                    Hien(1, 13, khachhang.LayDSKhachHang(), 5, 1);
                 else if (kt.Key == ConsoleKey.Enter)
+                {
                     khachhang.ThemKhachHang(kh);
+                    Hien(1, 13, khachhang.LayDSKhachHang(), 5, 1);
+                }
             } while (true);
         }
         public void Sua()
@@ -46,35 +67,58 @@ namespace ComputerStore.Presenation
             IO.Writexy("Địa chỉ:", 5, 6);
             IO.Writexy("Số điện thoại:", 50, 6);
             IO.Writexy("--------------------------------------------------------------------------------------------------", 2, 7);
-            IO.Writexy("Enter để cập nhật, Esc để thoát, X để xem chi tiết...", 5, 8);
             Hien(1, 13, khachhang.LayDSKhachHang(), 5, 0);
+
             int makh;
             string tenkh;
             string diachi;
             string sdt;
 
-            makh = int.Parse(IO.ReadNumber(12, 4));
+            do
+            {
+                makh = int.Parse(IO.ReadNumber(12, 4));
+                if (makh <= 0)
+                    IO.Writexy("Nhập lại mã khách hàng...", 5, 8, ConsoleColor.Black, ConsoleColor.White);
+            } while (makh <= 0);
             KhachHang kh = khachhang.LayKhachHang(makh);
             IO.Writexy(kh.tenKH, 40, 4);
             IO.Writexy(kh.diaChi, 14, 6);
             IO.Writexy(kh.soDT, 65, 6);
 
-            tenkh = CongCu.ChuanHoaXau(IO.ReadString(40, 4));
-            if (tenkh != kh.tenKH && tenkh != null)
-                kh.tenKH = tenkh;
-            diachi = CongCu.ChuanHoaXau(IO.ReadString(14, 6));
-            if (diachi != kh.diaChi && diachi != null)
-                kh.diaChi = diachi;
-            sdt = CongCu.CatXau(IO.ReadNumber(65, 6));
-            if (sdt != kh.soDT && sdt != null)
-                kh.soDT = sdt;
+            IO.Clear(4, 8, 30, ConsoleColor.Black);
+            do
+            {
+                tenkh = IO.ReadString(40, 4);
+                if (tenkh == null)
+                    IO.Writexy("Nhập lại tên khách hàng...", 5, 8, ConsoleColor.Black, ConsoleColor.White);
+                else if (tenkh != kh.tenKH && tenkh != null)
+                    kh.tenKH = CongCu.ChuanHoaXau(tenkh);
+            } while (tenkh == null);
+            IO.Clear(4, 8, 30, ConsoleColor.Black);
+            do
+            {
+                diachi = IO.ReadString(14, 6);
+                if (diachi == null)
+                    IO.Writexy("Nhập lại địa chỉ...", 5, 8, ConsoleColor.Black, ConsoleColor.White);
+                else if (diachi != kh.diaChi && diachi != null)
+                    kh.diaChi = CongCu.ChuanHoaXau(diachi);
+            } while (diachi == null);
+            IO.Clear(4, 8, 30, ConsoleColor.Black);
+            do
+            {
+                sdt = IO.ReadNumber(65, 6);
+                if (sdt == null)
+                    IO.Writexy("Nhập lại số điện thoại...", 5, 8, ConsoleColor.Black, ConsoleColor.White);
+                else if (sdt != kh.soDT && sdt != null)
+                    kh.soDT = CongCu.CatXau(sdt);
+            } while (sdt == null);
 
-            Console.SetCursorPosition(58, 8);
+            IO.Clear(4, 8, 30, ConsoleColor.Black);
+            IO.Writexy("Enter để cập nhật, Esc để thoát...", 5, 8);
+            Console.SetCursorPosition(39, 8);
             ConsoleKeyInfo kt = Console.ReadKey();
             if (kt.Key == ConsoleKey.Escape)
                 HienChucNang();
-            else if (kt.Key == ConsoleKey.X)
-                Hien(1, 13, khachhang.LayDSKhachHang(), 5, 1);
             else if (kt.Key == ConsoleKey.Enter)
             {
                 khachhang.SuaKhachHang(kh);
@@ -90,17 +134,28 @@ namespace ComputerStore.Presenation
                 Console.Clear();
                 IKhachHangBLL khachhang = new KhachHangBLL();
                 Console.Clear();
-                IO.BoxTitle("                                        XÓA KHÁCH HÀNG", 1, 1, 5, 100);
+                IO.BoxTitle("                                        XÓA KHÁCH HÀNG", 1, 1, 7, 100);
                 IO.Writexy("Nhập mã khách hàng cần xóa:", 5, 4);
+                IO.Writexy("--------------------------------------------------------------------------------------------------", 2, 5);
+                IO.Writexy("Enter để xóa, Esc để thoát...", 5, 6);
                 Hien(1, 8, khachhang.LayDSKhachHang(), 5, 0);
-                makh = int.Parse(IO.ReadNumber(33, 4));
-                if (makh == 0)
-                    break;
-                else
-                    khachhang.XoaKhachHang(makh);
+                do
+                {
+                    makh = int.Parse(IO.ReadNumber(33, 4));
+                    if (makh <= 0)
+                    {
+                        IO.Clear(5, 6, 30, ConsoleColor.Black);
+                        IO.Writexy("Nhập lại mã khách hàng...", 5, 6, ConsoleColor.Black, ConsoleColor.White);
+                    }
+                    else
+                    {
+                        IO.Clear(5, 8, 30, ConsoleColor.Black);
+                        IO.Writexy("Enter để xóa, Esc để thoát...", 5, 6);
+                        khachhang.XoaKhachHang(makh);
+                    }
+                } while (makh <= 0);
                 Hien(1, 8, khachhang.LayDSKhachHang(), 5, 1);
             } while (true);
-            HienChucNang();
         }
         public void Xem()
         {
@@ -117,16 +172,25 @@ namespace ComputerStore.Presenation
                 Console.Clear();
                 IKhachHangBLL khachhang = new KhachHangBLL();
                 Console.Clear();
-                IO.BoxTitle("                                     TÌM KIẾM KHÁCH HÀNG", 1, 1, 5, 100);
+                IO.BoxTitle("                                     TÌM KIẾM KHÁCH HÀNG", 1, 1, 7, 100);
                 IO.Writexy("Nhập họ tên khách hàng cần tìm:", 3, 4);
+                IO.Writexy("--------------------------------------------------------------------------------------------------", 2, 5);
+                IO.Writexy("Enter để tìm, Esc để thoát...", 5, 6);
                 Hien(1, 8, khachhang.LayDSKhachHang(), 5, 0);
-                hoten = CongCu.ChuanHoaXau(IO.ReadString(35, 4));
-                List<KhachHang> list = khachhang.TimKhachHang(new KhachHang(0, hoten, null, null));
-                Hien(1, 8, list, 5, 1);
-                if (hoten == "")
-                    break;
+                do
+                {
+                    hoten = IO.ReadString(35, 4);
+                    if (hoten == null)
+                    {
+                        IO.Clear(5, 6, 30, ConsoleColor.Black);
+                        IO.Writexy("Nhập lại tên khách hàng...", 5, 6, ConsoleColor.Black, ConsoleColor.White);
+                    }
+                    {
+                        List<KhachHang> list = khachhang.TimKhachHang(new KhachHang(0, CongCu.ChuanHoaXau(hoten), null, null));
+                        Hien(1, 8, list, 5, 1);
+                    }
+                } while (hoten == null);
             } while (true);
-            HienChucNang();
         }
         public void TimMa()
         {
@@ -136,16 +200,26 @@ namespace ComputerStore.Presenation
                 Console.Clear();
                 IKhachHangBLL khachhang = new KhachHangBLL();
                 Console.Clear();
-                IO.BoxTitle("                                     TÌM KIẾM KHÁCH HÀNG", 1, 1, 5, 100);
+                IO.BoxTitle("                                     TÌM KIẾM KHÁCH HÀNG", 1, 1, 7, 100);
                 IO.Writexy("Nhập mã khách hàng cần tìm:", 3, 4);
+                IO.Writexy("--------------------------------------------------------------------------------------------------", 2, 5);
+                IO.Writexy("Enter để tìm, Esc để thoát...", 5, 6);
                 Hien(1, 8, khachhang.LayDSKhachHang(), 5, 0);
-                makh = int.Parse(IO.ReadNumber(31, 4));
-                List<KhachHang> list = khachhang.TimKhachHang(new KhachHang(makh, null, null, null));
-                Hien(1, 8, list, 5, 1);
-                if (makh == 0)
-                    break;
+                do
+                {
+                    makh = int.Parse(IO.ReadNumber(31, 4));
+                    if (makh <= 0)
+                    {
+                        IO.Clear(5, 6, 30, ConsoleColor.Black);
+                        IO.Writexy("Nhập lại mã khách hàng...", 5, 6, ConsoleColor.Black, ConsoleColor.White);
+                    }
+                    else
+                    {
+                        List<KhachHang> list = khachhang.TimKhachHang(new KhachHang(makh, null, null, null));
+                        Hien(1, 8, list, 5, 1);
+                    }
+                } while (makh <= 0);
             } while (true);
-            HienChucNang();
         }
         public void Hien(int xx, int yy, List<KhachHang> list, int n, int type)
         {

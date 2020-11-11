@@ -39,6 +39,7 @@ namespace ComputerStore.Utility
         }
         public void HienTheoPhimTat(int x, int y, ConsoleColor background_color, ConsoleColor text_color)
         {
+            Console.SetWindowSize(113, 30);
             ChuanHoaMenu();
             IO.BoxTitle("                    CÁC CHỨC NĂNG", x, y, mn.Length * 2 + 5, MaxMuc() + 26);
             x += 5;

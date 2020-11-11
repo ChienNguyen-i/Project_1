@@ -15,6 +15,13 @@ namespace ComputerStore.Presenation
             do
             {
                 IHDBanBLL hdban = new HDBanBLL();
+                INhanVienBLL nhanvien = new NhanVienBLL();
+                IKhachHangBLL khachhang = new KhachHangBLL();
+                IMayTinhBLL maytinh = new MayTinhBLL();
+                FormNhanVien fnv = new FormNhanVien();
+                FormKhachHang fkh = new FormKhachHang();
+                FormMayTinh fmt = new FormMayTinh();
+
                 Console.Clear();
                 IO.BoxTitle("                                 NHẬP THÔNG TIN HÓA ĐƠN BÁN", 1, 1, 10, 100);
                 IO.Writexy("Mã nhân viên:", 3, 4);
@@ -25,29 +32,79 @@ namespace ComputerStore.Presenation
                 IO.Writexy("Đơn giá:", 33, 6);
                 IO.Writexy("Tổng tiền:", 68, 6);
                 IO.Writexy("--------------------------------------------------------------------------------------------------", 2, 7);
-                IO.Writexy("Enter để nhập, Esc để thoát, X để xem chi tiết...", 5, 8);
-                Hien(1, 13, hdban.LayDSHDBan(), 5, 0);
                 HDBan hdb = new HDBan();
-                hdb.maNV = int.Parse(IO.ReadString(17, 4));
-                hdb.maKH = int.Parse(IO.ReadString(40, 4));
-                hdb.maMT = int.Parse(IO.ReadString(64, 4));
-                hdb.ngayBan = DateTime.Parse(IO.ReadString(85, 4));
-                hdb.soLuong = int.Parse(IO.ReadNumber(13, 6));
-                hdb.donGia = double.Parse(IO.ReadNumber(42, 6));
+
+                fnv.Hien(1, 13, nhanvien.LayDSNhanVien(), 5, 0);
+                do
+                {
+                    hdb.maNV = int.Parse(IO.ReadString(17, 4));
+                    if (hdb.maNV <= 0)
+                        IO.Writexy("Nhập lại mã nhân viên...", 5, 8, ConsoleColor.Black, ConsoleColor.White);
+                } while (hdb.maNV <= 0);
+                IO.Clear(4, 8, 30, ConsoleColor.Black);
+                fkh.Hien(1, 13, khachhang.LayDSKhachHang(), 5, 0);
+                do
+                {
+                    hdb.maKH = int.Parse(IO.ReadString(40, 4));
+                    if (hdb.maKH <= 0)
+                        IO.Writexy("Nhập lại mã khách hàng...", 5, 8, ConsoleColor.Black, ConsoleColor.White);
+                } while (hdb.maKH <= 0);
+                IO.Clear(4, 8, 30, ConsoleColor.Black);
+                fmt.Hien(1, 13, maytinh.LayDSMayTinh(), 5, 0);
+                do
+                {
+                    hdb.maMT = int.Parse(IO.ReadString(64, 4));
+                    if (hdb.maMT <= 0)
+                        IO.Writexy("Nhập lại mã máy tính...", 5, 8, ConsoleColor.Black, ConsoleColor.White);
+                } while (hdb.maMT <= 0);
+                IO.Clear(4, 8, 30, ConsoleColor.Black);
+                Hien(1, 13, hdban.LayDSHDBan(), 5, 0);
+                do
+                {
+                    hdb.ngayBan = IO.ReadString(85, 4);
+                    if (hdb.ngayBan == null)
+                        IO.Writexy("Nhập lại ngày bán...", 5, 8, ConsoleColor.Black, ConsoleColor.White);
+                } while (hdb.ngayBan == null);
+                IO.Clear(4, 8, 30, ConsoleColor.Black);
+                do
+                {
+                    hdb.soLuong = int.Parse(IO.ReadNumber(13, 6));
+                    if (hdb.soLuong <= 0)
+                        IO.Writexy("Nhập lại số lượng...", 5, 8, ConsoleColor.Black, ConsoleColor.White);
+                } while (hdb.soLuong <= 0);
+                IO.Clear(4, 8, 30, ConsoleColor.Black);
+                do
+                {
+                    hdb.donGia = double.Parse(IO.ReadNumber(42, 6));
+                    if (hdb.donGia <= 0)
+                        IO.Writexy("Nhập lại đơn giá...", 5, 8, ConsoleColor.Black, ConsoleColor.White);
+                } while (hdb.donGia <= 0);
+                IO.Clear(4, 8, 30, ConsoleColor.Black);
                 IO.Writexy(hdb.tongTien.ToString(), 79, 6);
-                Console.SetCursorPosition(54, 8);
+
+                IO.Clear(4, 8, 30, ConsoleColor.Black);
+                IO.Writexy("Enter để nhập, Esc để thoát...", 5, 8);
+                Console.SetCursorPosition(35, 8);
                 ConsoleKeyInfo kt = Console.ReadKey();
                 if (kt.Key == ConsoleKey.Escape)
                     HienChucNang();
-                else if (kt.Key == ConsoleKey.X)
-                    Hien(1, 13, hdban.LayDSHDBan(), 5, 1);
                 else if (kt.Key == ConsoleKey.Enter)
+                {
                     hdban.ThemHDBan(hdb);
+                    Hien(1, 13, hdban.LayDSHDBan(), 5, 1);
+                }
             } while (true);
         }
         public void Sua()
         {
             IHDBanBLL hdban = new HDBanBLL();
+            INhanVienBLL nhanvien = new NhanVienBLL();
+            IKhachHangBLL khachhang = new KhachHangBLL();
+            IMayTinhBLL maytinh = new MayTinhBLL();
+            FormNhanVien fnv = new FormNhanVien();
+            FormKhachHang fkh = new FormKhachHang();
+            FormMayTinh fmt = new FormMayTinh();
+
             Console.Clear();
             IO.BoxTitle("                               CẬP NHẬT THÔNG TIN HÓA ĐƠN BÁN", 1, 1, 10, 100);
             IO.Writexy("Mã HD bán:", 3, 4);
@@ -59,57 +116,98 @@ namespace ComputerStore.Presenation
             IO.Writexy("Đơn giá:", 50, 6);
             IO.Writexy("Tổng tiền:", 74, 6);
             IO.Writexy("--------------------------------------------------------------------------------------------------", 2, 7);
-            IO.Writexy("Enter để cập nhật, Esc để thoát, X để xem chi tiết...", 5, 8);
             Hien(1, 13, hdban.LayDSHDBan(), 5, 0);
 
             int mahdb;
             int manv;
             int makh;
             int mamt;
-            DateTime ngayban;
+            string ngayban;
             int soluong;
             double dongia;
-            //double tongtien;
 
-            mahdb = int.Parse(IO.ReadNumber(14, 4));
+            do
+            {
+                mahdb = int.Parse(IO.ReadNumber(14, 4));
+                if (mahdb <= 0)
+                    IO.Writexy("Nhập lại mã hóa đơn bán...", 5, 8, ConsoleColor.Black, ConsoleColor.White);
+            } while (mahdb <= 0);
             HDBan hdb = hdban.LayHDBan(mahdb);
             IO.Writexy(hdb.maNV.ToString(), 37, 4);
             IO.Writexy(hdb.maKH.ToString(), 65, 4);
             IO.Writexy(hdb.maMT.ToString(), 89, 4);
-            IO.Writexy(hdb.ngayBan.ToString("dd/MM/yyyy"), 13, 6);
+            IO.Writexy(hdb.ngayBan, 13, 6);
             IO.Writexy(hdb.soLuong.ToString(), 38, 6);
             IO.Writexy(hdb.donGia.ToString(), 59, 6);
             IO.Writexy(hdb.tongTien.ToString(), 85, 6);
 
-            manv = int.Parse(IO.ReadNumber(37, 4));
-            if (manv != hdb.maNV && manv > 0)
-                hdb.maNV = manv;
-            makh = int.Parse(IO.ReadNumber(65, 4));
-            if (makh != hdb.maKH && makh > 0)
-                hdb.maKH = makh;
-            mamt = int.Parse(IO.ReadNumber(89, 4));
-            if (mamt != hdb.maMT && mamt > 0)
-                hdb.maMT = mamt;
-            ngayban = DateTime.Parse(IO.ReadString(13, 6));
-            if (ngayban != hdb.ngayBan && ngayban != null)
-                hdb.ngayBan = ngayban;
-            soluong = int.Parse(IO.ReadNumber(38, 6));
-            if (soluong != hdb.soLuong && soluong > 0)
-                hdb.soLuong = soluong;
-            dongia = double.Parse(IO.ReadNumber(59, 6));
-            if (dongia != hdb.donGia && dongia > 0)
-                hdb.donGia = dongia;
-            /*tongtien = double.Parse(IO.ReadNumber(85, 6));
-            if (tongtien != hdb.tongTien && tongtien > 0)
-                hdb.tongTien = tongtien;*/
+            IO.Clear(4, 8, 30, ConsoleColor.Black);
+            fnv.Hien(1, 13, nhanvien.LayDSNhanVien(), 5, 0);
+            do
+            {
+                manv = int.Parse(IO.ReadNumber(37, 4));
+                if (manv <= 0)
+                    IO.Writexy("Nhập lại mã nhân viên...", 5, 8, ConsoleColor.Black, ConsoleColor.White);
+                else if (manv != hdb.maNV && manv > 0)
+                    hdb.maNV = manv;
+            } while (manv <= 0);
+            IO.Clear(4, 8, 30, ConsoleColor.Black);
+            fkh.Hien(1, 13, khachhang.LayDSKhachHang(), 5, 0);
+            do
+            {
+                makh = int.Parse(IO.ReadNumber(65, 4));
+                if (makh <= 0)
+                    IO.Writexy("Nhập lại mã khách hàng...", 5, 8, ConsoleColor.Black, ConsoleColor.White);
+                else if (makh != hdb.maKH && makh > 0)
+                    hdb.maKH = makh;
+            } while (makh <= 0);
+            IO.Clear(4, 8, 30, ConsoleColor.Black);
+            fmt.Hien(1, 13, maytinh.LayDSMayTinh(), 5, 0);
+            do
+            {
+                mamt = int.Parse(IO.ReadNumber(89, 4));
+                if (mamt <= 0)
+                    IO.Writexy("Nhập lại mã máy tính...", 5, 8, ConsoleColor.Black, ConsoleColor.White);
+                else if (mamt != hdb.maMT && mamt > 0)
+                    hdb.maMT = mamt;
+            } while (mamt <= 0);
+            IO.Clear(4, 8, 30, ConsoleColor.Black);
+            Hien(1, 13, hdban.LayDSHDBan(), 5, 0);
+            do
+            {
+                ngayban = IO.ReadString(13, 6);
+                if (ngayban == null)
+                    IO.Writexy("Nhập lại ngày bán...", 5, 8, ConsoleColor.Black, ConsoleColor.White);
+                else if (ngayban != hdb.ngayBan && ngayban != null)
+                    hdb.ngayBan = CongCu.CatXau(ngayban);
+            } while (ngayban == null);
+            IO.Clear(4, 8, 30, ConsoleColor.Black);
+            do
+            {
+                soluong = int.Parse(IO.ReadNumber(38, 6));
+                if (soluong <= 0)
+                    IO.Writexy("Nhập lại số lượng...", 5, 8, ConsoleColor.Black, ConsoleColor.White);
+                else if (soluong != hdb.soLuong && soluong > 0)
+                    hdb.soLuong = soluong;
+            } while (soluong <= 0);
+            IO.Clear(4, 8, 30, ConsoleColor.Black);
+            do
+            {
+                dongia = double.Parse(IO.ReadNumber(59, 6));
+                if (dongia <= 0)
+                    IO.Writexy("Nhập lại đơn giá...", 5, 8, ConsoleColor.Black, ConsoleColor.White);
+                if (dongia != hdb.donGia && dongia > 0)
+                    hdb.donGia = dongia;
+            } while (dongia <= 0);
+            IO.Clear(4, 8, 30, ConsoleColor.Black);
             IO.Writexy(hdb.tongTien.ToString(), 85, 6);
 
-            Console.SetCursorPosition(58, 8);
+            IO.Clear(4, 8, 30, ConsoleColor.Black);
+            IO.Writexy("Enter để cập nhật, Esc để thoát...", 5, 8);
+            Console.SetCursorPosition(39, 8);
             ConsoleKeyInfo kt = Console.ReadKey();
             if (kt.Key == ConsoleKey.Escape)
                 HienChucNang();
-            else if (kt.Key == ConsoleKey.X)
-                Hien(1, 13, hdban.LayDSHDBan(), 5, 1);
             else if (kt.Key == ConsoleKey.Enter)
             {
                 hdban.SuaHDBan(hdb);
@@ -125,17 +223,28 @@ namespace ComputerStore.Presenation
                 Console.Clear();
                 IHDBanBLL hdban = new HDBanBLL();
                 Console.Clear();
-                IO.BoxTitle("                                      XÓA HÓA ĐƠN BÁN", 1, 1, 5, 100);
+                IO.BoxTitle("                                      XÓA HÓA ĐƠN BÁN", 1, 1, 7, 100);
                 IO.Writexy("Nhập mã hóa đơn bán cần xóa:", 5, 4);
+                IO.Writexy("--------------------------------------------------------------------------------------------------", 2, 5);
+                IO.Writexy("Enter để xóa, Esc để thoát...", 5, 6);
                 Hien(1, 8, hdban.LayDSHDBan(), 5, 0);
-                mahdb = int.Parse(IO.ReadNumber(34, 4));
-                if (mahdb == 0)
-                    break;
-                else
-                    hdban.XoaHDBan(mahdb);
+                do
+                {
+                    mahdb = int.Parse(IO.ReadNumber(34, 4));
+                    if (mahdb <= 0)
+                    {
+                        IO.Clear(5, 6, 30, ConsoleColor.Black);
+                        IO.Writexy("Nhập lại mã hóa đơn bán...", 5, 6, ConsoleColor.Black, ConsoleColor.White);
+                    }
+                    else
+                    {
+                        IO.Clear(5, 8, 30, ConsoleColor.Black);
+                        IO.Writexy("Enter để xóa, Esc để thoát...", 5, 6);
+                        hdban.XoaHDBan(mahdb);
+                    }
+                } while (mahdb <= 0);
                 Hien(1, 8, hdban.LayDSHDBan(), 5, 1);
             } while (true);
-            HienChucNang();
         }
         public void Xem()
         {
@@ -152,16 +261,26 @@ namespace ComputerStore.Presenation
                 Console.Clear();
                 IHDBanBLL hdban = new HDBanBLL();
                 Console.Clear();
-                IO.BoxTitle("                                    TÌM KIẾM HÓA ĐƠN BÁN", 1, 1, 5, 100);
+                IO.BoxTitle("                                    TÌM KIẾM HÓA ĐƠN BÁN", 1, 1, 7, 100);
                 IO.Writexy("Nhập mã hóa đơn bán cần tìm:", 3, 4);
+                IO.Writexy("--------------------------------------------------------------------------------------------------", 2, 5);
+                IO.Writexy("Enter để tìm, Esc để thoát...", 5, 6);
                 Hien(1, 8, hdban.LayDSHDBan(), 5, 0);
-                mahdb = int.Parse(IO.ReadNumber(32, 4));
-                List<HDBan> list = hdban.TimHDBan(new HDBan(mahdb, 0, 0,0, DateTime.Now, 0, 0, 0));
-                Hien(1, 8, list, 5, 1);
-                if (mahdb == 0)
-                    break;
+                do
+                {
+                    mahdb = int.Parse(IO.ReadNumber(32, 4));
+                    if (mahdb <= 0)
+                    {
+                        IO.Clear(5, 6, 30, ConsoleColor.Black);
+                        IO.Writexy("Nhập lại mã hóa đơn bán...", 5, 6, ConsoleColor.Black, ConsoleColor.White);
+                    }
+                    else
+                    {
+                        List<HDBan> list = hdban.TimHDBan(new HDBan(mahdb, 0, 0, 0, null, 0, 0, 0));
+                        Hien(1, 8, list, 5, 1);
+                    }
+                } while (mahdb <= 0);
             } while (true);
-            HienChucNang();
         }
         public void Hien(int xx, int yy, List<HDBan> list, int n, int type)
         {
@@ -194,7 +313,7 @@ namespace ComputerStore.Presenation
                     IO.Writexy("│", x + 33, y + d);
                     IO.Writexy(list[i].maMT.ToString(), x + 34, y + d, 11);
                     IO.Writexy("│", x + 44, y + d);
-                    IO.Writexy(list[i].ngayBan.ToString("dd/MM/yyyy"), x + 45, y + d, 18);
+                    IO.Writexy(list[i].ngayBan, x + 45, y + d, 18);
                     IO.Writexy("│", x + 62, y + d);
                     IO.Writexy(list[i].soLuong.ToString(), x + 63, y + d, 13);
                     IO.Writexy("│", x + 75, y + d);

@@ -1,5 +1,6 @@
-1	Nguyễn Tuấn Minh	02-Feb-90 12:00:00 AM	Nam	Hải Dương	0975684168	NV thu ngân
-2	Phạm Thị Anh	16-Aug-95 12:00:00 AM	Nữ	Hải Dương	0938131485	NV thu ngân
-3	Nguyễn Thị Thu	06-Jul-94 12:00:00 AM	Nữ	Hải Dương	1234567890	NV tư vấn
-4	Phạm Vân Anh	23-May-92 12:00:00 AM	Nữ	Hải Dương	0385639578	NV tư vấn
-5	Trần Thị Oanh	16-Apr-91 12:00:00 AM	Nữ	Hải Dương	0397816498	NV phụ trách kho
+1	Nguyễn Tuấn Minh	02-Feb-90	Nam	Hải Dương	0975684168	NV thu ngân
+2	Phạm Thị Anh	16-Aug-95	Nữ	Hải Dương	0938131485	NV thu ngân
+3	Nguyễn Thị Thu	06-Jul-94	Nữ	Hải Dương	1234567890	NV tư vấn
+4	Phạm Vân Anh	23-May-92	Nữ	Hải Dương	0385639578	NV tư vấn
+5	Trần Thị Oanh	16-Apr-91	Nữ	Hải Dương	0397816498	NV phụ trách kho
+6	Sdff	3/4/2000	Nam	Sdfs	0987654321	NV rưe

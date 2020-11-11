@@ -23,7 +23,7 @@ namespace ComputerStore.DataAccessLayer
                 {
                     s = CongCu.CatXau(s);
                     string[] a = s.Split('\t');
-                    list.Add(new NhanVien(int.Parse(a[0]), a[1], DateTime.Parse(a[2]), a[3], a[4], a[5], a[6]));
+                    list.Add(new NhanVien(int.Parse(a[0]), a[1], a[2], a[3], a[4], a[5], a[6]));
                 }
                 s = sr.ReadLine();
             }
@@ -54,25 +54,6 @@ namespace ComputerStore.DataAccessLayer
                 }
             }
         }
-        
-        //public static int TachSo(string input)
-        //{
-        //    int i = 0;
-        //    string[] numbers = Regex.Split(input, @"\D+");
-        //    foreach (string value in numbers)
-        //    {
-        //        if (!string.IsNullOrEmpty(value))
-        //        {
-        //            i = int.Parse(value);
-        //        }
-        //    }
-        //    return i;
-        //}
-        //public string ma()
-        //{
-        //    int a = TachSo(maNV);
-        //    return "NV" + (a + 1).ToString();
-        //}
         public void Insert(NhanVien nv)
         {
             int manv = maNV + 1;

@@ -8,7 +8,7 @@ namespace ComputerStore.Entities
     {
         private int MaNV;
         private string TenNV;
-        private DateTime NgaySinh;
+        private string NgaySinh;
         private string GioiTinh;
         private string DiaChi;
         private string SoDT;
@@ -17,7 +17,7 @@ namespace ComputerStore.Entities
         public NhanVien()
         {
         }
-        public NhanVien(int manv, string tennv, DateTime ngaysinh, string gt, string diachi, string sdt, string loainv)
+        public NhanVien(int manv, string tennv, string ngaysinh, string gt, string diachi, string sdt, string loainv)
         {
             this.MaNV = manv;
             this.TenNV = tennv;
@@ -63,7 +63,7 @@ namespace ComputerStore.Entities
                     TenNV = value;
             }
         }
-        public DateTime ngaySinh
+        public string ngaySinh
         {
             get
             {
@@ -71,7 +71,8 @@ namespace ComputerStore.Entities
             }
             set
             {
-                NgaySinh = value;
+                if (value != "")
+                    NgaySinh = value;
             }
         }
         public string gioiTinh
@@ -82,7 +83,7 @@ namespace ComputerStore.Entities
             }
             set
             {
-                if (value.ToLower() == "nam" || value.ToLower() == "nữ")
+                if (value != "")
                     GioiTinh = value;
             }
         }

@@ -19,7 +19,13 @@ namespace ComputerStore.Business
         }
         public void ThemHDBan(HDBan hdb)
         {
-            hdbDAL.Insert(hdb);
+            if (hdb.ngayBan != "")
+            {
+                hdb.ngayBan = CongCu.CatXau(hdb.ngayBan);
+                hdbDAL.Insert(hdb);
+            }
+            else
+                throw new Exception("Dữ liệu sai.");
         }
         public HDBan LayHDBan(int mahdb)
         {
@@ -46,7 +52,7 @@ namespace ComputerStore.Business
                 hdbDAL.Update(list);
             }
             else
-                throw new Exception("Không tồn tại mã này.");
+                IO.Writexy("Không tồn tại mã hóa đơn bán này....", 5, 6, ConsoleColor.Black, ConsoleColor.White);
         }
         public void SuaHDBan(HDBan hdb)
         {
@@ -62,7 +68,7 @@ namespace ComputerStore.Business
                 hdbDAL.Update(list);
             }
             else
-                throw new Exception("Không tồn tại hóa đơn bán này.");
+                IO.Writexy("Không tồn tại hóa đơn bán này...", 5, 8, ConsoleColor.Black, ConsoleColor.White);
         }
         public List<HDBan> TimHDBan(HDBan hdb)
         {

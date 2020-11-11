@@ -11,6 +11,7 @@ namespace ComputerStore
         {
             Console.OutputEncoding = Encoding.UTF8;
             Console.InputEncoding = Encoding.Unicode;
+            Console.SetWindowSize(113, 30);
             DangNhap dn = new DangNhap();
             dn.Dang_Nhap();
             Console.ReadKey();

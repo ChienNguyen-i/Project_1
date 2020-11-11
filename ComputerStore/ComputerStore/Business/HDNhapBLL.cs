@@ -19,7 +19,13 @@ namespace ComputerStore.Business
         }
         public void ThemHDNhap(HDNhap hdn)
         {
-            hdnDAL.Insert(hdn);
+            if (hdn.ngayNhap != "")
+            {
+                hdn.ngayNhap = CongCu.CatXau(hdn.ngayNhap);
+                hdnDAL.Insert(hdn);
+            }
+            else
+                throw new Exception("Dữ liệu sai.");
         }
         public HDNhap LayHDNhap(int mahdn)
         {
@@ -46,7 +52,7 @@ namespace ComputerStore.Business
                 hdnDAL.Update(list);
             }
             else
-                throw new Exception("Không tồn tại mã này.");
+                IO.Writexy("Không tồn tại mã hóa đơn nhập này....", 5, 6, ConsoleColor.Black, ConsoleColor.White);
         }
         public void SuaHDNhap(HDNhap hdn)
         {
@@ -62,7 +68,7 @@ namespace ComputerStore.Business
                 hdnDAL.Update(list);
             }
             else
-                throw new Exception("Không tồn tại hóa đơn nhập này.");
+                IO.Writexy("Không tồn tại hóa đơn nhập này...", 5, 8, ConsoleColor.Black, ConsoleColor.White);
         }
         public List<HDNhap> TimHDNhap(HDNhap hdn)
         {
