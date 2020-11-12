@@ -11,9 +11,9 @@ namespace ComputerStore.Business.Interface
     {
         List<NhanVien> LayDSNhanVien();
         void ThemNhanVien(NhanVien nv);
-        void XoaNhanVien(int manv);
+        void XoaNhanVien(string manv);
         void SuaNhanVien(NhanVien nv);
         List<NhanVien> TimNhanVien(NhanVien nv);
-        NhanVien LayNhanVien(int manv);
+        NhanVien LayNhanVien(string manv);
     }
 }

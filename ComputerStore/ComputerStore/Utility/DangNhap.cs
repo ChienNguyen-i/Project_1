@@ -50,8 +50,21 @@ namespace ComputerStore.Utility
             {
                 IO.Writexy("                                          ", x + 14, y + 5, ConsoleColor.Black, ConsoleColor.White);
                 IO.Writexy("                                           ", x + 13, y + 8, ConsoleColor.Black, ConsoleColor.White);
-                this.user = IO.ReadString(x + 15, y + 5);
-                this.pass = IO.ReadPassword(x + 14, y + 8);
+                IO.Clear(x + 2, y + 12, 51, ConsoleColor.Black);
+                do
+                {
+                    this.user = IO.ReadString(x + 15, y + 5);
+                    if (this.user == null)
+                        IO.Writexy("Nhập lại tài khoản...", x + 3, y + 12, ConsoleColor.Black, ConsoleColor.White);
+                } while (this.user == null);
+                IO.Clear(x + 2, y + 12, 21, ConsoleColor.Black);
+                do
+                {
+                    this.pass = IO.ReadPassword(x + 14, y + 8);
+                    if (this.pass == null)
+                        IO.Writexy("Nhập lại mật khẩu...", x + 3, y + 12, ConsoleColor.Black, ConsoleColor.White);
+                } while (this.pass == null);
+                IO.Clear(x + 2, y + 12, 21, ConsoleColor.Black);
                 IO.Writexy("Nhấn Enter để đăng nhập hoặc nhấn ESC để thoát...", x + 3, y + 12);
                 IO.Writexy("Đăng nhập", x + 40, y + 10, ConsoleColor.Blue, ConsoleColor.White);
                 ConsoleKeyInfo kt = Console.ReadKey();
@@ -61,10 +74,8 @@ namespace ComputerStore.Utility
                         return true;
                     else
                     {
-                        IO.Clear(x + 2, y + 12, 55, ConsoleColor.Black);
-                        IO.Writexy("Tài khoản hoặc Mật khẩu không đúng, mời nhập lại...", x + 3, y + 12, ConsoleColor.Black, ConsoleColor.Red);
-                        IO.Clear(x + 14, y + 5, 30, ConsoleColor.Black);
-                        IO.Clear(x + 13, y + 8, 30, ConsoleColor.Black);
+                        IO.Clear(x + 2, y + 12, 50, ConsoleColor.Black);
+                        IO.Writexy("Tài khoản hoặc Mật khẩu không đúng, mời nhập lại...", x + 3, y + 12, ConsoleColor.Black, ConsoleColor.White);
                     }
                 }
                 else

@@ -22,14 +22,14 @@ namespace ComputerStore.DataAccessLayer
                 {
                     s = CongCu.CatXau(s);
                     string[] a = s.Split('\t');
-                    list.Add(new NCC(int.Parse(a[0]), a[1], a[2], a[3]));
+                    list.Add(new NCC(a[0], a[1], a[2], a[3]));
                 }
                 s = sr.ReadLine();
             }
             sr.Close();
             return list;
         }
-        public int maNCC
+        public string maNCC
         {
             get
             {
@@ -44,21 +44,20 @@ namespace ComputerStore.DataAccessLayer
                 }
                 sr.Close();
                 if (tmp == "")
-                    return 0;
+                    return "NCC0";
                 else
                 {
-                    tmp = CongCu.ChuanHoaXau(tmp);
                     string[] a = tmp.Split('\t');
-                    return int.Parse(a[0]);
+                    return a[0];
                 }
             }
         }
         public void Insert(NCC ncc)
         {
-            int mancc = maNCC + 1;
+            int mancc = CongCu.TachSo(maNCC) + 1;
             StreamWriter sw = File.AppendText(txtfile);
             sw.WriteLine();
-            sw.Write(mancc + "\t" + ncc.tenNCC + "\t" + ncc.diaChi + "\t" + ncc.soDT);
+            sw.Write("NCC" + mancc + "\t" + ncc.tenNCC + "\t" + ncc.diaChi + "\t" + ncc.soDT);
             sw.Close();
         }
         public void Update(List<NCC> list)

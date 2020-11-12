@@ -32,7 +32,7 @@ namespace ComputerStore.Business
             else
                 throw new Exception("Dữ liệu sai.");
         }
-        public NhanVien LayNhanVien(int manv)
+        public NhanVien LayNhanVien(string manv)
         {
             int i;
             List<NhanVien> list = nvDAL.GetData();
@@ -44,7 +44,7 @@ namespace ComputerStore.Business
             else
                 throw new Exception("Không tồn tại mã này.");
         }
-        public void XoaNhanVien(int manv)
+        public void XoaNhanVien(string manv)
         {
             int i;
             List<NhanVien> list = nvDAL.GetData();
@@ -79,19 +79,19 @@ namespace ComputerStore.Business
         {
             List<NhanVien> list = nvDAL.GetData();
             List<NhanVien> kq = new List<NhanVien>();
-            if (nv.maNV == 0 && nv.tenNV == null)
+            if (nv.maNV == null && nv.tenNV == null)
             {
                 kq = list;
             }
             //Tìm theo tên
-            if (nv.tenNV != null && nv.maNV == 0)
+            if (nv.tenNV != null && nv.maNV == null)
             {
                 for (int i = 0; i < list.Count; ++i)
                     if (list[i].tenNV.IndexOf(nv.tenNV) >= 0)
                         kq.Add(new NhanVien(list[i]));
             }
             //Tìm theo mã
-            else if (nv.tenNV == null && nv.maNV > 0)
+            else if (nv.tenNV == null && nv.maNV != null)
             {
                 for (int i = 0; i < list.Count; ++i)
                     if (list[i].maNV == nv.maNV)

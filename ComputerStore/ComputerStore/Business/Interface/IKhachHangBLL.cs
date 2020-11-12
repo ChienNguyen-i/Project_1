@@ -11,9 +11,9 @@ namespace ComputerStore.Business.Interface
     {
         List<KhachHang> LayDSKhachHang();
         void ThemKhachHang(KhachHang kh);
-        void XoaKhachHang(int makh);
+        void XoaKhachHang(string makh);
         void SuaKhachHang(KhachHang kh);
         List<KhachHang> TimKhachHang(KhachHang kh);
-        KhachHang LayKhachHang(int makh);
+        KhachHang LayKhachHang(string makh);
     }
 }

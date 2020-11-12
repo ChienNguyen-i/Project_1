@@ -37,10 +37,10 @@ namespace ComputerStore.Presenation
                 fncc.Hien(1, 13, nhacc.LayDSNCC(), 5, 0);
                 do
                 {
-                    mt.maNCC = int.Parse(IO.ReadNumber(74, 4));
-                    if (mt.maNCC <= 0)
+                    mt.maNCC = IO.ReadString(74, 4);
+                    if (mt.maNCC == null)
                         IO.Writexy("Nhập lại mã nhà cung cấp...", 5, 8, ConsoleColor.Black, ConsoleColor.White);
-                } while (mt.maNCC <= 0);
+                } while (mt.maNCC == null);
                 IO.Clear(4, 8, 30, ConsoleColor.Black);
                 Hien(1, 13, maytinh.LayDSMayTinh(), 5, 0);
                 do
@@ -85,18 +85,20 @@ namespace ComputerStore.Presenation
             IO.Writexy("--------------------------------------------------------------------------------------------------", 2, 7);
             Hien(1, 13, maytinh.LayDSMayTinh(), 5, 0);
 
-            int mamt;
+            string mamt;
             string tenmay;
-            int mancc;
+            string mancc;
             int sln;
             int slc;
 
             do
             {
-                mamt = int.Parse(IO.ReadNumber(10, 4));
-                if (mamt <= 0)
+                mamt = IO.ReadString(10, 4);
+                if (mamt == null)
                     IO.Writexy("Nhập lại mã máy tính...", 5, 8, ConsoleColor.Black, ConsoleColor.White);
-            } while (mamt <= 0);
+                else
+                    mamt = CongCu.CatXau(mamt.ToUpper());
+            } while (mamt == null);
             MayTinh mt = maytinh.LayMayTinh(mamt);
             IO.Writexy(mt.tenMT, 53, 4);
             IO.Writexy(mt.maNCC.ToString(), 14, 6);
@@ -116,12 +118,12 @@ namespace ComputerStore.Presenation
             fncc.Hien(1, 13, nhacc.LayDSNCC(), 5, 0);
             do
             {
-                mancc = int.Parse(IO.ReadNumber(14, 6));
-                if (mancc <= 0)
+                mancc = IO.ReadString(14, 6);
+                if (mancc == null)
                     IO.Writexy("Nhập lại mã nhà cung cấp...", 5, 8, ConsoleColor.Black, ConsoleColor.White);
-                else if (mancc != mt.maNCC && mancc > 0)
-                    mt.maNCC = mancc;
-            } while (mancc <= 0);
+                else if (mancc != mt.maNCC && mancc != null)
+                    mt.maNCC = CongCu.CatXau(mancc.ToUpper()); ;
+            } while (mancc == null);
             IO.Clear(4, 8, 30, ConsoleColor.Black);
             Hien(1, 13, maytinh.LayDSMayTinh(), 5, 0);
             do
@@ -137,7 +139,7 @@ namespace ComputerStore.Presenation
             {
                 slc = int.Parse(IO.ReadNumber(77, 6));
                 if (slc <= 0)
-                    IO.Writexy("Nhập lại mã nhà cung cấp...", 5, 8, ConsoleColor.Black, ConsoleColor.White);
+                    IO.Writexy("Nhập lại số lượng còn...", 5, 8, ConsoleColor.Black, ConsoleColor.White);
                 else if (slc != mt.sLCon && slc >= 0)
                     mt.sLCon = slc;
             } while (slc <= 0);
@@ -157,7 +159,7 @@ namespace ComputerStore.Presenation
         }
         public void Xoa()
         {
-            int mamt = 0;
+            string mamt = "";
             do
             {
                 Console.Clear();
@@ -170,8 +172,8 @@ namespace ComputerStore.Presenation
                 Hien(1, 8, maytinh.LayDSMayTinh(), 5, 0);
                 do
                 {
-                    mamt = int.Parse(IO.ReadNumber(31, 4));
-                    if (mamt <= 0)
+                    mamt = IO.ReadString(31, 4);
+                    if (mamt == null)
                     {
                         IO.Clear(5, 6, 30, ConsoleColor.Black);
                         IO.Writexy("Nhập lại mã máy tính...", 5, 6, ConsoleColor.Black, ConsoleColor.White);
@@ -180,9 +182,10 @@ namespace ComputerStore.Presenation
                     {
                         IO.Clear(5, 8, 30, ConsoleColor.Black);
                         IO.Writexy("Enter để xóa, Esc để thoát...", 5, 6);
+                        mamt = CongCu.CatXau(mamt.ToUpper());
                         maytinh.XoaMayTinh(mamt);
                     }
-                } while (mamt <= 0);
+                } while (mamt == null);
                 Hien(1, 8, maytinh.LayDSMayTinh(), 5, 1);
             } while (true);
         }
@@ -216,7 +219,7 @@ namespace ComputerStore.Presenation
                     }
                     else
                     {
-                        List<MayTinh> list = maytinh.TimMayTinh(new MayTinh(0, CongCu.HoaDau(tenmt), 0, 0, 0));
+                        List<MayTinh> list = maytinh.TimMayTinh(new MayTinh(null, tenmt, null, 0, 0));
                         Hien(1, 8, list, 5, 1);
                     }    
                 } while (tenmt == null);
@@ -224,7 +227,7 @@ namespace ComputerStore.Presenation
         }
         public void TimMa()
         {
-            int mamt = 0;
+            string mamt = "";
             do
             {
                 Console.Clear();
@@ -237,18 +240,19 @@ namespace ComputerStore.Presenation
                 Hien(1, 8, maytinh.LayDSMayTinh(), 5, 0);
                 do
                 {
-                    mamt = int.Parse(IO.ReadNumber(29, 4));
-                    if (mamt <= 0)
+                    mamt = IO.ReadString(29, 4);
+                    if (mamt == null)
                     {
                         IO.Clear(5, 6, 30, ConsoleColor.Black);
                         IO.Writexy("Nhập lại mã máy tính...", 5, 6, ConsoleColor.Black, ConsoleColor.White);
                     }
                     else
                     {
-                        List<MayTinh> list = maytinh.TimMayTinh(new MayTinh(mamt, null, 0, 0, 0));
+                        mamt = CongCu.CatXau(mamt.ToUpper());
+                        List<MayTinh> list = maytinh.TimMayTinh(new MayTinh(mamt, null, null, 0, 0));
                         Hien(1, 8, list, 5, 1);
                     }
-                } while (mamt <= 0);
+                } while (mamt == null);
             } while (true);
         }
         public void Hien(int xx, int yy, List<MayTinh> list, int n, int type)
@@ -274,11 +278,11 @@ namespace ComputerStore.Presenation
                 for (int i = head; i < final; i++)
                 {
                     IO.Writexy("│", x, y + d, 14);
-                    IO.Writexy(list[i].maMT.ToString(), x + 1, y + d, 14);
+                    IO.Writexy(list[i].maMT, x + 1, y + d, 14);
                     IO.Writexy("│", x + 14, y + d);
                     IO.Writexy(list[i].tenMT, x + 15, y + d, 26);
                     IO.Writexy("│", x + 40, y + d);
-                    IO.Writexy(list[i].maNCC.ToString(), x + 41, y + d, 12);
+                    IO.Writexy(list[i].maNCC, x + 41, y + d, 12);
                     IO.Writexy("│", x + 52, y + d);
                     IO.Writexy(list[i].sLNhap.ToString(), x + 53, y + d, 16);
                     IO.Writexy("│", x + 68, y + d);

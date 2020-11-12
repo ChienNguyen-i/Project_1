@@ -4,6 +4,8 @@ using ComputerStore.Utility;
 using ComputerStore.Entities;
 using ComputerStore.Business;
 using ComputerStore.Business.Interface;
+using System.Linq;
+
 namespace ComputerStore.Presenation
 {
     //Giao tiếp với người sử dụng để giải quyết vấn đề của bài toán với các yêu cầu được đặt ra trong Interface của Business
@@ -69,17 +71,19 @@ namespace ComputerStore.Presenation
             IO.Writexy("--------------------------------------------------------------------------------------------------", 2, 7);
             Hien(1, 13, khachhang.LayDSKhachHang(), 5, 0);
 
-            int makh;
+            string makh;
             string tenkh;
             string diachi;
             string sdt;
 
             do
             {
-                makh = int.Parse(IO.ReadNumber(12, 4));
-                if (makh <= 0)
+                makh = IO.ReadString(12, 4);
+                if (makh == null)
                     IO.Writexy("Nhập lại mã khách hàng...", 5, 8, ConsoleColor.Black, ConsoleColor.White);
-            } while (makh <= 0);
+                else
+                    makh = CongCu.CatXau(makh.ToUpper());
+            } while (makh == null);
             KhachHang kh = khachhang.LayKhachHang(makh);
             IO.Writexy(kh.tenKH, 40, 4);
             IO.Writexy(kh.diaChi, 14, 6);
@@ -128,7 +132,7 @@ namespace ComputerStore.Presenation
         }
         public void Xoa()
         {
-            int makh = 0;
+            string makh = "";
             do
             {
                 Console.Clear();
@@ -141,8 +145,8 @@ namespace ComputerStore.Presenation
                 Hien(1, 8, khachhang.LayDSKhachHang(), 5, 0);
                 do
                 {
-                    makh = int.Parse(IO.ReadNumber(33, 4));
-                    if (makh <= 0)
+                    makh = IO.ReadString(33, 4);
+                    if (makh == null)
                     {
                         IO.Clear(5, 6, 30, ConsoleColor.Black);
                         IO.Writexy("Nhập lại mã khách hàng...", 5, 6, ConsoleColor.Black, ConsoleColor.White);
@@ -151,9 +155,10 @@ namespace ComputerStore.Presenation
                     {
                         IO.Clear(5, 8, 30, ConsoleColor.Black);
                         IO.Writexy("Enter để xóa, Esc để thoát...", 5, 6);
+                        makh = CongCu.CatXau(makh.ToUpper());
                         khachhang.XoaKhachHang(makh);
                     }
-                } while (makh <= 0);
+                } while (makh == null);
                 Hien(1, 8, khachhang.LayDSKhachHang(), 5, 1);
             } while (true);
         }
@@ -185,8 +190,10 @@ namespace ComputerStore.Presenation
                         IO.Clear(5, 6, 30, ConsoleColor.Black);
                         IO.Writexy("Nhập lại tên khách hàng...", 5, 6, ConsoleColor.Black, ConsoleColor.White);
                     }
+                    else
                     {
-                        List<KhachHang> list = khachhang.TimKhachHang(new KhachHang(0, CongCu.ChuanHoaXau(hoten), null, null));
+                        hoten = CongCu.ChuanHoaXau(hoten);
+                        List<KhachHang> list = khachhang.TimKhachHang(new KhachHang(null, hoten, null, null));
                         Hien(1, 8, list, 5, 1);
                     }
                 } while (hoten == null);
@@ -194,7 +201,7 @@ namespace ComputerStore.Presenation
         }
         public void TimMa()
         {
-            int makh = 0;
+            string makh = "";
             do
             {
                 Console.Clear();
@@ -207,18 +214,19 @@ namespace ComputerStore.Presenation
                 Hien(1, 8, khachhang.LayDSKhachHang(), 5, 0);
                 do
                 {
-                    makh = int.Parse(IO.ReadNumber(31, 4));
-                    if (makh <= 0)
+                    makh = IO.ReadString(31, 4);
+                    if (makh == null)
                     {
                         IO.Clear(5, 6, 30, ConsoleColor.Black);
                         IO.Writexy("Nhập lại mã khách hàng...", 5, 6, ConsoleColor.Black, ConsoleColor.White);
                     }
                     else
                     {
+                        makh = CongCu.CatXau(makh.ToUpper());
                         List<KhachHang> list = khachhang.TimKhachHang(new KhachHang(makh, null, null, null));
                         Hien(1, 8, list, 5, 1);
                     }
-                } while (makh <= 0);
+                } while (makh == null);
             } while (true);
         }
         public void Hien(int xx, int yy, List<KhachHang> list, int n, int type)
@@ -244,7 +252,7 @@ namespace ComputerStore.Presenation
                 for (int i = head; i < final; i++)
                 {
                     IO.Writexy("│", x, y + d, 8);
-                    IO.Writexy(list[i].maKH.ToString(), x + 1, y + d, 8);
+                    IO.Writexy(list[i].maKH, x + 1, y + d, 8);
                     IO.Writexy("│", x + 8, y + d);
                     IO.Writexy(list[i].tenKH, x + 9, y + d, 24);
                     IO.Writexy("│", x + 32, y + d);

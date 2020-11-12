@@ -19,15 +19,16 @@ namespace ComputerStore.Business
         }
         public void ThemMayTinh(MayTinh mt)
         {
-            if (mt.tenMT != "")
+            if (mt.tenMT != "" && mt.maNCC != "")
             {
                 mt.tenMT = CongCu.HoaDau(mt.tenMT);
+                mt.maNCC = CongCu.CatXau(mt.maNCC.ToUpper());
                 mtDAL.Insert(mt);
             }
             else
                 throw new Exception("Dữ liệu sai.");
         }
-        public MayTinh LayMayTinh(int mamt)
+        public MayTinh LayMayTinh(string mamt)
         {
             int i;
             List<MayTinh> list = mtDAL.GetData();
@@ -39,7 +40,7 @@ namespace ComputerStore.Business
             else
                 throw new Exception("Không tồn tại mã này.");
         }
-        public void XoaMayTinh(int mamt)
+        public void XoaMayTinh(string mamt)
         {
             int i;
             List<MayTinh> list = mtDAL.GetData();
@@ -74,19 +75,19 @@ namespace ComputerStore.Business
         {
             List<MayTinh> list = mtDAL.GetData();
             List<MayTinh> kq = new List<MayTinh>();
-            if (mt.maMT == 0 && mt.tenMT == null)
+            if (mt.maMT == null && mt.tenMT == null)
             {
                 kq = list;
             }
             //Tìm theo tên
-            if (mt.tenMT != null && mt.maMT == 0)
+            if (mt.tenMT != null && mt.maMT == null)
             {
                 for (int i = 0; i < list.Count; ++i)
                     if (list[i].tenMT.IndexOf(mt.tenMT) >= 0)
                         kq.Add(new MayTinh(list[i]));
             }
             //Tìm theo mã
-            else if (mt.tenMT == null && mt.maMT > 0)
+            else if (mt.tenMT == null && mt.maMT != null)
             {
                 for (int i = 0; i < list.Count; ++i)
                     if (list[i].maMT == mt.maMT)

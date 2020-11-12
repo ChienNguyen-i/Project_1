@@ -6,10 +6,10 @@ namespace ComputerStore.Entities
 {
     public class HDNhap
     {
-        private int MaHDN;
-        private int MaNV;
-        private int MaNCC;
-        private int MaMT;
+        private string MaHDN;
+        private string MaNV;
+        private string MaNCC;
+        private string MaMT;
         private string NgayNhap;
         private int SoLuong;
         private double DonGia;
@@ -18,7 +18,7 @@ namespace ComputerStore.Entities
         public HDNhap()
         {
         }
-        public HDNhap(int mahdn, int manv, int mancc, int mamt, string ngaynhap, int soluong, double dongia, double tongtien)
+        public HDNhap(string mahdn, string manv, string mancc, string mamt, string ngaynhap, int soluong, double dongia, double tongtien)
         {
             this.MaHDN = mahdn;
             this.MaNV = manv;
@@ -42,7 +42,7 @@ namespace ComputerStore.Entities
             this.TongTien = hdn.TongTien;
         }
 
-        public int maHDN
+        public string maHDN
         {
             get
             {
@@ -50,11 +50,11 @@ namespace ComputerStore.Entities
             }
             set
             {
-                if (value > 0)
+                if (value != "")
                     MaHDN = value;
             }
         }
-        public int maNV
+        public string maNV
         {
             get
             {
@@ -62,11 +62,11 @@ namespace ComputerStore.Entities
             }
             set
             {
-                if (value > 0)
+                if (value != "")
                     MaNV = value;
             }
         }
-        public int maNCC
+        public string maNCC
         {
             get
             {
@@ -74,11 +74,11 @@ namespace ComputerStore.Entities
             }
             set
             {
-                if (value > 0)
+                if (value != "")
                     MaNCC = value;
             }
         }
-        public int maMT
+        public string maMT
         {
             get
             {
@@ -86,7 +86,7 @@ namespace ComputerStore.Entities
             }
             set
             {
-                if (value > 0)
+                if (value != "")
                     MaMT = value;
             }
         }

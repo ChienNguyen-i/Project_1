@@ -6,7 +6,7 @@ namespace ComputerStore.Entities
 {
     public class KhachHang
     {
-        private int MaKH;
+        private string MaKH;
         private string TenKH;
         private string DiaChi;
         private string SoDT;
@@ -14,7 +14,7 @@ namespace ComputerStore.Entities
         public KhachHang()
         {
         }
-        public KhachHang(int makh, string tenkh, string diachi, string sdt)
+        public KhachHang(string makh, string tenkh, string diachi, string sdt)
         {
             this.MaKH = makh;
             this.TenKH = tenkh;
@@ -30,7 +30,7 @@ namespace ComputerStore.Entities
             this.SoDT = kh.SoDT;
         }
 
-        public int maKH
+        public string maKH
         {
             get
             {
@@ -38,7 +38,7 @@ namespace ComputerStore.Entities
             }
             set
             {
-                if (value > 0)
+                if (value != "")
                     MaKH = value;
             }
         }

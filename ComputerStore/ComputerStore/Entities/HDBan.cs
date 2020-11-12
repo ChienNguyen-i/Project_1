@@ -6,10 +6,10 @@ namespace ComputerStore.Entities
 {
     public class HDBan
     {
-        private int MaHDB;
-        private int MaNV;
-        private int MaKH;
-        private int MaMT;
+        private string MaHDB;
+        private string MaNV;
+        private string MaKH;
+        private string MaMT;
         private string NgayBan;
         private int SoLuong;
         private double DonGia;
@@ -18,7 +18,7 @@ namespace ComputerStore.Entities
         public HDBan()
         {
         }
-        public HDBan(int mahdb, int manv, int makh, int mamt, string ngayban, int soluong, double dongia, double tongtien)
+        public HDBan(string mahdb, string manv, string makh, string mamt, string ngayban, int soluong, double dongia, double tongtien)
         {
             this.MaHDB = mahdb;
             this.MaNV = manv;
@@ -42,7 +42,7 @@ namespace ComputerStore.Entities
             this.TongTien = hdb.TongTien;
         }
 
-        public int maHDB
+        public string maHDB
         {
             get
             {
@@ -50,11 +50,11 @@ namespace ComputerStore.Entities
             }
             set
             {
-                if (value > 0)
+                if (value != "")
                     MaHDB = value;
             }
         }
-        public int maNV
+        public string maNV
         {
             get
             {
@@ -62,11 +62,11 @@ namespace ComputerStore.Entities
             }
             set
             {
-                if (value > 0)
+                if (value != "")
                     MaNV = value;
             }
         }
-        public int maKH
+        public string maKH
         {
             get
             {
@@ -74,11 +74,11 @@ namespace ComputerStore.Entities
             }
             set
             {
-                if (value > 0)
+                if (value != "")
                     MaKH = value;
             }
         }
-        public int maMT
+        public string maMT
         {
             get
             {
@@ -86,7 +86,7 @@ namespace ComputerStore.Entities
             }
             set
             {
-                if (value > 0)
+                if (value != "")
                     MaMT = value;
             }
         }

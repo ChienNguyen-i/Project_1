@@ -23,14 +23,14 @@ namespace ComputerStore.DataAccessLayer
                 {
                     s = CongCu.CatXau(s);
                     string[] a = s.Split('\t');
-                    list.Add(new MayTinh(int.Parse(a[0]), a[1], int.Parse(a[2]), int.Parse(a[3]), int.Parse(a[4])));
+                    list.Add(new MayTinh(a[0], a[1], a[2], int.Parse(a[3]), int.Parse(a[4])));
                 }
                 s = sr.ReadLine();
             }
             sr.Close();
             return list;
         }
-        public int maMT
+        public string maMT
         {
             get
             {
@@ -45,21 +45,20 @@ namespace ComputerStore.DataAccessLayer
                 }
                 sr.Close();
                 if (tmp == "")
-                    return 0;
+                    return "MT0";
                 else
                 {
-                    tmp = CongCu.ChuanHoaXau(tmp);
                     string[] a = tmp.Split('\t');
-                    return int.Parse(a[0]);
+                    return a[0];
                 }
             }
         }
         public void Insert(MayTinh mt)
         {
-            int mamt = maMT + 1;
+            int mamt = CongCu.TachSo(maMT) + 1;
             StreamWriter sw = File.AppendText(txtfile);
             sw.WriteLine();
-            sw.Write(mamt + "\t" + mt.tenMT + "\t" + mt.maNCC + "\t" + mt.sLNhap + "\t" + mt.sLCon);
+            sw.Write("MT" + mamt + "\t" + mt.tenMT + "\t" + mt.maNCC + "\t" + mt.sLNhap + "\t" + mt.sLCon);
             sw.Close();
         }
         public void Update(List<MayTinh> list)

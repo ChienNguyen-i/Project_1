@@ -19,15 +19,18 @@ namespace ComputerStore.Business
         }
         public void ThemHDNhap(HDNhap hdn)
         {
-            if (hdn.ngayNhap != "")
+            if (hdn.maNV != "" && hdn.maNCC != "" && hdn.maMT != "" && hdn.ngayNhap != "")
             {
+                hdn.maNV = CongCu.CatXau(hdn.maNV);
+                hdn.maNCC = CongCu.CatXau(hdn.maNCC);
+                hdn.maMT = CongCu.CatXau(hdn.maMT);
                 hdn.ngayNhap = CongCu.CatXau(hdn.ngayNhap);
                 hdnDAL.Insert(hdn);
             }
             else
                 throw new Exception("Dữ liệu sai.");
         }
-        public HDNhap LayHDNhap(int mahdn)
+        public HDNhap LayHDNhap(string mahdn)
         {
             int i;
             List<HDNhap> list = hdnDAL.GetData();
@@ -39,7 +42,7 @@ namespace ComputerStore.Business
             else
                 throw new Exception("Không tồn tại mã này.");
         }
-        public void XoaHDNhap(int mahdn)
+        public void XoaHDNhap(string mahdn)
         {
             int i;
             List<HDNhap> list = hdnDAL.GetData();
@@ -74,12 +77,12 @@ namespace ComputerStore.Business
         {
             List<HDNhap> list = hdnDAL.GetData();
             List<HDNhap> kq = new List<HDNhap>();
-            if (hdn.maHDN == 0)
+            if (hdn.maHDN == null)
             {
                 kq = list;
             }
             //Tìm theo mã
-            if (hdn.maHDN > 0)
+            if (hdn.maHDN != null)
             {
                 for (int i = 0; i < list.Count; ++i)
                     if (list[i].maHDN == hdn.maHDN)

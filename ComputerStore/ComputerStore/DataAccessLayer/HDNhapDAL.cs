@@ -22,14 +22,14 @@ namespace ComputerStore.DataAccessLayer
                 {
                     s = CongCu.CatXau(s);
                     string[] a = s.Split('\t');
-                    list.Add(new HDNhap(int.Parse(a[0]), int.Parse(a[1]), int.Parse(a[2]), int.Parse(a[3]), a[4], int.Parse(a[5]), double.Parse(a[6]), double.Parse(a[7])));
+                    list.Add(new HDNhap(a[0], a[1], a[2], a[3], a[4], int.Parse(a[5]), double.Parse(a[6]), double.Parse(a[7])));
                 }
                 s = sr.ReadLine();
             }
             sr.Close();
             return list;
         }
-        public int maHDN
+        public string maHDN
         {
             get
             {
@@ -44,21 +44,20 @@ namespace ComputerStore.DataAccessLayer
                 }
                 sr.Close();
                 if (tmp == "")
-                    return 0;
+                    return "HDN0";
                 else
                 {
-                    tmp = CongCu.ChuanHoaXau(tmp);
                     string[] a = tmp.Split('\t');
-                    return int.Parse(a[0]);
+                    return a[0];
                 }
             }
         }
         public void Insert(HDNhap hdn)
         {
-            int mahdn = maHDN + 1;
+            int mahdn = CongCu.TachSo(maHDN) + 1;
             StreamWriter sw = File.AppendText(txtfile);
             sw.WriteLine();
-            sw.Write(mahdn + "\t" + hdn.maNV + "\t" + hdn.maNCC + "\t" + hdn.maMT + "\t" + hdn.ngayNhap + "\t" + hdn.soLuong + "\t" + hdn.donGia + "\t" + hdn.tongTien);
+            sw.Write("HDN" + mahdn + "\t" + hdn.maNV + "\t" + hdn.maNCC + "\t" + hdn.maMT + "\t" + hdn.ngayNhap + "\t" + hdn.soLuong + "\t" + hdn.donGia + "\t" + hdn.tongTien);
             sw.Close();
         }
         public void Update(List<HDNhap> list)

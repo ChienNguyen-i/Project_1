@@ -11,9 +11,9 @@ namespace ComputerStore.Business.Interface
     {
         List<HDNhap> LayDSHDNhap();
         void ThemHDNhap(HDNhap hdn);
-        void XoaHDNhap(int mahdn);
+        void XoaHDNhap(string mahdn);
         void SuaHDNhap(HDNhap hdn);
         List<HDNhap> TimHDNhap(HDNhap hdn);
-        HDNhap LayHDNhap(int mahdn);
+        HDNhap LayHDNhap(string mahdn);
     }
 }

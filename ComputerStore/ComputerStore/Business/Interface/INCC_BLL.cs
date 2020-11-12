@@ -11,9 +11,9 @@ namespace ComputerStore.Business.Interface
     {
         List<NCC> LayDSNCC();
         void ThemNCC(NCC ncc);
-        void XoaNCC(int mancc);
+        void XoaNCC(string mancc);
         void SuaNCC(NCC ncc);
         List<NCC> TimNCC(NCC ncc);
-        NCC LayNCC(int mancc);
+        NCC LayNCC(string mancc);
     }
 }

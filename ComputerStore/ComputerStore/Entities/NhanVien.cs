@@ -6,7 +6,7 @@ namespace ComputerStore.Entities
 {
     public class NhanVien
     {
-        private int MaNV;
+        private string MaNV;
         private string TenNV;
         private string NgaySinh;
         private string GioiTinh;
@@ -17,7 +17,7 @@ namespace ComputerStore.Entities
         public NhanVien()
         {
         }
-        public NhanVien(int manv, string tennv, string ngaysinh, string gt, string diachi, string sdt, string loainv)
+        public NhanVien(string manv, string tennv, string ngaysinh, string gt, string diachi, string sdt, string loainv)
         {
             this.MaNV = manv;
             this.TenNV = tennv;
@@ -39,7 +39,7 @@ namespace ComputerStore.Entities
             this.LoaiNV = nv.LoaiNV;
         }
 
-        public int maNV
+        public string maNV
         {
             get
             {
@@ -47,7 +47,7 @@ namespace ComputerStore.Entities
             }
             set
             {
-                if (value > 0)
+                if (value != "")
                     MaNV = value;
             }
         }

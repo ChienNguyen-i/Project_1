@@ -97,7 +97,7 @@ namespace ComputerStore.Presenation
             IO.Writexy("--------------------------------------------------------------------------------------------------", 2, 7);
             Hien(1, 13, nhanvien.LayDSNhanVien(), 5, 0);
 
-            int manv;
+            string manv;
             string tennv;
             string ngaysinh;
             string gioitinh;
@@ -107,10 +107,12 @@ namespace ComputerStore.Presenation
 
             do
             {
-                manv = int.Parse(IO.ReadNumber(10, 4));
-                if (manv <= 0)
+                manv = IO.ReadString(10, 4);
+                if (manv == null)
                     IO.Writexy("Nhập lại mã nhân viên...", 5, 8, ConsoleColor.Black, ConsoleColor.White);
-            } while (manv <= 0);
+                else
+                    manv = CongCu.CatXau(manv.ToUpper());
+            } while (manv == null);
             NhanVien nv = nhanvien.LayNhanVien(manv);
             IO.Writexy(nv.tenNV, 26, 4);
             IO.Writexy(nv.ngaySinh, 62, 4);
@@ -196,7 +198,7 @@ namespace ComputerStore.Presenation
         }
         public void Xoa()
         {
-            int manv = 0;
+            string manv = "";
             do
             {
                 Console.Clear();
@@ -209,8 +211,8 @@ namespace ComputerStore.Presenation
                 Hien(1, 8, nhanvien.LayDSNhanVien(), 5, 0);
                 do
                 {
-                    manv = int.Parse(IO.ReadNumber(32, 4));
-                    if (manv <= 0)
+                    manv = IO.ReadString(32, 4);
+                    if (manv == null)
                     {
                         IO.Clear(5, 6, 30, ConsoleColor.Black);
                         IO.Writexy("Nhập lại mã nhân viên...", 5, 6, ConsoleColor.Black, ConsoleColor.White);
@@ -219,9 +221,10 @@ namespace ComputerStore.Presenation
                     {
                         IO.Clear(5, 8, 30, ConsoleColor.Black);
                         IO.Writexy("Enter để xóa, Esc để thoát...", 5, 6);
+                        manv = CongCu.CatXau(manv.ToUpper());
                         nhanvien.XoaNhanVien(manv);
                     }
-                } while (manv <= 0);
+                } while (manv == null);
                 Hien(1, 8, nhanvien.LayDSNhanVien(), 5, 1);
             } while (true);
         }
@@ -255,7 +258,8 @@ namespace ComputerStore.Presenation
                     }
                     else
                     {
-                        List<NhanVien> list = nhanvien.TimNhanVien(new NhanVien(0, CongCu.ChuanHoaXau(hoten), null, null, null, null, null));
+                        hoten = CongCu.ChuanHoaXau(hoten);
+                        List<NhanVien> list = nhanvien.TimNhanVien(new NhanVien(null, hoten, null, null, null, null, null));
                         Hien(1, 8, list, 5, 1);
                     }
                 } while (hoten == null);
@@ -263,7 +267,7 @@ namespace ComputerStore.Presenation
         }
         public void TimMa()
         {
-            int manv = 0;
+            string manv = "";
             do
             {
                 Console.Clear();
@@ -276,18 +280,19 @@ namespace ComputerStore.Presenation
                 Hien(1, 8, nhanvien.LayDSNhanVien(), 5, 0);
                 do
                 {
-                    manv = int.Parse(IO.ReadNumber(30, 4));
-                    if (manv <= 0)
+                    manv = IO.ReadString(30, 4);
+                    if (manv == null)
                     {
                         IO.Clear(5, 6, 30, ConsoleColor.Black);
                         IO.Writexy("Nhập lại mã nhân viên...", 5, 6, ConsoleColor.Black, ConsoleColor.White);
                     }
                     else
                     {
+                        manv = CongCu.CatXau(manv.ToUpper());
                         List<NhanVien> list = nhanvien.TimNhanVien(new NhanVien(manv, null, null, null, null, null, null));
                         Hien(1, 8, list, 5, 1);
                     }
-                } while (manv <= 0);
+                } while (manv == null);
             } while (true);
         }
         public void Hien(int xx, int yy, List<NhanVien> list, int n, int type)
@@ -313,7 +318,7 @@ namespace ComputerStore.Presenation
                 for (int i = head; i < final; i++)
                 {
                     IO.Writexy("│", x, y + d, 8);
-                    IO.Writexy(list[i].maNV.ToString(), x + 1, y + d, 8);
+                    IO.Writexy(list[i].maNV, x + 1, y + d, 8);
                     IO.Writexy("│", x + 8, y + d);
                     IO.Writexy(list[i].tenNV, x + 9, y + d, 24);
                     IO.Writexy("│", x + 32, y + d);

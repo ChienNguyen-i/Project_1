@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Text.RegularExpressions;
 
 namespace ComputerStore.Utility
 {
@@ -48,6 +49,19 @@ namespace ComputerStore.Utility
             s += " ";
             s = s.Substring(0, 2).ToUpper() + s.Substring(2);
             return s.Trim();
+        }
+        public static int TachSo(string input)
+        {
+            int i = 0;
+            string[] numbers = Regex.Split(input, @"\D+");
+            foreach (string value in numbers)
+            {
+                if (!string.IsNullOrEmpty(value))
+                {
+                    i = int.Parse(value);
+                }
+            }
+            return i;
         }
     }
 }

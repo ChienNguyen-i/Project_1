@@ -6,7 +6,7 @@ namespace ComputerStore.Entities
 {
     public class NCC
     {
-        private int MaNCC;
+        private string MaNCC;
         private string TenNCC;
         private string DiaChi;
         private string SoDT;
@@ -14,7 +14,7 @@ namespace ComputerStore.Entities
         public NCC()
         {
         }
-        public NCC(int mancc, string tenncc, string diachi, string sdt)
+        public NCC(string mancc, string tenncc, string diachi, string sdt)
         {
             this.MaNCC = mancc;
             this.TenNCC = tenncc;
@@ -30,7 +30,7 @@ namespace ComputerStore.Entities
             this.SoDT = ncc.SoDT;
         }
 
-        public int maNCC
+        public string maNCC
         {
             get
             {
@@ -38,7 +38,7 @@ namespace ComputerStore.Entities
             }
             set
             {
-                if (value > 0)
+                if (value != "")
                     MaNCC = value;
             }
         }

@@ -29,7 +29,7 @@ namespace ComputerStore.Business
             else
                 throw new Exception("Dữ liệu sai.");
         }
-        public NCC LayNCC(int mancc)
+        public NCC LayNCC(string mancc)
         {
             int i;
             List<NCC> list = nccDAL.GetData();
@@ -41,7 +41,7 @@ namespace ComputerStore.Business
             else
                 throw new Exception("Không tồn tại mã này.");
         }
-        public void XoaNCC(int mancc)
+        public void XoaNCC(string mancc)
         {
             int i;
             List<NCC> list = nccDAL.GetData();
@@ -76,19 +76,19 @@ namespace ComputerStore.Business
         {
             List<NCC> list = nccDAL.GetData();
             List<NCC> kq = new List<NCC>();
-            if (ncc.maNCC == 0 && ncc.tenNCC == null)
+            if (ncc.maNCC == null && ncc.tenNCC == null)
             {
                 kq = list;
             }
             //Tìm theo tên
-            if (ncc.tenNCC != null && ncc.maNCC == 0)
+            if (ncc.tenNCC != null && ncc.maNCC == null)
             {
                 for (int i = 0; i < list.Count; ++i)
                     if (list[i].tenNCC.IndexOf(ncc.tenNCC) >= 0)
                         kq.Add(new NCC(list[i]));
             }
             //Tìm theo mã
-            else if (ncc.tenNCC == null && ncc.maNCC > 0)
+            else if (ncc.tenNCC == null && ncc.maNCC != null)
             {
                 for (int i = 0; i < list.Count; ++i)
                     if (list[i].maNCC == ncc.maNCC)

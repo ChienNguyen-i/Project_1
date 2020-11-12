@@ -70,17 +70,19 @@ namespace ComputerStore.Presenation
             IO.Writexy("--------------------------------------------------------------------------------------------------", 2, 7);
             Hien(1, 13, nhacc.LayDSNCC(), 5, 0);
 
-            int mancc;
+            string mancc;
             string tenncc;
             string diachi;
             string sdt;
 
             do
             {
-                mancc = int.Parse(IO.ReadNumber(13, 4));
-                if (mancc <= 0)
+                mancc = IO.ReadString(13, 4);
+                if (mancc == null)
                     IO.Writexy("Nhập lại mã nhà cung cấp...", 5, 8, ConsoleColor.Black, ConsoleColor.White);
-            } while (mancc <= 0);
+                else
+                    mancc = CongCu.CatXau(mancc.ToUpper());
+            } while (mancc == null);
             NCC ncc = nhacc.LayNCC(mancc);
             IO.Writexy(ncc.tenNCC, 58, 4);
             IO.Writexy(ncc.diaChi, 14, 6);
@@ -129,7 +131,7 @@ namespace ComputerStore.Presenation
         }
         public void Xoa()
         {
-            int mancc = 0;
+            string mancc = "";
             do
             {
                 Console.Clear();
@@ -142,8 +144,8 @@ namespace ComputerStore.Presenation
                 Hien(1, 8, nhacc.LayDSNCC(), 5, 0);
                 do
                 {
-                    mancc = int.Parse(IO.ReadNumber(35, 4));
-                    if (mancc <= 0)
+                    mancc = IO.ReadString(35, 4);
+                    if (mancc == null)
                     {
                         IO.Clear(5, 6, 30, ConsoleColor.Black);
                         IO.Writexy("Nhập lại mã nhà cung cấp...", 5, 6, ConsoleColor.Black, ConsoleColor.White);
@@ -152,9 +154,10 @@ namespace ComputerStore.Presenation
                     {
                         IO.Clear(5, 8, 30, ConsoleColor.Black);
                         IO.Writexy("Enter để xóa, Esc để thoát...", 5, 6);
+                        mancc = CongCu.CatXau(mancc.ToUpper());
                         nhacc.XoaNCC(mancc);
                     }
-                } while (mancc <= 0);
+                } while (mancc == null);
                 Hien(1, 8, nhacc.LayDSNCC(), 5, 1);
             } while (true);
         }
@@ -188,7 +191,8 @@ namespace ComputerStore.Presenation
                     }
                     else
                     {
-                        List<NCC> list = nhacc.TimNCC(new NCC(0, CongCu.ChuanHoaXau(tenncc), null, null));
+                        tenncc = CongCu.ChuanHoaXau(tenncc);
+                        List<NCC> list = nhacc.TimNCC(new NCC(null, tenncc, null, null));
                         Hien(1, 8, list, 5, 1);
                     }
                 } while (tenncc == null);
@@ -196,7 +200,7 @@ namespace ComputerStore.Presenation
         }
         public void TimMa()
         {
-            int mancc = 0;
+            string mancc = "";
             do
             {
                 Console.Clear();
@@ -209,18 +213,19 @@ namespace ComputerStore.Presenation
                 Hien(1, 8, nhacc.LayDSNCC(), 5, 0);
                 do
                 {
-                    mancc = int.Parse(IO.ReadNumber(33, 4));
-                    if (mancc <= 0)
+                    mancc = IO.ReadString(33, 4);
+                    if (mancc == null)
                     {
                         IO.Clear(5, 6, 30, ConsoleColor.Black);
                         IO.Writexy("Nhập lại mã nhà cung cấp...", 5, 6, ConsoleColor.Black, ConsoleColor.White);
                     }
                     else
                     {
+                        mancc = CongCu.CatXau(mancc.ToUpper());
                         List<NCC> list = nhacc.TimNCC(new NCC(mancc, null, null, null));
                         Hien(1, 8, list, 5, 1);
                     }
-                } while (mancc <= 0);
+                } while (mancc == null);
             } while (true);
         }
         public void Hien(int xx, int yy, List<NCC> list, int n, int type)
@@ -246,7 +251,7 @@ namespace ComputerStore.Presenation
                 for (int i = head; i < final; i++)
                 {
                     IO.Writexy("│", x, y + d, 9);
-                    IO.Writexy(list[i].maNCC.ToString(), x + 1, y + d, 9);
+                    IO.Writexy(list[i].maNCC, x + 1, y + d, 9);
                     IO.Writexy("│", x + 9, y + d);
                     IO.Writexy(list[i].tenNCC, x + 10, y + d, 24);
                     IO.Writexy("│", x + 33, y + d);

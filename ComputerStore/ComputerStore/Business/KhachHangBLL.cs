@@ -29,7 +29,7 @@ namespace ComputerStore.Business
             else
                 throw new Exception("Dữ liệu sai.");
         }
-        public KhachHang LayKhachHang(int makh)
+        public KhachHang LayKhachHang(string makh)
         {
             int i;
             List<KhachHang> list = khDAL.GetData();
@@ -41,7 +41,7 @@ namespace ComputerStore.Business
             else
                 throw new Exception("Không tồn tại mã này.");
         }
-        public void XoaKhachHang(int makh)
+        public void XoaKhachHang(string makh)
         {
             int i;
             List<KhachHang> list = khDAL.GetData();
@@ -76,19 +76,19 @@ namespace ComputerStore.Business
         {
             List<KhachHang> list = khDAL.GetData();
             List<KhachHang> kq = new List<KhachHang>();
-            if (kh.maKH == 0 && kh.tenKH == null)
+            if (kh.maKH == null && kh.tenKH == null)
             {
                 kq = list;
             }
             //Tìm theo tên
-            if (kh.tenKH != null && kh.maKH == 0)
+            if (kh.tenKH != null && kh.maKH == null)
             {
                 for (int i = 0; i < list.Count; ++i)
                     if (list[i].tenKH.IndexOf(kh.tenKH) >= 0)
                         kq.Add(new KhachHang(list[i]));
             }
             //Tìm theo mã
-            else if (kh.tenKH == null && kh.maKH > 0)
+            else if (kh.tenKH == null && kh.maKH != null)
             {
                 for (int i = 0; i < list.Count; ++i)
                     if (list[i].maKH == kh.maKH)

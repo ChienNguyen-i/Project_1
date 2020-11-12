@@ -11,9 +11,9 @@ namespace ComputerStore.Business.Interface
     {
         List<MayTinh> LayDSMayTinh();
         void ThemMayTinh(MayTinh mt);
-        void XoaMayTinh(int mamt);
+        void XoaMayTinh(string mamt);
         void SuaMayTinh(MayTinh mt);
         List<MayTinh> TimMayTinh(MayTinh mt);
-        MayTinh LayMayTinh(int mamt);
+        MayTinh LayMayTinh(string mamt);
     }
 }

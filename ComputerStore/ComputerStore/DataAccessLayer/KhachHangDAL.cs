@@ -22,14 +22,14 @@ namespace ComputerStore.DataAccessLayer
                 {
                     s = CongCu.CatXau(s);
                     string[] a = s.Split('\t');
-                    list.Add(new KhachHang(int.Parse(a[0]), a[1], a[2], a[3]));
+                    list.Add(new KhachHang(a[0], a[1], a[2], a[3]));
                 }
                 s = sr.ReadLine();
             }
             sr.Close();
             return list;
         }
-        public int maKH
+        public string maKH
         {
             get
             {
@@ -44,21 +44,20 @@ namespace ComputerStore.DataAccessLayer
                 }
                 sr.Close();
                 if (tmp == "")
-                    return 0;
+                    return "KH0";
                 else
                 {
-                    tmp = CongCu.ChuanHoaXau(tmp);
                     string[] a = tmp.Split('\t');
-                    return int.Parse(a[0]);
+                    return a[0];
                 }
             }
         }
         public void Insert(KhachHang kh)
         {
-            int makh = maKH + 1;
+            int makh = CongCu.TachSo(maKH) + 1;
             StreamWriter sw = File.AppendText(txtfile);
             sw.WriteLine();
-            sw.Write(makh + "\t" + kh.tenKH + "\t" + kh.diaChi + "\t" + kh.soDT);
+            sw.Write("KH" + makh + "\t" + kh.tenKH + "\t" + kh.diaChi + "\t" + kh.soDT);
             sw.Close();
         }
         public void Update(List<KhachHang> list)

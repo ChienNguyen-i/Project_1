@@ -23,14 +23,14 @@ namespace ComputerStore.DataAccessLayer
                 {
                     s = CongCu.CatXau(s);
                     string[] a = s.Split('\t');
-                    list.Add(new NhanVien(int.Parse(a[0]), a[1], a[2], a[3], a[4], a[5], a[6]));
+                    list.Add(new NhanVien(a[0], a[1], a[2], a[3], a[4], a[5], a[6]));
                 }
                 s = sr.ReadLine();
             }
             sr.Close();
             return list;
         }
-        public int maNV
+        public string maNV
         {
             get
             {
@@ -45,21 +45,20 @@ namespace ComputerStore.DataAccessLayer
                 }
                 sr.Close();
                 if (tmp == "")
-                    return 0;
+                    return "NV0";
                 else
                 {
-                    tmp = CongCu.ChuanHoaXau(tmp);
                     string[] a = tmp.Split('\t');
-                    return int.Parse(a[0]);
+                    return a[0];
                 }
             }
         }
         public void Insert(NhanVien nv)
         {
-            int manv = maNV + 1;
+            int manv = CongCu.TachSo(maNV) + 1;
             StreamWriter sw = File.AppendText(txtfile);
             sw.WriteLine();
-            sw.Write(manv + "\t" + nv.tenNV + "\t"+ nv.ngaySinh + "\t" + nv.gioiTinh + "\t" + nv.diaChi + "\t" + nv.soDT + "\t" + nv.loaiNV);
+            sw.Write("NV" + manv + "\t" + nv.tenNV + "\t"+ nv.ngaySinh + "\t" + nv.gioiTinh + "\t" + nv.diaChi + "\t" + nv.soDT + "\t" + nv.loaiNV);
             sw.Close();
         }        
         public void Update(List<NhanVien> list)

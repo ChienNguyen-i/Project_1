@@ -7,16 +7,16 @@ namespace ComputerStore.Entities
 {
     public class MayTinh
     {
-        private int MaMT;
+        private string MaMT;
         private string TenMT;
-        private int MaNCC;
+        private string MaNCC;
         private int SLNhap;
         private int SLCon;
 
         public MayTinh()
         {
         }
-        public MayTinh(int mamt, string tenmt, int mancc, int sln, int slc)
+        public MayTinh(string mamt, string tenmt, string mancc, int sln, int slc)
         {
             this.MaMT = mamt;
             this.TenMT = tenmt;
@@ -34,7 +34,7 @@ namespace ComputerStore.Entities
             this.SLCon = mt.SLCon;
         }
 
-        public int maMT
+        public string maMT
         {
             get
             {
@@ -42,7 +42,7 @@ namespace ComputerStore.Entities
             }
             set
             {
-                if (value > 0)
+                if (value != "")
                     MaMT = value;
             }
         }
@@ -58,7 +58,7 @@ namespace ComputerStore.Entities
                     TenMT = value;
             }
         }
-        public int maNCC
+        public string maNCC
         {
             get
             {
@@ -66,8 +66,8 @@ namespace ComputerStore.Entities
             }
             set
             {
-                if (value > 0)
-                    MaNCC = value;
+                if (value != "")
+                        MaNCC = value;
             }
         }
         public int sLNhap

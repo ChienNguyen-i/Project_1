@@ -19,15 +19,18 @@ namespace ComputerStore.Business
         }
         public void ThemHDBan(HDBan hdb)
         {
-            if (hdb.ngayBan != "")
+            if (hdb.maNV != "" && hdb.maKH != "" && hdb.maMT != "" && hdb.ngayBan != "")
             {
+                hdb.maNV = CongCu.CatXau(hdb.maNV);
+                hdb.maKH = CongCu.CatXau(hdb.maKH);
+                hdb.maMT = CongCu.CatXau(hdb.maMT);
                 hdb.ngayBan = CongCu.CatXau(hdb.ngayBan);
                 hdbDAL.Insert(hdb);
             }
             else
                 throw new Exception("Dữ liệu sai.");
         }
-        public HDBan LayHDBan(int mahdb)
+        public HDBan LayHDBan(string mahdb)
         {
             int i;
             List<HDBan> list = hdbDAL.GetData();
@@ -39,7 +42,7 @@ namespace ComputerStore.Business
             else
                 throw new Exception("Không tồn tại mã này.");
         }
-        public void XoaHDBan(int mahdb)
+        public void XoaHDBan(string mahdb)
         {
             int i;
             List<HDBan> list = hdbDAL.GetData();
@@ -74,12 +77,12 @@ namespace ComputerStore.Business
         {
             List<HDBan> list = hdbDAL.GetData();
             List<HDBan> kq = new List<HDBan>();
-            if (hdb.maHDB == 0)
+            if (hdb.maHDB == null)
             {
                 kq = list;
             }
             //Tìm theo mã
-            if (hdb.maHDB > 0)
+            if (hdb.maHDB != null)
             {
                 for (int i = 0; i < list.Count; ++i)
                     if (list[i].maHDB == hdb.maHDB)
