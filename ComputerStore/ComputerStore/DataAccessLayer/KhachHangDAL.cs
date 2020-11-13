@@ -10,7 +10,7 @@ namespace ComputerStore.DataAccessLayer
 {
     class KhachHangDAL : IKhachHangDAL
     {
-        private string txtfile = @"D:\GITHUB\Project_1\ComputerStore\ComputerStore\Data\KhachHang.txt";
+        private string txtfile = "Data/KhachHang.txt";
         public List<KhachHang> GetData()
         {
             List<KhachHang> list = new List<KhachHang>();

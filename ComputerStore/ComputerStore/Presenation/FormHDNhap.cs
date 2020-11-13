@@ -70,14 +70,20 @@ namespace ComputerStore.Presenation
                 {
                     hdn.soLuong = int.Parse(IO.ReadNumber(13, 6));
                     if (hdn.soLuong <= 0)
+                    {
                         IO.Writexy("Nhập lại số lượng...", 5, 8, ConsoleColor.Black, ConsoleColor.White);
+                        IO.Clear(12, 6, 16, ConsoleColor.Black);
+                    }
                 } while (hdn.soLuong <= 0);
                 IO.Clear(4, 8, 30, ConsoleColor.Black);
                 do
                 {
                     hdn.donGia = double.Parse(IO.ReadNumber(42, 6));
                     if (hdn.donGia <= 0)
+                    {
                         IO.Writexy("Nhập lại đơn giá...", 5, 8, ConsoleColor.Black, ConsoleColor.White);
+                        IO.Clear(41, 6, 16, ConsoleColor.Black);
+                    }
                 } while (hdn.donGia <= 0);
                 IO.Clear(4, 8, 30, ConsoleColor.Black);
                 IO.Writexy(hdn.tongTien.ToString(), 79, 6);
@@ -188,7 +194,10 @@ namespace ComputerStore.Presenation
             {
                 soluong = int.Parse(IO.ReadNumber(38, 6));
                 if (soluong <= 0)
+                {
                     IO.Writexy("Nhập lại số lượng...", 5, 8, ConsoleColor.Black, ConsoleColor.White);
+                    IO.Clear(37, 6, 12, ConsoleColor.Black);
+                }
                 else if (soluong != hdn.soLuong && soluong > 0)
                     hdn.soLuong = soluong;
             } while (soluong <= 0);
@@ -197,8 +206,11 @@ namespace ComputerStore.Presenation
             {
                 dongia = double.Parse(IO.ReadNumber(59, 6));
                 if (dongia <= 0)
+                {
                     IO.Writexy("Nhập lại đơn giá...", 5, 8, ConsoleColor.Black, ConsoleColor.White);
-                if (dongia != hdn.donGia && dongia > 0)
+                    IO.Clear(58, 6, 14, ConsoleColor.Black);
+                }
+                else if (dongia != hdn.donGia && dongia > 0)
                     hdn.donGia = dongia;
             } while (dongia <= 0);
             IO.Clear(4, 8, 30, ConsoleColor.Black);

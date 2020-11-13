@@ -47,14 +47,20 @@ namespace ComputerStore.Presenation
                 {
                     mt.sLNhap = int.Parse(IO.ReadNumber(20, 6));
                     if (mt.sLNhap <= 0)
+                    {
                         IO.Writexy("Nhập lại số lượng nhập...", 5, 8, ConsoleColor.Black, ConsoleColor.White);
+                        IO.Clear(19, 6, 20, ConsoleColor.Black);
+                    }
                 } while (mt.sLNhap <= 0);
                 IO.Clear(4, 8, 30, ConsoleColor.Black);
                 do
                 {
                     mt.sLCon = int.Parse(IO.ReadNumber(71, 6));
                     if (mt.sLCon < 0)
+                    {
                         IO.Writexy("Nhập lại số lượng còn...", 5, 8, ConsoleColor.Black, ConsoleColor.White);
+                        IO.Clear(70, 6, 20, ConsoleColor.Black);
+                    }
                 } while (mt.sLCon < 0);
 
                 IO.Clear(4, 8, 30, ConsoleColor.Black);
@@ -130,7 +136,10 @@ namespace ComputerStore.Presenation
             {
                 sln = int.Parse(IO.ReadNumber(47, 6));
                 if (sln <= 0)
+                {
                     IO.Writexy("Nhập lại số lượng nhập...", 5, 8, ConsoleColor.Black, ConsoleColor.White);
+                    IO.Clear(46, 6, 16, ConsoleColor.Black);
+                }
                 else if (sln != mt.sLNhap && sln > 0)
                     mt.sLNhap = sln;
             } while (sln <= 0);
@@ -139,7 +148,10 @@ namespace ComputerStore.Presenation
             {
                 slc = int.Parse(IO.ReadNumber(77, 6));
                 if (slc <= 0)
+                {
                     IO.Writexy("Nhập lại số lượng còn...", 5, 8, ConsoleColor.Black, ConsoleColor.White);
+                    IO.Clear(76, 6, 20, ConsoleColor.Black);
+                }
                 else if (slc != mt.sLCon && slc >= 0)
                     mt.sLCon = slc;
             } while (slc <= 0);

@@ -43,7 +43,10 @@ namespace ComputerStore.Presenation
                 {
                     kh.soDT = IO.ReadNumber(64, 6);
                     if (kh.soDT == null || kh.soDT.Length < 10 || kh.soDT.Length > 10)
+                    {
                         IO.Writexy("Nhập lại số điện thoại...", 5, 8, ConsoleColor.Black, ConsoleColor.White);
+                        IO.Clear(63, 6, 36, ConsoleColor.Black);
+                    }
                 } while (kh.soDT == null || kh.soDT.Length < 10 || kh.soDT.Length > 10);
                 
                 IO.Clear(4, 8, 30, ConsoleColor.Black);
@@ -111,11 +114,14 @@ namespace ComputerStore.Presenation
             do
             {
                 sdt = IO.ReadNumber(65, 6);
-                if (sdt == null)
+                if (sdt == null || sdt.Length < 10 || sdt.Length > 10)
+                {
                     IO.Writexy("Nhập lại số điện thoại...", 5, 8, ConsoleColor.Black, ConsoleColor.White);
+                    IO.Clear(64, 6, 35, ConsoleColor.Black);
+                }
                 else if (sdt != kh.soDT && sdt != null)
                     kh.soDT = CongCu.CatXau(sdt);
-            } while (sdt == null);
+            } while (sdt == null || sdt.Length < 10 || sdt.Length > 10);
 
             IO.Clear(4, 8, 30, ConsoleColor.Black);
             IO.Writexy("Enter để cập nhật, Esc để thoát...", 5, 8);

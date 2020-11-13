@@ -42,7 +42,10 @@ namespace ComputerStore.Presenation
                 {
                     ncc.soDT = IO.ReadNumber(55, 6);
                     if (ncc.soDT == null || ncc.soDT.Length < 10 || ncc.soDT.Length > 10)
+                    {
                         IO.Writexy("Nhập lại số điện thoại...", 5, 8, ConsoleColor.Black, ConsoleColor.White);
+                        IO.Clear(54, 6, 45, ConsoleColor.Black);
+                    }
                 } while (ncc.soDT == null || ncc.soDT.Length < 10 || ncc.soDT.Length > 10);
                 
                 IO.Clear(4, 8, 30, ConsoleColor.Black);
@@ -111,7 +114,10 @@ namespace ComputerStore.Presenation
             {
                 sdt = IO.ReadNumber(55, 6);
                 if (sdt == null || sdt.Length < 10 || sdt.Length > 10)
+                {
                     IO.Writexy("Nhập lại số điện thoại...", 5, 8, ConsoleColor.Black, ConsoleColor.White);
+                    IO.Clear(54, 6, 45, ConsoleColor.Black);
+                }
                 else if (sdt != ncc.soDT && sdt != null)
                     ncc.soDT = CongCu.CatXau(sdt);
             } while (sdt == null || sdt.Length < 10 || sdt.Length > 10);

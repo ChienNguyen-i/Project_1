@@ -52,14 +52,20 @@ namespace ComputerStore.Presenation
                 {
                     nv.gioiTinh = IO.ReadString(16, 6);
                     if (nv.gioiTinh == null || KTraGT(nv.gioiTinh) == false)
+                    {
                         IO.Writexy("Nhập lại giới tính...", 5, 8, ConsoleColor.Black, ConsoleColor.White);
+                        IO.Clear(15, 6, 10, ConsoleColor.Black);
+                    }
                 } while (nv.gioiTinh == null || KTraGT(nv.gioiTinh) == false);
                 IO.Clear(4, 8, 30, ConsoleColor.Black);
                 do
                 {
                     nv.soDT = IO.ReadNumber(41, 6);
                     if (nv.soDT == null || nv.soDT.Length < 10 || nv.soDT.Length > 10)
+                    {
                         IO.Writexy("Nhập lại số điện thoại...", 5, 8, ConsoleColor.Black, ConsoleColor.White);
+                        IO.Clear(40, 6, 15, ConsoleColor.Black);
+                    }
                 } while (nv.soDT == null || nv.soDT.Length < 10 || nv.soDT.Length > 10);
                 IO.Clear(4, 8, 30, ConsoleColor.Black);
                 do
@@ -144,7 +150,10 @@ namespace ComputerStore.Presenation
             {
                 gioitinh = IO.ReadString(91, 4);
                 if (gioitinh == null || KTraGT(gioitinh) == false)
+                {
                     IO.Writexy("Nhập lại giới tính...", 5, 8, ConsoleColor.Black, ConsoleColor.White);
+                    IO.Clear(90, 4, 9, ConsoleColor.Black);
+                }
                 else if (gioitinh != nv.gioiTinh && gioitinh != null)
                     nv.gioiTinh = CongCu.ChuanHoaXau(gioitinh);
             } while (gioitinh == null || KTraGT(gioitinh) == false);
@@ -161,16 +170,19 @@ namespace ComputerStore.Presenation
             do
             {
                 sdt = IO.ReadNumber(47, 6);
-                if (sdt == null)
+                if (sdt == null || sdt.Length < 10 || sdt.Length > 10)
+                {
                     IO.Writexy("Nhập lại số điện thoại...", 5, 8, ConsoleColor.Black, ConsoleColor.White);
+                    IO.Clear(46, 6, 18, ConsoleColor.Black);
+                }
                 else if (sdt != nv.soDT && sdt != null)
                     nv.soDT = CongCu.CatXau(sdt);
-            } while (sdt == null);
+            } while (sdt == null || sdt.Length < 10 || sdt.Length > 10);
             IO.Clear(4, 8, 30, ConsoleColor.Black);
             do
             {
                 loainv = IO.ReadString(81, 6);
-                if (tennv == null)
+                if (loainv == null)
                     IO.Writexy("Nhập lại loại nhân viên...", 5, 8, ConsoleColor.Black, ConsoleColor.White);
                 else if (loainv != nv.loaiNV && loainv != null)
                     nv.loaiNV = CongCu.HoaDau_1(loainv);

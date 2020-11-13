@@ -10,7 +10,7 @@ namespace ComputerStore.DataAccessLayer
 {
     class HDBanDAL : IHDBanDAL
     {
-        private string txtfile = @"D:\GITHUB\Project_1\ComputerStore\ComputerStore\Data\HDBan.txt";
+        private string txtfile = "Data/HDBan.txt";
         public List<HDBan> GetData()
         {
             List<HDBan> list = new List<HDBan>();
