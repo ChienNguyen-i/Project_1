@@ -98,5 +98,39 @@ namespace ComputerStore.Business
                 kq = null;
             return kq;
         }
+        public bool KT_MaNCC(string mancc)
+        {
+            List<NCC> list = nccDAL.GetData();
+            Node<NCC> tmp = list.Head;
+            bool kt = false;
+            while (tmp != null)
+            {
+                if (tmp.Info.maNCC == mancc)
+                {
+                    kt = true;
+                    break;
+                }
+                else
+                    tmp = tmp.Link;
+            }
+            return kt;
+        }
+        public bool KT_TenNCC(string tenncc)
+        {
+            List<NCC> list = nccDAL.GetData();
+            Node<NCC> tmp = list.Head;
+            bool kt = false;
+            while (tmp != null)
+            {
+                if (tmp.Info.tenNCC == tenncc)
+                {
+                    kt = true;
+                    break;
+                }
+                else
+                    tmp = tmp.Link;
+            }
+            return kt;
+        }
     }
 }

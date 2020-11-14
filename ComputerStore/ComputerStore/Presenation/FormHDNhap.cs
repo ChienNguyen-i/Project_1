@@ -41,7 +41,7 @@ namespace ComputerStore.Presenation
                     if (hdn.maNV == null)
                         IO.Writexy("Nhập lại mã nhân viên...", 5, 8, ConsoleColor.Black, ConsoleColor.White);
                 } while (hdn.maNV == null);
-                IO.Clear(4, 8, 30, ConsoleColor.Black);
+                IO.Clear(4, 8, 60, ConsoleColor.Black);
                 fncc.Hien(1, 13, nhacc.LayDSNCC(), 5, 0);
                 do
                 {
@@ -49,7 +49,7 @@ namespace ComputerStore.Presenation
                     if (hdn.maNCC == null)
                         IO.Writexy("Nhập lại mã nhà cung cấp...", 5, 8, ConsoleColor.Black, ConsoleColor.White);
                 } while (hdn.maNCC == null);
-                IO.Clear(4, 8, 30, ConsoleColor.Black);
+                IO.Clear(4, 8, 60, ConsoleColor.Black);
                 fmt.Hien(1, 13, maytinh.LayDSMayTinh(), 5, 0);
                 do
                 {
@@ -57,15 +57,17 @@ namespace ComputerStore.Presenation
                     if (hdn.maMT == null)
                         IO.Writexy("Nhập lại mã máy tính...", 5, 8, ConsoleColor.Black, ConsoleColor.White);
                 } while (hdn.maMT == null);
-                IO.Clear(4, 8, 30, ConsoleColor.Black);
+                IO.Clear(4, 8, 60, ConsoleColor.Black);
                 Hien(1, 13, hdnhap.LayDSHDNhap(), 5, 0);
+                IO.Writexy("Nhập ngày nhập định dạng 'dd/MM/yyyy'...", 5, 9, ConsoleColor.Black, ConsoleColor.White);
                 do
                 {
                     hdn.ngayNhap = IO.ReadString(86, 4);
                     if (hdn.ngayNhap == null)
                         IO.Writexy("Nhập lại ngày nhập...", 5, 8, ConsoleColor.Black, ConsoleColor.White);
                 } while (hdn.ngayNhap == null);
-                IO.Clear(4, 8, 30, ConsoleColor.Black);
+                IO.Clear(4, 9, 60, ConsoleColor.Black);
+                IO.Clear(4, 8, 60, ConsoleColor.Black);
                 do
                 {
                     hdn.soLuong = int.Parse(IO.ReadNumber(13, 6));
@@ -75,7 +77,7 @@ namespace ComputerStore.Presenation
                         IO.Clear(12, 6, 16, ConsoleColor.Black);
                     }
                 } while (hdn.soLuong <= 0);
-                IO.Clear(4, 8, 30, ConsoleColor.Black);
+                IO.Clear(4, 8, 60, ConsoleColor.Black);
                 do
                 {
                     hdn.donGia = double.Parse(IO.ReadNumber(42, 6));
@@ -85,10 +87,10 @@ namespace ComputerStore.Presenation
                         IO.Clear(41, 6, 16, ConsoleColor.Black);
                     }
                 } while (hdn.donGia <= 0);
-                IO.Clear(4, 8, 30, ConsoleColor.Black);
+                IO.Clear(4, 8, 60, ConsoleColor.Black);
                 IO.Writexy(hdn.tongTien.ToString(), 79, 6);
 
-                IO.Clear(4, 8, 30, ConsoleColor.Black);
+                IO.Clear(4, 8, 60, ConsoleColor.Black);
                 IO.Writexy("Enter để nhập, Esc để thoát...", 5, 8);
                 Console.SetCursorPosition(35, 8);
                 ConsoleKeyInfo kt = Console.ReadKey();
@@ -96,6 +98,8 @@ namespace ComputerStore.Presenation
                     HienChucNang();
                 else if (kt.Key == ConsoleKey.Enter)
                 {
+                    IO.Clear(4, 8, 60, ConsoleColor.Black);
+                    IO.Writexy("Hóa đơn nhập đã được thêm...", 5, 8);
                     hdnhap.ThemHDNhap(hdn);
                     Hien(1, 13, hdnhap.LayDSHDNhap(), 5, 1);
                 }
@@ -103,131 +107,136 @@ namespace ComputerStore.Presenation
         }
         public void Sua()
         {
-            IHDNhapBLL hdnhap = new HDNhapBLL();
-            INhanVienBLL nhanvien = new NhanVienBLL();
-            INCC_BLL nhacc = new NCC_BLL();
-            IMayTinhBLL maytinh = new MayTinhBLL();
-            FormNhanVien fnv = new FormNhanVien();
-            FormNCC fncc = new FormNCC();
-            FormMayTinh fmt = new FormMayTinh();
+            do
+            {
+                IHDNhapBLL hdnhap = new HDNhapBLL();
+                INhanVienBLL nhanvien = new NhanVienBLL();
+                INCC_BLL nhacc = new NCC_BLL();
+                IMayTinhBLL maytinh = new MayTinhBLL();
+                FormNhanVien fnv = new FormNhanVien();
+                FormNCC fncc = new FormNCC();
+                FormMayTinh fmt = new FormMayTinh();
 
-            Console.Clear();
-            IO.BoxTitle("                               CẬP NHẬT THÔNG TIN HÓA ĐƠN NHẬP", 1, 1, 10, 100);
-            IO.Writexy("Mã HD nhập:", 3, 4);
-            IO.Writexy("Mã nhân viên:", 23, 4);
-            IO.Writexy("Mã nhà cung cấp:", 50, 4);
-            IO.Writexy("Mã máy tính:", 76, 4);
-            IO.Writexy("Ngày nhập:", 3, 6);
-            IO.Writexy("Số lượng:", 28, 6);
-            IO.Writexy("Đơn giá:", 50, 6);
-            IO.Writexy("Tổng tiền:", 74, 6);
-            IO.Writexy("--------------------------------------------------------------------------------------------------", 2, 7);
-            Hien(1, 13, hdnhap.LayDSHDNhap(), 5, 0);
+                Console.Clear();
+                IO.BoxTitle("                               CẬP NHẬT THÔNG TIN HÓA ĐƠN NHẬP", 1, 1, 10, 100);
+                IO.Writexy("Mã HD nhập:", 3, 4);
+                IO.Writexy("Mã nhân viên:", 23, 4);
+                IO.Writexy("Mã nhà cung cấp:", 50, 4);
+                IO.Writexy("Mã máy tính:", 76, 4);
+                IO.Writexy("Ngày nhập:", 3, 6);
+                IO.Writexy("Số lượng:", 28, 6);
+                IO.Writexy("Đơn giá:", 50, 6);
+                IO.Writexy("Tổng tiền:", 74, 6);
+                IO.Writexy("--------------------------------------------------------------------------------------------------", 2, 7);
+                Hien(1, 13, hdnhap.LayDSHDNhap(), 5, 0);
 
-            string mahdn;
-            string manv;
-            string mancc;
-            string mamt;
-            string ngaynhap;
-            int soluong;
-            double dongia;
+                string mahdn;
+                string manv;
+                string mancc;
+                string mamt;
+                string ngaynhap;
+                int soluong;
+                double dongia;
 
-            do
-            {
-                mahdn = IO.ReadString(15, 4);
-                if (mahdn == null)
-                    IO.Writexy("Nhập lại mã hóa đơn nhập...", 5, 8, ConsoleColor.Black, ConsoleColor.White);
-                else
-                    mahdn = CongCu.CatXau(mahdn.ToUpper());
-            } while (mahdn == null);
-            HDNhap hdn = hdnhap.LayHDNhap(mahdn);
-            IO.Writexy(hdn.maNV.ToString(), 37, 4);
-            IO.Writexy(hdn.maNCC.ToString(), 67, 4);
-            IO.Writexy(hdn.maMT.ToString(), 89, 4);
-            IO.Writexy(hdn.ngayNhap, 14, 6);
-            IO.Writexy(hdn.soLuong.ToString(), 38, 6);
-            IO.Writexy(hdn.donGia.ToString(), 59, 6);
-            IO.Writexy(hdn.tongTien.ToString(), 85, 6);
-
-            IO.Clear(4, 8, 30, ConsoleColor.Black);
-            fnv.Hien(1, 13, nhanvien.LayDSNhanVien(), 5, 0);
-            do
-            {
-                manv = IO.ReadString(37, 4);
-                if (manv == null)
-                    IO.Writexy("Nhập lại mã nhân viên...", 5, 8, ConsoleColor.Black, ConsoleColor.White);
-                else if (manv != hdn.maNV && manv != null)
-                    hdn.maNV = CongCu.CatXau(manv.ToUpper());
-            } while (manv == null);
-            IO.Clear(4, 8, 30, ConsoleColor.Black);
-            fncc.Hien(1, 13, nhacc.LayDSNCC(), 5, 0);
-            do
-            {
-                mancc = IO.ReadString(67, 4);
-                if (mancc == null)
-                    IO.Writexy("Nhập lại mã nhà cung cấp...", 5, 8, ConsoleColor.Black, ConsoleColor.White);
-                else if (mancc != hdn.maNCC && mancc != null)
-                    hdn.maNCC = CongCu.CatXau(mancc.ToUpper());
-            } while (mancc == null);
-            IO.Clear(4, 8, 30, ConsoleColor.Black);
-            fmt.Hien(1, 13, maytinh.LayDSMayTinh(), 5, 0);
-            do
-            {
-                mamt = IO.ReadString(89, 4);
-                if (mamt == null)
-                    IO.Writexy("Nhập lại mã máy tính...", 5, 8, ConsoleColor.Black, ConsoleColor.White);
-                else if (mamt != hdn.maMT && mamt != null)
-                    hdn.maMT = CongCu.CatXau(mamt.ToUpper());
-            } while (mamt == null);
-            IO.Clear(4, 8, 30, ConsoleColor.Black);
-            Hien(1, 13, hdnhap.LayDSHDNhap(), 5, 0);
-            do
-            {
-                ngaynhap = IO.ReadString(14, 6);
-                if (ngaynhap == null)
-                    IO.Writexy("Nhập lại ngày nhập...", 5, 8, ConsoleColor.Black, ConsoleColor.White);
-                else if (ngaynhap != hdn.ngayNhap && ngaynhap != null)
-                    hdn.ngayNhap = CongCu.CatXau(ngaynhap);
-            } while (ngaynhap == null);
-            IO.Clear(4, 8, 30, ConsoleColor.Black);
-            do
-            {
-                soluong = int.Parse(IO.ReadNumber(38, 6));
-                if (soluong <= 0)
+                do
                 {
-                    IO.Writexy("Nhập lại số lượng...", 5, 8, ConsoleColor.Black, ConsoleColor.White);
-                    IO.Clear(37, 6, 12, ConsoleColor.Black);
-                }
-                else if (soluong != hdn.soLuong && soluong > 0)
-                    hdn.soLuong = soluong;
-            } while (soluong <= 0);
-            IO.Clear(4, 8, 30, ConsoleColor.Black);
-            do
-            {
-                dongia = double.Parse(IO.ReadNumber(59, 6));
-                if (dongia <= 0)
-                {
-                    IO.Writexy("Nhập lại đơn giá...", 5, 8, ConsoleColor.Black, ConsoleColor.White);
-                    IO.Clear(58, 6, 14, ConsoleColor.Black);
-                }
-                else if (dongia != hdn.donGia && dongia > 0)
-                    hdn.donGia = dongia;
-            } while (dongia <= 0);
-            IO.Clear(4, 8, 30, ConsoleColor.Black);
-            IO.Writexy(hdn.tongTien.ToString(), 85, 6);
+                    mahdn = IO.ReadString(15, 4);
+                    if (mahdn == null)
+                        IO.Writexy("Nhập lại mã hóa đơn nhập...", 5, 8, ConsoleColor.Black, ConsoleColor.White);
+                    else
+                        mahdn = CongCu.CatXau(mahdn.ToUpper());
+                } while (mahdn == null);
+                HDNhap hdn = hdnhap.LayHDNhap(mahdn);
+                IO.Writexy(hdn.maNV.ToString(), 37, 4);
+                IO.Writexy(hdn.maNCC.ToString(), 67, 4);
+                IO.Writexy(hdn.maMT.ToString(), 89, 4);
+                IO.Writexy(hdn.ngayNhap, 14, 6);
+                IO.Writexy(hdn.soLuong.ToString(), 38, 6);
+                IO.Writexy(hdn.donGia.ToString(), 59, 6);
 
-            IO.Clear(4, 8, 30, ConsoleColor.Black);
-            IO.Writexy("Enter để cập nhật, Esc để thoát...", 5, 8);
-            Console.SetCursorPosition(39, 8);
-            ConsoleKeyInfo kt = Console.ReadKey();
-            if (kt.Key == ConsoleKey.Escape)
-                HienChucNang();
-            else if (kt.Key == ConsoleKey.Enter)
-            {
-                hdnhap.SuaHDNhap(hdn);
-                Hien(1, 13, hdnhap.LayDSHDNhap(), 5, 1);
-            }
-            HienChucNang();
+                IO.Clear(4, 8, 60, ConsoleColor.Black);
+                fnv.Hien(1, 13, nhanvien.LayDSNhanVien(), 5, 0);
+                do
+                {
+                    manv = IO.ReadString(37, 4);
+                    if (manv == null)
+                        IO.Writexy("Nhập lại mã nhân viên...", 5, 8, ConsoleColor.Black, ConsoleColor.White);
+                    else if (manv != hdn.maNV && manv != null)
+                        hdn.maNV = CongCu.CatXau(manv.ToUpper());
+                } while (manv == null);
+                IO.Clear(4, 8, 60, ConsoleColor.Black);
+                fncc.Hien(1, 13, nhacc.LayDSNCC(), 5, 0);
+                do
+                {
+                    mancc = IO.ReadString(67, 4);
+                    if (mancc == null)
+                        IO.Writexy("Nhập lại mã nhà cung cấp...", 5, 8, ConsoleColor.Black, ConsoleColor.White);
+                    else if (mancc != hdn.maNCC && mancc != null)
+                        hdn.maNCC = CongCu.CatXau(mancc.ToUpper());
+                } while (mancc == null);
+                IO.Clear(4, 8, 60, ConsoleColor.Black);
+                fmt.Hien(1, 13, maytinh.LayDSMayTinh(), 5, 0);
+                do
+                {
+                    mamt = IO.ReadString(89, 4);
+                    if (mamt == null)
+                        IO.Writexy("Nhập lại mã máy tính...", 5, 8, ConsoleColor.Black, ConsoleColor.White);
+                    else if (mamt != hdn.maMT && mamt != null)
+                        hdn.maMT = CongCu.CatXau(mamt.ToUpper());
+                } while (mamt == null);
+                IO.Clear(4, 8, 60, ConsoleColor.Black);
+                Hien(1, 13, hdnhap.LayDSHDNhap(), 5, 0);
+                IO.Writexy("Nhập ngày nhập định dạng 'dd/MM/yyyy'...", 5, 9, ConsoleColor.Black, ConsoleColor.White);
+                do
+                {
+                    ngaynhap = IO.ReadString(14, 6);
+                    if (ngaynhap == null)
+                        IO.Writexy("Nhập lại ngày nhập...", 5, 8, ConsoleColor.Black, ConsoleColor.White);
+                    else if (ngaynhap != hdn.ngayNhap && ngaynhap != null)
+                        hdn.ngayNhap = CongCu.CatXau(ngaynhap);
+                } while (ngaynhap == null);
+                IO.Clear(4, 9, 60, ConsoleColor.Black);
+                IO.Clear(4, 8, 60, ConsoleColor.Black);
+                do
+                {
+                    soluong = int.Parse(IO.ReadNumber(38, 6));
+                    if (soluong <= 0)
+                    {
+                        IO.Writexy("Nhập lại số lượng...", 5, 8, ConsoleColor.Black, ConsoleColor.White);
+                        IO.Clear(37, 6, 12, ConsoleColor.Black);
+                    }
+                    else if (soluong != hdn.soLuong && soluong > 0)
+                        hdn.soLuong = soluong;
+                } while (soluong <= 0);
+                IO.Clear(4, 8, 60, ConsoleColor.Black);
+                do
+                {
+                    dongia = double.Parse(IO.ReadNumber(59, 6));
+                    if (dongia <= 0)
+                    {
+                        IO.Writexy("Nhập lại đơn giá...", 5, 8, ConsoleColor.Black, ConsoleColor.White);
+                        IO.Clear(58, 6, 14, ConsoleColor.Black);
+                    }
+                    else if (dongia != hdn.donGia && dongia > 0)
+                        hdn.donGia = dongia;
+                } while (dongia <= 0);
+                IO.Clear(4, 8, 60, ConsoleColor.Black);
+                IO.Writexy(hdn.tongTien.ToString(), 85, 6);
+
+                IO.Clear(4, 8, 60, ConsoleColor.Black);
+                IO.Writexy("Enter để cập nhật, Esc để thoát...", 5, 8);
+                Console.SetCursorPosition(39, 8);
+                ConsoleKeyInfo kt = Console.ReadKey();
+                if (kt.Key == ConsoleKey.Escape)
+                    HienChucNang();
+                else if (kt.Key == ConsoleKey.Enter)
+                {
+                    IO.Clear(4, 8, 60, ConsoleColor.Black);
+                    IO.Writexy("Hóa đơn nhập đã được cập nhật...", 5, 8);
+                    hdnhap.SuaHDNhap(hdn);
+                    Hien(1, 13, hdnhap.LayDSHDNhap(), 5, 1);
+                }
+            } while (true);
         }
         public void Xoa()
         {
@@ -247,15 +256,17 @@ namespace ComputerStore.Presenation
                     mahdn = IO.ReadString(35, 4);
                     if (mahdn == null)
                     {
-                        IO.Clear(5, 6, 30, ConsoleColor.Black);
+                        IO.Clear(4, 6, 60, ConsoleColor.Black);
                         IO.Writexy("Nhập lại mã hóa đơn nhập...", 5, 6, ConsoleColor.Black, ConsoleColor.White);
                     }
                     else
                     {
-                        IO.Clear(5, 8, 30, ConsoleColor.Black);
+                        IO.Clear(4, 8, 60, ConsoleColor.Black);
                         IO.Writexy("Enter để xóa, Esc để thoát...", 5, 6);
                         mahdn = CongCu.CatXau(mahdn.ToUpper());
                         hdnhap.XoaHDNhap(mahdn);
+                        IO.Clear(4, 6, 60, ConsoleColor.Black);
+                        IO.Writexy("Hóa đơn nhập đã được xóa...", 5, 6);
                     }
                 } while (mahdn == null);
                 Hien(1, 8, hdnhap.LayDSHDNhap(), 5, 1);
@@ -286,11 +297,13 @@ namespace ComputerStore.Presenation
                     mahdn = IO.ReadString(33, 4);
                     if (mahdn == null)
                     {
-                        IO.Clear(5, 6, 30, ConsoleColor.Black);
+                        IO.Clear(4, 6, 60, ConsoleColor.Black);
                         IO.Writexy("Nhập lại mã hóa đơn nhập...", 5, 6, ConsoleColor.Black, ConsoleColor.White);
                     }
                     else
                     {
+                        IO.Clear(4, 6, 60, ConsoleColor.Black);
+                        IO.Writexy("Hóa đơn nhập tìm được...", 5, 6);
                         mahdn = CongCu.CatXau(mahdn.ToUpper());
                         List<HDNhap> list = hdnhap.TimHDNhap(new HDNhap(mahdn, null, null, null, null, 0, 0, 0));
                         Hien(1, 8, list, 5, 1);

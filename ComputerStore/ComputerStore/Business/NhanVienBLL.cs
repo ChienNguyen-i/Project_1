@@ -101,5 +101,39 @@ namespace ComputerStore.Business
                 kq = null;
             return kq;
         }
+        public bool KT_MaNhanVien(string manv)
+        {
+            List<NhanVien> list = nvDAL.GetData();
+            Node<NhanVien> tmp = list.Head;
+            bool kt = false;
+            while (tmp != null)
+            {
+                if (tmp.Info.maNV == manv)
+                {
+                    kt = true;
+                    break;
+                }
+                else
+                    tmp = tmp.Link;
+            }
+            return kt;
+        }
+        public bool KT_TenNhanVien(string tennv)
+        {
+            List<NhanVien> list = nvDAL.GetData();
+            Node<NhanVien> tmp = list.Head;
+            bool kt = false;
+            while (tmp != null)
+            {
+                if (tmp.Info.tenNV == tennv)
+                {
+                    kt = true;
+                    break;
+                }
+                else
+                    tmp = tmp.Link;
+            }
+            return kt;
+        }
     }
 }

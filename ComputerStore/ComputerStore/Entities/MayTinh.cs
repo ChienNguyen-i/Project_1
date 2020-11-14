@@ -78,7 +78,7 @@ namespace ComputerStore.Entities
             }
             set
             {
-                if (value >= 0)
+                if (value > 0)
                     SLNhap = value;
             }
         }
@@ -90,7 +90,7 @@ namespace ComputerStore.Entities
             }
             set
             {
-                if (value > 0)
+                if (value >= 0)
                     SLCon = value;
             }
         }

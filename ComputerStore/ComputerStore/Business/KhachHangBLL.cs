@@ -98,5 +98,39 @@ namespace ComputerStore.Business
                 kq = null;
             return kq;
         }
+        public bool KT_MaKhachHang(string makh)
+        {
+            List<KhachHang> list = khDAL.GetData();
+            Node<KhachHang> tmp = list.Head;
+            bool kt = false;
+            while (tmp != null)
+            {
+                if (tmp.Info.maKH == makh)
+                {
+                    kt = true;
+                    break;
+                }
+                else
+                    tmp = tmp.Link;
+            }
+            return kt;
+        }
+        public bool KT_TenKhachHang(string tenkh)
+        {
+            List<KhachHang> list = khDAL.GetData();
+            Node<KhachHang> tmp = list.Head;
+            bool kt = false;
+            while (tmp != null)
+            {
+                if (tmp.Info.tenKH == tenkh)
+                {
+                    kt = true;
+                    break;
+                }
+                else
+                    tmp = tmp.Link;
+            }
+            return kt;
+        }
     }
 }

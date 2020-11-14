@@ -92,5 +92,22 @@ namespace ComputerStore.Business
                 kq = null;
             return kq;
         }
+        public bool KT_MaHDN(string mahdn)
+        {
+            List<HDNhap> list = hdnDAL.GetData();
+            Node<HDNhap> tmp = list.Head;
+            bool kt = false;
+            while (tmp != null)
+            {
+                if (tmp.Info.maHDN == mahdn)
+                {
+                    kt = true;
+                    break;
+                }
+                else
+                    tmp = tmp.Link;
+            }
+            return kt;
+        }
     }
 }
