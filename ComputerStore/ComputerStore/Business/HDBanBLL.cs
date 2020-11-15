@@ -21,9 +21,9 @@ namespace ComputerStore.Business
         {
             if (hdb.maNV != "" && hdb.maKH != "" && hdb.maMT != "" && hdb.ngayBan != "")
             {
-                hdb.maNV = CongCu.CatXau(hdb.maNV);
-                hdb.maKH = CongCu.CatXau(hdb.maKH);
-                hdb.maMT = CongCu.CatXau(hdb.maMT);
+                hdb.maNV = CongCu.CatXau(hdb.maNV.ToUpper());
+                hdb.maKH = CongCu.CatXau(hdb.maKH.ToUpper());
+                hdb.maMT = CongCu.CatXau(hdb.maMT.ToUpper());
                 hdb.ngayBan = CongCu.CatXau(hdb.ngayBan);
                 hdbDAL.Insert(hdb);
             }
@@ -55,7 +55,7 @@ namespace ComputerStore.Business
                 hdbDAL.Update(list);
             }
             else
-                IO.Writexy("Không tồn tại mã hóa đơn bán này....", 5, 6, ConsoleColor.Black, ConsoleColor.White);
+                throw new Exception("Không tồn tại mã này.");
         }
         public void SuaHDBan(HDBan hdb)
         {
@@ -71,7 +71,7 @@ namespace ComputerStore.Business
                 hdbDAL.Update(list);
             }
             else
-                IO.Writexy("Không tồn tại hóa đơn bán này...", 5, 8, ConsoleColor.Black, ConsoleColor.White);
+                throw new Exception("Không tồn tại mã này.");
         }
         public List<HDBan> TimHDBan(HDBan hdb)
         {
@@ -81,7 +81,6 @@ namespace ComputerStore.Business
             {
                 kq = list;
             }
-            //Tìm theo mã
             if (hdb.maHDB != null)
             {
                 for (int i = 0; i < list.Count; ++i)

@@ -88,7 +88,10 @@ namespace ComputerStore.Presenation
                 {
                     mancc = IO.ReadString(13, 4);
                     if (mancc == null)
+                    {
+                        IO.Clear(4, 8, 60, ConsoleColor.Black);
                         IO.Writexy("Nhập lại mã nhà cung cấp...", 5, 8, ConsoleColor.Black, ConsoleColor.White);
+                    }
                     else
                     {
                         if (nccBLL.KT_MaNCC(mancc.ToUpper()) == false)
@@ -97,10 +100,9 @@ namespace ComputerStore.Presenation
                             IO.Clear(12, 4, 27, ConsoleColor.Black);
                         }
                         else
-                            break;
-                        mancc = CongCu.CatXau(mancc.ToUpper());
+                            mancc = CongCu.CatXau(mancc.ToUpper());
                     }
-                } while (mancc == null || nccBLL.KT_MaNCC(mancc) == false);
+                } while (mancc == null || nccBLL.KT_MaNCC(mancc.ToUpper()) == false);
                 NCC ncc = nhacc.LayNCC(mancc);
                 IO.Writexy(ncc.tenNCC, 58, 4);
                 IO.Writexy(ncc.diaChi, 14, 6);
@@ -154,12 +156,13 @@ namespace ComputerStore.Presenation
         }
         public void Xoa()
         {
-            NCC_BLL nccBLL = new NCC_BLL();
             string mancc = "";
             do
             {
                 Console.Clear();
                 INCC_BLL nhacc = new NCC_BLL();
+                NCC_BLL nccBLL = new NCC_BLL();
+
                 Console.Clear();
                 IO.BoxTitle("                                       XÓA NHÀ CUNG CẤP", 1, 1, 7, 100);
                 IO.Writexy("Nhập mã nhà cung cấp cần xóa:", 5, 4);
@@ -204,12 +207,13 @@ namespace ComputerStore.Presenation
         }
         public void TimTen()
         {
-            NCC_BLL nccBLL = new NCC_BLL();
             string tenncc = "";
             do
             {
                 Console.Clear();
                 INCC_BLL nhacc = new NCC_BLL();
+                NCC_BLL nccBLL = new NCC_BLL();
+
                 Console.Clear();
                 IO.BoxTitle("                                     TÌM KIẾM NHÀ CUNG CẤP", 1, 1, 7, 100);
                 IO.Writexy("Nhập tên nhà cung cấp cần tìm:", 3, 4);
@@ -246,12 +250,13 @@ namespace ComputerStore.Presenation
         }
         public void TimMa()
         {
-            NCC_BLL nccBLL = new NCC_BLL();
             string mancc = "";
             do
             {
                 Console.Clear();
                 INCC_BLL nhacc = new NCC_BLL();
+                NCC_BLL nccBLL = new NCC_BLL();
+
                 Console.Clear();
                 IO.BoxTitle("                                     TÌM KIẾM NHÀ CUNG CẤP", 1, 1, 7, 100);
                 IO.Writexy("Nhập mã nhà cung cấp cần tìm:", 3, 4);

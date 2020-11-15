@@ -21,7 +21,7 @@ namespace ComputerStore.Business
         {
             if (mt.tenMT != "" && mt.maNCC != "")
             {
-                mt.tenMT = CongCu.HoaDau(mt.tenMT);
+                mt.tenMT = CongCu.ChuanHoaXau(mt.tenMT);
                 mt.maNCC = CongCu.CatXau(mt.maNCC.ToUpper());
                 mtDAL.Insert(mt);
             }
@@ -53,7 +53,7 @@ namespace ComputerStore.Business
                 mtDAL.Update(list);
             }
             else
-                IO.Writexy("Không tồn tại mã máy tính này....", 5, 6, ConsoleColor.Black, ConsoleColor.White);
+                throw new Exception("Không tồn tại mã này.");
         }
         public void SuaMayTinh(MayTinh mt)
         {
@@ -69,7 +69,7 @@ namespace ComputerStore.Business
                 mtDAL.Update(list);
             }
             else
-                IO.Writexy("Không tồn tại máy tính này...", 5, 8, ConsoleColor.Black, ConsoleColor.White);
+                throw new Exception("Không tồn tại mã này.");
         }
         public List<MayTinh> TimMayTinh(MayTinh mt)
         {
@@ -79,14 +79,12 @@ namespace ComputerStore.Business
             {
                 kq = list;
             }
-            //Tìm theo tên
             if (mt.tenMT != null && mt.maMT == null)
             {
                 for (int i = 0; i < list.Count; ++i)
                     if (list[i].tenMT.IndexOf(mt.tenMT) >= 0)
                         kq.Add(new MayTinh(list[i]));
             }
-            //Tìm theo mã
             else if (mt.tenMT == null && mt.maMT != null)
             {
                 for (int i = 0; i < list.Count; ++i)

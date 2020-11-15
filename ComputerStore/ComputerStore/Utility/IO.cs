@@ -125,7 +125,7 @@ namespace ComputerStore.Utility
             int d = 0;
             while (d < length)
             {
-                if (i == 111)
+                if (i == 112)
                 {
                     i = 0;
                     j += 1;

@@ -24,7 +24,6 @@ namespace ComputerStore.Entities
             this.SLNhap = sln;
             this.SLCon = slc;
         }
-        //Phương thức sao chép
         public MayTinh(MayTinh mt)
         {
             this.MaMT = mt.MaMT;

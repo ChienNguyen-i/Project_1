@@ -27,7 +27,6 @@ namespace ComputerStore.Entities
             this.SoDT = sdt;
             this.LoaiNV = loainv;
         }
-        //Phương thức sao chép
         public NhanVien(NhanVien nv)
         {
             this.MaNV = nv.MaNV;

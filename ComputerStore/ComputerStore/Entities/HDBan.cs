@@ -29,7 +29,6 @@ namespace ComputerStore.Entities
             this.DonGia = dongia;
             this.TongTien = tongtien;
         }
-        //Phương thức sao chép
         public HDBan(HDBan hdb)
         {
             this.MaHDB = hdb.MaHDB;

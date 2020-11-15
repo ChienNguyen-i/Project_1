@@ -21,7 +21,6 @@ namespace ComputerStore.Entities
             this.DiaChi = diachi;
             this.SoDT = sdt;
         }
-        //Phương thức sao chép
         public KhachHang(KhachHang kh)
         {
             this.MaKH = kh.MaKH;

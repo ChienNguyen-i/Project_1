@@ -97,6 +97,8 @@ namespace ComputerStore.Presenation
             do
             {
                 INhanVienBLL nhanvien = new NhanVienBLL();
+                NhanVienBLL nvBLL = new NhanVienBLL();
+
                 Console.Clear();
                 IO.BoxTitle("                                  CẬP NHẬT THÔNG TIN NHÂN VIÊN", 1, 1, 10, 100);
                 IO.Writexy("Mã NV:", 3, 4);
@@ -121,10 +123,22 @@ namespace ComputerStore.Presenation
                 {
                     manv = IO.ReadString(10, 4);
                     if (manv == null)
+                    {
+                        IO.Clear(4, 8, 60, ConsoleColor.Black);
                         IO.Writexy("Nhập lại mã nhân viên...", 5, 8, ConsoleColor.Black, ConsoleColor.White);
+                    }
                     else
-                        manv = CongCu.CatXau(manv.ToUpper());
-                } while (manv == null);
+                    {
+                        IO.Clear(4, 8, 60, ConsoleColor.Black);
+                        if (nvBLL.KT_MaNhanVien(manv.ToUpper()) == false)
+                        {
+                            IO.Writexy("Không tồn tại mã nhân viên này...", 5, 8, ConsoleColor.Black, ConsoleColor.White);
+                            IO.Clear(9, 4, 8, ConsoleColor.Black);
+                        }
+                        else
+                            manv = CongCu.CatXau(manv.ToUpper());
+                    }
+                } while (manv == null || nvBLL.KT_MaNhanVien(manv.ToUpper()) == false);
                 NhanVien nv = nhanvien.LayNhanVien(manv);
                 IO.Writexy(nv.tenNV, 26, 4);
                 IO.Writexy(nv.ngaySinh, 62, 4);
@@ -193,7 +207,7 @@ namespace ComputerStore.Presenation
                     if (loainv == null)
                         IO.Writexy("Nhập lại loại nhân viên...", 5, 8, ConsoleColor.Black, ConsoleColor.White);
                     else if (loainv != nv.loaiNV && loainv != null)
-                        nv.loaiNV = CongCu.HoaDau_1(loainv);
+                        nv.loaiNV = CongCu.CatXau(loainv.ToLower());
                 } while (loainv == null);
 
                 IO.Clear(4, 8, 60, ConsoleColor.Black);
@@ -225,6 +239,8 @@ namespace ComputerStore.Presenation
             {
                 Console.Clear();
                 INhanVienBLL nhanvien = new NhanVienBLL();
+                NhanVienBLL nvBLL = new NhanVienBLL();
+
                 Console.Clear();
                 IO.BoxTitle("                                        XÓA NHÂN VIÊN", 1, 1, 7, 100);
                 IO.Writexy("Nhập mã nhân viên cần xóa:", 5, 4);
@@ -241,15 +257,23 @@ namespace ComputerStore.Presenation
                     }
                     else
                     {
-                        IO.Clear(4, 6, 60, ConsoleColor.Black);
-                        IO.Writexy("Enter để xóa, Esc để thoát...", 5, 6);
-                        manv = CongCu.CatXau(manv.ToUpper());
-                        nhanvien.XoaNhanVien(manv);
-                        IO.Clear(4, 6, 60, ConsoleColor.Black);
-                        IO.Writexy("Nhân viên đã được xóa...", 5, 6);
+                        if (nvBLL.KT_MaNhanVien(manv.ToUpper()) == false)
+                        {
+                            IO.Clear(4, 6, 60, ConsoleColor.Black);
+                            IO.Writexy("Không tồn tại mã nhân viên này...", 5, 6, ConsoleColor.Black, ConsoleColor.White);
+                            IO.Clear(31, 4, 60, ConsoleColor.Black);
+                        }
+                        else
+                        {
+                            manv = CongCu.CatXau(manv.ToUpper());
+                            nhanvien.XoaNhanVien(manv);
+                            IO.Clear(4, 6, 60, ConsoleColor.Black);
+                            IO.Clear(31, 4, 60, ConsoleColor.Black);
+                            IO.Writexy("Nhân viên đã được xóa...", 5, 6);
+                            Hien(1, 8, nhanvien.LayDSNhanVien(), 5, 1);
+                        }
                     }
-                } while (manv == null);
-                Hien(1, 8, nhanvien.LayDSNhanVien(), 5, 1);
+                } while (manv == null || nvBLL.KT_MaNhanVien(manv.ToUpper()) == false);
             } while (true);
         }
         public void Xem()
@@ -266,6 +290,8 @@ namespace ComputerStore.Presenation
             {
                 Console.Clear();
                 INhanVienBLL nhanvien = new NhanVienBLL();
+                NhanVienBLL nvBLL = new NhanVienBLL();
+
                 Console.Clear();
                 IO.BoxTitle("                                      TÌM KIẾM NHÂN VIÊN", 1, 1, 7, 100);
                 IO.Writexy("Nhập họ tên nhân viên cần tìm:", 3, 4);
@@ -282,13 +308,22 @@ namespace ComputerStore.Presenation
                     }
                     else
                     {
-                        IO.Clear(4, 6, 60, ConsoleColor.Black);
-                        IO.Writexy("Nhân viên tìm được...", 5, 6);
-                        hoten = CongCu.ChuanHoaXau(hoten);
-                        List<NhanVien> list = nhanvien.TimNhanVien(new NhanVien(null, hoten, null, null, null, null, null));
-                        Hien(1, 8, list, 5, 1);
+                        if (nvBLL.KT_TenNhanVien(CongCu.ChuanHoaXau(hoten)) == false)
+                        {
+                            IO.Clear(4, 6, 60, ConsoleColor.Black);
+                            IO.Writexy("Không tồn tại tên nhân viên này...", 5, 6, ConsoleColor.Black, ConsoleColor.White);
+                            IO.Clear(33, 4, 60, ConsoleColor.Black);
+                        }
+                        else
+                        {
+                            IO.Clear(4, 6, 60, ConsoleColor.Black);
+                            IO.Writexy("Nhân viên tìm được...", 5, 6);
+                            hoten = CongCu.ChuanHoaXau(hoten);
+                            List<NhanVien> list = nhanvien.TimNhanVien(new NhanVien(null, hoten, null, null, null, null, null));
+                            Hien(1, 8, list, 5, 1);
+                        }
                     }
-                } while (hoten == null);
+                } while (hoten == null || nvBLL.KT_TenNhanVien(CongCu.ChuanHoaXau(hoten)) == false);
             } while (true);
         }
         public void TimMa()
@@ -298,6 +333,8 @@ namespace ComputerStore.Presenation
             {
                 Console.Clear();
                 INhanVienBLL nhanvien = new NhanVienBLL();
+                NhanVienBLL nvBLL = new NhanVienBLL();
+
                 Console.Clear();
                 IO.BoxTitle("                                      TÌM KIẾM NHÂN VIÊN", 1, 1, 7, 100);
                 IO.Writexy("Nhập mã nhân viên cần tìm:", 3, 4);
@@ -314,13 +351,22 @@ namespace ComputerStore.Presenation
                     }
                     else
                     {
-                        IO.Clear(4, 6, 60, ConsoleColor.Black);
-                        IO.Writexy("Nhân viên tìm được...", 5, 6);
-                        manv = CongCu.CatXau(manv.ToUpper());
-                        List<NhanVien> list = nhanvien.TimNhanVien(new NhanVien(manv, null, null, null, null, null, null));
-                        Hien(1, 8, list, 5, 1);
+                        if (nvBLL.KT_MaNhanVien(manv.ToUpper()) == false)
+                        {
+                            IO.Clear(4, 6, 60, ConsoleColor.Black);
+                            IO.Writexy("Không tồn tại mã nhân viên này...", 5, 6, ConsoleColor.Black, ConsoleColor.White);
+                            IO.Clear(29, 4, 60, ConsoleColor.Black);
+                        }
+                        else
+                        {
+                            IO.Clear(4, 6, 60, ConsoleColor.Black);
+                            IO.Writexy("Nhân viên tìm được...", 5, 6);
+                            manv = CongCu.CatXau(manv.ToUpper());
+                            List<NhanVien> list = nhanvien.TimNhanVien(new NhanVien(manv, null, null, null, null, null, null));
+                            Hien(1, 8, list, 5, 1);
+                        }
                     }
-                } while (manv == null);
+                } while (manv == null || nvBLL.KT_MaNhanVien(manv.ToUpper()) == false);
             } while (true);
         }
         public void Hien(int xx, int yy, List<NhanVien> list, int n, int type)

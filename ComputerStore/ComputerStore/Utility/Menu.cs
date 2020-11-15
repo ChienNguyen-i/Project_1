@@ -32,11 +32,6 @@ namespace ComputerStore.Utility
             Console.ForegroundColor = text_color;
             Console.Write(mn[location]);
         }
-        public void Writexy(int x, int y, string s)
-        {
-            Console.SetCursorPosition(x, y);
-            Console.Write(s);
-        }
         public void HienTheoPhimTat(int x, int y, ConsoleColor background_color, ConsoleColor text_color)
         {
             Console.SetWindowSize(113, 30);
