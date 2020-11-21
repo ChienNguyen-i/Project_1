@@ -25,13 +25,6 @@ namespace ComputerStore.Utility
                 s = s.Remove(s.IndexOf("  "), 1);
             return s;
         }
-        public static string ChuanHoaXau(string xau, int max)
-        {
-            string s = CatXau(xau);
-            while (s.Length < max)
-                s += " ";
-            return s;
-        }
         public static string HoaDau(string xau)
         {
             string s = xau.Trim();

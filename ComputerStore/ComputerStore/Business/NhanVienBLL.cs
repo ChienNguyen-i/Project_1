@@ -26,7 +26,7 @@ namespace ComputerStore.Business
                 nv.gioiTinh = CongCu.ChuanHoaXau(nv.gioiTinh);
                 nv.diaChi = CongCu.ChuanHoaXau(nv.diaChi);
                 nv.soDT = CongCu.CatXau(nv.soDT);
-                nv.loaiNV = CongCu.CatXau(nv.loaiNV.ToLower());
+                nv.loaiNV = CongCu.HoaDau(nv.loaiNV);
                 nvDAL.Insert(nv);
             }
             else

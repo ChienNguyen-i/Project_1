@@ -77,7 +77,7 @@ namespace ComputerStore.Utility
                 else if (kt.Key == ConsoleKey.Enter)
                     break;
                 else if (kt.Key == ConsoleKey.Escape)
-                    Presenation.FormMenuChinh.Hien();
+                    Presenation.FormMenuChinh.HienMNC(32, 4, ConsoleColor.Black, ConsoleColor.White);
             } while (true);
             return s;
         }
@@ -112,7 +112,7 @@ namespace ComputerStore.Utility
                 else if (kt.Key == ConsoleKey.Enter)
                     break;
                 else if (kt.Key == ConsoleKey.Escape)
-                    Presenation.FormMenuChinh.Hien();
+                    Presenation.FormMenuChinh.HienMNC(32, 4, ConsoleColor.Black, ConsoleColor.White);
             } while (true);
             return s;
         }
