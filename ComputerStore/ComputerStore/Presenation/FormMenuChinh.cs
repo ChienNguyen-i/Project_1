@@ -14,6 +14,7 @@ namespace ComputerStore.Presenation
                 Console.SetWindowSize(114, 28);
                 Console.BackgroundColor = ConsoleColor.Black;
                 Console.Clear();
+                IO.Box(0, 0, 28, 114, ConsoleColor.Black, ConsoleColor.White);
                 IO.BoxTitle("                    CÁC CHỨC NĂNG", x, y, 17, 56);
                 IO.Writexy("F1. Quản lý máy tính", x + 15, y + 3);
                 IO.Writexy("F2. Quản lý nhà cung cấp", x + 15, y + 5);
@@ -59,6 +60,7 @@ namespace ComputerStore.Presenation
             {
                 Console.SetWindowSize(114, 28);
                 Console.Clear();
+                IO.Box(0, 0, 28, 114, ConsoleColor.Black, ConsoleColor.White);
                 IO.BoxTitle("                    CÁC CHỨC NĂNG", x, y, 11, 56);
                 IO.Writexy("F1. Quản lý hóa đơn nhập", x + 15, y + 3);
                 IO.Writexy("F2. Quản lý hóa đơn bán", x + 15, y + 5);

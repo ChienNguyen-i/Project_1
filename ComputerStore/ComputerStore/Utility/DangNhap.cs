@@ -38,10 +38,12 @@ namespace ComputerStore.Utility
         public bool Hien(int x, int y, string user, string pass)
         {
             Console.BackgroundColor = ConsoleColor.Black;
+            IO.Box(0, 0, 28, 114, ConsoleColor.Black, ConsoleColor.White);
             IO.BoxTitle("                       ĐĂNG NHẬP", x, y, 15, 60);
             IO.Writexy("Tài khoản:", x + 3, y + 5);
             IO.Writexy("Mật khẩu:", x + 3, y + 8);
             IO.Writexy("Đăng nhập", x + 40, y + 10);
+            IO.Writexy("----------------------------------------------------------", x + 1, y + 11);
             do
             {
                 IO.Clear(x + 14, y + 5, 42, ConsoleColor.Black);

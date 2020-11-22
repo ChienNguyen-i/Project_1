@@ -26,6 +26,7 @@ namespace ComputerStore.Presenation
                 MayTinhBLL mtBLL = new MayTinhBLL();
 
                 Console.Clear();
+                IO.Box(0, 0, 28, 114, ConsoleColor.Black, ConsoleColor.White);
                 IO.BoxTitle("                                         NHẬP THÔNG TIN HÓA ĐƠN BÁN", x, y, 10, 112);
                 IO.Writexy("Mã nhân viên:", x + 2, y + 3);
                 IO.Writexy("Mã khách hàng:", x + 29, y + 3);
@@ -105,9 +106,12 @@ namespace ComputerStore.Presenation
                 do
                 {
                     hdb.ngayBan = IO.ReadString(x + 97, y + 3);
-                    if (hdb.ngayBan == null)
+                    if (hdb.ngayBan == null || CongCu.CheckDate(hdb.ngayBan) == false)
+                    {
                         IO.Writexy("Nhập lại ngày bán...", x + 4, y + 7, ConsoleColor.Black, ConsoleColor.White);
-                } while (hdb.ngayBan == null);
+                        IO.Clear(x + 96, y + 3, 14, ConsoleColor.Black);
+                    }
+                } while (hdb.ngayBan == null || CongCu.CheckDate(hdb.ngayBan) == false);
                 IO.Clear(x + 3, y + 8, 60, ConsoleColor.Black);
                 IO.Clear(x + 3, y + 7, 60, ConsoleColor.Black);
                 do
@@ -164,6 +168,7 @@ namespace ComputerStore.Presenation
                 HDBanBLL hdbBLL = new HDBanBLL();
 
                 Console.Clear();
+                IO.Box(0, 0, 28, 114, ConsoleColor.Black, ConsoleColor.White);
                 IO.BoxTitle("                                       CẬP NHẬT THÔNG TIN HÓA ĐƠN BÁN", x, y, 10, 112);
                 IO.Writexy("Mã HD bán:", x + 2, y + 3);
                 IO.Writexy("Mã nhân viên:", x + 28, y + 3);
@@ -197,7 +202,7 @@ namespace ComputerStore.Presenation
                         if (hdbBLL.KT_MaHDB(mahdb.ToUpper()) == false)
                         {
                             IO.Writexy("Không tồn tại mã hóa đơn bán này...", x + 4, y + 7, ConsoleColor.Black, ConsoleColor.White);
-                            IO.Clear(x + 12, y + 3, 14, ConsoleColor.Black);
+                            IO.Clear(x + 12, y + 3, 15, ConsoleColor.Black);
                         }
                         else
                             mahdb = CongCu.CatXau(mahdb.ToUpper());
@@ -281,11 +286,14 @@ namespace ComputerStore.Presenation
                 do
                 {
                     ngayban = IO.ReadString(x + 12, y + 5);
-                    if (ngayban == null)
+                    if (ngayban == null || CongCu.CheckDate(ngayban) == false)
+                    {
                         IO.Writexy("Nhập lại ngày bán...", x + 4, y + 7, ConsoleColor.Black, ConsoleColor.White);
+                        IO.Clear(x + 11, y + 5, 20, ConsoleColor.Black);
+                    }
                     else if (ngayban != hdb.ngayBan && ngayban != null)
                         hdb.ngayBan = CongCu.CatXau(ngayban);
-                } while (ngayban == null);
+                } while (ngayban == null || CongCu.CheckDate(ngayban) == false);
                 IO.Clear(x + 3, y + 8, 60, ConsoleColor.Black);
                 IO.Clear(x + 3, y + 7, 60, ConsoleColor.Black);
                 do
@@ -331,14 +339,14 @@ namespace ComputerStore.Presenation
         }
         public void Xoa(int x, int y, ConsoleColor background_color, ConsoleColor text_color)
         {
-            string mahdb = "";
             do
             {
-                Console.Clear();
+                string mahdb = "";
                 IHDBanBLL hdban = new HDBanBLL();
                 HDBanBLL hdbBLL = new HDBanBLL();
 
                 Console.Clear();
+                IO.Box(0, 0, 28, 114, ConsoleColor.Black, ConsoleColor.White);
                 IO.BoxTitle("                                              XÓA HÓA ĐƠN BÁN", x, y, 7, 112);
                 IO.Writexy("Nhập mã hóa đơn bán cần xóa:", x + 4, y + 3);
                 IO.Writexy("--------------------------------------------------------------------------------------------------------------", x + 1, y + 4);
@@ -377,19 +385,20 @@ namespace ComputerStore.Presenation
         {
             IHDBanBLL hdban = new HDBanBLL();
             Console.Clear();
+            IO.Box(0, 0, 28, 114, ConsoleColor.Black, ConsoleColor.White);
             Hien(x, y, hdban.LayDSHDBan(), 5, 1);
             HienChucNang(29, 5, ConsoleColor.Black, ConsoleColor.White);
         }
         public void TimMa(int x, int y, ConsoleColor background_color, ConsoleColor text_color)
         {
-            string mahdb = "";
             do
             {
-                Console.Clear();
+                string mahdb = "";
                 IHDBanBLL hdban = new HDBanBLL();
                 HDBanBLL hdbBLL = new HDBanBLL();
 
                 Console.Clear();
+                IO.Box(0, 0, 28, 114, ConsoleColor.Black, ConsoleColor.White);
                 IO.BoxTitle("                                            TÌM KIẾM HÓA ĐƠN BÁN", x, y, 7, 112);
                 IO.Writexy("Nhập mã hóa đơn bán cần tìm:", x + 2, y + 3);
                 IO.Writexy("--------------------------------------------------------------------------------------------------------------", x + 1, y + 4);
@@ -432,7 +441,8 @@ namespace ComputerStore.Presenation
             int x, y, d;
             do
             {
-                IO.Clear(xx, yy, 1800, ConsoleColor.Black);
+                IO.Clear(xx, yy, 1900, ConsoleColor.Black);
+                IO.Box(0, 0, 28, 114, ConsoleColor.Black, ConsoleColor.White);
                 head = (curpage - 1) * n;
                 final = curpage * n < list.Count ? curpage * n : list.Count;
                 x = xx;
@@ -497,6 +507,7 @@ namespace ComputerStore.Presenation
             {
                 Console.SetWindowSize(114, 28);
                 Console.Clear();
+                IO.Box(0, 0, 28, 114, ConsoleColor.Black, ConsoleColor.White);
                 IO.BoxTitle("                    CÁC CHỨC NĂNG", x, y, 17, 56);
                 IO.Writexy("F1. Nhập danh sách hóa đơn bán", x + 12, y + 3);
                 IO.Writexy("F2. Sửa thông tin hóa đơn bán", x + 12, y + 5);

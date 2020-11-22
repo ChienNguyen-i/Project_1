@@ -17,6 +17,7 @@ namespace ComputerStore.Presenation
             {
                 IKhachHangBLL khachhang = new KhachHangBLL();
                 Console.Clear();
+                IO.Box(0, 0, 28, 114, ConsoleColor.Black, ConsoleColor.White);
                 IO.BoxTitle("                                        NHẬP THÔNG TIN KHÁCH HÀNG", x, y, 10, 110);
                 IO.Writexy("Họ tên:", x + 4, y + 3);
                 IO.Writexy("Địa chỉ:", x + 4, y + 5);
@@ -72,6 +73,7 @@ namespace ComputerStore.Presenation
                 KhachHangBLL khBLL = new KhachHangBLL();
 
                 Console.Clear();
+                IO.Box(0, 0, 28, 114, ConsoleColor.Black, ConsoleColor.White);
                 IO.BoxTitle("                                      CẬP NHẬT THÔNG TIN KHÁCH HÀNG", x, y, 10, 110);
                 IO.Writexy("Mã KH:", x + 4, y + 3);
                 IO.Writexy("Họ tên:", x + 49, y + 3);
@@ -157,14 +159,14 @@ namespace ComputerStore.Presenation
         }
         public void Xoa(int x, int y, ConsoleColor background_color, ConsoleColor text_color)
         {
-            string makh = "";
             do
             {
-                Console.Clear();
+                string makh = "";
                 IKhachHangBLL khachhang = new KhachHangBLL();
                 KhachHangBLL khBLL = new KhachHangBLL();
 
                 Console.Clear();
+                IO.Box(0, 0, 28, 114, ConsoleColor.Black, ConsoleColor.White);
                 IO.BoxTitle("                                              XÓA KHÁCH HÀNG", x, y, 7, 110);
                 IO.Writexy("Nhập mã khách hàng cần xóa:", x + 4, y + 3);
                 IO.Writexy("------------------------------------------------------------------------------------------------------------", x + 1, y + 4);
@@ -203,19 +205,20 @@ namespace ComputerStore.Presenation
         {
             IKhachHangBLL khachhang = new KhachHangBLL();
             Console.Clear();
+            IO.Box(0, 0, 28, 114, ConsoleColor.Black, ConsoleColor.White);
             Hien(x + 17, y, khachhang.LayDSKhachHang(), 5, 1);
             HienChucNang(29, 5, ConsoleColor.Black, ConsoleColor.White);
         }
         public void TimTen(int x, int y, ConsoleColor background_color, ConsoleColor text_color)
         {
-            string hoten = "";
             do
             {
-                Console.Clear();
+                string hoten = "";
                 IKhachHangBLL khachhang = new KhachHangBLL();
                 KhachHangBLL khBLL = new KhachHangBLL();
 
                 Console.Clear();
+                IO.Box(0, 0, 28, 114, ConsoleColor.Black, ConsoleColor.White);
                 IO.BoxTitle("                                           TÌM KIẾM KHÁCH HÀNG", x, y, 7, 110);
                 IO.Writexy("Nhập họ tên khách hàng cần tìm:", x + 2, y + 3);
                 IO.Writexy("------------------------------------------------------------------------------------------------------------", x + 1, y + 4);
@@ -251,14 +254,14 @@ namespace ComputerStore.Presenation
         }
         public void TimMa(int x, int y, ConsoleColor background_color, ConsoleColor text_color)
         {
-            string makh = "";
             do
             {
-                Console.Clear();
+                string makh = "";
                 IKhachHangBLL khachhang = new KhachHangBLL();
                 KhachHangBLL khBLL = new KhachHangBLL();
 
                 Console.Clear();
+                IO.Box(0, 0, 28, 114, ConsoleColor.Black, ConsoleColor.White);
                 IO.BoxTitle("                                           TÌM KIẾM KHÁCH HÀNG", x, y, 7, 110);
                 IO.Writexy("Nhập mã khách hàng cần tìm:", x + 2, y + 3);
                 IO.Writexy("------------------------------------------------------------------------------------------------------------", x + 1, y + 4);
@@ -301,7 +304,8 @@ namespace ComputerStore.Presenation
             int x, y, d;
             do
             {
-                IO.Clear(xx, yy, 1800, ConsoleColor.Black);
+                IO.Clear(xx, yy, 1900, ConsoleColor.Black);
+                IO.Box(0, 0, 28, 114, ConsoleColor.Black, ConsoleColor.White);
                 head = (curpage - 1) * n;
                 final = curpage * n < list.Count ? curpage * n : list.Count;
                 x = xx;
@@ -358,6 +362,7 @@ namespace ComputerStore.Presenation
             {
                 Console.SetWindowSize(114, 28);
                 Console.Clear();
+                IO.Box(0, 0, 28, 114, ConsoleColor.Black, ConsoleColor.White);
                 IO.BoxTitle("                    CÁC CHỨC NĂNG", x, y, 17, 56);
                 IO.Writexy("F1. Nhập danh sách khách hàng", x + 12, y + 3);
                 IO.Writexy("F2. Sửa thông tin khách hàng", x + 12, y + 5);
@@ -399,6 +404,7 @@ namespace ComputerStore.Presenation
             {
                 Console.SetWindowSize(114, 28);
                 Console.Clear();
+                IO.Box(0, 0, 28, 114, ConsoleColor.Black, ConsoleColor.White);
                 IO.BoxTitle("                    CÁC CHỨC NĂNG", x, y, 11, 56);
                 IO.Writexy("F1. Tìm kiếm khách hàng theo mã", x + 12, y + 3);
                 IO.Writexy("F2. Tìm kiếm khách hàng theo tên", x + 12, y + 5);

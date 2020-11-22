@@ -185,5 +185,22 @@ namespace ComputerStore.Utility
                 Writexy("─", x + i, y + (height - 1));
             Writexy("┘", x + (width - 1), y + (height - 1));
         }
+        public static void Box(int x, int y, int height, int width, ConsoleColor background_color, ConsoleColor text_color)
+        {
+            Writexy("╔", x, y, background_color, text_color);
+            for (int i = 1; i <= width - 2; ++i)
+                Writexy("═", x + i, y, background_color, text_color);
+            Writexy("╗", x + (width - 1), y, background_color, text_color);
+
+            for (int i = 1; i <= height - 2; ++i)
+                Writexy("║", x, y + i, background_color, text_color);
+            for (int i = 1; i <= height - 2; ++i)
+                Writexy("║", x + (width - 1), y + i, background_color, text_color);
+
+            Writexy("╚", x, y + (height - 1), background_color, text_color);
+            for (int i = 1; i <= width - 2; ++i)
+                Writexy("═", x + i, y + (height - 1), background_color, text_color);
+            Writexy("╝", x + (width - 1), y + (height - 1), background_color, text_color);
+        }
     }
 }

@@ -20,6 +20,7 @@ namespace ComputerStore.Presenation
                 NCC_BLL nccBLL = new NCC_BLL();
 
                 Console.Clear();
+                IO.Box(0, 0, 28, 114, ConsoleColor.Black, ConsoleColor.White);
                 IO.BoxTitle("                                         NHẬP THÔNG TIN MÁY TÍNH", x, y, 10, 110);
                 IO.Writexy("Tên máy:", x + 4, y + 3);
                 IO.Writexy("Mã nhà cung cấp:", x + 56, y + 3);
@@ -104,6 +105,7 @@ namespace ComputerStore.Presenation
                 MayTinhBLL mtBLL = new MayTinhBLL();
 
                 Console.Clear();
+                IO.Box(0, 0, 28, 114, ConsoleColor.Black, ConsoleColor.White);
                 IO.BoxTitle("                                       CẬP NHẬT THÔNG TIN MÁY TÍNH", x, y, 10, 110);
                 IO.Writexy("Mã MT:", x + 2, y + 3);
                 IO.Writexy("Tên máy:", x + 43, y + 3);
@@ -217,14 +219,14 @@ namespace ComputerStore.Presenation
         }
         public void Xoa(int x, int y, ConsoleColor background_color, ConsoleColor text_color)
         {
-            string mamt = "";
             do
             {
-                Console.Clear();
+                string mamt = "";
                 IMayTinhBLL maytinh = new MayTinhBLL();
                 MayTinhBLL mtBLL = new MayTinhBLL();
 
                 Console.Clear();
+                IO.Box(0, 0, 28, 114, ConsoleColor.Black, ConsoleColor.White);
                 IO.BoxTitle("                                               XÓA MÁY TÍNH", x, y, 7, 110);
                 IO.Writexy("Nhập mã máy tính cần xóa:", x + 4, y + 3);
                 IO.Writexy("------------------------------------------------------------------------------------------------------------", x + 1, y + 4);
@@ -263,19 +265,20 @@ namespace ComputerStore.Presenation
         {
             IMayTinhBLL maytinh = new MayTinhBLL();
             Console.Clear();
+            IO.Box(0, 0, 28, 114, ConsoleColor.Black, ConsoleColor.White);
             Hien(x + 11, y, maytinh.LayDSMayTinh(), 5, 1);
             HienChucNang(29, 5, ConsoleColor.Black, ConsoleColor.White);
         }
         public void TimTen(int x, int y, ConsoleColor background_color, ConsoleColor text_color)
         {
-            string tenmt = "";
             do
             {
-                Console.Clear();
+                string tenmt = "";
                 IMayTinhBLL maytinh = new MayTinhBLL();
                 MayTinhBLL mtBLL = new MayTinhBLL();
 
                 Console.Clear();
+                IO.Box(0, 0, 28, 114, ConsoleColor.Black, ConsoleColor.White);
                 IO.BoxTitle("                                             TÌM KIẾM MÁY TÍNH", x, y, 7, 110);
                 IO.Writexy("Nhập tên máy tính cần tìm:", x + 2, y + 3);
                 IO.Writexy("------------------------------------------------------------------------------------------------------------", x + 1, y + 4);
@@ -311,14 +314,14 @@ namespace ComputerStore.Presenation
         }
         public void TimMa(int x, int y, ConsoleColor background_color, ConsoleColor text_color)
         {
-            string mamt = "";
             do
             {
-                Console.Clear();
+                string mamt = "";
                 IMayTinhBLL maytinh = new MayTinhBLL();
                 MayTinhBLL mtBLL = new MayTinhBLL();
 
                 Console.Clear();
+                IO.Box(0, 0, 28, 114, ConsoleColor.Black, ConsoleColor.White);
                 IO.BoxTitle("                                            TÌM KIẾM MÁY TÍNH", x, y, 7, 110);
                 IO.Writexy("Nhập mã máy tính cần tìm:", x + 2, y + 3);
                 IO.Writexy("------------------------------------------------------------------------------------------------------------", x + 1, y + 4);
@@ -361,7 +364,8 @@ namespace ComputerStore.Presenation
             int x, y, d;
             do
             {
-                IO.Clear(xx, yy, 1800, ConsoleColor.Black);
+                IO.Clear(xx, yy, 1900, ConsoleColor.Black);
+                IO.Box(0, 0, 28, 114, ConsoleColor.Black, ConsoleColor.White);
                 head = (curpage - 1) * n;
                 final = curpage * n < list.Count ? curpage * n : list.Count;
                 x = xx;
@@ -420,6 +424,7 @@ namespace ComputerStore.Presenation
             {
                 Console.SetWindowSize(114, 28);
                 Console.Clear();
+                IO.Box(0, 0, 28, 114, ConsoleColor.Black, ConsoleColor.White);
                 IO.BoxTitle("                    CÁC CHỨC NĂNG", x, y, 17, 56);
                 IO.Writexy("F1. Nhập danh sách máy tính", x + 12, y + 3);
                 IO.Writexy("F2. Sửa thông tin máy tính", x + 12, y + 5);
@@ -461,6 +466,7 @@ namespace ComputerStore.Presenation
             {
                 Console.SetWindowSize(114, 28);
                 Console.Clear();
+                IO.Box(0, 0, 28, 114, ConsoleColor.Black, ConsoleColor.White);
                 IO.BoxTitle("                    CÁC CHỨC NĂNG", x, y, 11, 56);
                 IO.Writexy("F1. Tìm kiếm máy tính theo mã", x + 12, y + 3);
                 IO.Writexy("F2. Tìm kiếm máy tính theo tên", x + 12, y + 5);

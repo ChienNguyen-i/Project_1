@@ -16,6 +16,7 @@ namespace ComputerStore.Presenation
             {
                 INhanVienBLL nhanvien = new NhanVienBLL();
                 Console.Clear();
+                IO.Box(0, 0, 28, 114, ConsoleColor.Black, ConsoleColor.White);
                 IO.BoxTitle("                                         NHẬP THÔNG TIN NHÂN VIÊN", x, y, 10, 110);
                 IO.Writexy("------------------------------------------------------------------------------------------------------------", x + 1, y + 6);
                 IO.Writexy("Họ tên:", x + 4, y + 3);
@@ -39,9 +40,12 @@ namespace ComputerStore.Presenation
                 do
                 {
                     nv.ngaySinh = IO.ReadString(x + 55, y + 3);
-                    if (nv.ngaySinh == null)
+                    if (nv.ngaySinh == null || CongCu.CheckDate(nv.ngaySinh) == false)
+                    {
                         IO.Writexy("Nhập lại ngày sinh...", x + 4, y + 7, ConsoleColor.Black, ConsoleColor.White);
-                } while (nv.ngaySinh == null);
+                        IO.Clear(x + 54, y + 3, 26, ConsoleColor.Black);
+                    }
+                } while (nv.ngaySinh == null || CongCu.CheckDate(nv.ngaySinh) == false);
                 IO.Clear(x + 3, y + 8, 60, ConsoleColor.Black);
                 IO.Clear(x + 3, y + 7, 60, ConsoleColor.Black);
                 do
@@ -101,6 +105,7 @@ namespace ComputerStore.Presenation
                 NhanVienBLL nvBLL = new NhanVienBLL();
 
                 Console.Clear();
+                IO.Box(0, 0, 28, 114, ConsoleColor.Black, ConsoleColor.White);
                 IO.BoxTitle("                                       CẬP NHẬT THÔNG TIN NHÂN VIÊN", x, y, 10, 110);
                 IO.Writexy("Mã NV:", x + 2, y + 3);
                 IO.Writexy("Họ tên:", x + 23, y + 3);
@@ -162,11 +167,14 @@ namespace ComputerStore.Presenation
                 do
                 {
                     ngaysinh = IO.ReadString(x + 67, y + 3);
-                    if (ngaysinh == null)
+                    if (ngaysinh == null || CongCu.CheckDate(ngaysinh) == false)
+                    {
                         IO.Writexy("Nhập lại ngày sinh...", x + 4, y + 7, ConsoleColor.Black, ConsoleColor.White);
+                        IO.Clear(x + 66, y + 3, 18, ConsoleColor.Black);
+                    }
                     else if (ngaysinh != nv.ngaySinh && ngaysinh != null)
                         nv.ngaySinh = CongCu.CatXau(ngaysinh);
-                } while (ngaysinh == null);
+                } while (ngaysinh == null || CongCu.CheckDate(ngaysinh) == false);
                 IO.Clear(x + 3, y + 8, 60, ConsoleColor.Black);
                 IO.Clear(x + 3, y + 7, 60, ConsoleColor.Black);
                 do
@@ -238,11 +246,11 @@ namespace ComputerStore.Presenation
             string manv = "";
             do
             {
-                Console.Clear();
                 INhanVienBLL nhanvien = new NhanVienBLL();
                 NhanVienBLL nvBLL = new NhanVienBLL();
 
                 Console.Clear();
+                IO.Box(0, 0, 28, 114, ConsoleColor.Black, ConsoleColor.White);
                 IO.BoxTitle("                                              XÓA NHÂN VIÊN", x, y, 7, 110);
                 IO.Writexy("Nhập mã nhân viên cần xóa:", x + 4, y + 3);
                 IO.Writexy("------------------------------------------------------------------------------------------------------------", x + 1, y + 4);
@@ -281,19 +289,20 @@ namespace ComputerStore.Presenation
         {
             INhanVienBLL nhanvien = new NhanVienBLL();
             Console.Clear();
+            IO.Box(0, 0, 28, 114, ConsoleColor.Black, ConsoleColor.White);
             Hien(x, y, nhanvien.LayDSNhanVien(), 5, 1);
             HienChucNang(29, 5, ConsoleColor.Black, ConsoleColor.White);
         }
         public void TimTen(int x, int y, ConsoleColor background_color, ConsoleColor text_color)
         {
-            string hoten = "";
             do
             {
-                Console.Clear();
+                string hoten = "";
                 INhanVienBLL nhanvien = new NhanVienBLL();
                 NhanVienBLL nvBLL = new NhanVienBLL();
 
                 Console.Clear();
+                IO.Box(0, 0, 28, 114, ConsoleColor.Black, ConsoleColor.White);
                 IO.BoxTitle("                                             TÌM KIẾM NHÂN VIÊN", x, y, 7, 110);
                 IO.Writexy("Nhập họ tên nhân viên cần tìm:", x + 2, y + 3);
                 IO.Writexy("------------------------------------------------------------------------------------------------------------", x + 1, y + 4);
@@ -329,14 +338,14 @@ namespace ComputerStore.Presenation
         }
         public void TimMa(int x, int y, ConsoleColor background_color, ConsoleColor text_color)
         {
-            string manv = "";
             do
             {
-                Console.Clear();
+                string manv = "";
                 INhanVienBLL nhanvien = new NhanVienBLL();
                 NhanVienBLL nvBLL = new NhanVienBLL();
 
                 Console.Clear();
+                IO.Box(0, 0, 28, 114, ConsoleColor.Black, ConsoleColor.White);
                 IO.BoxTitle("                                             TÌM KIẾM NHÂN VIÊN", x, y, 7, 110);
                 IO.Writexy("Nhập mã nhân viên cần tìm:", x + 2, y + 3);
                 IO.Writexy("------------------------------------------------------------------------------------------------------------", x + 1, y + 4);
@@ -379,7 +388,8 @@ namespace ComputerStore.Presenation
             int x, y, d;
             do
             {
-                IO.Clear(xx, yy, 1800, ConsoleColor.Black);
+                IO.Clear(xx, yy, 1900, ConsoleColor.Black);
+                IO.Box(0, 0, 28, 114, ConsoleColor.Black, ConsoleColor.White);
                 head = (curpage - 1) * n;
                 final = curpage * n < list.Count ? curpage * n : list.Count;
                 x = xx;
@@ -442,6 +452,7 @@ namespace ComputerStore.Presenation
             {
                 Console.SetWindowSize(114, 28);
                 Console.Clear();
+                IO.Box(0, 0, 28, 114, ConsoleColor.Black, ConsoleColor.White);
                 IO.BoxTitle("                    CÁC CHỨC NĂNG", x, y, 17, 56);
                 IO.Writexy("F1. Nhập danh sách nhân viên ", x + 12, y + 3);
                 IO.Writexy("F2. Sửa thông tin nhân viên ", x + 12, y + 5);
@@ -483,6 +494,7 @@ namespace ComputerStore.Presenation
             {
                 Console.SetWindowSize(114, 28);
                 Console.Clear();
+                IO.Box(0, 0, 28, 114, ConsoleColor.Black, ConsoleColor.White);
                 IO.BoxTitle("                    CÁC CHỨC NĂNG", x, y, 11, 56);
                 IO.Writexy("F1. Tìm kiếm nhân viên theo mã", x + 12, y + 3);
                 IO.Writexy("F2. Tìm kiếm nhân viên theo tên", x + 12, y + 5);
