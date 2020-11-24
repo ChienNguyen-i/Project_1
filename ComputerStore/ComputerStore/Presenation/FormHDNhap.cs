@@ -14,6 +14,8 @@ namespace ComputerStore.Presenation
         {
             do
             {
+                Console.BackgroundColor = background_color;
+                Console.ForegroundColor = text_color;
                 IHDNhapBLL hdnhap = new HDNhapBLL();
                 INhanVienBLL nhanvien = new NhanVienBLL();
                 INCC_BLL nhacc = new NCC_BLL();
@@ -155,6 +157,8 @@ namespace ComputerStore.Presenation
         {
             do
             {
+                Console.BackgroundColor = background_color;
+                Console.ForegroundColor = text_color;
                 IHDNhapBLL hdnhap = new HDNhapBLL();
                 INhanVienBLL nhanvien = new NhanVienBLL();
                 INCC_BLL nhacc = new NCC_BLL();
@@ -341,6 +345,8 @@ namespace ComputerStore.Presenation
         {
             do
             {
+                Console.BackgroundColor = background_color;
+                Console.ForegroundColor = text_color;
                 string mahdn = "";
                 IHDNhapBLL hdnhap = new HDNhapBLL();
                 HDNhapBLL hdnBLL = new HDNhapBLL();
@@ -383,7 +389,10 @@ namespace ComputerStore.Presenation
         }
         public void Xem(int x, int y, ConsoleColor background_color, ConsoleColor text_color)
         {
+            Console.BackgroundColor = background_color;
+            Console.ForegroundColor = text_color;
             IHDNhapBLL hdnhap = new HDNhapBLL();
+
             Console.Clear();
             IO.Box(0, 0, 28, 114, ConsoleColor.Black, ConsoleColor.White);
             Hien(x, y, hdnhap.LayDSHDNhap(), 5, 1);
@@ -393,6 +402,8 @@ namespace ComputerStore.Presenation
         {
             do
             {
+                Console.BackgroundColor = background_color;
+                Console.ForegroundColor = text_color;
                 string mahdn = "";
                 IHDNhapBLL hdnhap = new HDNhapBLL();
                 HDNhapBLL hdnBLL = new HDNhapBLL();
@@ -506,6 +517,9 @@ namespace ComputerStore.Presenation
             do
             {
                 Console.SetWindowSize(114, 28);
+                Console.BackgroundColor = background_color;
+                Console.ForegroundColor = text_color;
+
                 Console.Clear();
                 IO.Box(0, 0, 28, 114, ConsoleColor.Black, ConsoleColor.White);
                 IO.BoxTitle("                    CÁC CHỨC NĂNG", x, y, 17, 56);

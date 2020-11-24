@@ -14,6 +14,8 @@ namespace ComputerStore.Presenation
         {
             do
             {
+                Console.BackgroundColor = background_color;
+                Console.ForegroundColor = text_color;
                 IMayTinhBLL maytinh = new MayTinhBLL();
                 INCC_BLL nhacc = new NCC_BLL();
                 FormNCC fncc = new FormNCC();
@@ -98,6 +100,8 @@ namespace ComputerStore.Presenation
         {
             do
             {
+                Console.BackgroundColor = background_color;
+                Console.ForegroundColor = text_color;
                 IMayTinhBLL maytinh = new MayTinhBLL();
                 INCC_BLL nhacc = new NCC_BLL();
                 FormNCC fncc = new FormNCC();
@@ -221,6 +225,8 @@ namespace ComputerStore.Presenation
         {
             do
             {
+                Console.BackgroundColor = background_color;
+                Console.ForegroundColor = text_color;
                 string mamt = "";
                 IMayTinhBLL maytinh = new MayTinhBLL();
                 MayTinhBLL mtBLL = new MayTinhBLL();
@@ -263,7 +269,10 @@ namespace ComputerStore.Presenation
         }
         public void Xem(int x, int y, ConsoleColor background_color, ConsoleColor text_color)
         {
+            Console.BackgroundColor = background_color;
+            Console.ForegroundColor = text_color;
             IMayTinhBLL maytinh = new MayTinhBLL();
+
             Console.Clear();
             IO.Box(0, 0, 28, 114, ConsoleColor.Black, ConsoleColor.White);
             Hien(x + 11, y, maytinh.LayDSMayTinh(), 5, 1);
@@ -273,6 +282,8 @@ namespace ComputerStore.Presenation
         {
             do
             {
+                Console.BackgroundColor = background_color;
+                Console.ForegroundColor = text_color;
                 string tenmt = "";
                 IMayTinhBLL maytinh = new MayTinhBLL();
                 MayTinhBLL mtBLL = new MayTinhBLL();
@@ -316,6 +327,8 @@ namespace ComputerStore.Presenation
         {
             do
             {
+                Console.BackgroundColor = background_color;
+                Console.ForegroundColor = text_color;
                 string mamt = "";
                 IMayTinhBLL maytinh = new MayTinhBLL();
                 MayTinhBLL mtBLL = new MayTinhBLL();
@@ -423,6 +436,9 @@ namespace ComputerStore.Presenation
             do
             {
                 Console.SetWindowSize(114, 28);
+                Console.BackgroundColor = background_color;
+                Console.ForegroundColor = text_color;
+
                 Console.Clear();
                 IO.Box(0, 0, 28, 114, ConsoleColor.Black, ConsoleColor.White);
                 IO.BoxTitle("                    CÁC CHỨC NĂNG", x, y, 17, 56);
@@ -465,6 +481,9 @@ namespace ComputerStore.Presenation
             do
             {
                 Console.SetWindowSize(114, 28);
+                Console.BackgroundColor = background_color;
+                Console.ForegroundColor = text_color;
+
                 Console.Clear();
                 IO.Box(0, 0, 28, 114, ConsoleColor.Black, ConsoleColor.White);
                 IO.BoxTitle("                    CÁC CHỨC NĂNG", x, y, 11, 56);

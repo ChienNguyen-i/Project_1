@@ -14,7 +14,10 @@ namespace ComputerStore.Presenation
         {
             do
             {
+                Console.BackgroundColor = background_color;
+                Console.ForegroundColor = text_color;
                 INhanVienBLL nhanvien = new NhanVienBLL();
+
                 Console.Clear();
                 IO.Box(0, 0, 28, 114, ConsoleColor.Black, ConsoleColor.White);
                 IO.BoxTitle("                                         NHẬP THÔNG TIN NHÂN VIÊN", x, y, 10, 110);
@@ -101,6 +104,8 @@ namespace ComputerStore.Presenation
         {
             do
             {
+                Console.BackgroundColor = background_color;
+                Console.ForegroundColor = text_color;
                 INhanVienBLL nhanvien = new NhanVienBLL();
                 NhanVienBLL nvBLL = new NhanVienBLL();
 
@@ -243,9 +248,11 @@ namespace ComputerStore.Presenation
         }
         public void Xoa(int x, int y, ConsoleColor background_color, ConsoleColor text_color)
         {
-            string manv = "";
             do
             {
+                Console.BackgroundColor = background_color;
+                Console.ForegroundColor = text_color;
+                string manv = "";
                 INhanVienBLL nhanvien = new NhanVienBLL();
                 NhanVienBLL nvBLL = new NhanVienBLL();
 
@@ -287,7 +294,10 @@ namespace ComputerStore.Presenation
         }
         public void Xem(int x, int y, ConsoleColor background_color, ConsoleColor text_color)
         {
+            Console.BackgroundColor = background_color;
+            Console.ForegroundColor = text_color;
             INhanVienBLL nhanvien = new NhanVienBLL();
+
             Console.Clear();
             IO.Box(0, 0, 28, 114, ConsoleColor.Black, ConsoleColor.White);
             Hien(x, y, nhanvien.LayDSNhanVien(), 5, 1);
@@ -297,6 +307,8 @@ namespace ComputerStore.Presenation
         {
             do
             {
+                Console.BackgroundColor = background_color;
+                Console.ForegroundColor = text_color;
                 string hoten = "";
                 INhanVienBLL nhanvien = new NhanVienBLL();
                 NhanVienBLL nvBLL = new NhanVienBLL();
@@ -340,6 +352,8 @@ namespace ComputerStore.Presenation
         {
             do
             {
+                Console.BackgroundColor = background_color;
+                Console.ForegroundColor = text_color;
                 string manv = "";
                 INhanVienBLL nhanvien = new NhanVienBLL();
                 NhanVienBLL nvBLL = new NhanVienBLL();
@@ -451,7 +465,10 @@ namespace ComputerStore.Presenation
             do
             {
                 Console.SetWindowSize(114, 28);
+                Console.BackgroundColor = background_color;
+                Console.ForegroundColor = text_color;
                 Console.Clear();
+
                 IO.Box(0, 0, 28, 114, ConsoleColor.Black, ConsoleColor.White);
                 IO.BoxTitle("                    CÁC CHỨC NĂNG", x, y, 17, 56);
                 IO.Writexy("F1. Nhập danh sách nhân viên ", x + 12, y + 3);
@@ -493,7 +510,10 @@ namespace ComputerStore.Presenation
             do
             {
                 Console.SetWindowSize(114, 28);
+                Console.BackgroundColor = background_color;
+                Console.ForegroundColor = text_color;
                 Console.Clear();
+
                 IO.Box(0, 0, 28, 114, ConsoleColor.Black, ConsoleColor.White);
                 IO.BoxTitle("                    CÁC CHỨC NĂNG", x, y, 11, 56);
                 IO.Writexy("F1. Tìm kiếm nhân viên theo mã", x + 12, y + 3);

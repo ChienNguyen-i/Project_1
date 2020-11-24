@@ -15,7 +15,10 @@ namespace ComputerStore.Presenation
         {
             do
             {
+                Console.BackgroundColor = background_color;
+                Console.ForegroundColor = text_color;
                 IKhachHangBLL khachhang = new KhachHangBLL();
+
                 Console.Clear();
                 IO.Box(0, 0, 28, 114, ConsoleColor.Black, ConsoleColor.White);
                 IO.BoxTitle("                                        NHẬP THÔNG TIN KHÁCH HÀNG", x, y, 10, 110);
@@ -69,6 +72,8 @@ namespace ComputerStore.Presenation
         {
             do
             {
+                Console.BackgroundColor = background_color;
+                Console.ForegroundColor = text_color;
                 IKhachHangBLL khachhang = new KhachHangBLL();
                 KhachHangBLL khBLL = new KhachHangBLL();
 
@@ -161,6 +166,8 @@ namespace ComputerStore.Presenation
         {
             do
             {
+                Console.BackgroundColor = background_color;
+                Console.ForegroundColor = text_color;
                 string makh = "";
                 IKhachHangBLL khachhang = new KhachHangBLL();
                 KhachHangBLL khBLL = new KhachHangBLL();
@@ -203,7 +210,10 @@ namespace ComputerStore.Presenation
         }
         public void Xem(int x, int y, ConsoleColor background_color, ConsoleColor text_color)
         {
+            Console.BackgroundColor = background_color;
+            Console.ForegroundColor = text_color;
             IKhachHangBLL khachhang = new KhachHangBLL();
+
             Console.Clear();
             IO.Box(0, 0, 28, 114, ConsoleColor.Black, ConsoleColor.White);
             Hien(x + 17, y, khachhang.LayDSKhachHang(), 5, 1);
@@ -213,6 +223,8 @@ namespace ComputerStore.Presenation
         {
             do
             {
+                Console.BackgroundColor = background_color;
+                Console.ForegroundColor = text_color;
                 string hoten = "";
                 IKhachHangBLL khachhang = new KhachHangBLL();
                 KhachHangBLL khBLL = new KhachHangBLL();
@@ -256,6 +268,8 @@ namespace ComputerStore.Presenation
         {
             do
             {
+                Console.BackgroundColor = background_color;
+                Console.ForegroundColor = text_color;
                 string makh = "";
                 IKhachHangBLL khachhang = new KhachHangBLL();
                 KhachHangBLL khBLL = new KhachHangBLL();
@@ -361,6 +375,9 @@ namespace ComputerStore.Presenation
             do
             {
                 Console.SetWindowSize(114, 28);
+                Console.BackgroundColor = background_color;
+                Console.ForegroundColor = text_color;
+
                 Console.Clear();
                 IO.Box(0, 0, 28, 114, ConsoleColor.Black, ConsoleColor.White);
                 IO.BoxTitle("                    CÁC CHỨC NĂNG", x, y, 17, 56);
@@ -403,6 +420,9 @@ namespace ComputerStore.Presenation
             do
             {
                 Console.SetWindowSize(114, 28);
+                Console.BackgroundColor = background_color;
+                Console.ForegroundColor = text_color;
+
                 Console.Clear();
                 IO.Box(0, 0, 28, 114, ConsoleColor.Black, ConsoleColor.White);
                 IO.BoxTitle("                    CÁC CHỨC NĂNG", x, y, 11, 56);

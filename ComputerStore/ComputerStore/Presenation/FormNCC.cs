@@ -14,7 +14,10 @@ namespace ComputerStore.Presenation
         {
             do
             {
+                Console.BackgroundColor = background_color;
+                Console.ForegroundColor = text_color;
                 INCC_BLL nhacc = new NCC_BLL();
+
                 Console.Clear();
                 IO.Box(0, 0, 28, 114, ConsoleColor.Black, ConsoleColor.White);
                 IO.BoxTitle("                                   NHẬP THÔNG TIN NHÀ CUNG CẤP", x, y, 10, 101);
@@ -68,6 +71,8 @@ namespace ComputerStore.Presenation
         {
             do
             {
+                Console.BackgroundColor = background_color;
+                Console.ForegroundColor = text_color;
                 INCC_BLL nhacc = new NCC_BLL();
                 NCC_BLL nccBLL = new NCC_BLL();
 
@@ -160,6 +165,8 @@ namespace ComputerStore.Presenation
         {
             do
             {
+                Console.BackgroundColor = background_color;
+                Console.ForegroundColor = text_color;
                 string mancc = "";
                 INCC_BLL nhacc = new NCC_BLL();
                 NCC_BLL nccBLL = new NCC_BLL();
@@ -202,7 +209,10 @@ namespace ComputerStore.Presenation
         }
         public void Xem(int x, int y, ConsoleColor background_color, ConsoleColor text_color)
         {
+            Console.BackgroundColor = background_color;
+            Console.ForegroundColor = text_color;
             INCC_BLL nhacc = new NCC_BLL();
+
             Console.Clear();
             IO.Box(0, 0, 28, 114, ConsoleColor.Black, ConsoleColor.White);
             Hien(x + 17, y, nhacc.LayDSNCC(), 5, 1);
@@ -212,6 +222,8 @@ namespace ComputerStore.Presenation
         {
             do
             {
+                Console.BackgroundColor = background_color;
+                Console.ForegroundColor = text_color;
                 string tenncc = "";
                 INCC_BLL nhacc = new NCC_BLL();
                 NCC_BLL nccBLL = new NCC_BLL();
@@ -255,6 +267,8 @@ namespace ComputerStore.Presenation
         {
             do
             {
+                Console.BackgroundColor = background_color;
+                Console.ForegroundColor = text_color;
                 string mancc = "";
                 INCC_BLL nhacc = new NCC_BLL();
                 NCC_BLL nccBLL = new NCC_BLL();
@@ -361,6 +375,9 @@ namespace ComputerStore.Presenation
             do
             {
                 Console.SetWindowSize(114, 28);
+                Console.BackgroundColor = background_color;
+                Console.ForegroundColor = text_color;
+
                 Console.Clear();
                 IO.Box(0, 0, 28, 114, ConsoleColor.Black, ConsoleColor.White);
                 IO.BoxTitle("                    CÁC CHỨC NĂNG", x, y, 17, 56);
@@ -403,6 +420,9 @@ namespace ComputerStore.Presenation
             do
             {
                 Console.SetWindowSize(114, 28);
+                Console.BackgroundColor = background_color;
+                Console.ForegroundColor = text_color;
+
                 Console.Clear();
                 IO.Box(0, 0, 28, 114, ConsoleColor.Black, ConsoleColor.White);
                 IO.BoxTitle("                    CÁC CHỨC NĂNG", x, y, 11, 56);
