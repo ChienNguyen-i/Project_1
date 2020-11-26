@@ -23,7 +23,7 @@ namespace ComputerStore.DataAccessLayer
                 {
                     s = CongCu.CatXau(s);
                     string[] a = s.Split('\t');
-                    list.Add(new NhanVien(a[0], a[1], a[2], a[3], a[4], a[5], a[6]));
+                    list.Add(new NhanVien(a[0], a[1], a[2], a[3], a[4], a[5], a[6], a[7]));
                 }
                 s = sr.ReadLine();
             }
@@ -58,14 +58,14 @@ namespace ComputerStore.DataAccessLayer
             int manv = CongCu.TachSo(maNV) + 1;
             StreamWriter sw = File.AppendText(txtfile);
             sw.WriteLine();
-            sw.Write("NV" + manv + "\t" + nv.tenNV + "\t"+ nv.ngaySinh + "\t" + nv.gioiTinh + "\t" + nv.diaChi + "\t" + nv.soDT + "\t" + nv.loaiNV);
+            sw.Write("NV" + manv + "\t" + nv.tenNV + "\t"+ nv.ngaySinh + "\t" + nv.gioiTinh + "\t" + nv.diaChi + "\t" + nv.soDT + "\t" + nv.loaiNV + "\t" + nv.pass);
             sw.Close();
         }        
         public void Update(List<NhanVien> list)
         {
             StreamWriter sw = File.CreateText(txtfile);
             for (int i = 0; i < list.Count; ++i)
-                sw.WriteLine(list[i].maNV + "\t" + list[i].tenNV + "\t" + list[i].ngaySinh + "\t" + list[i].gioiTinh + "\t" + list[i].diaChi + "\t" + list[i].soDT + "\t" + list[i].loaiNV);
+                sw.WriteLine(list[i].maNV + "\t" + list[i].tenNV + "\t" + list[i].ngaySinh + "\t" + list[i].gioiTinh + "\t" + list[i].diaChi + "\t" + list[i].soDT + "\t" + list[i].loaiNV + "\t" + list[i].pass);
             sw.Close();
         }
     }

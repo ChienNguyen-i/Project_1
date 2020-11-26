@@ -19,7 +19,7 @@ namespace ComputerStore.Business
         }
         public void ThemNhanVien(NhanVien nv)
         {
-            if (nv.tenNV != "" && nv.ngaySinh != "" && nv.gioiTinh != "" && nv.diaChi != "" && nv.soDT != "" && nv.loaiNV != "")
+            if (nv.tenNV != "" && nv.ngaySinh != "" && nv.gioiTinh != "" && nv.diaChi != "" && nv.soDT != "" && nv.loaiNV != "" && nv.pass != "")
             {
                 nv.tenNV = CongCu.ChuanHoaXau(nv.tenNV);
                 nv.ngaySinh = CongCu.CatXau(nv.ngaySinh);
@@ -27,6 +27,7 @@ namespace ComputerStore.Business
                 nv.diaChi = CongCu.ChuanHoaXau(nv.diaChi);
                 nv.soDT = CongCu.CatXau(nv.soDT);
                 nv.loaiNV = CongCu.HoaDau(nv.loaiNV);
+                nv.pass = CongCu.GetMD5(nv.pass);
                 nvDAL.Insert(nv);
             }
             else
@@ -98,6 +99,13 @@ namespace ComputerStore.Business
             else
                 kq = null;
             return kq;
+        }
+        public bool KTraGT(string s)
+        {
+            if (s.ToLower() == "nam" || s.ToLower() == "nữ")
+                return true;
+            else
+                return false;
         }
         public bool KT_MaNhanVien(string manv)
         {

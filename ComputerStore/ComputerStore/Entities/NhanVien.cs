@@ -13,11 +13,12 @@ namespace ComputerStore.Entities
         private string DiaChi;
         private string SoDT;
         private string LoaiNV;
+        private string Password;
 
         public NhanVien()
         {
         }
-        public NhanVien(string manv, string tennv, string ngaysinh, string gt, string diachi, string sdt, string loainv)
+        public NhanVien(string manv, string tennv, string ngaysinh, string gt, string diachi, string sdt, string loainv, string pass)
         {
             this.MaNV = manv;
             this.TenNV = tennv;
@@ -26,6 +27,7 @@ namespace ComputerStore.Entities
             this.DiaChi = diachi;
             this.SoDT = sdt;
             this.LoaiNV = loainv;
+            this.Password = pass;
         }
         public NhanVien(NhanVien nv)
         {
@@ -36,6 +38,7 @@ namespace ComputerStore.Entities
             this.DiaChi = nv.DiaChi;
             this.SoDT = nv.SoDT;
             this.LoaiNV = nv.LoaiNV;
+            this.Password = nv.Password;
         }
 
         public string maNV
@@ -120,6 +123,18 @@ namespace ComputerStore.Entities
             {
                 if (value != "")
                     LoaiNV = value;
+            }
+        }
+        public string pass
+        {
+            get
+            {
+                return Password;
+            }
+            set
+            {
+                if (value != "")
+                    Password = value;
             }
         }
     }

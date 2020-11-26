@@ -120,5 +120,17 @@ namespace ComputerStore.Utility
             }
             return count;
         }
+        public static string GetMD5(string pass)
+        {
+            string str = "";
+            byte[] tmp = Encoding.UTF8.GetBytes(pass);
+            System.Security.Cryptography.MD5CryptoServiceProvider md5 = new System.Security.Cryptography.MD5CryptoServiceProvider();
+            tmp = md5.ComputeHash(tmp);
+            foreach (byte b in tmp)
+            {
+                str += b.ToString("X2");
+            }
+            return str;
+        }
     }
 }

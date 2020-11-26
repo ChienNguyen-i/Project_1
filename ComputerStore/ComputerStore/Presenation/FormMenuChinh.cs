@@ -12,9 +12,9 @@ namespace ComputerStore.Presenation
             do
             {
                 Console.SetWindowSize(114, 28);
+                Console.BackgroundColor = ConsoleColor.Black;
                 Console.BackgroundColor = background_color;
                 Console.ForegroundColor = text_color;
-                Console.BackgroundColor = ConsoleColor.Black;
 
                 Console.Clear();
                 IO.Box(0, 0, 28, 114, ConsoleColor.Black, ConsoleColor.White);
