@@ -36,9 +36,12 @@ namespace ComputerStore.Presenation
                 do
                 {
                     nv.tenNV = IO.ReadString(x + 10, y + 3);
-                    if (nv.tenNV == null)
+                    if (nv.tenNV == null || CongCu.CheckName(nv.tenNV) == false)
+                    {
                         IO.Writexy("Nhập lại tên nhân viên...", x + 4, y + 7, ConsoleColor.Black, ConsoleColor.White);
-                } while (nv.tenNV == null);
+                        IO.Clear(x + 9, y + 3, 27, ConsoleColor.Black);
+                    }
+                } while (nv.tenNV == null || CongCu.CheckName(nv.tenNV) == false);
                 IO.Clear(x + 3, y + 7, 60, ConsoleColor.Black);
                 IO.Writexy("Nhập ngày sinh định dạng 'dd/MM/yyyy'...", x + 4, y + 8, ConsoleColor.Black, ConsoleColor.White);
                 do
@@ -47,7 +50,7 @@ namespace ComputerStore.Presenation
                     if (nv.ngaySinh == null || CongCu.CheckDate(nv.ngaySinh) == false)
                     {
                         IO.Writexy("Nhập lại ngày sinh...", x + 4, y + 7, ConsoleColor.Black, ConsoleColor.White);
-                        IO.Clear(x + 47, y + 3, 26, ConsoleColor.Black);
+                        IO.Clear(x + 47, y + 3, 16, ConsoleColor.Black);
                     }
                 } while (nv.ngaySinh == null || CongCu.CheckDate(nv.ngaySinh) == false);
                 IO.Clear(x + 3, y + 8, 60, ConsoleColor.Black);
@@ -75,7 +78,7 @@ namespace ComputerStore.Presenation
                     if (nv.soDT == null || nv.soDT.Length < 10 || nv.soDT.Length > 10)
                     {
                         IO.Writexy("Nhập lại số điện thoại...", x + 4, y + 7, ConsoleColor.Black, ConsoleColor.White);
-                        IO.Clear(x + 16, y + 5, 21, ConsoleColor.Black);
+                        IO.Clear(x + 16, y + 5, 20, ConsoleColor.Black);
                     }
                 } while (nv.soDT == null || nv.soDT.Length < 10 || nv.soDT.Length > 10);
                 IO.Clear(x + 3, y + 7, 60, ConsoleColor.Black);
@@ -168,21 +171,24 @@ namespace ComputerStore.Presenation
                 IO.Writexy(nv.soDT, x + 42, y + 5);
                 IO.Writexy(nv.loaiNV, x + 69, y + 5);
                 IO.Writexy(nv.pass, x + 93, y + 5);
-
-                IO.Clear(x + 110, y + 5, 14, ConsoleColor.Black);
-                IO.BoxTitle("                                        CẬP NHẬT THÔNG TIN NHÂN VIÊN", x, y, 10, 112);
-                IO.Writexy("--------------------------------------------------------------------------------------------------------------", x + 1, y + 6);
-                IO.Box(0, 0, 28, 114, ConsoleColor.Black, ConsoleColor.White);
                 
+                IO.Clear(x + 110, y + 5, 14, ConsoleColor.Black);
+                IO.Writexy("│  │", x + 111, y + 5);
+                IO.Writexy("-----------", x + 1, y + 6);
+                IO.Writexy("║║", x + 112, y + 5);
+
                 IO.Clear(x + 3, y + 7, 60, ConsoleColor.Black);
                 do
                 {
                     tennv = IO.ReadString(x + 31, y + 3);
-                    if (tennv == null)
+                    if (tennv == null || CongCu.CheckName(tennv) == false)
+                    {
                         IO.Writexy("Nhập lại tên nhân viên...", x + 4, y + 7, ConsoleColor.Black, ConsoleColor.White);
+                        IO.Clear(x + 30, y + 3, 25, ConsoleColor.Black);
+                    }
                     else if (tennv != nv.tenNV && tennv != null)
                         nv.tenNV = CongCu.ChuanHoaXau(tennv);
-                } while (tennv == null);
+                } while (tennv == null || CongCu.CheckName(tennv) == false);
                 IO.Clear(x + 3, y + 7, 60, ConsoleColor.Black);
                 IO.Writexy("Nhập ngày sinh định dạng 'dd/MM/yyyy'...", x + 4, y + 8, ConsoleColor.Black, ConsoleColor.White);
                 do
@@ -204,7 +210,7 @@ namespace ComputerStore.Presenation
                     if (gioitinh == null || nvBLL.KTraGT(gioitinh) == false)
                     {
                         IO.Writexy("Nhập lại giới tính...", x + 4, y + 7, ConsoleColor.Black, ConsoleColor.White);
-                        IO.Clear(x + 95, y + 3, 13, ConsoleColor.Black);
+                        IO.Clear(x + 95, y + 3, 15, ConsoleColor.Black);
                     }
                     else if (gioitinh != nv.gioiTinh && gioitinh != null)
                         nv.gioiTinh = CongCu.ChuanHoaXau(gioitinh);
@@ -225,7 +231,7 @@ namespace ComputerStore.Presenation
                     if (sdt == null || sdt.Length < 10 || sdt.Length > 10)
                     {
                         IO.Writexy("Nhập lại số điện thoại...", x + 4, y + 7, ConsoleColor.Black, ConsoleColor.White);
-                        IO.Clear(x + 41, y + 5, 18, ConsoleColor.Black);
+                        IO.Clear(x + 41, y + 5, 11, ConsoleColor.Black);
                     }
                     else if (sdt != nv.soDT && sdt != null)
                         nv.soDT = CongCu.CatXau(sdt);

@@ -3,5 +3,4 @@ MT2	Pc Designer D008	NCC2	7	15
 MT3	Asus Rog Strix	NCC4	12	10
 MT4	Asus V241f	NCC3	8	3
 MT5	Apple Mxn	NCC5	5	6
-
 MT6	Hp	NCC3	3	6

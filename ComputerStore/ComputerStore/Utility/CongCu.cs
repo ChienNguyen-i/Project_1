@@ -34,18 +34,16 @@ namespace ComputerStore.Utility
             s = s.Substring(0, 1).ToUpper() + s.Substring(1);
             return s.Trim();
         }
-        public static int TachSo(string input)
+        public static int TachSo(string s)
         {
-            int i = 0;
-            string[] numbers = Regex.Split(input, @"\D+");
-            foreach (string value in numbers)
+            StringBuilder sb = new StringBuilder(s.Length);
+            for (int i = 0; i < s.Length; i++)
             {
-                if (!string.IsNullOrEmpty(value))
-                {
-                    i = int.Parse(value);
-                }
+                char c = s[i];
+                if (c >= '0' && c <= '9')
+                    sb.Append(s[i]);
             }
-            return i;
+            return Convert.ToInt32(sb.ToString());
         }
         public static bool CheckDate(string x)
         {
@@ -70,7 +68,7 @@ namespace ComputerStore.Utility
                     year = Convert.ToInt16(c);
 
                     int daymax = 0;
-                    if (year < 0 || month <= 0 || month > 12 || day <= 0 || day > 31)
+                    if (year <= 0 || month <= 0 || month > 12 || day <= 0 || day > 31 || year > DateTime.Now.Year)
                         return false;
                     else
                     {
@@ -119,6 +117,22 @@ namespace ComputerStore.Utility
                     count++;
             }
             return count;
+        }
+        public static bool CheckName(string name)
+        {
+            bool kt = true;
+            for (int i = 0; i < name.Length; ++i)
+            {
+                for (int j = '0'; j <= '9'; j++)
+                {
+                    if (name[i] == j)
+                    {
+                        kt = false;
+                        break;
+                    }
+                }
+            }
+            return kt;
         }
         public static string GetMD5(string pass)
         {

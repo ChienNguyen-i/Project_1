@@ -32,9 +32,12 @@ namespace ComputerStore.Presenation
                 do
                 {
                     kh.tenKH = IO.ReadString(x + 12, y + 3);
-                    if (kh.tenKH == null)
+                    if (kh.tenKH == null || CongCu.CheckName(kh.tenKH) == false)
+                    {
                         IO.Writexy("Nhập lại tên khách hàng...", x + 4, y + 7, ConsoleColor.Black, ConsoleColor.White);
-                } while (kh.tenKH == null);
+                        IO.Clear(x + 11, y + 3, 97, ConsoleColor.Black);
+                    }
+                } while (kh.tenKH == null ||CongCu.CheckName(kh.tenKH) == false);
                 IO.Clear(x + 3, y + 7, 60, ConsoleColor.Black);
                 do
                 {
@@ -120,11 +123,14 @@ namespace ComputerStore.Presenation
                 do
                 {
                     tenkh = IO.ReadString(x + 57, y + 3);
-                    if (tenkh == null)
+                    if (tenkh == null || CongCu.CheckName(tenkh) == false)
+                    {
                         IO.Writexy("Nhập lại tên khách hàng...", x + 4, y + 7, ConsoleColor.Black, ConsoleColor.White);
+                        IO.Clear(x + 56, y + 3, 52, ConsoleColor.Black);
+                    }
                     else if (tenkh != kh.tenKH && tenkh != null)
                         kh.tenKH = CongCu.ChuanHoaXau(tenkh);
-                } while (tenkh == null);
+                } while (tenkh == null || CongCu.CheckName(tenkh) == false);
                 IO.Clear(x + 3, y + 7, 60, ConsoleColor.Black);
                 do
                 {
