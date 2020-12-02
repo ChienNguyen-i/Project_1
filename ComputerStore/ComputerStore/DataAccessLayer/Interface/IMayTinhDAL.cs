@@ -1,5 +1,5 @@
 ﻿using System;
-using System.Collections;
+using System.Collections.Generic;
 using System.Text;
 using ComputerStore.Entities;
 using ComputerStore.Utility;

@@ -14,7 +14,7 @@ namespace ComputerStore.Utility
             do
             {
                 kt = Console.ReadKey(true);
-                if (kt.Key != ConsoleKey.Enter && kt.Key != ConsoleKey.Escape && kt.Key != ConsoleKey.Backspace)
+                if (kt.Key != ConsoleKey.Enter && kt.Key != ConsoleKey.Backspace)
                 {
                     Console.Write("*");
                     s = s + kt.KeyChar.ToString();
@@ -41,78 +41,8 @@ namespace ComputerStore.Utility
                         }
                     }
                 }
-                else if (kt.Key == ConsoleKey.Enter || kt.Key == ConsoleKey.Escape)
-                    break;
-            } while (true);
-            return s;
-        }
-        public static string ReadString(int x, int y)
-        {
-            Console.SetCursorPosition(x, y);
-            string s = null;
-            ConsoleKeyInfo kt;
-            do
-            {
-                kt = Console.ReadKey(true);
-                if (kt.Key != ConsoleKey.Enter && kt.Key != ConsoleKey.Escape && kt.Key != ConsoleKey.Backspace)
-                {
-                    Console.Write(kt.KeyChar.ToString());
-                    s += kt.KeyChar.ToString();
-                }
-                else if (kt.Key == ConsoleKey.Backspace)
-                {
-                    Clear(x, y, s.Length, ConsoleColor.Black);
-                    if (s.Length <= 1)
-                        s = "";
-                    else
-                        s = s.Substring(0, s.Length - 1);
-                    if (s == "")
-                    {
-                        Writexy(" ", x, y);
-                        Console.SetCursorPosition(x, y);
-                    }
-                    else
-                        Writexy(s, x, y);
-                }
                 else if (kt.Key == ConsoleKey.Enter)
                     break;
-                else if (kt.Key == ConsoleKey.Escape)
-                    Presenation.FormMenuChinh.HienMNC(32, 4, ConsoleColor.Black, ConsoleColor.White);
-            } while (true);
-            return s;
-        }
-        public static string ReadNumber(int x, int y)
-        {
-            Console.SetCursorPosition(x, y);
-            string s = null;
-            ConsoleKeyInfo kt;
-            do
-            {
-                kt = Console.ReadKey(true);
-                if (kt.Key != ConsoleKey.Enter && kt.Key != ConsoleKey.Escape && kt.KeyChar >= '0' && kt.KeyChar <= '9')
-                {
-                    Console.Write(kt.KeyChar.ToString());
-                    s += kt.KeyChar.ToString();
-                }
-                else if (kt.Key == ConsoleKey.Backspace)
-                {
-                    Clear(x, y, s.Length, ConsoleColor.Black);
-                    if (s.Length <= 1)
-                        s = "";
-                    else
-                        s = s.Substring(0, s.Length - 1);
-                    if (s == "")
-                    {
-                        Writexy(" ", x, y);
-                        Console.SetCursorPosition(x, y);
-                    }
-                    else
-                        Writexy(s, x, y);
-                }
-                else if (kt.Key == ConsoleKey.Enter)
-                    break;
-                else if (kt.Key == ConsoleKey.Escape)
-                    Presenation.FormMenuChinh.HienMNC(32, 4, ConsoleColor.Black, ConsoleColor.White);
             } while (true);
             return s;
         }

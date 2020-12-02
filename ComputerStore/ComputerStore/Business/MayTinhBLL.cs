@@ -1,5 +1,5 @@
 ﻿using System;
-using System.Collections;
+using System.Collections.Generic;
 using System.Text;
 using ComputerStore.Utility;
 using ComputerStore.Entities;
@@ -65,7 +65,7 @@ namespace ComputerStore.Business
             if (i < list.Count)
             {
                 list.RemoveAt(i);
-                list.Add(mt, i);
+                list.Add(mt);
                 mtDAL.Update(list);
             }
             else
@@ -97,36 +97,24 @@ namespace ComputerStore.Business
         }
         public bool KT_MaMayTinh(string mamt)
         {
-            List<MayTinh> list = mtDAL.GetData();
-            Node<MayTinh> tmp = list.Head;
             bool kt = false;
-            while (tmp != null)
-            {
-                if (tmp.Info.maMT == mamt)
+            foreach (MayTinh maytinh in mtDAL.GetData())
+                if (maytinh.maMT == mamt)
                 {
                     kt = true;
                     break;
                 }
-                else
-                    tmp = tmp.Link;
-            }
             return kt;
         }
         public bool KT_TenMayTinh(string tenmt)
         {
-            List<MayTinh> list = mtDAL.GetData();
-            Node<MayTinh> tmp = list.Head;
             bool kt = false;
-            while (tmp != null)
-            {
-                if (tmp.Info.tenMT == tenmt)
+            foreach (MayTinh maytinh in mtDAL.GetData())
+                if (maytinh.tenMT == tenmt)
                 {
                     kt = true;
                     break;
                 }
-                else
-                    tmp = tmp.Link;
-            }
             return kt;
         }
     }

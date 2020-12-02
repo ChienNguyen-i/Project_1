@@ -1,5 +1,5 @@
 ﻿using System;
-using System.Collections;
+using System.Collections.Generic;
 using System.Text;
 using ComputerStore.Utility;
 using ComputerStore.Entities;
@@ -66,7 +66,7 @@ namespace ComputerStore.Business
             if (i < list.Count)
             {
                 list.RemoveAt(i);
-                list.Add(kh, i);
+                list.Add(kh);
                 khDAL.Update(list);
             }
             else
@@ -98,36 +98,24 @@ namespace ComputerStore.Business
         }
         public bool KT_MaKhachHang(string makh)
         {
-            List<KhachHang> list = khDAL.GetData();
-            Node<KhachHang> tmp = list.Head;
             bool kt = false;
-            while (tmp != null)
-            {
-                if (tmp.Info.maKH == makh)
+            foreach (KhachHang khachhang in khDAL.GetData())
+                if (khachhang.maKH == makh)
                 {
                     kt = true;
                     break;
                 }
-                else
-                    tmp = tmp.Link;
-            }
             return kt;
         }
         public bool KT_TenKhachHang(string tenkh)
         {
-            List<KhachHang> list = khDAL.GetData();
-            Node<KhachHang> tmp = list.Head;
             bool kt = false;
-            while (tmp != null)
-            {
-                if (tmp.Info.tenKH == tenkh)
+            foreach (KhachHang khachhang in khDAL.GetData())
+                if (khachhang.tenKH == tenkh)
                 {
                     kt = true;
                     break;
                 }
-                else
-                    tmp = tmp.Link;
-            }
             return kt;
         }
     }

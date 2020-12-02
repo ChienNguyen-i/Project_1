@@ -56,14 +56,15 @@ namespace ComputerStore.Utility
                 IO.Clear(x + 13, y + 8, 45, ConsoleColor.Black);
                 do
                 {
-                    user = IO.ReadString(x + 15, y + 5);
-                    if (user == null)
+                    Console.SetCursorPosition(x + 15, y + 5);
+                    user = Console.ReadLine();
+                    if (user == "")
                     {
                         IO.Clear(x + 2, y + 12, 51, ConsoleColor.Black);
                         IO.Writexy("Nhập lại tài khoản...", x + 3, y + 12, ConsoleColor.Black, ConsoleColor.White);
                         IO.Clear(x + 14, y + 5, 44, ConsoleColor.Black);
                     }
-                } while (this.user == null);
+                } while (user == "");
                 IO.Clear(x + 2, y + 12, 51, ConsoleColor.Black);
                 do
                 {
@@ -94,18 +95,14 @@ namespace ComputerStore.Utility
         public bool KT_DangNhap(string user, string pass)
         {
             NhanVienDAL nvDAL = new NhanVienDAL();
-            List<NhanVien> list = nvDAL.GetData();
-            Node<NhanVien> tmp = list.Head;
             bool kt = false;
-            while (tmp != null)
+            foreach (NhanVien nhanvien in nvDAL.GetData())
             {
-                if (tmp.Info.maNV == user && tmp.Info.pass == CongCu.GetMD5(pass))
+                if (nhanvien.maNV == user && nhanvien.pass == CongCu.GetMD5(pass))
                 {
                     kt = true;
                     break;
                 }
-                else
-                    tmp = tmp.Link;
             }
             return kt;
         }

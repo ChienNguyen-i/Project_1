@@ -1,5 +1,5 @@
 ﻿using System;
-using System.Collections;
+using System.Collections.Generic;
 using System.Text;
 using ComputerStore.Utility;
 using ComputerStore.Entities;
@@ -67,7 +67,7 @@ namespace ComputerStore.Business
             if (i < list.Count)
             {
                 list.RemoveAt(i);
-                list.Add(hdn, i);
+                list.Add(hdn);
                 hdnDAL.Update(list);
             }
             else
@@ -93,19 +93,13 @@ namespace ComputerStore.Business
         }
         public bool KT_MaHDN(string mahdn)
         {
-            List<HDNhap> list = hdnDAL.GetData();
-            Node<HDNhap> tmp = list.Head;
             bool kt = false;
-            while (tmp != null)
-            {
-                if (tmp.Info.maHDN == mahdn)
+            foreach (HDNhap hdnhap in hdnDAL.GetData())
+                if (hdnhap.maHDN == mahdn)
                 {
                     kt = true;
                     break;
                 }
-                else
-                    tmp = tmp.Link;
-            }
             return kt;
         }
     }

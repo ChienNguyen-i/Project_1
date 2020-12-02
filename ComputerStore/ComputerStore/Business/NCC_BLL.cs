@@ -1,5 +1,5 @@
 ﻿using System;
-using System.Collections;
+using System.Collections.Generic;
 using System.Text;
 using ComputerStore.Utility;
 using ComputerStore.Entities;
@@ -66,7 +66,7 @@ namespace ComputerStore.Business
             if (i < list.Count)
             {
                 list.RemoveAt(i);
-                list.Add(ncc, i);
+                list.Add(ncc);
                 nccDAL.Update(list);
             }
             else
@@ -98,36 +98,24 @@ namespace ComputerStore.Business
         }
         public bool KT_MaNCC(string mancc)
         {
-            List<NCC> list = nccDAL.GetData();
-            Node<NCC> tmp = list.Head;
             bool kt = false;
-            while (tmp != null)
-            {
-                if (tmp.Info.maNCC == mancc)
+            foreach (NCC ncc in nccDAL.GetData())
+                if (ncc.maNCC == mancc)
                 {
                     kt = true;
                     break;
                 }
-                else
-                    tmp = tmp.Link;
-            }
             return kt;
         }
         public bool KT_TenNCC(string tenncc)
         {
-            List<NCC> list = nccDAL.GetData();
-            Node<NCC> tmp = list.Head;
             bool kt = false;
-            while (tmp != null)
-            {
-                if (tmp.Info.tenNCC == tenncc)
+            foreach (NCC ncc in nccDAL.GetData())
+                if (ncc.tenNCC == tenncc)
                 {
                     kt = true;
                     break;
                 }
-                else
-                    tmp = tmp.Link;
-            }
             return kt;
         }
     }

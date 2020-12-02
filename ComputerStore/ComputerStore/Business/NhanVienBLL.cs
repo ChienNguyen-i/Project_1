@@ -1,5 +1,5 @@
 ﻿using System;
-using System.Collections;
+using System.Collections.Generic;
 using System.Text;
 using ComputerStore.Utility;
 using ComputerStore.Entities;
@@ -70,7 +70,7 @@ namespace ComputerStore.Business
             if (i < list.Count)
             {
                 list.RemoveAt(i);
-                list.Add(nv, i);
+                list.Add(nv);
                 nvDAL.Update(list);
             }
             else
@@ -94,7 +94,7 @@ namespace ComputerStore.Business
             {
                 for (int i = 0; i < list.Count; ++i)
                     if (list[i].maNV == nv.maNV)
-                         kq.Add(new NhanVien(list[i]));
+                        kq.Add(new NhanVien(list[i]));
             }
             else
                 kq = null;
@@ -109,36 +109,24 @@ namespace ComputerStore.Business
         }
         public bool KT_MaNhanVien(string manv)
         {
-            List<NhanVien> list = nvDAL.GetData();
-            Node<NhanVien> tmp = list.Head;
             bool kt = false;
-            while (tmp != null)
-            {
-                if (tmp.Info.maNV == manv)
+            foreach (NhanVien nhanvien in nvDAL.GetData())
+                if (nhanvien.maNV == manv)
                 {
                     kt = true;
                     break;
                 }
-                else
-                    tmp = tmp.Link;
-            }
             return kt;
         }
         public bool KT_TenNhanVien(string tennv)
         {
-            List<NhanVien> list = nvDAL.GetData();
-            Node<NhanVien> tmp = list.Head;
             bool kt = false;
-            while (tmp != null)
-            {
-                if (tmp.Info.tenNV == tennv)
+            foreach (NhanVien nhanvien in nvDAL.GetData())
+                if (nhanvien.tenNV == tennv)
                 {
                     kt = true;
                     break;
                 }
-                else
-                    tmp = tmp.Link;
-            }
             return kt;
         }
     }

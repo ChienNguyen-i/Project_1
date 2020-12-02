@@ -51,7 +51,7 @@ namespace ComputerStore.Utility
             int day, month, year;
             string s = CatXau(x);
 
-            if (CheckCount(s) == 2)
+            if (CheckCount(s) == 2 && CheckNumber(s) == true)
             {
                 a = s.Substring(0, s.IndexOf("/"));
                 b = s.Substring(s.IndexOf("/") + 1, s.LastIndexOf("/") - a.Length - 1);
@@ -128,6 +128,22 @@ namespace ComputerStore.Utility
                     if (name[i] == j)
                     {
                         kt = false;
+                        break;
+                    }
+                }
+            }
+            return kt;
+        }
+        public static bool CheckNumber(string number)
+        {
+            bool kt = false;
+            for (int i = 0; i < number.Length; ++i)
+            {
+                for (int j = '0'; j <= '9'; j++)
+                {
+                    if (number[i] == j)
+                    {
+                        kt = true;
                         break;
                     }
                 }
