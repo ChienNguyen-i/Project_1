@@ -109,7 +109,7 @@ namespace ComputerStore.Presenation
                 Console.SetCursorPosition(x + 34, y + 7);
                 ConsoleKeyInfo kt = Console.ReadKey();
                 if (kt.Key == ConsoleKey.Escape)
-                    break;
+                    HienChucNang(29, 5, ConsoleColor.Black, ConsoleColor.White);
                 else if (kt.Key == ConsoleKey.Enter)
                 {
                     IO.Clear(x + 3, y + 7, 60, ConsoleColor.Black);
@@ -123,7 +123,7 @@ namespace ComputerStore.Presenation
                     IO.Writexy("Enter để nhập, Esc để thoát...", x + 4, y + 7);
                     ConsoleKeyInfo ktr = Console.ReadKey();
                     if (ktr.Key == ConsoleKey.Escape)
-                        break;
+                        HienChucNang(29, 5, ConsoleColor.Black, ConsoleColor.White);
                 }
             } while (true);
         }
@@ -284,7 +284,7 @@ namespace ComputerStore.Presenation
                 Console.SetCursorPosition(x + 38, y + 7);
                 ConsoleKeyInfo kt = Console.ReadKey();
                 if (kt.Key == ConsoleKey.Escape)
-                    break;
+                    HienChucNang(29, 5, ConsoleColor.Black, ConsoleColor.White);
                 else if (kt.Key == ConsoleKey.Enter)
                 {
                     IO.Clear(x + 3, y + 7, 60, ConsoleColor.Black);
@@ -298,7 +298,7 @@ namespace ComputerStore.Presenation
                     IO.Writexy("Enter để cập nhật, Esc để thoát...", x + 4, y + 7);
                     ConsoleKeyInfo ktr = Console.ReadKey();
                     if (ktr.Key == ConsoleKey.Escape)
-                        break;
+                        HienChucNang(29, 5, ConsoleColor.Black, ConsoleColor.White);
                 }
             } while (true);
         }
