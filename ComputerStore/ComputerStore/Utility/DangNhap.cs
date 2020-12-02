@@ -10,8 +10,8 @@ namespace ComputerStore.Utility
 {
     public class DangNhap
     {
-        private string User;
-        private string Password;
+        private string User = "";
+        private string Password = "";
         public DangNhap()
         { }
         public string user

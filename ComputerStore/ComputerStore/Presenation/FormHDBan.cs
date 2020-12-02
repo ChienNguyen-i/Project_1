@@ -41,7 +41,7 @@ namespace ComputerStore.Presenation
                 IO.Writexy("--------------------------------------------------------------------------------------------------------------", x + 1, y + 6);
                 HDBan hdb = new HDBan();
 
-                fnv.Hien(x + 1, y + 10, nhanvien.LayDSNhanVien(), 5, 0);
+                fnv.Hien(x, y + 10, nhanvien.LayDSNhanVien(), 5, 0);
                 do
                 {
                     Console.SetCursorPosition(x + 16, y + 3);
@@ -238,7 +238,7 @@ namespace ComputerStore.Presenation
                 IO.Writexy(hdb.tongTien.ToString(), x + 95, y + 5);
 
                 IO.Clear(x + 3, y + 7, 60, ConsoleColor.Black);
-                fnv.Hien(x + 1, y + 10, nhanvien.LayDSNhanVien(), 5, 0);
+                fnv.Hien(x, y + 10, nhanvien.LayDSNhanVien(), 5, 0);
                 do
                 {
                     Console.SetCursorPosition(x + 42, y + 3);
@@ -386,7 +386,6 @@ namespace ComputerStore.Presenation
                 IO.BoxTitle("                                              XÓA HÓA ĐƠN BÁN", x, y, 7, 112);
                 IO.Writexy("Nhập mã hóa đơn bán cần xóa:", x + 4, y + 3);
                 IO.Writexy("--------------------------------------------------------------------------------------------------------------", x + 1, y + 4);
-                IO.Writexy("Enter để xóa, Esc để thoát...", x + 4, y + 5);
                 Hien(x, y + 7, hdban.LayDSHDBan(), 5, 0);
                 do
                 {
@@ -452,7 +451,6 @@ namespace ComputerStore.Presenation
                 IO.BoxTitle("                                            TÌM KIẾM HÓA ĐƠN BÁN", x, y, 7, 112);
                 IO.Writexy("Nhập mã hóa đơn bán cần tìm:", x + 2, y + 3);
                 IO.Writexy("--------------------------------------------------------------------------------------------------------------", x + 1, y + 4);
-                IO.Writexy("Enter để tìm, Esc để thoát...", x + 4, y + 5);
                 Hien(x, y + 7, hdban.LayDSHDBan(), 5, 0);
                 do
                 {
