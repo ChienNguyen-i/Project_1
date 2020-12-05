@@ -150,7 +150,7 @@ namespace ComputerStore.Presenation
                 Console.SetCursorPosition(x + 34, y + 7);
                 ConsoleKeyInfo kt = Console.ReadKey();
                 if (kt.Key == ConsoleKey.Escape)
-                    HienChucNang(29, 5, ConsoleColor.Black, ConsoleColor.White);
+                    break;
                 else if (kt.Key == ConsoleKey.Enter)
                 {
                     IO.Clear(x + 3, y + 7, 60, ConsoleColor.Black);
@@ -164,7 +164,7 @@ namespace ComputerStore.Presenation
                     IO.Writexy("Enter để nhập, Esc để thoát...", x + 4, y + 7);
                     ConsoleKeyInfo ktr = Console.ReadKey();
                     if (ktr.Key == ConsoleKey.Escape)
-                        HienChucNang(29, 5, ConsoleColor.Black, ConsoleColor.White);
+                        break;
                 }
             } while (true);
         }
@@ -353,7 +353,7 @@ namespace ComputerStore.Presenation
                 Console.SetCursorPosition(x + 38, y + 7);
                 ConsoleKeyInfo kt = Console.ReadKey();
                 if (kt.Key == ConsoleKey.Escape)
-                    HienChucNang(29, 5, ConsoleColor.Black, ConsoleColor.White);
+                    break;
                 else if (kt.Key == ConsoleKey.Enter)
                 {
                     IO.Clear(x + 3, y + 7, 60, ConsoleColor.Black);
@@ -367,7 +367,7 @@ namespace ComputerStore.Presenation
                     IO.Writexy("Enter để cập nhật, Esc để thoát...", x + 4, y + 7);
                     ConsoleKeyInfo ktr = Console.ReadKey();
                     if (ktr.Key == ConsoleKey.Escape)
-                        HienChucNang(29, 5, ConsoleColor.Black, ConsoleColor.White);
+                        break;
                 }
             } while (true);
         }
@@ -419,10 +419,18 @@ namespace ComputerStore.Presenation
                             IO.Writexy("Enter để xóa, Esc để thoát...", x + 4, y + 5);
                             ConsoleKeyInfo kt = Console.ReadKey();
                             if (kt.Key == ConsoleKey.Escape)
-                                HienChucNang(29, 5, ConsoleColor.Black, ConsoleColor.White);
+                                break;
                         }
                     }
                 } while (mahdb == "" || hdbBLL.KT_MaHDB(mahdb.ToUpper()) == false);
+
+                IO.Clear(x + 3, y + 5, 60, ConsoleColor.Black);
+                Console.SetCursorPosition(x + 33, y + 5);
+                IO.Writexy("E", x + 4, y + 5);
+                IO.Writexy("Enter để xóa, Esc để thoát...", x + 4, y + 5);
+                ConsoleKeyInfo ktr = Console.ReadKey();
+                if (ktr.Key == ConsoleKey.Escape)
+                    break;
             } while (true);
         }
         public void Xem(int x, int y, ConsoleColor background_color, ConsoleColor text_color)
@@ -434,7 +442,6 @@ namespace ComputerStore.Presenation
             Console.Clear();
             IO.Box(0, 0, 28, 114, ConsoleColor.Black, ConsoleColor.White);
             Hien(x, y, hdban.LayDSHDBan(), 5, 1);
-            HienChucNang(29, 5, ConsoleColor.Black, ConsoleColor.White);
         }
         public void TimMa(int x, int y, ConsoleColor background_color, ConsoleColor text_color)
         {
@@ -483,10 +490,18 @@ namespace ComputerStore.Presenation
                             IO.Writexy("Enter để tìm, Esc để thoát...", x + 4, y + 5);
                             ConsoleKeyInfo kt = Console.ReadKey();
                             if (kt.Key == ConsoleKey.Escape)
-                                HienChucNang(29, 5, ConsoleColor.Black, ConsoleColor.White);
+                                break;
                         }
                     }
                 } while (mahdb == "" || hdbBLL.KT_MaHDB(mahdb.ToUpper()) == false);
+
+                IO.Clear(x + 3, y + 5, 60, ConsoleColor.White);
+                Console.SetCursorPosition(x + 33, y + 5);
+                IO.Writexy("E", x + 4, y + 5);
+                IO.Writexy("Enter để tìm, Esc để thoát...", x + 4, y + 5);
+                ConsoleKeyInfo ktr = Console.ReadKey();
+                if (ktr.Key == ConsoleKey.Escape)
+                    break;
             } while (true);
         }
         public void Hien(int xx, int yy, List<HDBan> list, int n, int type)
@@ -556,52 +571,6 @@ namespace ComputerStore.Presenation
                 }
                 else if (kt.Key == ConsoleKey.Escape)
                     break;
-            } while (true);
-        }
-        public void HienChucNang(int x, int y, ConsoleColor background_color, ConsoleColor text_color)
-        {
-            do
-            {
-                Console.SetWindowSize(114, 28);
-                Console.BackgroundColor = background_color;
-                Console.ForegroundColor = text_color;
-
-                Console.Clear();
-                IO.Box(0, 0, 28, 114, ConsoleColor.Black, ConsoleColor.White);
-                IO.BoxTitle("                    CÁC CHỨC NĂNG", x, y, 17, 56);
-                IO.Writexy("F1. Nhập danh sách hóa đơn bán", x + 12, y + 3);
-                IO.Writexy("F2. Sửa thông tin hóa đơn bán", x + 12, y + 5);
-                IO.Writexy("F3. Xóa hóa đơn bán", x + 12, y + 7);
-                IO.Writexy("F4. Hiển thị danh sách hóa đơn bán", x + 12, y + 9);
-                IO.Writexy("F5. Tìm kiếm hóa đơn bán", x + 12, y + 11);
-                IO.Writexy("F6. Quay lại ", x + 12, y + 13);
-                IO.Writexy("Chọn chức năng...", x + 12, y + 15);
-
-                FormHDBan hdban = new FormHDBan();
-                FormMenuChinh fhd = new FormMenuChinh();
-
-                ConsoleKeyInfo kt = Console.ReadKey();
-                switch (kt.Key)
-                {
-                    case ConsoleKey.F1:
-                        hdban.Nhap(1, 1, ConsoleColor.Black, ConsoleColor.White);
-                        break;
-                    case ConsoleKey.F2:
-                        hdban.Sua(1, 1, ConsoleColor.Black, ConsoleColor.White);
-                        break;
-                    case ConsoleKey.F3:
-                        hdban.Xoa(1, 1, ConsoleColor.Black, ConsoleColor.White);
-                        break;
-                    case ConsoleKey.F4:
-                        hdban.Xem(1, 1, ConsoleColor.Black, ConsoleColor.White);
-                        break;
-                    case ConsoleKey.F5:
-                        hdban.TimMa(1, 1, ConsoleColor.Black, ConsoleColor.White);
-                        break;
-                    case ConsoleKey.F6:
-                        fhd.HienHoaDon(30, 7, ConsoleColor.Black, ConsoleColor.White);
-                        break;
-                }
             } while (true);
         }
     }

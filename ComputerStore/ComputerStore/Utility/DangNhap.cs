@@ -10,8 +10,8 @@ namespace ComputerStore.Utility
 {
     public class DangNhap
     {
-        private string User = "";
-        private string Password = "";
+        private string User;
+        private string Password;
         public DangNhap()
         { }
         public string user
@@ -57,14 +57,16 @@ namespace ComputerStore.Utility
                 do
                 {
                     Console.SetCursorPosition(x + 15, y + 5);
-                    user = Console.ReadLine();
-                    if (user == "")
+                    User = Console.ReadLine();
+                    if (User == "")
                     {
                         IO.Clear(x + 2, y + 12, 51, ConsoleColor.Black);
                         IO.Writexy("Nhập lại tài khoản...", x + 3, y + 12, ConsoleColor.Black, ConsoleColor.White);
                         IO.Clear(x + 14, y + 5, 44, ConsoleColor.Black);
                     }
-                } while (user == "");
+                    else
+                        user = User;
+                } while (User == "");
                 IO.Clear(x + 2, y + 12, 51, ConsoleColor.Black);
                 do
                 {
@@ -82,8 +84,10 @@ namespace ComputerStore.Utility
                 ConsoleKeyInfo kt = Console.ReadKey();
                 if (kt.Key == ConsoleKey.Enter)
                 {
-                    if (KT_DangNhap(user, pass) == true || user == "admin" && pass == "admin")
-                        FormMenuChinh.HienMNC(29, 5, ConsoleColor.Black, ConsoleColor.White);
+                    if (user == "admin" && pass == "admin")
+                        Form_MN_QuanLy.HienMNC_QL(29, 5, ConsoleColor.Black, ConsoleColor.White);
+                    else if (KT_DangNhap(user, pass) == true)
+                        Form_MN_NhanVien.HienMNC_NV(29, 6, ConsoleColor.Black, ConsoleColor.White);
                     else
                     {
                         IO.Clear(x + 2, y + 12, 51, ConsoleColor.Black);
