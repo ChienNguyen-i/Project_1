@@ -60,11 +60,27 @@ namespace ComputerStore.DataAccessLayer
             sw.Write("NCC" + mancc + "\t" + ncc.tenNCC + "\t" + ncc.diaChi + "\t" + ncc.soDT);
             sw.Close();
         }
-        public void Update(List<NCC> list)
+        public void Update(NCC ncc)
         {
+            List<NCC> list = GetData();
+            for (int i = 0; i < list.Count; ++i)
+                if (list[i].maNCC == ncc.maNCC)
+                {
+                    list[i] = ncc;
+                    break;
+                }
             StreamWriter sw = File.CreateText(txtfile);
             for (int i = 0; i < list.Count; ++i)
                 sw.WriteLine(list[i].maNCC + "\t" + list[i].tenNCC + "\t" + list[i].diaChi + "\t" + list[i].soDT);
+            sw.Close();
+        }
+        public void Delete(string mancc)
+        {
+            List<NCC> list = GetData();
+            StreamWriter sw = File.CreateText(txtfile);
+            foreach (NCC ncc in list)
+                if (ncc.maNCC != mancc)
+                    sw.WriteLine(ncc.maNCC + "\t" + ncc.tenNCC + "\t" + ncc.diaChi + "\t" + ncc.soDT);
             sw.Close();
         }
     }

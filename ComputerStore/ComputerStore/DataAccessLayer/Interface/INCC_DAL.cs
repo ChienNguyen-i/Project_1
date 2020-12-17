@@ -11,6 +11,7 @@ namespace ComputerStore.DataAccessLayer.Interface
     {
         List<NCC> GetData();
         void Insert(NCC ncc);
-        void Update(List<NCC> list);
+        void Update(NCC ncc);
+        void Delete(string mancc);
     }
 }

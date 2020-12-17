@@ -31,44 +31,28 @@ namespace ComputerStore.Business
         }
         public KhachHang LayKhachHang(string makh)
         {
-            int i;
-            List<KhachHang> list = khDAL.GetData();
-            for (i = 0; i < list.Count; ++i)
-                if (list[i].maKH == makh)
+            KhachHang kh = null;
+            foreach (KhachHang khachhang in khDAL.GetData())
+            {
+                if (khachhang.maKH == makh)
+                {
+                    kh = new KhachHang(khachhang);
                     break;
-            if (i < list.Count)
-                return list[i];
-            else
-                throw new Exception("Không tồn tại mã này.");
+                }
+            }
+            return kh;
         }
         public void XoaKhachHang(string makh)
         {
-            int i;
-            List<KhachHang> list = khDAL.GetData();
-            for (i = 0; i < list.Count; ++i)
-                if (list[i].maKH == makh)
-                    break;
-            if (i < list.Count)
-            {
-                list.RemoveAt(i);
-                khDAL.Update(list);
-            }
+            if (KT_MaKhachHang(makh) == true)
+                khDAL.Delete(makh);
             else
                 throw new Exception("Không tồn tại mã này.");
         }
         public void SuaKhachHang(KhachHang kh)
         {
-            int i;
-            List<KhachHang> list = khDAL.GetData();
-            for (i = 0; i < list.Count; ++i)
-                if (list[i].maKH == kh.maKH)
-                    break;
-            if (i < list.Count)
-            {
-                list.RemoveAt(i);
-                list.Add(kh);
-                khDAL.Update(list);
-            }
+            if (KT_MaKhachHang(kh.maKH) == true)
+                khDAL.Update(kh);
             else
                 throw new Exception("Không tồn tại mã này.");
         }
@@ -111,7 +95,7 @@ namespace ComputerStore.Business
         {
             bool kt = false;
             foreach (KhachHang khachhang in khDAL.GetData())
-                if (khachhang.tenKH == tenkh)
+                if (khachhang.tenKH == tenkh || khachhang.tenKH.IndexOf(tenkh) >= 0)
                 {
                     kt = true;
                     break;

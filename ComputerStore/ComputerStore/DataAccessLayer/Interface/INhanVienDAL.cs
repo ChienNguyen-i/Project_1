@@ -11,6 +11,7 @@ namespace ComputerStore.DataAccessLayer.Interface
     {
         List<NhanVien> GetData();
         void Insert(NhanVien nv);
-        void Update(List<NhanVien> list);
+        void Update(NhanVien nv);
+        void Delete(string manv);
     }
 }

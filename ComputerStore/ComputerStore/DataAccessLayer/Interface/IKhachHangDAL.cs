@@ -11,6 +11,7 @@ namespace ComputerStore.DataAccessLayer.Interface
     {
         List<KhachHang> GetData();
         void Insert(KhachHang kh);
-        void Update(List<KhachHang> list);
+        void Update(KhachHang kh);
+        void Delete(string makh);
     }
 }

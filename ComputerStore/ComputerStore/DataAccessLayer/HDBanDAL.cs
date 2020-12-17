@@ -60,11 +60,27 @@ namespace ComputerStore.DataAccessLayer
             sw.Write("HDB" + mahdb + "\t" + hdb.maNV + "\t" + hdb.maKH + "\t" + hdb.maMT + "\t" + hdb.ngayBan + "\t" + hdb.soLuong + "\t" + hdb.donGia + "\t" + hdb.tongTien);
             sw.Close();
         }
-        public void Update(List<HDBan> list)
+        public void Update(HDBan hdb)
         {
+            List<HDBan> list = GetData();
+            for (int i = 0; i < list.Count; ++i)
+                if (list[i].maHDB == hdb.maHDB)
+                {
+                    list[i] = hdb;
+                    break;
+                }
             StreamWriter sw = File.CreateText(txtfile);
             for (int i = 0; i < list.Count; ++i)
                 sw.WriteLine(list[i].maHDB + "\t" + list[i].maNV + "\t" + list[i].maKH + "\t"+ list[i].maMT + "\t" + list[i].ngayBan + "\t"+ list[i].soLuong + "\t" + list[i].donGia + "\t" + list[i].tongTien);
+            sw.Close();
+        }
+        public void Delete(string mahdb)
+        {
+            List<HDBan> list = GetData();
+            StreamWriter sw = File.CreateText(txtfile);
+            foreach (HDBan hdb in list)
+                if (hdb.maHDB != mahdb)
+                    sw.WriteLine(hdb.maHDB + "\t" + hdb.maNV + "\t" + hdb.maKH + "\t" + hdb.maMT + "\t" + hdb.ngayBan + "\t" + hdb.soLuong + "\t" + hdb.donGia + "\t" + hdb.tongTien);
             sw.Close();
         }
     }

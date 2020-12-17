@@ -35,44 +35,28 @@ namespace ComputerStore.Business
         }
         public NhanVien LayNhanVien(string manv)
         {
-            int i;
-            List<NhanVien> list = nvDAL.GetData();
-            for (i = 0; i < list.Count; ++i)
-                if (list[i].maNV == manv)
+            NhanVien nv = null;
+            foreach (NhanVien nhanvien in nvDAL.GetData())
+            {
+                if (nhanvien.maNV == manv)
+                {
+                    nv = new NhanVien(nhanvien);
                     break;
-            if (i < list.Count)
-                return list[i];
-            else
-                throw new Exception("Không tồn tại mã này.");
+                }
+            }
+            return nv;
         }
         public void XoaNhanVien(string manv)
         {
-            int i;
-            List<NhanVien> list = nvDAL.GetData();
-            for (i = 0; i < list.Count; ++i)
-                if (list[i].maNV == manv)
-                    break;
-            if (i < list.Count)
-            {
-                list.RemoveAt(i);
-                nvDAL.Update(list);
-            }
+            if (KT_MaNhanVien(manv) == true)
+                nvDAL.Delete(manv);
             else
                 throw new Exception("Không tồn tại mã này.");
         }
         public void SuaNhanVien(NhanVien nv)
         {
-            int i;
-            List<NhanVien> list = nvDAL.GetData();
-            for (i = 0; i < list.Count; ++i)
-                if (list[i].maNV == nv.maNV)
-                    break;
-            if (i < list.Count)
-            {
-                list.RemoveAt(i);
-                list.Add(nv);
-                nvDAL.Update(list);
-            }
+            if (KT_MaNhanVien(nv.maNV) == true)
+                nvDAL.Update(nv);
             else
                 throw new Exception("Không tồn tại mã này.");
         }
@@ -122,7 +106,7 @@ namespace ComputerStore.Business
         {
             bool kt = false;
             foreach (NhanVien nhanvien in nvDAL.GetData())
-                if (nhanvien.tenNV == tennv)
+                if (nhanvien.tenNV == tennv || nhanvien.tenNV.IndexOf(tennv) >= 0)
                 {
                     kt = true;
                     break;

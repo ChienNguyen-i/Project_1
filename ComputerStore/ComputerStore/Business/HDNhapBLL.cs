@@ -32,44 +32,28 @@ namespace ComputerStore.Business
         }
         public HDNhap LayHDNhap(string mahdn)
         {
-            int i;
-            List<HDNhap> list = hdnDAL.GetData();
-            for (i = 0; i < list.Count; ++i)
-                if (list[i].maHDN == mahdn)
+            HDNhap hdn = null;
+            foreach (HDNhap hdnhap in hdnDAL.GetData())
+            {
+                if (hdnhap.maHDN == mahdn)
+                {
+                    hdn = new HDNhap(hdnhap);
                     break;
-            if (i < list.Count)
-                return list[i];
-            else
-                throw new Exception("Không tồn tại mã này.");
+                }
+            }
+            return hdn;
         }
         public void XoaHDNhap(string mahdn)
         {
-            int i;
-            List<HDNhap> list = hdnDAL.GetData();
-            for (i = 0; i < list.Count; ++i)
-                if (list[i].maHDN == mahdn)
-                    break;
-            if (i < list.Count)
-            {
-                list.RemoveAt(i);
-                hdnDAL.Update(list);
-            }
+            if (KT_MaHDN(mahdn) == true)
+                hdnDAL.Delete(mahdn);
             else
                 throw new Exception("Không tồn tại mã này.");
         }
         public void SuaHDNhap(HDNhap hdn)
         {
-            int i;
-            List<HDNhap> list = hdnDAL.GetData();
-            for (i = 0; i < list.Count; ++i)
-                if (list[i].maHDN == hdn.maHDN)
-                    break;
-            if (i < list.Count)
-            {
-                list.RemoveAt(i);
-                list.Add(hdn);
-                hdnDAL.Update(list);
-            }
+            if (KT_MaHDN(hdn.maHDN) == true)
+                hdnDAL.Update(hdn);
             else
                 throw new Exception("Không tồn tại mã này.");
         }

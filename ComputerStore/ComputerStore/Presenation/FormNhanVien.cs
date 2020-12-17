@@ -31,6 +31,7 @@ namespace ComputerStore.Presenation
                 IO.Writexy("Loại nhân viên:", x + 37, y + 5);
                 IO.Writexy("Mật khẩu:", x + 77, y + 5);
                 IO.Writexy("--------------------------------------------------------------------------------------------------------------", x + 1, y + 6);
+                IO.Writexy("Nhập ! để thoát...", x + 4, y + 8);
                 Hien(x, y + 10, nhanvien.LayDSNhanVien(), 5, 0);
                 NhanVien nv = new NhanVien();
 
@@ -43,8 +44,11 @@ namespace ComputerStore.Presenation
                         IO.Writexy("Nhập lại tên nhân viên...", x + 4, y + 7, ConsoleColor.Black, ConsoleColor.White);
                         IO.Clear(x + 9, y + 3, 27, ConsoleColor.Black);
                     }
+                    else if (nv.tenNV == "!")
+                        return;
                 } while (nv.tenNV == null || CongCu.CheckName(nv.tenNV) == false);
                 IO.Clear(x + 3, y + 7, 60, ConsoleColor.Black);
+                IO.Clear(x + 3, y + 8, 60, ConsoleColor.Black);
                 IO.Writexy("Nhập ngày sinh định dạng 'dd/MM/yyyy'...", x + 4, y + 8, ConsoleColor.Black, ConsoleColor.White);
                 do
                 {
@@ -79,14 +83,13 @@ namespace ComputerStore.Presenation
                 IO.Clear(x + 3, y + 7, 60, ConsoleColor.Black);
                 do
                 {
-                    Console.SetCursorPosition(x + 17, y + 5);
-                    nv.soDT = Console.ReadLine();
-                    if (nv.soDT == null || nv.soDT.Length < 10 || nv.soDT.Length > 10 || CongCu.CheckNumber(nv.soDT) == false)
+                    nv.soDT = IO.ReadNumber(x + 17, y + 5);
+                    if (nv.soDT == null || nv.soDT.Length < 10 || nv.soDT.Length > 10)
                     {
                         IO.Writexy("Nhập lại số điện thoại...", x + 4, y + 7, ConsoleColor.Black, ConsoleColor.White);
                         IO.Clear(x + 16, y + 5, 20, ConsoleColor.Black);
                     }
-                } while (nv.soDT == null || nv.soDT.Length < 10 || nv.soDT.Length > 10 || CongCu.CheckNumber(nv.soDT) == false);
+                } while (nv.soDT == null || nv.soDT.Length < 10 || nv.soDT.Length > 10);
                 IO.Clear(x + 3, y + 7, 60, ConsoleColor.Black);
                 do
                 {
@@ -116,14 +119,6 @@ namespace ComputerStore.Presenation
                     IO.Writexy("Nhân viên đã được thêm...", x + 4, y + 7);
                     nhanvien.ThemNhanVien(nv);
                     Hien(x, y + 10, nhanvien.LayDSNhanVien(), 5, 1);
-
-                    IO.Clear(x + 3, y + 7, 60, ConsoleColor.Black);
-                    Console.SetCursorPosition(x + 34, y + 7);
-                    IO.Writexy("E", x + 4, y + 7);
-                    IO.Writexy("Enter để nhập, Esc để thoát...", x + 4, y + 7);
-                    ConsoleKeyInfo ktr = Console.ReadKey();
-                    if (ktr.Key == ConsoleKey.Escape)
-                        break;
                 }
             } while (true);
         }
@@ -148,6 +143,7 @@ namespace ComputerStore.Presenation
                 IO.Writexy("Loại nhân viên:", x + 53, y + 5);
                 IO.Writexy("Mật khẩu:", x + 83, y + 5);
                 IO.Writexy("--------------------------------------------------------------------------------------------------------------", x + 1, y + 6);
+                IO.Writexy("Nhập ! để thoát...", x + 4, y + 8);
                 Hien(x, y + 10, nhanvien.LayDSNhanVien(), 5, 0);
 
                 string manv;
@@ -168,6 +164,8 @@ namespace ComputerStore.Presenation
                         IO.Clear(x + 3, y + 7, 60, ConsoleColor.Black);
                         IO.Writexy("Nhập lại mã nhân viên...", x + 4, y + 7, ConsoleColor.Black, ConsoleColor.White);
                     }
+                    else if (manv == "!")
+                        return;
                     else
                     {
                         IO.Clear(x + 3, y + 7, 60, ConsoleColor.Black);
@@ -193,7 +191,7 @@ namespace ComputerStore.Presenation
                 IO.Writexy("│  │", x + 111, y + 5);
                 IO.Writexy("-----------", x + 1, y + 6);
                 IO.Writexy("║║", x + 112, y + 5);
-
+                IO.Clear(x + 3, y + 8, 60, ConsoleColor.Black);
                 IO.Clear(x + 3, y + 7, 60, ConsoleColor.Black);
                 do
                 {
@@ -248,16 +246,15 @@ namespace ComputerStore.Presenation
                 IO.Clear(x + 3, y + 7, 60, ConsoleColor.Black);
                 do
                 {
-                    Console.SetCursorPosition(x + 42, y + 5);
-                    sdt = Console.ReadLine();
-                    if (sdt == "" || sdt.Length < 10 || sdt.Length > 10 || CongCu.CheckNumber(sdt) == false)
+                    sdt = IO.ReadNumber(x + 42, y + 5);
+                    if (sdt == null || sdt.Length < 10 || sdt.Length > 10)
                     {
                         IO.Writexy("Nhập lại số điện thoại...", x + 4, y + 7, ConsoleColor.Black, ConsoleColor.White);
                         IO.Clear(x + 41, y + 5, 11, ConsoleColor.Black);
                     }
-                    else if (sdt != nv.soDT && sdt != "")
+                    else if (sdt != nv.soDT && sdt != null)
                         nv.soDT = CongCu.CatXau(sdt);
-                } while (sdt == "" || sdt.Length < 10 || sdt.Length > 10 || CongCu.CheckNumber(sdt) == false);
+                } while (sdt == null || sdt.Length < 10 || sdt.Length > 10);
                 IO.Clear(x + 3, y + 7, 60, ConsoleColor.Black);
                 do
                 {
@@ -291,14 +288,6 @@ namespace ComputerStore.Presenation
                     IO.Writexy("Nhân viên đã được cập nhật...", x + 4, y + 7);
                     nhanvien.SuaNhanVien(nv);
                     Hien(x, y + 10, nhanvien.LayDSNhanVien(), 5, 1);
-
-                    IO.Clear(x + 3, y + 7, 60, ConsoleColor.Black);
-                    Console.SetCursorPosition(x + 38, y + 7);
-                    IO.Writexy("E", x + 4, y + 7);
-                    IO.Writexy("Enter để cập nhật, Esc để thoát...", x + 4, y + 7);
-                    ConsoleKeyInfo ktr = Console.ReadKey();
-                    if (ktr.Key == ConsoleKey.Escape)
-                        break;
                 }
             } while (true);
         }
@@ -315,10 +304,11 @@ namespace ComputerStore.Presenation
 
                 Console.Clear();
                 IO.Box(0, 0, 28, 114, ConsoleColor.Black, ConsoleColor.White);
-                IO.BoxTitle("                                               XÓA NHÂN VIÊN", x, y, 7, 112);
+                IO.BoxTitle("                                               XÓA NHÂN VIÊN", x, y, 8, 112);
                 IO.Writexy("Nhập mã nhân viên cần xóa:", x + 4, y + 3);
                 IO.Writexy("--------------------------------------------------------------------------------------------------------------", x + 1, y + 4);
-                Hien(x, y + 7, nhanvien.LayDSNhanVien(), 5, 0);
+                IO.Writexy("Nhập ! để thoát...", x + 4, y + 6);
+                Hien(x, y + 8, nhanvien.LayDSNhanVien(), 5, 0);
                 do
                 {
                     Console.SetCursorPosition(x + 31, y + 3);
@@ -328,6 +318,8 @@ namespace ComputerStore.Presenation
                         IO.Clear(x + 3, y + 5, 60, ConsoleColor.Black);
                         IO.Writexy("Nhập lại mã nhân viên...", x + 4, y + 5, ConsoleColor.Black, ConsoleColor.White);
                     }
+                    else if (manv == "!")
+                        return;
                     else
                     {
                         if (nvBLL.KT_MaNhanVien(manv.ToUpper()) == false)
@@ -343,26 +335,10 @@ namespace ComputerStore.Presenation
                             IO.Clear(x + 3, y + 5, 60, ConsoleColor.Black);
                             IO.Clear(x + 30, y + 3, 60, ConsoleColor.Black);
                             IO.Writexy("Nhân viên đã được xóa...", x + 4, y + 5);
-                            Hien(x, y + 7, nhanvien.LayDSNhanVien(), 5, 1);
-
-                            IO.Clear(x + 3, y + 5, 60, ConsoleColor.Black);
-                            Console.SetCursorPosition(x + 33, y + 5);
-                            IO.Writexy("E", x + 4, y + 5);
-                            IO.Writexy("Enter để xóa, Esc để thoát...", x + 4, y + 5);
-                            ConsoleKeyInfo kt = Console.ReadKey();
-                            if (kt.Key == ConsoleKey.Escape)
-                                break;
+                            Hien(x, y + 8, nhanvien.LayDSNhanVien(), 5, 1);
                         }
                     }
                 } while (manv == "" || nvBLL.KT_MaNhanVien(manv.ToUpper()) == false);
-
-                IO.Clear(x + 3, y + 5, 60, ConsoleColor.Black);
-                Console.SetCursorPosition(x + 33, y + 5);
-                IO.Writexy("E", x + 4, y + 5);
-                IO.Writexy("Enter để xóa, Esc để thoát...", x + 4, y + 5);
-                ConsoleKeyInfo ktr = Console.ReadKey();
-                if (ktr.Key == ConsoleKey.Escape)
-                    break;
             } while (true);
         }
         public void Xem(int x, int y, ConsoleColor background_color, ConsoleColor text_color)
@@ -387,10 +363,11 @@ namespace ComputerStore.Presenation
 
                 Console.Clear();
                 IO.Box(0, 0, 28, 114, ConsoleColor.Black, ConsoleColor.White);
-                IO.BoxTitle("                                              TÌM KIẾM NHÂN VIÊN", x, y, 7, 112);
+                IO.BoxTitle("                                              TÌM KIẾM NHÂN VIÊN", x, y, 8, 112);
                 IO.Writexy("Nhập họ tên nhân viên cần tìm:", x + 2, y + 3);
                 IO.Writexy("--------------------------------------------------------------------------------------------------------------", x + 1, y + 4);
-                Hien(x, y + 7, nhanvien.LayDSNhanVien(), 5, 0);
+                IO.Writexy("Nhập ! để thoát...", x + 4, y + 6);
+                Hien(x, y + 8, nhanvien.LayDSNhanVien(), 5, 0);
                 do
                 {
                     Console.SetCursorPosition(x + 33, y + 3);
@@ -400,6 +377,8 @@ namespace ComputerStore.Presenation
                         IO.Clear(x + 3, y + 5, 60, ConsoleColor.Black);
                         IO.Writexy("Nhập lại tên nhân viên...", x + 4, y + 5, ConsoleColor.Black, ConsoleColor.White);
                     }
+                    else if (hoten == "!")
+                        return;
                     else
                     {
                         if (nvBLL.KT_TenNhanVien(CongCu.ChuanHoaXau(hoten)) == false)
@@ -414,26 +393,10 @@ namespace ComputerStore.Presenation
                             IO.Writexy("Nhân viên tìm được...", x + 4, y + 5);
                             hoten = CongCu.ChuanHoaXau(hoten);
                             List<NhanVien> list = nhanvien.TimNhanVien(new NhanVien(null, hoten, null, null, null, null, null, null));
-                            Hien(x, y + 7, list, 5, 1);
-
-                            IO.Clear(x + 3, y + 5, 60, ConsoleColor.White);
-                            Console.SetCursorPosition(x + 33, y + 5);
-                            IO.Writexy("E", x + 4, y + 5);
-                            IO.Writexy("Enter để tìm, Esc để thoát...", x + 4, y + 5);
-                            ConsoleKeyInfo kt = Console.ReadKey();
-                            if (kt.Key == ConsoleKey.Escape)
-                                break;
+                            Hien(x, y + 8, list, 5, 1);
                         }
                     }
                 } while (hoten == "" || nvBLL.KT_TenNhanVien(CongCu.ChuanHoaXau(hoten)) == false);
-
-                IO.Clear(x + 3, y + 5, 60, ConsoleColor.White);
-                Console.SetCursorPosition(x + 33, y + 5);
-                IO.Writexy("E", x + 4, y + 5);
-                IO.Writexy("Enter để tìm, Esc để thoát...", x + 4, y + 5);
-                ConsoleKeyInfo ktr = Console.ReadKey();
-                if (ktr.Key == ConsoleKey.Escape)
-                    break;
             } while (true);
         }
         public void TimMa(int x, int y, ConsoleColor background_color, ConsoleColor text_color)
@@ -448,10 +411,11 @@ namespace ComputerStore.Presenation
 
                 Console.Clear();
                 IO.Box(0, 0, 28, 114, ConsoleColor.Black, ConsoleColor.White);
-                IO.BoxTitle("                                              TÌM KIẾM NHÂN VIÊN", x, y, 7, 112);
+                IO.BoxTitle("                                              TÌM KIẾM NHÂN VIÊN", x, y, 8, 112);
                 IO.Writexy("Nhập mã nhân viên cần tìm:", x + 2, y + 3);
                 IO.Writexy("--------------------------------------------------------------------------------------------------------------", x + 1, y + 4);
-                Hien(x, y + 7, nhanvien.LayDSNhanVien(), 5, 0);
+                IO.Writexy("Nhập ! để thoát...", x + 4, y + 6);
+                Hien(x, y + 8, nhanvien.LayDSNhanVien(), 5, 0);
                 do
                 {
                     Console.SetCursorPosition(x + 29, y + 3);
@@ -461,6 +425,8 @@ namespace ComputerStore.Presenation
                         IO.Clear(x + 3, y + 5, 60, ConsoleColor.Black);
                         IO.Writexy("Nhập lại mã nhân viên...", x + 4, y + 5, ConsoleColor.Black, ConsoleColor.White);
                     }
+                    else if (manv == "!")
+                        return;
                     else
                     {
                         if (nvBLL.KT_MaNhanVien(manv.ToUpper()) == false)
@@ -475,26 +441,10 @@ namespace ComputerStore.Presenation
                             IO.Writexy("Nhân viên tìm được...", x + 4, y + 5);
                             manv = CongCu.CatXau(manv.ToUpper());
                             List<NhanVien> list = nhanvien.TimNhanVien(new NhanVien(manv, null, null, null, null, null, null, null));
-                            Hien(x, y + 7, list, 5, 1);
-
-                            IO.Clear(x + 3, y + 5, 60, ConsoleColor.White);
-                            Console.SetCursorPosition(x + 33, y + 5);
-                            IO.Writexy("E", x + 4, y + 5);
-                            IO.Writexy("Enter để tìm, Esc để thoát...", x + 4, y + 5);
-                            ConsoleKeyInfo kt = Console.ReadKey();
-                            if (kt.Key == ConsoleKey.Escape)
-                                break;
+                            Hien(x, y + 8, list, 5, 1);
                         }
                     }
                 } while (manv == "" || nvBLL.KT_MaNhanVien(manv.ToUpper()) == false);
-
-                IO.Clear(x + 3, y + 5, 60, ConsoleColor.White);
-                Console.SetCursorPosition(x + 33, y + 5);
-                IO.Writexy("E", x + 4, y + 5);
-                IO.Writexy("Enter để tìm, Esc để thoát...", x + 4, y + 5);
-                ConsoleKeyInfo ktr = Console.ReadKey();
-                if (ktr.Key == ConsoleKey.Escape)
-                    break;
             } while (true);
         }
         public void Hien(int xx, int yy, List<NhanVien> list, int n, int type)

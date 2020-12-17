@@ -61,11 +61,27 @@ namespace ComputerStore.DataAccessLayer
             sw.Write("MT" + mamt + "\t" + mt.tenMT + "\t" + mt.maNCC + "\t" + mt.sLNhap + "\t" + mt.sLCon);
             sw.Close();
         }
-        public void Update(List<MayTinh> list)
+        public void Update(MayTinh mt)
         {
+            List<MayTinh> list = GetData();
+            for (int i = 0; i < list.Count; ++i)
+                if (list[i].maMT == mt.maMT)
+                {
+                    list[i] = mt;
+                    break;
+                }
             StreamWriter sw = File.CreateText(txtfile);
             for (int i = 0; i < list.Count; ++i)
                 sw.WriteLine(list[i].maMT + "\t" + list[i].tenMT + "\t" + list[i].maNCC + "\t" + list[i].sLNhap + "\t" + list[i].sLCon);
+            sw.Close();
+        }
+        public void Delete(string mamt)
+        {
+            List<MayTinh> list = GetData();
+            StreamWriter sw = File.CreateText(txtfile);
+            foreach (MayTinh mt in list)
+                if (mt.maMT != mamt)
+                    sw.WriteLine(mt.maMT + "\t" + mt.tenMT + "\t" + mt.maNCC + "\t" + mt.sLNhap + "\t" + mt.sLCon);
             sw.Close();
         }
     }

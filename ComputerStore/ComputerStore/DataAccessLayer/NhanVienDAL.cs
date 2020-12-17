@@ -61,11 +61,27 @@ namespace ComputerStore.DataAccessLayer
             sw.Write("NV" + manv + "\t" + nv.tenNV + "\t"+ nv.ngaySinh + "\t" + nv.gioiTinh + "\t" + nv.diaChi + "\t" + nv.soDT + "\t" + nv.loaiNV + "\t" + nv.pass);
             sw.Close();
         }        
-        public void Update(List<NhanVien> list)
+        public void Update(NhanVien nv)
         {
+            List<NhanVien> list = GetData();
+            for (int i = 0; i < list.Count; ++i)
+                if (list[i].maNV == nv.maNV)
+                {
+                    list[i] = nv;
+                    break;
+                }
             StreamWriter sw = File.CreateText(txtfile);
             for (int i = 0; i < list.Count; ++i)
                 sw.WriteLine(list[i].maNV + "\t" + list[i].tenNV + "\t" + list[i].ngaySinh + "\t" + list[i].gioiTinh + "\t" + list[i].diaChi + "\t" + list[i].soDT + "\t" + list[i].loaiNV + "\t" + list[i].pass);
+            sw.Close();
+        }
+        public void Delete(string manv)
+        {
+            List<NhanVien> list = GetData();
+            StreamWriter sw = File.CreateText(txtfile);
+            foreach (NhanVien nv in list)
+                if (nv.maNV != manv)
+                    sw.WriteLine(nv.maNV + "\t" + nv.tenNV + "\t" + nv.ngaySinh + "\t" + nv.gioiTinh + "\t" + nv.diaChi + "\t" + nv.soDT + "\t" + nv.loaiNV + "\t" + nv.pass);
             sw.Close();
         }
     }

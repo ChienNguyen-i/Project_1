@@ -11,6 +11,7 @@ namespace ComputerStore.DataAccessLayer.Interface
     {
         List<MayTinh> GetData();
         void Insert(MayTinh mt);
-        void Update(List<MayTinh> list);
+        void Update(MayTinh mt);
+        void Delete(string mamt);
     }
 }

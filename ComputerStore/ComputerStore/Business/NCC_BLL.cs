@@ -31,44 +31,28 @@ namespace ComputerStore.Business
         }
         public NCC LayNCC(string mancc)
         {
-            int i;
-            List<NCC> list = nccDAL.GetData();
-            for (i = 0; i < list.Count; ++i)
-                if (list[i].maNCC == mancc)
+            NCC ncc = null;
+            foreach (NCC n in nccDAL.GetData())
+            {
+                if (n.maNCC == mancc)
+                {
+                    ncc = new NCC(n);
                     break;
-            if (i < list.Count)
-                return list[i];
-            else
-                throw new Exception("Không tồn tại mã này.");
+                }
+            }
+            return ncc;
         }
         public void XoaNCC(string mancc)
         {
-            int i;
-            List<NCC> list = nccDAL.GetData();
-            for (i = 0; i < list.Count; ++i)
-                if (list[i].maNCC == mancc)
-                    break;
-            if (i < list.Count)
-            {
-                list.RemoveAt(i);
-                nccDAL.Update(list);
-            }
+            if (KT_MaNCC(mancc) == true)
+                nccDAL.Delete(mancc);
             else
                 throw new Exception("Không tồn tại mã này.");
         }
         public void SuaNCC(NCC ncc)
         {
-            int i;
-            List<NCC> list = nccDAL.GetData();
-            for (i = 0; i < list.Count; ++i)
-                if (list[i].maNCC == ncc.maNCC)
-                    break;
-            if (i < list.Count)
-            {
-                list.RemoveAt(i);
-                list.Add(ncc);
-                nccDAL.Update(list);
-            }
+            if (KT_MaNCC(ncc.maNCC) == true)
+                nccDAL.Update(ncc);
             else
                 throw new Exception("Không tồn tại mã này.");
         }
@@ -111,7 +95,7 @@ namespace ComputerStore.Business
         {
             bool kt = false;
             foreach (NCC ncc in nccDAL.GetData())
-                if (ncc.tenNCC == tenncc)
+                if (ncc.tenNCC == tenncc || ncc.tenNCC.IndexOf(tenncc) >= 0)
                 {
                     kt = true;
                     break;

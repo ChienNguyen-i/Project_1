@@ -46,6 +46,39 @@ namespace ComputerStore.Utility
             } while (true);
             return s;
         }
+        public static string ReadNumber(int x, int y)
+        {
+            Console.SetCursorPosition(x, y);
+            string s = null;
+            ConsoleKeyInfo kt;
+            do
+            {
+                kt = Console.ReadKey(true);
+                if (kt.Key != ConsoleKey.Enter && kt.KeyChar >= '0' && kt.KeyChar <= '9')
+                {
+                    Console.Write(kt.KeyChar.ToString());
+                    s += kt.KeyChar.ToString();
+                }
+                else if (kt.Key == ConsoleKey.Backspace)
+                {
+                    Clear(x, y, s.Length, ConsoleColor.Black);
+                    if (s.Length <= 1)
+                        s = "";
+                    else
+                        s = s.Substring(0, s.Length - 1);
+                    if (s == "")
+                    {
+                        Writexy(" ", x, y);
+                        Console.SetCursorPosition(x, y);
+                    }
+                    else
+                        Writexy(s, x, y);
+                }
+                else if (kt.Key == ConsoleKey.Enter)
+                    break;
+            } while (true);
+            return s;
+        }
         public static void Clear(int x, int y, int length, ConsoleColor background_color)
         {
             ConsoleColor background = Console.BackgroundColor;
@@ -62,7 +95,7 @@ namespace ComputerStore.Utility
                 }
                 else
                     i += 1;
-                Writexy(" ", i, j, background, background);
+                Writexy(" ", i, j, background_color, background_color);
                 d++;
             }
             Console.BackgroundColor = background;

@@ -32,44 +32,28 @@ namespace ComputerStore.Business
         }
         public HDBan LayHDBan(string mahdb)
         {
-            int i;
-            List<HDBan> list = hdbDAL.GetData();
-            for (i = 0; i < list.Count; ++i)
-                if (list[i].maHDB == mahdb)
+            HDBan hdb = null;
+            foreach (HDBan hdban in hdbDAL.GetData())
+            {
+                if (hdban.maHDB == mahdb)
+                {
+                    hdb = new HDBan(hdban);
                     break;
-            if (i < list.Count)
-                return list[i];
-            else
-                throw new Exception("Không tồn tại mã này.");
+                }
+            }
+            return hdb;
         }
         public void XoaHDBan(string mahdb)
         {
-            int i;
-            List<HDBan> list = hdbDAL.GetData();
-            for (i = 0; i < list.Count; ++i)
-                if (list[i].maHDB == mahdb)
-                    break;
-            if (i < list.Count)
-            {
-                list.RemoveAt(i);
-                hdbDAL.Update(list);
-            }
+            if (KT_MaHDB(mahdb) == true)
+                hdbDAL.Delete(mahdb);
             else
                 throw new Exception("Không tồn tại mã này.");
         }
         public void SuaHDBan(HDBan hdb)
         {
-            int i;
-            List<HDBan> list = hdbDAL.GetData();
-            for (i = 0; i < list.Count; ++i)
-                if (list[i].maHDB == hdb.maHDB)
-                    break;
-            if (i < list.Count)
-            {
-                list.RemoveAt(i);
-                list.Add(hdb);
-                hdbDAL.Update(list);
-            }
+            if (KT_MaHDB(hdb.maHDB) == true)
+                hdbDAL.Update(hdb);
             else
                 throw new Exception("Không tồn tại mã này.");
         }

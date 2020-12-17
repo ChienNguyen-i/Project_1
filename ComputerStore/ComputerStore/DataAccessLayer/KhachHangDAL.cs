@@ -60,11 +60,27 @@ namespace ComputerStore.DataAccessLayer
             sw.Write("KH" + makh + "\t" + kh.tenKH + "\t" + kh.diaChi + "\t" + kh.soDT);
             sw.Close();
         }
-        public void Update(List<KhachHang> list)
+        public void Update(KhachHang kh)
         {
+            List<KhachHang> list = GetData();
+            for (int i = 0; i < list.Count; ++i)
+                if (list[i].maKH == kh.maKH)
+                {
+                    list[i] = kh;
+                    break;
+                }
             StreamWriter sw = File.CreateText(txtfile);
             for (int i = 0; i < list.Count; ++i)
                 sw.WriteLine(list[i].maKH + "\t" + list[i].tenKH + "\t" + list[i].diaChi + "\t" + list[i].soDT);
+            sw.Close();
+        }
+        public void Delete(string makh)
+        {
+            List<KhachHang> list = GetData();
+            StreamWriter sw = File.CreateText(txtfile);
+            foreach (KhachHang kh in list)
+                if (kh.maKH != makh)
+                    sw.WriteLine(kh.maKH + "\t" + kh.tenKH + "\t" + kh.diaChi + "\t" + kh.soDT);
             sw.Close();
         }
     }

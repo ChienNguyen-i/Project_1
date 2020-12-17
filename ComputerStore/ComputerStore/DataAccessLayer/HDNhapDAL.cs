@@ -60,11 +60,27 @@ namespace ComputerStore.DataAccessLayer
             sw.Write("HDN" + mahdn + "\t" + hdn.maNV + "\t" + hdn.maNCC + "\t" + hdn.maMT + "\t" + hdn.ngayNhap + "\t" + hdn.soLuong + "\t" + hdn.donGia + "\t" + hdn.tongTien);
             sw.Close();
         }
-        public void Update(List<HDNhap> list)
+        public void Update(HDNhap hdn)
         {
+            List<HDNhap> list = GetData();
+            for (int i = 0; i < list.Count; ++i)
+                if (list[i].maHDN == hdn.maHDN)
+                {
+                    list[i] = hdn;
+                    break;
+                }
             StreamWriter sw = File.CreateText(txtfile);
             for (int i = 0; i < list.Count; ++i)
                 sw.WriteLine(list[i].maHDN + "\t" + list[i].maNV + "\t" + list[i].maNCC + "\t" + list[i].maMT + "\t" + list[i].ngayNhap + "\t" + list[i].soLuong + "\t" + list[i].donGia + "\t" + list[i].tongTien);
+            sw.Close();
+        }
+        public void Delete(string mahdn)
+        {
+            List<HDNhap> list = GetData();
+            StreamWriter sw = File.CreateText(txtfile);
+            foreach (HDNhap hdn in list)
+                if (hdn.maHDN != mahdn)
+                    sw.WriteLine(hdn.maHDN + "\t" + hdn.maNV + "\t" + hdn.maNCC + "\t" + hdn.maMT + "\t" + hdn.ngayNhap + "\t" + hdn.soLuong + "\t" + hdn.donGia + "\t" + hdn.tongTien);
             sw.Close();
         }
     }

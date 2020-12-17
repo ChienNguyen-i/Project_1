@@ -30,44 +30,28 @@ namespace ComputerStore.Business
         }
         public MayTinh LayMayTinh(string mamt)
         {
-            int i;
-            List<MayTinh> list = mtDAL.GetData();
-            for (i = 0; i < list.Count; ++i)
-                if (list[i].maMT == mamt)
+            MayTinh mt = null;
+            foreach (MayTinh maytinh in mtDAL.GetData())
+            {
+                if (maytinh.maMT == mamt)
+                {
+                    mt = new MayTinh(maytinh);
                     break;
-            if (i < list.Count)
-                return list[i];
-            else
-                throw new Exception("Không tồn tại mã này.");
+                }
+            }
+            return mt;
         }
         public void XoaMayTinh(string mamt)
         {
-            int i;
-            List<MayTinh> list = mtDAL.GetData();
-            for (i = 0; i < list.Count; ++i)
-                if (list[i].maMT == mamt)
-                    break;
-            if (i < list.Count)
-            {
-                list.RemoveAt(i);
-                mtDAL.Update(list);
-            }
+            if (KT_MaMayTinh(mamt) == true)
+                mtDAL.Delete(mamt);
             else
                 throw new Exception("Không tồn tại mã này.");
         }
         public void SuaMayTinh(MayTinh mt)
         {
-            int i;
-            List<MayTinh> list = mtDAL.GetData();
-            for (i = 0; i < list.Count; ++i)
-                if (list[i].maMT == mt.maMT)
-                    break;
-            if (i < list.Count)
-            {
-                list.RemoveAt(i);
-                list.Add(mt);
-                mtDAL.Update(list);
-            }
+            if (KT_MaMayTinh(mt.maMT) == true)
+                mtDAL.Update(mt);
             else
                 throw new Exception("Không tồn tại mã này.");
         }
@@ -110,7 +94,7 @@ namespace ComputerStore.Business
         {
             bool kt = false;
             foreach (MayTinh maytinh in mtDAL.GetData())
-                if (maytinh.tenMT == tenmt)
+                if (maytinh.tenMT == tenmt || maytinh.tenMT.IndexOf(tenmt) >= 0)
                 {
                     kt = true;
                     break;
