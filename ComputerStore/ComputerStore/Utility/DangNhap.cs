@@ -85,9 +85,9 @@ namespace ComputerStore.Utility
                 if (kt.Key == ConsoleKey.Enter)
                 {
                     if (user == "admin" && pass == "admin")
-                        Form_MN_QuanLy.HienMNC_QL(29, 5, ConsoleColor.Black, ConsoleColor.White);
+                        Form_MN_QuanLy.HienMNC_QL(29, 4, ConsoleColor.Black, ConsoleColor.White);
                     else if (KT_DangNhap(user, pass) == true)
-                        Form_MN_NhanVien.HienMNC_NV(29, 6, ConsoleColor.Black, ConsoleColor.White);
+                        Form_MN_NhanVien.HienMNC_NV(29, 5, ConsoleColor.Black, ConsoleColor.White);
                     else
                     {
                         IO.Clear(x + 2, y + 12, 51, ConsoleColor.Black);

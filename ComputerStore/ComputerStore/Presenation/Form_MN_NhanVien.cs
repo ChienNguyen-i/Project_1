@@ -18,18 +18,20 @@ namespace ComputerStore.Presenation
 
                 Console.Clear();
                 IO.Box(0, 0, 28, 114, ConsoleColor.Black, ConsoleColor.White);
-                IO.BoxTitle("                    CÁC CHỨC NĂNG", x, y, 15, 56);
-                IO.Writexy("F1. Quản lý máy tính", x + 15, y + 3);
-                IO.Writexy("F2. Quản lý nhà cung cấp", x + 15, y + 5);
-                IO.Writexy("F3. Quản lý khách hàng", x + 15, y + 7);
-                IO.Writexy("F4. Quản lý hóa đơn", x + 15, y + 9);
-                IO.Writexy("F5. Kết thúc", x + 15, y + 11);
-                IO.Writexy("Chọn chức năng...", x + 15, y + 13);
+                IO.BoxTitle("                    CÁC CHỨC NĂNG", x, y, 17, 56);
+                IO.Writexy("F1. Quản lý máy tính", x + 16, y + 3);
+                IO.Writexy("F2. Quản lý nhà cung cấp", x + 16, y + 5);
+                IO.Writexy("F3. Quản lý khách hàng", x + 16, y + 7);
+                IO.Writexy("F4. Quản lý hóa đơn", x + 16, y + 9);
+                IO.Writexy("F5. Thống kê", x + 16, y + 11);
+                IO.Writexy("F6. Kết thúc", x + 16, y + 13);
+                IO.Writexy("Chọn chức năng...", x + 16, y + 15);
 
                 Form_MN_NhanVien fmt = new Form_MN_NhanVien();
                 Form_MN_NhanVien fncc = new Form_MN_NhanVien();
                 Form_MN_NhanVien fkh = new Form_MN_NhanVien();
                 Form_MN_NhanVien fhd = new Form_MN_NhanVien();
+                Form_MN_NhanVien ftk = new Form_MN_NhanVien();
 
                 ConsoleKeyInfo kt = Console.ReadKey();
                 switch (kt.Key)
@@ -47,6 +49,9 @@ namespace ComputerStore.Presenation
                         fhd.HienHoaDon(29, 8, ConsoleColor.Black, ConsoleColor.White);
                         break;
                     case ConsoleKey.F5:
+                        ftk.HienChucNang_TK(29, 7, ConsoleColor.Black, ConsoleColor.White);
+                        break;
+                    case ConsoleKey.F6:
                         Environment.Exit(0);
                         break;
                 }
@@ -81,7 +86,7 @@ namespace ComputerStore.Presenation
                         fhdban.HienChucNang_HDB(29, 5, ConsoleColor.Black, ConsoleColor.White);
                         break;
                     case ConsoleKey.F3:
-                        HienMNC_NV(29, 6, ConsoleColor.Black, ConsoleColor.White);
+                        HienMNC_NV(29, 5, ConsoleColor.Black, ConsoleColor.White);
                         break;
                 }
             } while (true);
@@ -128,7 +133,7 @@ namespace ComputerStore.Presenation
                         ftk.HienTimKiem_MT(27, 7, ConsoleColor.Black, ConsoleColor.White);
                         break;
                     case ConsoleKey.F6:
-                        HienMNC_NV(29, 6, ConsoleColor.Black, ConsoleColor.White);
+                        HienMNC_NV(29, 5, ConsoleColor.Black, ConsoleColor.White);
                         break;
                 }
             } while (true);
@@ -209,7 +214,7 @@ namespace ComputerStore.Presenation
                         ftk.HienTimKiem_NCC(27, 7, ConsoleColor.Black, ConsoleColor.White);
                         break;
                     case ConsoleKey.F6:
-                        HienMNC_NV(29, 6, ConsoleColor.Black, ConsoleColor.White);
+                        HienMNC_NV(29, 5, ConsoleColor.Black, ConsoleColor.White);
                         break;
                 }
             } while (true);
@@ -290,7 +295,7 @@ namespace ComputerStore.Presenation
                         ftk.HienTimKiem_KH(27, 7, ConsoleColor.Black, ConsoleColor.White);
                         break;
                     case ConsoleKey.F6:
-                        HienMNC_NV(29, 6, ConsoleColor.Black, ConsoleColor.White);
+                        HienMNC_NV(29, 5, ConsoleColor.Black, ConsoleColor.White);
                         break;
                 }
             } while (true);
@@ -417,6 +422,47 @@ namespace ComputerStore.Presenation
                         break;
                     case ConsoleKey.F6:
                         HienHoaDon(30, 7, ConsoleColor.Black, ConsoleColor.White);
+                        break;
+                }
+            } while (true);
+        }
+        //---------------------------------------------------------------------------
+        public void HienChucNang_TK(int x, int y, ConsoleColor background_color, ConsoleColor text_color)
+        {
+            do
+            {
+                Console.SetWindowSize(114, 28);
+                Console.BackgroundColor = background_color;
+                Console.ForegroundColor = text_color;
+
+                Console.Clear();
+                IO.Box(0, 0, 28, 114, ConsoleColor.Black, ConsoleColor.White);
+                IO.BoxTitle("                    CÁC CHỨC NĂNG", x, y, 13, 56);
+                IO.Writexy("F1. Thống kê doanh thu theo ngày", x + 12, y + 3);
+                IO.Writexy("F2. Thống kê doanh thu theo tháng", x + 12, y + 5);
+                IO.Writexy("F3. Thống kê doanh thu theo năm", x + 12, y + 7);
+                IO.Writexy("F4. Quay lại ", x + 12, y + 9);
+                IO.Writexy("Chọn chức năng...", x + 12, y + 11);
+
+                FormThongKe ftk = new FormThongKe();
+
+                ConsoleKeyInfo kt = Console.ReadKey();
+                switch (kt.Key)
+                {
+                    case ConsoleKey.F1:
+                        ftk.TK_Ngay(1, 1, ConsoleColor.Black, ConsoleColor.White);
+                        Console.ReadKey();
+                        break;
+                    case ConsoleKey.F2:
+                        ftk.TK_Thang(1, 1, ConsoleColor.Black, ConsoleColor.White);
+                        Console.ReadKey();
+                        break;
+                    case ConsoleKey.F3:
+                        ftk.TK_Nam(1, 1, ConsoleColor.Black, ConsoleColor.White);
+                        Console.ReadKey();
+                        break;
+                    case ConsoleKey.F4:
+                        HienMNC_NV(29, 5, ConsoleColor.Black, ConsoleColor.White);
                         break;
                 }
             } while (true);

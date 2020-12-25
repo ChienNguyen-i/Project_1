@@ -101,5 +101,21 @@ namespace ComputerStore.Business
                 }
             return kt;
         }
+        public void TruSoLuong(MayTinh mt, int sl)
+        {
+            MayTinhDAL mt_DAL = new MayTinhDAL();
+            if (KT_MaMayTinh(mt.maMT) == true)
+                mt_DAL.Update_Sub(mt, sl);
+            else
+                throw new Exception("Không tồn tại mã này.");
+        }
+        public void CongSoLuong(MayTinh mt, int sl)
+        {
+            MayTinhDAL mt_DAL = new MayTinhDAL();
+            if (KT_MaMayTinh(mt.maMT) == true)
+                mt_DAL.Update_Add(mt, sl);
+            else
+                throw new Exception("Không tồn tại mã này.");
+        }
     }
 }

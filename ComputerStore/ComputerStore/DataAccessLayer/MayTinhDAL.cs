@@ -23,7 +23,7 @@ namespace ComputerStore.DataAccessLayer
                 {
                     s = CongCu.CatXau(s);
                     string[] a = s.Split('\t');
-                    list.Add(new MayTinh(a[0], a[1], a[2], int.Parse(a[3]), int.Parse(a[4])));
+                    list.Add(new MayTinh(a[0], a[1], a[2], int.Parse(a[3]), double.Parse(a[4])));
                 }
                 s = sr.ReadLine();
             }
@@ -58,7 +58,7 @@ namespace ComputerStore.DataAccessLayer
             int mamt = CongCu.TachSo(maMT) + 1;
             StreamWriter sw = File.AppendText(txtfile);
             sw.WriteLine();
-            sw.Write("MT" + mamt + "\t" + mt.tenMT + "\t" + mt.maNCC + "\t" + mt.sLNhap + "\t" + mt.sLCon);
+            sw.Write("MT" + mamt + "\t" + mt.tenMT + "\t" + mt.maNCC + "\t" + mt.sLCon + "\t" + mt.giaBan);
             sw.Close();
         }
         public void Update(MayTinh mt)
@@ -72,7 +72,7 @@ namespace ComputerStore.DataAccessLayer
                 }
             StreamWriter sw = File.CreateText(txtfile);
             for (int i = 0; i < list.Count; ++i)
-                sw.WriteLine(list[i].maMT + "\t" + list[i].tenMT + "\t" + list[i].maNCC + "\t" + list[i].sLNhap + "\t" + list[i].sLCon);
+                sw.WriteLine(list[i].maMT + "\t" + list[i].tenMT + "\t" + list[i].maNCC + "\t" + list[i].sLCon + "\t" + list[i].giaBan);
             sw.Close();
         }
         public void Delete(string mamt)
@@ -81,7 +81,37 @@ namespace ComputerStore.DataAccessLayer
             StreamWriter sw = File.CreateText(txtfile);
             foreach (MayTinh mt in list)
                 if (mt.maMT != mamt)
-                    sw.WriteLine(mt.maMT + "\t" + mt.tenMT + "\t" + mt.maNCC + "\t" + mt.sLNhap + "\t" + mt.sLCon);
+                    sw.WriteLine(mt.maMT + "\t" + mt.tenMT + "\t" + mt.maNCC + "\t" + mt.sLCon + "\t" + mt.giaBan);
+            sw.Close();
+        }
+        public void Update_Sub(MayTinh mt, int sl)
+        {
+            List<MayTinh> list = GetData();
+            for (int i = 0; i < list.Count; ++i)
+                if (list[i].maMT == mt.maMT)
+                {
+                    list[i] = mt;
+                    list[i].sLCon -= sl;
+                    break;
+                }
+            StreamWriter sw = File.CreateText(txtfile);
+            for (int i = 0; i < list.Count; ++i)
+                sw.WriteLine(list[i].maMT + "\t" + list[i].tenMT + "\t" + list[i].maNCC + "\t" + list[i].sLCon + "\t" + list[i].giaBan);
+            sw.Close();
+        }
+        public void Update_Add(MayTinh mt, int sl)
+        {
+            List<MayTinh> list = GetData();
+            for (int i = 0; i < list.Count; ++i)
+                if (list[i].maMT == mt.maMT)
+                {
+                    list[i] = mt;
+                    list[i].sLCon += sl;
+                    break;
+                }
+            StreamWriter sw = File.CreateText(txtfile);
+            for (int i = 0; i < list.Count; ++i)
+                sw.WriteLine(list[i].maMT + "\t" + list[i].tenMT + "\t" + list[i].maNCC + "\t" + list[i].sLCon + "\t" + list[i].giaBan);
             sw.Close();
         }
     }

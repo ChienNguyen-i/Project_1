@@ -108,6 +108,37 @@ namespace ComputerStore.Utility
             else
                 return false;
         }
+        public static bool CheckMonth(string x)
+        {
+            string a, b;
+            int month, year;
+            string s = CatXau(x);
+
+            if (CheckCount(s) == 1 && CheckNumber(s) == true)
+            {
+                a = s.Substring(0, s.IndexOf("/"));
+                b = s.Substring(s.LastIndexOf("/") + 1);
+
+                if (a == "" || b == "")
+                {
+                    return false;
+                }
+                else if (a != "" && b != "")
+                {
+                    month = Convert.ToInt16(a);
+                    year = Convert.ToInt16(b);
+
+                    if (year > 0 || month > 0 || month <= 12 || year <= DateTime.Now.Year)
+                        return true;
+                    else
+                        return false;
+                }
+                else
+                    return false;
+            }
+            else
+                return false;
+        }
         public static int CheckCount(string s)
         {
             int count = 0;

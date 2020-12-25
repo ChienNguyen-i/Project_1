@@ -300,7 +300,6 @@ namespace ComputerStore.Presenation
                 string manv = "";
                 INhanVienBLL nhanvien = new NhanVienBLL();
                 NhanVienBLL nvBLL = new NhanVienBLL();
-                Form_MN_QuanLy fmn = new Form_MN_QuanLy();
 
                 Console.Clear();
                 IO.Box(0, 0, 28, 114, ConsoleColor.Black, ConsoleColor.White);

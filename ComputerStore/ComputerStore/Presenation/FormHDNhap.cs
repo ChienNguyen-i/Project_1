@@ -111,7 +111,6 @@ namespace ComputerStore.Presenation
                     }
                 } while (hdn.maMT == null || mtBLL.KT_MaMayTinh(hdn.maMT.ToUpper()) == false);
                 IO.Clear(x + 3, y + 7, 60, ConsoleColor.Black);
-                Hien(x, y + 10, hdnhap.LayDSHDNhap(), 5, 0);
                 IO.Writexy("Nhập ngày nhập định dạng 'dd/MM/yyyy'...", x + 4, y + 8, ConsoleColor.Black, ConsoleColor.White);
                 do
                 {
@@ -147,6 +146,7 @@ namespace ComputerStore.Presenation
                 IO.Clear(x + 3, y + 7, 60, ConsoleColor.Black);
                 IO.Writexy(hdn.tongTien.ToString(), x + 83, y + 5);
 
+                MayTinh mt = mtBLL.LayMayTinh(hdn.maMT.ToUpper());
                 IO.Clear(x + 3, y + 7, 60, ConsoleColor.Black);
                 IO.Writexy("Enter để nhập, Esc để thoát...", x + 4, y + 7);
                 Console.SetCursorPosition(x + 34, y + 7);
@@ -158,6 +158,7 @@ namespace ComputerStore.Presenation
                     IO.Clear(x + 3, y + 7, 60, ConsoleColor.Black);
                     IO.Writexy("Hóa đơn nhập đã được thêm...", x + 4, y + 7);
                     hdnhap.ThemHDNhap(hdn);
+                    mtBLL.CongSoLuong(mt, hdn.soLuong);
                     Hien(x, y + 10, hdnhap.LayDSHDNhap(), 5, 1);
                 }
             } while (true);
@@ -302,7 +303,6 @@ namespace ComputerStore.Presenation
                     }
                 } while (mamt == "" || mtBLL.KT_MaMayTinh(mamt.ToUpper()) == false);
                 IO.Clear(x + 3, y + 7, 60, ConsoleColor.Black);
-                Hien(x, y + 10, hdnhap.LayDSHDNhap(), 5, 0);
                 IO.Writexy("Nhập ngày nhập định dạng 'dd/MM/yyyy'...", x + 4, y + 8, ConsoleColor.Black, ConsoleColor.White);
                 do
                 {
@@ -344,6 +344,7 @@ namespace ComputerStore.Presenation
                 IO.Clear(x + 3, y + 7, 60, ConsoleColor.Black);
                 IO.Writexy(hdn.tongTien.ToString(), x + 95, y + 5);
 
+                MayTinh mt = mtBLL.LayMayTinh(mamt.ToUpper());
                 IO.Clear(x + 3, y + 7, 60, ConsoleColor.Black);
                 IO.Writexy("Enter để cập nhật, Esc để thoát...", x + 4, y + 7);
                 Console.SetCursorPosition(x + 38, y + 7);
@@ -355,6 +356,7 @@ namespace ComputerStore.Presenation
                     IO.Clear(x + 3, y + 7, 60, ConsoleColor.Black);
                     IO.Writexy("Hóa đơn nhập đã được cập nhật...", x + 4, y + 7);
                     hdnhap.SuaHDNhap(hdn);
+                    mtBLL.CongSoLuong(mt, hdn.soLuong);
                     Hien(x, y + 10, hdnhap.LayDSHDNhap(), 5, 1);
                 }
             } while (true);

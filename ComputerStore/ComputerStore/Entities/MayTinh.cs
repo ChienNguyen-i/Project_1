@@ -10,27 +10,27 @@ namespace ComputerStore.Entities
         private string MaMT;
         private string TenMT;
         private string MaNCC;
-        private int SLNhap;
         private int SLCon;
+        private double GiaBan;
 
         public MayTinh()
         {
         }
-        public MayTinh(string mamt, string tenmt, string mancc, int sln, int slc)
+        public MayTinh(string mamt, string tenmt, string mancc, int slc, double giaban)
         {
             this.MaMT = mamt;
             this.TenMT = tenmt;
             this.MaNCC = mancc;
-            this.SLNhap = sln;
             this.SLCon = slc;
+            this.GiaBan = giaban;
         }
         public MayTinh(MayTinh mt)
         {
             this.MaMT = mt.MaMT;
             this.TenMT = mt.TenMT;
             this.MaNCC = mt.MaNCC;
-            this.SLNhap = mt.SLNhap;
             this.SLCon = mt.SLCon;
+            this.GiaBan = mt.GiaBan;
         }
 
         public string maMT
@@ -69,18 +69,6 @@ namespace ComputerStore.Entities
                         MaNCC = value;
             }
         }
-        public int sLNhap
-        {
-            get
-            {
-                return SLNhap;
-            }
-            set
-            {
-                if (value > 0)
-                    SLNhap = value;
-            }
-        }
         public int sLCon
         {
             get
@@ -91,6 +79,18 @@ namespace ComputerStore.Entities
             {
                 if (value >= 0)
                     SLCon = value;
+            }
+        }
+        public double giaBan
+        {
+            get
+            {
+                return GiaBan;
+            }
+            set
+            {
+                if (value > 0)
+                    GiaBan = value;
             }
         }
     }

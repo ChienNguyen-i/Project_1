@@ -8,19 +8,19 @@
     ".NETCoreApp,Version=v3.1": []
   },
   "packageFolders": {
-    "C:\\Users\\Chien Nguyen\\.nuget\\packages\\": {}
+    "C:\\Users\\nguye\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\GITHUB\\Project_1\\ComputerStore\\ComputerStore\\ComputerStore.csproj",
+      "projectUniqueName": "D:\\GitHub\\Project_1\\ComputerStore\\ComputerStore\\ComputerStore.csproj",
       "projectName": "ComputerStore",
-      "projectPath": "D:\\GITHUB\\Project_1\\ComputerStore\\ComputerStore\\ComputerStore.csproj",
-      "packagesPath": "C:\\Users\\Chien Nguyen\\.nuget\\packages\\",
-      "outputPath": "D:\\GITHUB\\Project_1\\ComputerStore\\ComputerStore\\obj\\",
+      "projectPath": "D:\\GitHub\\Project_1\\ComputerStore\\ComputerStore\\ComputerStore.csproj",
+      "packagesPath": "C:\\Users\\nguye\\.nuget\\packages\\",
+      "outputPath": "D:\\GitHub\\Project_1\\ComputerStore\\ComputerStore\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Chien Nguyen\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\nguye\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [

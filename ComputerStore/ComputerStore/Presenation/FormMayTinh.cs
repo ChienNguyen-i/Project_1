@@ -27,8 +27,8 @@ namespace ComputerStore.Presenation
                 IO.BoxTitle("                                         NHẬP THÔNG TIN MÁY TÍNH", x, y, 10, 110);
                 IO.Writexy("Tên máy:", x + 4, y + 3);
                 IO.Writexy("Mã nhà cung cấp:", x + 56, y + 3);
-                IO.Writexy("Số lượng nhập:", x + 4, y + 5);
-                IO.Writexy("Số lượng còn:", x + 56, y + 5);
+                IO.Writexy("Số lượng còn:", x + 4, y + 5);
+                IO.Writexy("Giá bán:", x + 56, y + 5);
                 IO.Writexy("------------------------------------------------------------------------------------------------------------", x + 1, y + 6);
                 IO.Writexy("Nhập ! để thoát...", x + 4, y + 8);
                 Hien(x + 9, y + 10, maytinh.LayDSMayTinh(), 5, 0);
@@ -70,23 +70,23 @@ namespace ComputerStore.Presenation
                 Hien(x + 9, y + 10, maytinh.LayDSMayTinh(), 5, 0);
                 do
                 {
-                    mt.sLNhap = int.Parse(IO.ReadNumber(x + 19, y + 5));
-                    if (mt.sLNhap <= 0)
-                    {
-                        IO.Writexy("Nhập lại số lượng nhập...", x + 4, y + 7, ConsoleColor.Black, ConsoleColor.White);
-                        IO.Clear(x + 18, y + 5, 20, ConsoleColor.Black);
-                    }
-                } while (mt.sLNhap <= 0);
-                IO.Clear(x + 3, y + 7, 60, ConsoleColor.Black);
-                do
-                {
-                    mt.sLCon = int.Parse(IO.ReadNumber(x + 70, y + 5));
+                    mt.sLCon = int.Parse(IO.ReadNumber(x + 18, y + 5));
                     if (mt.sLCon < 0)
                     {
                         IO.Writexy("Nhập lại số lượng còn...", x + 4, y + 7, ConsoleColor.Black, ConsoleColor.White);
-                        IO.Clear(x + 69, y + 5, 20, ConsoleColor.Black);
+                        IO.Clear(x + 17, y + 5, 20, ConsoleColor.Black);
                     }
                 } while (mt.sLCon < 0);
+                IO.Clear(x + 3, y + 7, 60, ConsoleColor.Black);
+                do
+                {
+                    mt.giaBan = double.Parse(IO.ReadNumber(x + 65, y + 5));
+                    if (mt.giaBan <= 0)
+                    {
+                        IO.Writexy("Nhập lại giá bán...", x + 4, y + 7, ConsoleColor.Black, ConsoleColor.White);
+                        IO.Clear(x + 64, y + 5, 20, ConsoleColor.Black);
+                    }
+                } while (mt.giaBan < 0);
 
                 IO.Clear(x + 3, y + 7, 60, ConsoleColor.Black);
                 IO.Writexy("Enter để nhập, Esc để thoát...", x + 4, y + 7);
@@ -121,8 +121,8 @@ namespace ComputerStore.Presenation
                 IO.Writexy("Mã MT:", x + 2, y + 3);
                 IO.Writexy("Tên máy:", x + 43, y + 3);
                 IO.Writexy("Mã nhà CC:", x + 2, y + 5);
-                IO.Writexy("Số lượng nhập:", x + 37, y + 5);
-                IO.Writexy("Số lượng còn:", x + 74, y + 5);
+                IO.Writexy("Số lượng còn:", x + 37, y + 5);
+                IO.Writexy("Giá bán:", x + 74, y + 5);
                 IO.Writexy("------------------------------------------------------------------------------------------------------------", x + 1, y + 6);
                 IO.Writexy("Nhập ! để thoát...", x + 4, y + 8);
                 Hien(x + 9, y + 10, maytinh.LayDSMayTinh(), 5, 0);
@@ -130,8 +130,8 @@ namespace ComputerStore.Presenation
                 string mamt;
                 string tenmay;
                 string mancc;
-                int sln;
                 int slc;
+                double giaban;
 
                 do
                 {
@@ -158,8 +158,8 @@ namespace ComputerStore.Presenation
                 MayTinh mt = maytinh.LayMayTinh(mamt);
                 IO.Writexy(mt.tenMT, x + 52, y + 3);
                 IO.Writexy(mt.maNCC.ToString(), x + 13, y + 5);
-                IO.Writexy(mt.sLNhap.ToString(), x + 52, y + 5);
-                IO.Writexy(mt.sLCon.ToString(), x + 88, y + 5);
+                IO.Writexy(mt.sLCon.ToString(), x + 51, y + 5);
+                IO.Writexy(mt.giaBan.ToString(), x + 83, y + 5);
 
                 IO.Clear(x + 3, y + 7, 60, ConsoleColor.Black);
                 IO.Clear(x + 3, y + 8, 60, ConsoleColor.Black);
@@ -198,27 +198,27 @@ namespace ComputerStore.Presenation
                 Hien(x + 9, y + 10, maytinh.LayDSMayTinh(), 5, 0);
                 do
                 {
-                    sln = int.Parse(IO.ReadNumber(x + 52, y + 5));
-                    if (sln <= 0)
-                    {
-                        IO.Writexy("Nhập lại số lượng nhập...", x + 4, y + 7, ConsoleColor.Black, ConsoleColor.White);
-                        IO.Clear(x + 51, y + 5, 16, ConsoleColor.Black);
-                    }
-                    else if (sln != mt.sLNhap && sln > 0)
-                        mt.sLNhap = sln;
-                } while (sln <= 0);
-                IO.Clear(x + 3, y + 7, 60, ConsoleColor.Black);
-                do
-                {
-                    slc = int.Parse(IO.ReadNumber(x + 88, y + 5));
+                    slc = int.Parse(IO.ReadNumber(x + 51, y + 5));
                     if (slc < 0)
                     {
                         IO.Writexy("Nhập lại số lượng còn...", x + 4, y + 7, ConsoleColor.Black, ConsoleColor.White);
-                        IO.Clear(x + 87, y + 5, 20, ConsoleColor.Black);
+                        IO.Clear(x + 50, y + 5, 16, ConsoleColor.Black);
                     }
                     else if (slc != mt.sLCon && slc >= 0)
                         mt.sLCon = slc;
                 } while (slc < 0);
+                IO.Clear(x + 3, y + 7, 60, ConsoleColor.Black);
+                do
+                {
+                    giaban = double.Parse(IO.ReadNumber(x + 83, y + 5));
+                    if (giaban <= 0)
+                    {
+                        IO.Writexy("Nhập lại giá bán...", x + 4, y + 7, ConsoleColor.Black, ConsoleColor.White);
+                        IO.Clear(x + 82, y + 5, 20, ConsoleColor.Black);
+                    }
+                    else if (giaban != mt.giaBan && giaban > 0)
+                        mt.giaBan = giaban;
+                } while (giaban <= 0);
 
                 IO.Clear(x + 3, y + 7, 60, ConsoleColor.Black);
                 IO.Writexy("Enter để cập nhật, Esc để thoát...", x + 4, y + 7);
@@ -407,9 +407,9 @@ namespace ComputerStore.Presenation
                 y = yy;
                 d = 0;
                 IO.Writexy("                                    DANH SÁCH MÁY TÍNH", x, y);
-                IO.Writexy("┌─────────────┬─────────────────────────┬─────────────────┬───────────────┬──────────────┐", x, y + 1);
-                IO.Writexy("│ Mã máy tính │      Tên máy tính       │ Mã nhà cung cấp │ Số lượng nhập │ Số lượng còn │", x, y + 2);
-                IO.Writexy("├─────────────┼─────────────────────────┼─────────────────┼───────────────┼──────────────┤", x, y + 3);
+                IO.Writexy("┌─────────────┬─────────────────────────┬─────────────────┬──────────────┬───────────────┐", x, y + 1);
+                IO.Writexy("│ Mã máy tính │      Tên máy tính       │ Mã nhà cung cấp │ Số lượng còn │    Giá bán    │", x, y + 2);
+                IO.Writexy("├─────────────┼─────────────────────────┼─────────────────┼──────────────┼───────────────┤", x, y + 3);
                 y += 4;
                 for (int i = head; i < final; i++)
                 {
@@ -420,16 +420,16 @@ namespace ComputerStore.Presenation
                     IO.Writexy("│", x + 40, y + d);
                     IO.Writexy(list[i].maNCC, x + 41, y + d, 18);
                     IO.Writexy("│", x + 58, y + d);
-                    IO.Writexy(list[i].sLNhap.ToString(), x + 59, y + d, 16);
-                    IO.Writexy("│", x + 74, y + d);
-                    IO.Writexy(list[i].sLCon.ToString(), x + 75, y + d, 15);
+                    IO.Writexy(list[i].sLCon.ToString(), x + 59, y + d, 15);
+                    IO.Writexy("│", x + 73, y + d);
+                    IO.Writexy(list[i].giaBan.ToString(), x + 74, y + d, 16);
                     IO.Writexy("│", x + 89, y + d);
                     if (i < final - 1)
-                        IO.Writexy("├─────────────┼─────────────────────────┼─────────────────┼───────────────┼──────────────┤", x, y + d + 1);
+                        IO.Writexy("├─────────────┼─────────────────────────┼─────────────────┼──────────────┼───────────────┤", x, y + d + 1);
                     y += 1;
                     d += 1;
                 }
-                IO.Writexy("└─────────────┴─────────────────────────┴─────────────────┴───────────────┴──────────────┘", x, y + d - 1);
+                IO.Writexy("└─────────────┴─────────────────────────┴─────────────────┴──────────────┴───────────────┘", x, y + d - 1);
                 IO.Writexy(" Trang " + curpage + "/" + totalpage, x, y + d);
                 IO.Writexy(" Trang " + curpage + "/" + totalpage + "          Nhấn PagegUp để xem trước, PagegDown để xem tiep, Esc để thoát...", x, y + d);
                 if (type == 0)
