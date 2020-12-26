@@ -227,13 +227,6 @@ namespace ComputerStore.Presenation
                     }
                 } while (mahdn == "" || hdnBLL.KT_MaHDN(mahdn.ToUpper()) == false);
                 HDNhap hdn = hdnhap.LayHDNhap(mahdn);
-                IO.Writexy(hdn.maNV.ToString(), x + 42, y + 3);
-                IO.Writexy(hdn.maNCC.ToString(), x + 75, y + 3);
-                IO.Writexy(hdn.maMT.ToString(), x + 102, y + 3);
-                IO.Writexy(hdn.ngayNhap, x + 13, y + 5);
-                IO.Writexy(hdn.soLuong.ToString(), x + 42, y + 5);
-                IO.Writexy(hdn.donGia.ToString(), x + 66, y + 5);
-                IO.Writexy(hdn.tongTien.ToString(), x + 95, y + 5);
 
                 IO.Clear(x + 3, y + 7, 60, ConsoleColor.Black);
                 IO.Clear(x + 3, y + 8, 60, ConsoleColor.Black);

@@ -122,9 +122,6 @@ namespace ComputerStore.Presenation
                     }
                 } while (mancc == "" || nccBLL.KT_MaNCC(mancc.ToUpper()) == false);
                 NCC ncc = nhacc.LayNCC(mancc);
-                IO.Writexy(ncc.tenNCC, x + 57, y + 3);
-                IO.Writexy(ncc.diaChi, x + 13, y + 5);
-                IO.Writexy(ncc.soDT, x + 54, y + 5);
                 
                 IO.Clear(x + 3, y + 8, 60, ConsoleColor.Black);
                 IO.Clear(x + 3, y + 7, 60, ConsoleColor.Black);

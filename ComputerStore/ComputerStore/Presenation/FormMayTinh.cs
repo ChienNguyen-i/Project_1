@@ -156,10 +156,6 @@ namespace ComputerStore.Presenation
                     }
                 } while (mamt == "" || mtBLL.KT_MaMayTinh(mamt.ToUpper()) == false);
                 MayTinh mt = maytinh.LayMayTinh(mamt);
-                IO.Writexy(mt.tenMT, x + 52, y + 3);
-                IO.Writexy(mt.maNCC.ToString(), x + 13, y + 5);
-                IO.Writexy(mt.sLCon.ToString(), x + 51, y + 5);
-                IO.Writexy(mt.giaBan.ToString(), x + 83, y + 5);
 
                 IO.Clear(x + 3, y + 7, 60, ConsoleColor.Black);
                 IO.Clear(x + 3, y + 8, 60, ConsoleColor.Black);

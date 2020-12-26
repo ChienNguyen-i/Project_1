@@ -126,9 +126,6 @@ namespace ComputerStore.Presenation
                     }
                 } while (makh == "" || khBLL.KT_MaKhachHang(makh.ToUpper()) == false);
                 KhachHang kh = khachhang.LayKhachHang(makh);
-                IO.Writexy(kh.tenKH, x + 57, y + 3);
-                IO.Writexy(kh.diaChi, x + 13, y + 5);
-                IO.Writexy(kh.soDT, x + 64, y + 5);
 
                 IO.Clear(x + 3, y + 7, 60, ConsoleColor.Black);
                 IO.Clear(x + 3, y + 8, 60, ConsoleColor.Black);

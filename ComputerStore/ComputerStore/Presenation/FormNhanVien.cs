@@ -178,14 +178,8 @@ namespace ComputerStore.Presenation
                             manv = CongCu.CatXau(manv.ToUpper());
                     }
                 } while (manv == "" || nvBLL.KT_MaNhanVien(manv.ToUpper()) == false);
+                
                 NhanVien nv = nhanvien.LayNhanVien(manv);
-                IO.Writexy(nv.tenNV, x + 31, y + 3);
-                IO.Writexy(nv.ngaySinh, x + 67, y + 3);
-                IO.Writexy(nv.gioiTinh, x + 96, y + 3);
-                IO.Writexy(nv.diaChi, x + 11, y + 5);
-                IO.Writexy(nv.soDT, x + 42, y + 5);
-                IO.Writexy(nv.loaiNV, x + 69, y + 5);
-                IO.Writexy(nv.pass, x + 93, y + 5);
                 
                 IO.Clear(x + 110, y + 5, 14, ConsoleColor.Black);
                 IO.Writexy("│  │", x + 111, y + 5);

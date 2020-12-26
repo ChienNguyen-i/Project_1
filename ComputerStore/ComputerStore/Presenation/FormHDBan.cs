@@ -228,13 +228,6 @@ namespace ComputerStore.Presenation
                     }
                 } while (mahdb == "" || hdbBLL.KT_MaHDB(mahdb.ToUpper()) == false);
                 HDBan hdb = hdban.LayHDBan(mahdb);
-                IO.Writexy(hdb.maNV.ToString(), x + 42, y + 3);
-                IO.Writexy(hdb.maKH.ToString(), x + 73, y + 3);
-                IO.Writexy(hdb.maMT.ToString(), x + 102, y + 3);
-                IO.Writexy(hdb.ngayBan, x + 12, y + 5);
-                IO.Writexy(hdb.soLuong.ToString(), x + 42, y + 5);
-                IO.Writexy(hdb.donGia.ToString(), x + 66, y + 5);
-                IO.Writexy(hdb.tongTien.ToString(), x + 95, y + 5);
 
                 IO.Clear(x + 3, y + 7, 60, ConsoleColor.Black);
                 IO.Clear(x + 3, y + 8, 60, ConsoleColor.Black);
