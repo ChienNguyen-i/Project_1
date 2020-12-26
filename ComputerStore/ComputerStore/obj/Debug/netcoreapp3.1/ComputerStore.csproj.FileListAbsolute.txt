@@ -24,3 +24,29 @@ D:\GITHUB\Project_1\ComputerStore\ComputerStore\bin\Debug\netcoreapp3.1\Computer
 D:\GITHUB\Project_1\ComputerStore\ComputerStore\bin\Debug\netcoreapp3.1\ComputerStore.dll
 D:\GITHUB\Project_1\ComputerStore\ComputerStore\bin\Debug\netcoreapp3.1\ComputerStore.pdb
 D:\GITHUB\Project_1\ComputerStore\ComputerStore\obj\Debug\netcoreapp3.1\ComputerStore.genruntimeconfig.cache
+C:\Users\Chien Nguyen\Desktop\ComputerStore\ComputerStore\bin\Debug\netcoreapp3.1\ComputerStore.exe
+C:\Users\Chien Nguyen\Desktop\ComputerStore\ComputerStore\bin\Debug\netcoreapp3.1\ComputerStore.deps.json
+C:\Users\Chien Nguyen\Desktop\ComputerStore\ComputerStore\bin\Debug\netcoreapp3.1\ComputerStore.runtimeconfig.json
+C:\Users\Chien Nguyen\Desktop\ComputerStore\ComputerStore\bin\Debug\netcoreapp3.1\ComputerStore.runtimeconfig.dev.json
+C:\Users\Chien Nguyen\Desktop\ComputerStore\ComputerStore\bin\Debug\netcoreapp3.1\ComputerStore.dll
+C:\Users\Chien Nguyen\Desktop\ComputerStore\ComputerStore\bin\Debug\netcoreapp3.1\ComputerStore.pdb
+C:\Users\Chien Nguyen\Desktop\ComputerStore\ComputerStore\obj\Debug\netcoreapp3.1\ComputerStore.csprojAssemblyReference.cache
+C:\Users\Chien Nguyen\Desktop\ComputerStore\ComputerStore\obj\Debug\netcoreapp3.1\ComputerStore.AssemblyInfoInputs.cache
+C:\Users\Chien Nguyen\Desktop\ComputerStore\ComputerStore\obj\Debug\netcoreapp3.1\ComputerStore.AssemblyInfo.cs
+C:\Users\Chien Nguyen\Desktop\ComputerStore\ComputerStore\obj\Debug\netcoreapp3.1\ComputerStore.csproj.CoreCompileInputs.cache
+C:\Users\Chien Nguyen\Desktop\ComputerStore\ComputerStore\obj\Debug\netcoreapp3.1\ComputerStore.dll
+C:\Users\Chien Nguyen\Desktop\ComputerStore\ComputerStore\obj\Debug\netcoreapp3.1\ComputerStore.pdb
+C:\Users\Chien Nguyen\Desktop\ComputerStore\ComputerStore\obj\Debug\netcoreapp3.1\ComputerStore.genruntimeconfig.cache
+F:\ComputerStore\ComputerStore\bin\Debug\netcoreapp3.1\ComputerStore.exe
+F:\ComputerStore\ComputerStore\bin\Debug\netcoreapp3.1\ComputerStore.deps.json
+F:\ComputerStore\ComputerStore\bin\Debug\netcoreapp3.1\ComputerStore.runtimeconfig.json
+F:\ComputerStore\ComputerStore\bin\Debug\netcoreapp3.1\ComputerStore.runtimeconfig.dev.json
+F:\ComputerStore\ComputerStore\bin\Debug\netcoreapp3.1\ComputerStore.dll
+F:\ComputerStore\ComputerStore\bin\Debug\netcoreapp3.1\ComputerStore.pdb
+F:\ComputerStore\ComputerStore\obj\Debug\netcoreapp3.1\ComputerStore.csprojAssemblyReference.cache
+F:\ComputerStore\ComputerStore\obj\Debug\netcoreapp3.1\ComputerStore.AssemblyInfoInputs.cache
+F:\ComputerStore\ComputerStore\obj\Debug\netcoreapp3.1\ComputerStore.AssemblyInfo.cs
+F:\ComputerStore\ComputerStore\obj\Debug\netcoreapp3.1\ComputerStore.csproj.CoreCompileInputs.cache
+F:\ComputerStore\ComputerStore\obj\Debug\netcoreapp3.1\ComputerStore.dll
+F:\ComputerStore\ComputerStore\obj\Debug\netcoreapp3.1\ComputerStore.pdb
+F:\ComputerStore\ComputerStore\obj\Debug\netcoreapp3.1\ComputerStore.genruntimeconfig.cache

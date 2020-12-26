@@ -1,18 +1,15 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 using ComputerStore.DataAccessLayer;
 using ComputerStore.Utility;
 using ComputerStore.Entities;
-using ComputerStore.Presenation;
 
-namespace ComputerStore.Utility
+namespace ComputerStore.Presenation
 {
-    public class DangNhap
+    public class FormDangNhap
     {
         private string User;
         private string Password;
-        public DangNhap()
+        public FormDangNhap()
         { }
         public string user
         {

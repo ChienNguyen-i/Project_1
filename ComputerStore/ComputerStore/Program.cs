@@ -12,7 +12,7 @@ namespace ComputerStore
             Console.OutputEncoding = Encoding.UTF8;
             Console.InputEncoding = Encoding.Unicode;
             Console.SetWindowSize(114, 28);
-            DangNhap dn = new DangNhap();
+            FormDangNhap dn = new FormDangNhap();
             dn.HienChinh(26, 6, ConsoleColor.Black, ConsoleColor.White);
             Console.ReadKey();
         }

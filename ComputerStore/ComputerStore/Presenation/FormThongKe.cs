@@ -127,7 +127,7 @@ namespace ComputerStore.Presenation
             {
                 Console.SetCursorPosition(x + 28, y + 3);
                 nam = Console.ReadLine();
-                if (nam == "" || Convert.ToInt32(nam) <= 0)
+                if (nam == "" || Convert.ToInt16(nam) <= 0)
                 {
                     IO.Clear(x + 3, y + 5, 60, ConsoleColor.Black);
                     IO.Writexy("Nhập lại năm thống kê...", x + 4, y + 5, ConsoleColor.Black, ConsoleColor.White);
