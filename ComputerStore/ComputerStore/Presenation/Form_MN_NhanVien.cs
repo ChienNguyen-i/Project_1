@@ -49,7 +49,7 @@ namespace ComputerStore.Presenation
                         fhd.HienHoaDon(29, 8, ConsoleColor.Black, ConsoleColor.White);
                         break;
                     case ConsoleKey.F5:
-                        ftk.HienChucNang_TK(29, 7, ConsoleColor.Black, ConsoleColor.White);
+                        ftk.HienChucNang_TK(29, 4, ConsoleColor.Black, ConsoleColor.White);
                         break;
                     case ConsoleKey.F6:
                         Environment.Exit(0);
@@ -270,7 +270,7 @@ namespace ComputerStore.Presenation
                 IO.Writexy("F3. Xóa khách hàng", x + 12, y + 7);
                 IO.Writexy("F4. Hiển thị danh sách khách hàng", x + 12, y + 9);
                 IO.Writexy("F5. Tìm kiếm khách hàng", x + 12, y + 11);
-                IO.Writexy("F6. Quay lại ", x + 12, y + 13);
+                IO.Writexy("F6. Quay lại", x + 12, y + 13);
                 IO.Writexy("Chọn chức năng...", x + 12, y + 15);
 
                 FormKhachHang khachang = new FormKhachHang();
@@ -397,7 +397,7 @@ namespace ComputerStore.Presenation
                 IO.Writexy("F3. Xóa hóa đơn bán", x + 12, y + 7);
                 IO.Writexy("F4. Hiển thị danh sách hóa đơn bán", x + 12, y + 9);
                 IO.Writexy("F5. Tìm kiếm hóa đơn bán", x + 12, y + 11);
-                IO.Writexy("F6. Quay lại ", x + 12, y + 13);
+                IO.Writexy("F6. Quay lại", x + 12, y + 13);
                 IO.Writexy("Chọn chức năng...", x + 12, y + 15);
 
                 FormHDBan hdban = new FormHDBan();
@@ -437,12 +437,15 @@ namespace ComputerStore.Presenation
 
                 Console.Clear();
                 IO.Box(0, 0, 28, 114, ConsoleColor.Black, ConsoleColor.White);
-                IO.BoxTitle("                    CÁC CHỨC NĂNG", x, y, 13, 56);
-                IO.Writexy("F1. Thống kê doanh thu theo ngày", x + 12, y + 3);
-                IO.Writexy("F2. Thống kê doanh thu theo tháng", x + 12, y + 5);
-                IO.Writexy("F3. Thống kê doanh thu theo năm", x + 12, y + 7);
-                IO.Writexy("F4. Quay lại ", x + 12, y + 9);
-                IO.Writexy("Chọn chức năng...", x + 12, y + 11);
+                IO.BoxTitle("                    CÁC CHỨC NĂNG", x, y, 19, 56);
+                IO.Writexy("F1. Thống kê doanh thu theo ngày", x + 11, y + 3);
+                IO.Writexy("F2. Thống kê doanh thu theo tháng", x + 11, y + 5);
+                IO.Writexy("F3. Thống kê doanh thu theo năm", x + 11, y + 7);
+                IO.Writexy("F4. Thống kê số lượng máy tính còn", x + 11, y + 9);
+                IO.Writexy("F5. Thống kê số lượng máy tính sắp hết", x + 11, y + 11);
+                IO.Writexy("F6. Thống kê số lượng máy tính hết", x + 11, y + 13);
+                IO.Writexy("F7. Quay lại", x + 11, y + 15);
+                IO.Writexy("Chọn chức năng...", x + 11, y + 17);
 
                 FormThongKe ftk = new FormThongKe();
 
@@ -462,6 +465,15 @@ namespace ComputerStore.Presenation
                         Console.ReadKey();
                         break;
                     case ConsoleKey.F4:
+                        ftk.SL_Con(1, 1, ConsoleColor.Black, ConsoleColor.White);
+                        break;
+                    case ConsoleKey.F5:
+                        ftk.SL_SapHet(1, 1, ConsoleColor.Black, ConsoleColor.White);
+                        break;
+                    case ConsoleKey.F6:
+                        ftk.SL_Het(1, 1, ConsoleColor.Black, ConsoleColor.White);
+                        break;
+                    case ConsoleKey.F7:
                         HienMNC_NV(29, 5, ConsoleColor.Black, ConsoleColor.White);
                         break;
                 }

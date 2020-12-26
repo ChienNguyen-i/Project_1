@@ -1,11 +1,8 @@
 ﻿using System;
-using System.Text;
 using System.Collections.Generic;
 using System.IO;
 using ComputerStore.Utility;
 using ComputerStore.Entities;
-using ComputerStore.Business;
-using ComputerStore.Business.Interface;
 using ComputerStore.DataAccessLayer;
 
 namespace ComputerStore.Presenation
@@ -158,6 +155,131 @@ namespace ComputerStore.Presenation
             IO.Clear(x + 3, y + 6, 60, ConsoleColor.Black);
             IO.Writexy("Nhấn Enter để thoát...", x + 4, y + 5);
             Console.SetCursorPosition(x + 26, y + 5);
+        }
+        public void SL_Con(int x, int y, ConsoleColor background_color, ConsoleColor text_color)
+        {
+            Console.BackgroundColor = background_color;
+            Console.ForegroundColor = text_color;
+            MayTinhDAL mtDAL = new MayTinhDAL();
+            List<MayTinh> ds = mtDAL.GetData();
+            List<MayTinh> kq = new List<MayTinh>();
+
+            Console.Clear();
+            IO.Box(0, 0, 28, 114, ConsoleColor.Black, ConsoleColor.White);
+
+            for (int i = 0; i < ds.Count; i++)
+            {
+                if (ds[i].sLCon >= 5)
+                {
+                    kq.Add(ds[i]); 
+                }
+            }
+            IO.Writexy("                                            DANH SÁCH MÁY TÍNH CÒN", x, y + 1);
+            Hien(x + 11, y + 2, kq, 5, 1);
+        }
+        public void SL_SapHet(int x, int y, ConsoleColor background_color, ConsoleColor text_color)
+        {
+            Console.BackgroundColor = background_color;
+            Console.ForegroundColor = text_color;
+            MayTinhDAL mtDAL = new MayTinhDAL();
+            List<MayTinh> ds = mtDAL.GetData();
+            List<MayTinh> kq = new List<MayTinh>();
+
+            Console.Clear();
+            IO.Box(0, 0, 28, 114, ConsoleColor.Black, ConsoleColor.White);
+
+            for (int i = 0; i < ds.Count; i++)
+            {
+                if (ds[i].sLCon < 5)
+                {
+                    kq.Add(ds[i]);
+                }
+            }
+            IO.Writexy("                                        DANH SÁCH MÁY TÍNH SẮP HẾT", x, y + 1);
+            Hien(x + 11, y + 2, kq, 5, 1);
+        }
+        public void SL_Het(int x, int y, ConsoleColor background_color, ConsoleColor text_color)
+        {
+            Console.BackgroundColor = background_color;
+            Console.ForegroundColor = text_color;
+            MayTinhDAL mtDAL = new MayTinhDAL();
+            List<MayTinh> ds = mtDAL.GetData();
+            List<MayTinh> kq = new List<MayTinh>();
+
+            Console.Clear();
+            IO.Box(0, 0, 28, 114, ConsoleColor.Black, ConsoleColor.White);
+
+            for (int i = 0; i < ds.Count; i++)
+            {
+                if (ds[i].sLCon == 0)
+                {
+                    kq.Add(ds[i]);
+                }
+            }
+            IO.Writexy("                                            DANH SÁCH MÁY TÍNH HẾT", x, y + 1);
+            Hien(x + 11, y + 2, kq, 5, 1);
+        }
+        public void Hien(int xx, int yy, List<MayTinh> list, int n, int type)
+        {
+            int head = 0;
+            int curpage = 1;
+            int totalpage = list.Count % n == 0 ? list.Count / n : list.Count / n + 1;
+            int final = list.Count <= n ? list.Count : n;
+            int x, y, d;
+            do
+            {
+                IO.Clear(xx, yy, 1900, ConsoleColor.Black);
+                IO.Box(0, 0, 28, 114, ConsoleColor.Black, ConsoleColor.White);
+                head = (curpage - 1) * n;
+                final = curpage * n < list.Count ? curpage * n : list.Count;
+                x = xx;
+                y = yy;
+                d = 0;
+                IO.Writexy("┌─────────────┬─────────────────────────┬─────────────────┬──────────────┬───────────────┐", x, y + 1);
+                IO.Writexy("│ Mã máy tính │      Tên máy tính       │ Mã nhà cung cấp │ Số lượng còn │    Giá bán    │", x, y + 2);
+                IO.Writexy("├─────────────┼─────────────────────────┼─────────────────┼──────────────┼───────────────┤", x, y + 3);
+                y += 4;
+                for (int i = head; i < final; i++)
+                {
+                    IO.Writexy("│", x, y + d, 14);
+                    IO.Writexy(list[i].maMT, x + 1, y + d, 14);
+                    IO.Writexy("│", x + 14, y + d);
+                    IO.Writexy(list[i].tenMT, x + 15, y + d, 26);
+                    IO.Writexy("│", x + 40, y + d);
+                    IO.Writexy(list[i].maNCC, x + 41, y + d, 18);
+                    IO.Writexy("│", x + 58, y + d);
+                    IO.Writexy(list[i].sLCon.ToString(), x + 59, y + d, 15);
+                    IO.Writexy("│", x + 73, y + d);
+                    IO.Writexy(list[i].giaBan.ToString(), x + 74, y + d, 16);
+                    IO.Writexy("│", x + 89, y + d);
+                    if (i < final - 1)
+                        IO.Writexy("├─────────────┼─────────────────────────┼─────────────────┼──────────────┼───────────────┤", x, y + d + 1);
+                    y += 1;
+                    d += 1;
+                }
+                IO.Writexy("└─────────────┴─────────────────────────┴─────────────────┴──────────────┴───────────────┘", x, y + d - 1);
+                IO.Writexy(" Trang " + curpage + "/" + totalpage, x, y + d);
+                IO.Writexy(" Trang " + curpage + "/" + totalpage + "          Nhấn PagegUp để xem trước, PagegDown để xem tiep, Esc để thoát...", x, y + d);
+                if (type == 0)
+                    break;
+                ConsoleKeyInfo kt = Console.ReadKey();
+                if (kt.Key == ConsoleKey.PageDown)
+                {
+                    if (curpage < totalpage)
+                        curpage += 1;
+                    else
+                        curpage = 1;
+                }
+                else if (kt.Key == ConsoleKey.PageUp)
+                {
+                    if (curpage > 1)
+                        curpage -= 1;
+                    else
+                        curpage = totalpage;
+                }
+                else if (kt.Key == ConsoleKey.Escape)
+                    break;
+            } while (true);
         }
     }
 }
