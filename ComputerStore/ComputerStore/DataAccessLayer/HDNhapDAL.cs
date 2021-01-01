@@ -22,7 +22,7 @@ namespace ComputerStore.DataAccessLayer
                 {
                     s = CongCu.CatXau(s);
                     string[] a = s.Split('\t');
-                    list.Add(new HDNhap(a[0], a[1], a[2], a[3], a[4], int.Parse(a[5]), double.Parse(a[6]), double.Parse(a[7])));
+                    list.Add(new HDNhap(a[0], a[1], a[2], a[3], double.Parse(a[4])));
                 }
                 s = sr.ReadLine();
             }
@@ -56,22 +56,7 @@ namespace ComputerStore.DataAccessLayer
         {
             int mahdn = CongCu.TachSo(maHDN) + 1;
             StreamWriter sw = File.AppendText(txtfile);
-            sw.WriteLine();
-            sw.Write("HDN" + mahdn + "\t" + hdn.maNV + "\t" + hdn.maNCC + "\t" + hdn.maMT + "\t" + hdn.ngayNhap + "\t" + hdn.soLuong + "\t" + hdn.donGia + "\t" + hdn.tongTien);
-            sw.Close();
-        }
-        public void Update(HDNhap hdn)
-        {
-            List<HDNhap> list = GetData();
-            for (int i = 0; i < list.Count; ++i)
-                if (list[i].maHDN == hdn.maHDN)
-                {
-                    list[i] = hdn;
-                    break;
-                }
-            StreamWriter sw = File.CreateText(txtfile);
-            for (int i = 0; i < list.Count; ++i)
-                sw.WriteLine(list[i].maHDN + "\t" + list[i].maNV + "\t" + list[i].maNCC + "\t" + list[i].maMT + "\t" + list[i].ngayNhap + "\t" + list[i].soLuong + "\t" + list[i].donGia + "\t" + list[i].tongTien);
+            sw.WriteLine("HDN" + mahdn + "\t" + hdn.maNV + "\t" + hdn.maNCC + "\t" + hdn.ngayNhap + "\t" + hdn.tongTien);
             sw.Close();
         }
         public void Delete(string mahdn)
@@ -80,8 +65,66 @@ namespace ComputerStore.DataAccessLayer
             StreamWriter sw = File.CreateText(txtfile);
             foreach (HDNhap hdn in list)
                 if (hdn.maHDN != mahdn)
-                    sw.WriteLine(hdn.maHDN + "\t" + hdn.maNV + "\t" + hdn.maNCC + "\t" + hdn.maMT + "\t" + hdn.ngayNhap + "\t" + hdn.soLuong + "\t" + hdn.donGia + "\t" + hdn.tongTien);
-            sw.Close();
+                    sw.WriteLine(hdn.maHDN + "\t" + hdn.maNV + "\t" + hdn.maNCC + "\t" + hdn.ngayNhap + "\t" + hdn.tongTien);
+                sw.Close();
+        }
+        public double TongTien(string mahd)
+        {
+            StreamReader sr = new StreamReader(txtfile);
+
+            string s;
+            double tongTien = 0;
+
+            while ((s = sr.ReadLine()) != null)
+            {
+                String[] tmp = s.Split('\t');
+                if (tmp[0] == mahd)
+                {
+                    StreamReader sr1 = new StreamReader("Data/CTHDNhap.txt");
+                    string s1;
+                    while ((s1 = sr1.ReadLine()) != null)
+                    {
+                        string[] tmp1 = s1.Split('\t');
+                        if (tmp1[0] == tmp[0])
+                        {
+                            double tt = double.Parse(tmp1[4]);
+                            tongTien += tt;
+                        }
+                    }
+                    sr1.Close();
+                }
+            }
+            sr.Close();
+            return tongTien;
+        }
+        public string LayNCC(string mamt)
+        {
+            StreamReader sr = new StreamReader("Data/CTHDNhap.txt");
+
+            string s;
+            string ncc = "";
+
+            while ((s = sr.ReadLine()) != null)
+            {
+                String[] tmp = s.Split('\t');
+                if (tmp[1] == mamt)
+                {
+                    StreamReader sr1 = new StreamReader(txtfile);
+                    string s1;
+                    while ((s1 = sr1.ReadLine()) != null)
+                    {
+                        string[] tmp1 = s1.Split('\t');
+                        if (tmp1[0] == tmp[0])
+                        {
+                            string cc = tmp1[2];
+                            ncc = cc;
+                        }
+                    }
+                    sr1.Close();
+                }
+            }
+            sr.Close();
+            return ncc;
         }
     }
 }

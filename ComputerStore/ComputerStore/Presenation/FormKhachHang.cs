@@ -116,15 +116,15 @@ namespace ComputerStore.Presenation
                         return;
                     else
                     {
-                        if (khBLL.KT_MaKhachHang(makh.ToUpper()) == false)
+                        if (khBLL.KT_MaKhachHang(CongCu.ChuanHoaMa(makh)) == false)
                         {
                             IO.Writexy("Không tồn tại mã khách hàng này...", x + 4, y + 7, ConsoleColor.Black, ConsoleColor.White);
                             IO.Clear(x + 10, y + 3, 38, ConsoleColor.Black);
                         }
                         else
-                            makh = CongCu.CatXau(makh.ToUpper());
+                            makh = CongCu.ChuanHoaMa(makh);
                     }
-                } while (makh == "" || khBLL.KT_MaKhachHang(makh.ToUpper()) == false);
+                } while (makh == "" || khBLL.KT_MaKhachHang(CongCu.ChuanHoaMa(makh)) == false);
                 KhachHang kh = khachhang.LayKhachHang(makh);
 
                 IO.Clear(x + 3, y + 7, 60, ConsoleColor.Black);
@@ -161,7 +161,7 @@ namespace ComputerStore.Presenation
                         IO.Clear(x + 63, y + 5, 45, ConsoleColor.Black);
                     }
                     else if (sdt != kh.soDT && sdt != null)
-                        kh.soDT = CongCu.CatXau(sdt);
+                        kh.soDT = CongCu.ChuanHoaMa(sdt);
                 } while (sdt == null || sdt.Length < 10 || sdt.Length > 10);
 
                 IO.Clear(x + 3, y + 7, 60, ConsoleColor.Black);
@@ -209,7 +209,7 @@ namespace ComputerStore.Presenation
                         return;
                     else
                     {
-                        if (khBLL.KT_MaKhachHang(makh.ToUpper()) == false)
+                        if (khBLL.KT_MaKhachHang(CongCu.ChuanHoaMa(makh)) == false)
                         {
                             IO.Clear(x + 3, y + 5, 60, ConsoleColor.Black);
                             IO.Writexy("Không tồn tại mã khách hàng này...", x + 4, y + 5, ConsoleColor.Black, ConsoleColor.White);
@@ -217,7 +217,7 @@ namespace ComputerStore.Presenation
                         }
                         else
                         {
-                            makh = CongCu.CatXau(makh.ToUpper());
+                            makh = CongCu.ChuanHoaMa(makh);
                             khachhang.XoaKhachHang(makh);
                             IO.Clear(x + 3, y + 5, 60, ConsoleColor.Black);
                             IO.Clear(x + 31, y + 3, 60, ConsoleColor.Black);
@@ -225,7 +225,7 @@ namespace ComputerStore.Presenation
                             Hien(x + 16, y + 8, khachhang.LayDSKhachHang(), 5, 1);
                         }
                     }
-                } while (makh == "" || khBLL.KT_MaKhachHang(makh.ToUpper()) == false);
+                } while (makh == "" || khBLL.KT_MaKhachHang(CongCu.ChuanHoaMa(makh)) == false);
             } while (true);
         }
         public void Xem(int x, int y, ConsoleColor background_color, ConsoleColor text_color)
@@ -236,7 +236,7 @@ namespace ComputerStore.Presenation
 
             Console.Clear();
             IO.Box(0, 0, 28, 114, ConsoleColor.Black, ConsoleColor.White);
-            Hien(x + 17, y, khachhang.LayDSKhachHang(), 5, 1);
+            Hien(x + 17, y + 1, khachhang.LayDSKhachHang(), 5, 1);
         }
         public void TimTen(int x, int y, ConsoleColor background_color, ConsoleColor text_color)
         {
@@ -316,7 +316,7 @@ namespace ComputerStore.Presenation
                         return;
                     else
                     {
-                        if (khBLL.KT_MaKhachHang(makh.ToUpper()) == false)
+                        if (khBLL.KT_MaKhachHang(CongCu.ChuanHoaMa(makh)) == false)
                         {
                             IO.Clear(x + 3, y + 5, 60, ConsoleColor.Black);
                             IO.Writexy("Không tồn tại mã khách hàng này...", x + 4, y + 5, ConsoleColor.Black, ConsoleColor.White);
@@ -326,12 +326,12 @@ namespace ComputerStore.Presenation
                         {
                             IO.Clear(x + 3, y + 5, 60, ConsoleColor.Black);
                             IO.Writexy("Khách hàng tìm được...", x + 4, y + 5);
-                            makh = CongCu.CatXau(makh.ToUpper());
+                            makh = CongCu.ChuanHoaMa(makh);
                             List<KhachHang> list = khachhang.TimKhachHang(new KhachHang(makh, null, null, null));
                             Hien(x + 16, y + 8, list, 5, 1);
                         }
                     }
-                } while (makh == "" || khBLL.KT_MaKhachHang(makh.ToUpper()) == false);
+                } while (makh == "" || khBLL.KT_MaKhachHang(CongCu.ChuanHoaMa(makh)) == false);
             } while (true);
         }
         public void Hien(int xx, int yy, List<KhachHang> list, int n, int type)
@@ -373,7 +373,7 @@ namespace ComputerStore.Presenation
                 }
                 IO.Writexy("└───────────────┴───────────────────────┴─────────────────┴─────────────────┘", x, y + d - 1);
                 IO.Writexy(" Trang " + curpage + "/" + totalpage, x, y + d);
-                IO.Writexy(" Trang " + curpage + "/" + totalpage + "  Nhấn PagegUp để xem trước, PagegDown để xem tiep, Esc để thoát...", x, y + d);
+                IO.Writexy(" Trang " + curpage + "/" + totalpage + "  Nhấn PagegUp để xem trước, PagegDown để xem tiep, Esc để quay lại...", x, y + d);
                 if (type == 0)
                     break;
                 ConsoleKeyInfo kt = Console.ReadKey();

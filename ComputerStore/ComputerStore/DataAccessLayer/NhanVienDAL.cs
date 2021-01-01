@@ -57,8 +57,7 @@ namespace ComputerStore.DataAccessLayer
         {
             int manv = CongCu.TachSo(maNV) + 1;
             StreamWriter sw = File.AppendText(txtfile);
-            sw.WriteLine();
-            sw.Write("NV" + manv + "\t" + nv.tenNV + "\t"+ nv.ngaySinh + "\t" + nv.gioiTinh + "\t" + nv.diaChi + "\t" + nv.soDT + "\t" + nv.loaiNV + "\t" + nv.pass);
+            sw.WriteLine("NV" + manv + "\t" + nv.tenNV + "\t"+ nv.ngaySinh + "\t" + nv.gioiTinh + "\t" + nv.diaChi + "\t" + nv.soDT + "\t" + nv.loaiNV + "\t" + nv.pass);
             sw.Close();
         }        
         public void Update(NhanVien nv)

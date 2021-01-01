@@ -12,7 +12,6 @@ namespace ComputerStore.Business.Interface
         List<HDNhap> LayDSHDNhap();
         void ThemHDNhap(HDNhap hdn);
         void XoaHDNhap(string mahdn);
-        void SuaHDNhap(HDNhap hdn);
         List<HDNhap> TimHDNhap(HDNhap hdn);
         HDNhap LayHDNhap(string mahdn);
     }

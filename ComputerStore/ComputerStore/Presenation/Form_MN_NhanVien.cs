@@ -103,13 +103,13 @@ namespace ComputerStore.Presenation
                 Console.Clear();
                 IO.Box(0, 0, 28, 114, ConsoleColor.Black, ConsoleColor.White);
                 IO.BoxTitle("                    CÁC CHỨC NĂNG", x, y, 17, 56);
-                IO.Writexy("F1. Nhập danh sách máy tính", x + 12, y + 3);
-                IO.Writexy("F2. Sửa thông tin máy tính", x + 12, y + 5);
-                IO.Writexy("F3. Xóa máy tính", x + 12, y + 7);
-                IO.Writexy("F4. Hiển thị danh sách máy tính", x + 12, y + 9);
-                IO.Writexy("F5. Tìm kiếm máy tính", x + 12, y + 11);
-                IO.Writexy("F6. Quay lại", x + 12, y + 13);
-                IO.Writexy("Chọn chức năng...", x + 12, y + 15);
+                IO.Writexy("F1. Nhập danh sách máy tính", x + 14, y + 3);
+                IO.Writexy("F2. Sửa thông tin máy tính", x + 14, y + 5);
+                IO.Writexy("F3. Xóa máy tính", x + 14, y + 7);
+                IO.Writexy("F4. Xem danh sách máy tính", x + 14, y + 9);
+                IO.Writexy("F5. Tìm kiếm máy tính", x + 14, y + 11);
+                IO.Writexy("F6. Quay lại", x + 14, y + 13);
+                IO.Writexy("Chọn chức năng...", x + 14, y + 15);
 
                 FormMayTinh maytinh = new FormMayTinh();
                 Form_MN_NhanVien ftk = new Form_MN_NhanVien();
@@ -187,7 +187,7 @@ namespace ComputerStore.Presenation
                 IO.Writexy("F1. Nhập danh sách nhà cung cấp", x + 12, y + 3);
                 IO.Writexy("F2. Sửa thông tin nhà cung cấp", x + 12, y + 5);
                 IO.Writexy("F3. Xóa nhà cung cấp", x + 12, y + 7);
-                IO.Writexy("F4. Hiển thị danh sách nhà cung cấp", x + 12, y + 9);
+                IO.Writexy("F4. Xem danh sách nhà cung cấp", x + 12, y + 9);
                 IO.Writexy("F5. Tìm kiếm nhà cung cấp", x + 12, y + 11);
                 IO.Writexy("F6. Quay lại", x + 12, y + 13);
                 IO.Writexy("Chọn chức năng...", x + 12, y + 15);
@@ -265,13 +265,13 @@ namespace ComputerStore.Presenation
                 Console.Clear();
                 IO.Box(0, 0, 28, 114, ConsoleColor.Black, ConsoleColor.White);
                 IO.BoxTitle("                    CÁC CHỨC NĂNG", x, y, 17, 56);
-                IO.Writexy("F1. Nhập danh sách khách hàng", x + 12, y + 3);
-                IO.Writexy("F2. Sửa thông tin khách hàng", x + 12, y + 5);
-                IO.Writexy("F3. Xóa khách hàng", x + 12, y + 7);
-                IO.Writexy("F4. Hiển thị danh sách khách hàng", x + 12, y + 9);
-                IO.Writexy("F5. Tìm kiếm khách hàng", x + 12, y + 11);
-                IO.Writexy("F6. Quay lại", x + 12, y + 13);
-                IO.Writexy("Chọn chức năng...", x + 12, y + 15);
+                IO.Writexy("F1. Nhập danh sách khách hàng", x + 14, y + 3);
+                IO.Writexy("F2. Sửa thông tin khách hàng", x + 14, y + 5);
+                IO.Writexy("F3. Xóa khách hàng", x + 14, y + 7);
+                IO.Writexy("F4. Xem danh sách khách hàng", x + 14, y + 9);
+                IO.Writexy("F5. Tìm kiếm khách hàng", x + 14, y + 11);
+                IO.Writexy("F6. Quay lại", x + 14, y + 13);
+                IO.Writexy("Chọn chức năng...", x + 14, y + 15);
 
                 FormKhachHang khachang = new FormKhachHang();
                 Form_MN_NhanVien ftk = new Form_MN_NhanVien();
@@ -346,13 +346,13 @@ namespace ComputerStore.Presenation
                 Console.Clear();
                 IO.Box(0, 0, 28, 114, ConsoleColor.Black, ConsoleColor.White);
                 IO.BoxTitle("                    CÁC CHỨC NĂNG", x, y, 17, 56);
-                IO.Writexy("F1. Nhập danh sách hóa đơn nhập", x + 12, y + 3);
-                IO.Writexy("F2. Sửa thông tin hóa đơn nhập", x + 12, y + 5);
-                IO.Writexy("F3. Xóa hóa đơn nhập", x + 12, y + 7);
-                IO.Writexy("F4. Hiển thị danh sách hóa đơn nhập", x + 12, y + 9);
-                IO.Writexy("F5. Tìm kiếm hóa đơn nhập", x + 12, y + 11);
-                IO.Writexy("F6. Quay lại", x + 12, y + 13);
-                IO.Writexy("Chọn chức năng...", x + 12, y + 15);
+                IO.Writexy("F1. Nhập danh sách nhân viên ", x + 14, y + 3);
+                IO.Writexy("F2. Sửa thông tin nhân viên ", x + 14, y + 5);
+                IO.Writexy("F3. Xóa nhân viên ", x + 14, y + 7);
+                IO.Writexy("F4. Xem danh sách nhân viên", x + 14, y + 9);
+                IO.Writexy("F5. Tìm kiếm nhân viên ", x + 14, y + 11);
+                IO.Writexy("F6. Quay lại", x + 14, y + 13);
+                IO.Writexy("Chọn chức năng...", x + 14, y + 15);
 
                 FormHDNhap hdnhap = new FormHDNhap();
 
@@ -363,10 +363,10 @@ namespace ComputerStore.Presenation
                         hdnhap.Nhap(1, 1, ConsoleColor.Black, ConsoleColor.White);
                         break;
                     case ConsoleKey.F2:
-                        hdnhap.Sua(1, 1, ConsoleColor.Black, ConsoleColor.White);
+                        hdnhap.Xoa(1, 1, ConsoleColor.Black, ConsoleColor.White);
                         break;
                     case ConsoleKey.F3:
-                        hdnhap.Xoa(1, 1, ConsoleColor.Black, ConsoleColor.White);
+                        hdnhap.XemCTHDN(1, 1, ConsoleColor.Black, ConsoleColor.White);
                         break;
                     case ConsoleKey.F4:
                         hdnhap.Xem(1, 1, ConsoleColor.Black, ConsoleColor.White);
@@ -393,9 +393,9 @@ namespace ComputerStore.Presenation
                 IO.Box(0, 0, 28, 114, ConsoleColor.Black, ConsoleColor.White);
                 IO.BoxTitle("                    CÁC CHỨC NĂNG", x, y, 17, 56);
                 IO.Writexy("F1. Nhập danh sách hóa đơn bán", x + 12, y + 3);
-                IO.Writexy("F2. Sửa thông tin hóa đơn bán", x + 12, y + 5);
-                IO.Writexy("F3. Xóa hóa đơn bán", x + 12, y + 7);
-                IO.Writexy("F4. Hiển thị danh sách hóa đơn bán", x + 12, y + 9);
+                IO.Writexy("F2. Xóa hóa đơn bán", x + 12, y + 5);
+                IO.Writexy("F3. Xem chi tiết hóa đơn bán", x + 12, y + 7);
+                IO.Writexy("F4. Xem danh sách hóa đơn bán", x + 12, y + 9);
                 IO.Writexy("F5. Tìm kiếm hóa đơn bán", x + 12, y + 11);
                 IO.Writexy("F6. Quay lại", x + 12, y + 13);
                 IO.Writexy("Chọn chức năng...", x + 12, y + 15);
@@ -409,10 +409,10 @@ namespace ComputerStore.Presenation
                         hdban.Nhap(1, 1, ConsoleColor.Black, ConsoleColor.White);
                         break;
                     case ConsoleKey.F2:
-                        hdban.Sua(1, 1, ConsoleColor.Black, ConsoleColor.White);
+                        hdban.Xoa(1, 1, ConsoleColor.Black, ConsoleColor.White);
                         break;
                     case ConsoleKey.F3:
-                        hdban.Xoa(1, 1, ConsoleColor.Black, ConsoleColor.White);
+                        hdban.XemCTHDB(1, 1, ConsoleColor.Black, ConsoleColor.White);
                         break;
                     case ConsoleKey.F4:
                         hdban.Xem(1, 1, ConsoleColor.Black, ConsoleColor.White);

@@ -22,10 +22,10 @@ namespace ComputerStore.Business
             if (nv.tenNV != "" && nv.ngaySinh != "" && nv.gioiTinh != "" && nv.diaChi != "" && nv.soDT != "" && nv.loaiNV != "" && nv.pass != "")
             {
                 nv.tenNV = CongCu.ChuanHoaXau(nv.tenNV);
-                nv.ngaySinh = CongCu.CatXau(nv.ngaySinh);
+                nv.ngaySinh = CongCu.ChuanHoaMa(nv.ngaySinh);
                 nv.gioiTinh = CongCu.ChuanHoaXau(nv.gioiTinh);
                 nv.diaChi = CongCu.ChuanHoaXau(nv.diaChi);
-                nv.soDT = CongCu.CatXau(nv.soDT);
+                nv.soDT = CongCu.ChuanHoaMa(nv.soDT);
                 nv.loaiNV = CongCu.HoaDau(nv.loaiNV);
                 nv.pass = CongCu.GetMD5(nv.pass);
                 nvDAL.Insert(nv);

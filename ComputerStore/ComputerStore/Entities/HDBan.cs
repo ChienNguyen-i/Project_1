@@ -9,36 +9,27 @@ namespace ComputerStore.Entities
         private string MaHDB;
         private string MaNV;
         private string MaKH;
-        private string MaMT;
         private string NgayBan;
-        private int SoLuong;
-        private double DonGia;
         private double TongTien;
 
         public HDBan()
         {
         }
-        public HDBan(string mahdb, string manv, string makh, string mamt, string ngayban, int soluong, double dongia, double tongtien)
+        public HDBan(string mahdb, string manv, string makh, string ngayban, double tongtien)
         {
             this.MaHDB = mahdb;
             this.MaNV = manv;
             this.MaKH = makh;
-            this.MaMT = mamt;
             this.NgayBan = ngayban;
-            this.SoLuong = soluong;
-            this.DonGia = dongia;
             this.TongTien = tongtien;
         }
         public HDBan(HDBan hdb)
         {
-            this.MaHDB = hdb.MaHDB;
-            this.MaNV = hdb.MaNV;
-            this.MaKH = hdb.MaKH;
-            this.MaMT = hdb.MaMT;
-            this.NgayBan = hdb.NgayBan;
-            this.SoLuong = hdb.SoLuong;
-            this.DonGia = hdb.DonGia;
-            this.TongTien = hdb.TongTien;
+            this.MaHDB = hdb.maHDB;
+            this.MaNV = hdb.maNV;
+            this.MaKH = hdb.maKH;
+            this.NgayBan = hdb.ngayBan;
+            this.TongTien = hdb.tongTien;
         }
 
         public string maHDB
@@ -77,18 +68,6 @@ namespace ComputerStore.Entities
                     MaKH = value;
             }
         }
-        public string maMT
-        {
-            get
-            {
-                return MaMT;
-            }
-            set
-            {
-                if (value != "")
-                    MaMT = value;
-            }
-        }
         public string ngayBan
         {
             get
@@ -101,39 +80,16 @@ namespace ComputerStore.Entities
                     NgayBan = value;
             }
         }
-        public int soLuong
-        {
-            get
-            {
-                return SoLuong;
-            }
-            set
-            {
-                if (value > 0)
-                    SoLuong = value;
-            }
-        }
-        public double donGia
-        {
-            get
-            {
-                return DonGia;
-            }
-            set
-            {
-                if (value > 0)
-                    DonGia = value;
-            }
-        }
         public double tongTien
         {
             get
             {
-                return donGia * soLuong;
+                return TongTien;
             }
             set
             {
-                TongTien = value;
+                if (value > 0)
+                    TongTien = value;
             }
         }
     }

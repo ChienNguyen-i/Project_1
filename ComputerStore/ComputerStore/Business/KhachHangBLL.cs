@@ -23,7 +23,7 @@ namespace ComputerStore.Business
             {
                 kh.tenKH = CongCu.ChuanHoaXau(kh.tenKH);
                 kh.diaChi = CongCu.ChuanHoaXau(kh.diaChi);
-                kh.soDT = CongCu.CatXau(kh.soDT);
+                kh.soDT = CongCu.ChuanHoaMa(kh.soDT);
                 khDAL.Insert(kh);
             }
             else

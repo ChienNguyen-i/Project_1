@@ -30,35 +30,10 @@ namespace ComputerStore.DataAccessLayer
             sr.Close();
             return list;
         }
-        public string maMT
-        {
-            get
-            {
-                StreamReader sr = File.OpenText(txtfile);
-                string s = sr.ReadLine();
-                string tmp = "";
-                while (s != null)
-                {
-                    if (s != "")
-                        tmp = s;
-                    s = sr.ReadLine();
-                }
-                sr.Close();
-                if (tmp == "")
-                    return "MT0";
-                else
-                {
-                    string[] a = tmp.Split('\t');
-                    return a[0];
-                }
-            }
-        }
         public void Insert(MayTinh mt)
         {
-            int mamt = CongCu.TachSo(maMT) + 1;
             StreamWriter sw = File.AppendText(txtfile);
-            sw.WriteLine();
-            sw.Write("MT" + mamt + "\t" + mt.tenMT + "\t" + mt.maNCC + "\t" + mt.sLCon + "\t" + mt.giaBan);
+            sw.WriteLine(mt.maMT + "\t" + mt.tenMT + "\t" + mt.maNCC + "\t" + mt.sLCon + "\t" + mt.giaBan);
             sw.Close();
         }
         public void Update(MayTinh mt)

@@ -31,14 +31,14 @@ namespace ComputerStore.Entities
         }
         public NhanVien(NhanVien nv)
         {
-            this.MaNV = nv.MaNV;
-            this.TenNV = nv.TenNV;
-            this.NgaySinh = nv.NgaySinh;
-            this.GioiTinh = nv.GioiTinh;
-            this.DiaChi = nv.DiaChi;
-            this.SoDT = nv.SoDT;
+            this.MaNV = nv.maNV;
+            this.TenNV = nv.tenNV;
+            this.NgaySinh = nv.ngaySinh;
+            this.GioiTinh = nv.gioiTinh;
+            this.DiaChi = nv.diaChi;
+            this.SoDT = nv.soDT;
             this.LoaiNV = nv.LoaiNV;
-            this.Password = nv.Password;
+            this.Password = nv.loaiNV;
         }
 
         public string maNV

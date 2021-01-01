@@ -50,3 +50,16 @@ F:\ComputerStore\ComputerStore\obj\Debug\netcoreapp3.1\ComputerStore.csproj.Core
 F:\ComputerStore\ComputerStore\obj\Debug\netcoreapp3.1\ComputerStore.dll
 F:\ComputerStore\ComputerStore\obj\Debug\netcoreapp3.1\ComputerStore.pdb
 F:\ComputerStore\ComputerStore\obj\Debug\netcoreapp3.1\ComputerStore.genruntimeconfig.cache
+D:\ComputerStore\ComputerStore\bin\Debug\netcoreapp3.1\ComputerStore.exe
+D:\ComputerStore\ComputerStore\bin\Debug\netcoreapp3.1\ComputerStore.deps.json
+D:\ComputerStore\ComputerStore\bin\Debug\netcoreapp3.1\ComputerStore.runtimeconfig.json
+D:\ComputerStore\ComputerStore\bin\Debug\netcoreapp3.1\ComputerStore.runtimeconfig.dev.json
+D:\ComputerStore\ComputerStore\bin\Debug\netcoreapp3.1\ComputerStore.dll
+D:\ComputerStore\ComputerStore\bin\Debug\netcoreapp3.1\ComputerStore.pdb
+D:\ComputerStore\ComputerStore\obj\Debug\netcoreapp3.1\ComputerStore.csprojAssemblyReference.cache
+D:\ComputerStore\ComputerStore\obj\Debug\netcoreapp3.1\ComputerStore.AssemblyInfoInputs.cache
+D:\ComputerStore\ComputerStore\obj\Debug\netcoreapp3.1\ComputerStore.AssemblyInfo.cs
+D:\ComputerStore\ComputerStore\obj\Debug\netcoreapp3.1\ComputerStore.csproj.CoreCompileInputs.cache
+D:\ComputerStore\ComputerStore\obj\Debug\netcoreapp3.1\ComputerStore.dll
+D:\ComputerStore\ComputerStore\obj\Debug\netcoreapp3.1\ComputerStore.pdb
+D:\ComputerStore\ComputerStore\obj\Debug\netcoreapp3.1\ComputerStore.genruntimeconfig.cache

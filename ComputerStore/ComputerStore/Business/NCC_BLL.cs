@@ -23,7 +23,7 @@ namespace ComputerStore.Business
             {
                 ncc.tenNCC = CongCu.ChuanHoaXau(ncc.tenNCC);
                 ncc.diaChi = CongCu.ChuanHoaXau(ncc.diaChi);
-                ncc.soDT = CongCu.CatXau(ncc.soDT);
+                ncc.soDT = CongCu.ChuanHoaMa(ncc.soDT);
                 nccDAL.Insert(ncc);
             }
             else

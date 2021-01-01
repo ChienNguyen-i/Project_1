@@ -25,6 +25,13 @@ namespace ComputerStore.Utility
                 s = s.Remove(s.IndexOf("  "), 1);
             return s;
         }
+        public static string ChuanHoaMa(string ma)
+        {
+            string s = ma.Trim().ToUpper();
+            while (s.IndexOf(" ") >= 0)
+                s = s.Remove(s.IndexOf(" "), 1);
+            return s;
+        }
         public static string HoaDau(string xau)
         {
             string s = xau.Trim();
@@ -43,7 +50,7 @@ namespace ComputerStore.Utility
                 if (c >= '0' && c <= '9')
                     sb.Append(s[i]);
             }
-            return Convert.ToInt32(sb.ToString());
+            return Convert.ToInt16(sb.ToString());
         }
         public static bool CheckDate(string x)
         {

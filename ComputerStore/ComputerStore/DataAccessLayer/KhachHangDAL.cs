@@ -56,8 +56,7 @@ namespace ComputerStore.DataAccessLayer
         {
             int makh = CongCu.TachSo(maKH) + 1;
             StreamWriter sw = File.AppendText(txtfile);
-            sw.WriteLine();
-            sw.Write("KH" + makh + "\t" + kh.tenKH + "\t" + kh.diaChi + "\t" + kh.soDT);
+            sw.WriteLine("KH" + makh + "\t" + kh.tenKH + "\t" + kh.diaChi + "\t" + kh.soDT);
             sw.Close();
         }
         public void Update(KhachHang kh)

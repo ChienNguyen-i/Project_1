@@ -19,13 +19,12 @@ namespace ComputerStore.Business
         }
         public void ThemHDBan(HDBan hdb)
         {
-            if (hdb.maNV != "" && hdb.maKH != "" && hdb.maMT != "" && hdb.ngayBan != "")
+            if (hdb.maNV != "" && hdb.maKH != "" && hdb.ngayBan != "")
             {
-                hdb.maNV = CongCu.CatXau(hdb.maNV.ToUpper());
-                hdb.maKH = CongCu.CatXau(hdb.maKH.ToUpper());
-                hdb.maMT = CongCu.CatXau(hdb.maMT.ToUpper());
-                hdb.ngayBan = CongCu.CatXau(hdb.ngayBan);
-                hdbDAL.Insert(hdb);
+                hdb.maNV = CongCu.ChuanHoaMa(hdb.maNV);
+                hdb.maKH = CongCu.ChuanHoaMa(hdb.maKH);
+                hdb.ngayBan = CongCu.ChuanHoaMa(hdb.ngayBan);
+              hdbDAL.Insert(hdb);
             }
             else
                 throw new Exception("Dữ liệu sai.");
@@ -47,13 +46,6 @@ namespace ComputerStore.Business
         {
             if (KT_MaHDB(mahdb) == true)
                 hdbDAL.Delete(mahdb);
-            else
-                throw new Exception("Không tồn tại mã này.");
-        }
-        public void SuaHDBan(HDBan hdb)
-        {
-            if (KT_MaHDB(hdb.maHDB) == true)
-                hdbDAL.Update(hdb);
             else
                 throw new Exception("Không tồn tại mã này.");
         }
@@ -85,6 +77,24 @@ namespace ComputerStore.Business
                     break;
                 }
             return kt;
+        }
+        public HDBan LayMaHDB(string mamv, string makh, string ngayban)
+        {
+            HDBan hdb = null;
+            foreach (HDBan hdban in hdbDAL.GetData())
+            {
+                if (hdban.maNV == mamv && hdban.maKH == makh && hdban.ngayBan == ngayban)
+                {
+                    hdb = new HDBan(hdban);
+                    break;
+                }
+            }
+            return hdb;
+        }
+        public double TTien(string mahd)
+        {
+            HDBanDAL hdbDAL = new HDBanDAL();
+            return hdbDAL.TongTien(mahd);
         }
     }
 }

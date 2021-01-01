@@ -42,11 +42,10 @@ namespace ComputerStore.Presenation
             while ((s = sr.ReadLine()) != null)
             {
                 String[] tmp = s.Split('\t');
-                if (tmp[4] == ngay)
+                if (tmp[3] == ngay)
                 {
-                    double gia = double.Parse(tmp[6]);
-                    int soluong = int.Parse(tmp[5]);
-                    doanhthu += gia * soluong;
+                    double tt = double.Parse(tmp[4]);
+                    doanhthu += tt;
                 }
             }
             IO.Writexy("Doanh thu là:", x + 4, y + 9);
@@ -90,12 +89,11 @@ namespace ComputerStore.Presenation
             while ((s = sr.ReadLine()) != null)
             {
                 String[] tmp = s.Split('\t');
-                String[] d = tmp[4].Split('/');
+                String[] d = tmp[3].Split('/');
                 if ((d[1] + "/" + d[2]) == thang)
                 {
-                    double gia = double.Parse(tmp[6]);
-                    int soluong = int.Parse(tmp[5]);
-                    doanhthu += gia * soluong;
+                    double tt = double.Parse(tmp[4]);
+                    doanhthu += tt;
                 }
             }
             IO.Writexy("Doanh thu là:", x + 4, y + 9);
@@ -139,12 +137,11 @@ namespace ComputerStore.Presenation
             while ((s = sr.ReadLine()) != null)
             {
                 String[] tmp = s.Split('\t');
-                String[] d = tmp[4].Split('/');
+                String[] d = tmp[3].Split('/');
                 if (d[2] == nam)
                 {
-                    double gia = double.Parse(tmp[6]);
-                    int soluong = int.Parse(tmp[5]);
-                    doanhthu += gia * soluong;
+                    double tt = double.Parse(tmp[4]);
+                    doanhthu += tt;
                 }
             }
             IO.Writexy("Doanh thu là:", x + 4, y + 9);
@@ -229,7 +226,7 @@ namespace ComputerStore.Presenation
             do
             {
                 IO.Clear(xx, yy, 1900, ConsoleColor.Black);
-                IO.Box(0, 0, 28, 114, ConsoleColor.Black, ConsoleColor.White);
+                //IO.Box(0, 0, 28, 114, ConsoleColor.Black, ConsoleColor.White);
                 head = (curpage - 1) * n;
                 final = curpage * n < list.Count ? curpage * n : list.Count;
                 x = xx;
@@ -259,7 +256,7 @@ namespace ComputerStore.Presenation
                 }
                 IO.Writexy("└─────────────┴─────────────────────────┴─────────────────┴──────────────┴───────────────┘", x, y + d - 1);
                 IO.Writexy(" Trang " + curpage + "/" + totalpage, x, y + d);
-                IO.Writexy(" Trang " + curpage + "/" + totalpage + "          Nhấn PagegUp để xem trước, PagegDown để xem tiep, Esc để thoát...", x, y + d);
+                IO.Writexy(" Trang " + curpage + "/" + totalpage + "          Nhấn PagegUp để xem trước, PagegDown để xem tiep, Esc để quay lại...", x, y + d);
                 if (type == 0)
                     break;
                 ConsoleKeyInfo kt = Console.ReadKey();

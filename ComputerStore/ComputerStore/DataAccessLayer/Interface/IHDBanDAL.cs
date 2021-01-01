@@ -11,7 +11,6 @@ namespace ComputerStore.DataAccessLayer.Interface
     {
         List<HDBan> GetData();
         void Insert(HDBan hdb);
-        void Update(HDBan hdb);
         void Delete(string mahdb);
     }
 }

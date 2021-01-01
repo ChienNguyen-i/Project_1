@@ -23,10 +23,10 @@ namespace ComputerStore.Entities
         }
         public KhachHang(KhachHang kh)
         {
-            this.MaKH = kh.MaKH;
-            this.TenKH = kh.TenKH;
-            this.DiaChi = kh.DiaChi;
-            this.SoDT = kh.SoDT;
+            this.MaKH = kh.maKH;
+            this.TenKH = kh.tenKH;
+            this.DiaChi = kh.diaChi;
+            this.SoDT = kh.soDT;
         }
 
         public string maKH

@@ -23,10 +23,10 @@ namespace ComputerStore.Entities
         }
         public NCC(NCC ncc)
         {
-            this.MaNCC = ncc.MaNCC;
-            this.TenNCC = ncc.TenNCC;
-            this.DiaChi = ncc.DiaChi;
-            this.SoDT = ncc.SoDT;
+            this.MaNCC = ncc.maNCC;
+            this.TenNCC = ncc.tenNCC;
+            this.DiaChi = ncc.diaChi;
+            this.SoDT = ncc.soDT;
         }
 
         public string maNCC

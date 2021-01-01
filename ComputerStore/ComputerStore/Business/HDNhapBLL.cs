@@ -19,12 +19,11 @@ namespace ComputerStore.Business
         }
         public void ThemHDNhap(HDNhap hdn)
         {
-            if (hdn.maNV != "" && hdn.maNCC != "" && hdn.maMT != "" && hdn.ngayNhap != "")
+            if (hdn.maNV != "" && hdn.maNCC != "" && hdn.ngayNhap != "")
             {
-                hdn.maNV = CongCu.CatXau(hdn.maNV.ToUpper());
-                hdn.maNCC = CongCu.CatXau(hdn.maNCC.ToUpper());
-                hdn.maMT = CongCu.CatXau(hdn.maMT.ToUpper());
-                hdn.ngayNhap = CongCu.CatXau(hdn.ngayNhap);
+                hdn.maNV = CongCu.ChuanHoaMa(hdn.maNV);
+                hdn.maNCC = CongCu.ChuanHoaMa(hdn.maNCC);
+                hdn.ngayNhap = CongCu.ChuanHoaMa(hdn.ngayNhap);
                 hdnDAL.Insert(hdn);
             }
             else
@@ -47,13 +46,6 @@ namespace ComputerStore.Business
         {
             if (KT_MaHDN(mahdn) == true)
                 hdnDAL.Delete(mahdn);
-            else
-                throw new Exception("Không tồn tại mã này.");
-        }
-        public void SuaHDNhap(HDNhap hdn)
-        {
-            if (KT_MaHDN(hdn.maHDN) == true)
-                hdnDAL.Update(hdn);
             else
                 throw new Exception("Không tồn tại mã này.");
         }
@@ -85,6 +77,29 @@ namespace ComputerStore.Business
                     break;
                 }
             return kt;
+        }
+        public HDNhap LayMaHDN(string mamv, string mancc, string ngaynhap)
+        {
+            HDNhap hdn = null;
+            foreach (HDNhap hdnhap in hdnDAL.GetData())
+            {
+                if (hdnhap.maNV == mamv && hdnhap.maNCC == mancc && hdnhap.ngayNhap == ngaynhap)
+                {
+                    hdn = new HDNhap(hdnhap);
+                    break;
+                }
+            }
+            return hdn;
+        }
+        public double TTien(string mahd)
+        {
+            HDNhapDAL hdnDAL = new HDNhapDAL();
+            return hdnDAL.TongTien(mahd);
+        }
+        public string LayMaNCC(string mamt)
+        {
+            HDNhapDAL hdnDAL = new HDNhapDAL();
+            return hdnDAL.LayNCC(mamt);
         }
     }
 }

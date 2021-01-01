@@ -26,11 +26,11 @@ namespace ComputerStore.Entities
         }
         public MayTinh(MayTinh mt)
         {
-            this.MaMT = mt.MaMT;
-            this.TenMT = mt.TenMT;
-            this.MaNCC = mt.MaNCC;
-            this.SLCon = mt.SLCon;
-            this.GiaBan = mt.GiaBan;
+            this.MaMT = mt.maMT;
+            this.TenMT = mt.tenMT;
+            this.MaNCC = mt.maNCC;
+            this.SLCon = mt.sLCon;
+            this.GiaBan = mt.giaBan;
         }
 
         public string maMT

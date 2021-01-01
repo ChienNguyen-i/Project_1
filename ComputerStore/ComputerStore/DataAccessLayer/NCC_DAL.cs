@@ -56,8 +56,7 @@ namespace ComputerStore.DataAccessLayer
         {
             int mancc = CongCu.TachSo(maNCC) + 1;
             StreamWriter sw = File.AppendText(txtfile);
-            sw.WriteLine();
-            sw.Write("NCC" + mancc + "\t" + ncc.tenNCC + "\t" + ncc.diaChi + "\t" + ncc.soDT);
+            sw.WriteLine("NCC" + mancc + "\t" + ncc.tenNCC + "\t" + ncc.diaChi + "\t" + ncc.soDT);
             sw.Close();
         }
         public void Update(NCC ncc)

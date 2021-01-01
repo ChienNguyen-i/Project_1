@@ -22,7 +22,7 @@ namespace ComputerStore.DataAccessLayer
                 {
                     s = CongCu.CatXau(s);
                     string[] a = s.Split('\t');
-                    list.Add(new HDBan(a[0], a[1], a[2], a[3], a[4], int.Parse(a[5]), double.Parse(a[6]), double.Parse(a[7])));
+                    list.Add(new HDBan(a[0], a[1], a[2], a[3], double.Parse(a[4])));
                 }
                 s = sr.ReadLine();
             }
@@ -56,22 +56,7 @@ namespace ComputerStore.DataAccessLayer
         {
             int mahdb = CongCu.TachSo(maHDB) + 1;
             StreamWriter sw = File.AppendText(txtfile);
-            sw.WriteLine();
-            sw.Write("HDB" + mahdb + "\t" + hdb.maNV + "\t" + hdb.maKH + "\t" + hdb.maMT + "\t" + hdb.ngayBan + "\t" + hdb.soLuong + "\t" + hdb.donGia + "\t" + hdb.tongTien);
-            sw.Close();
-        }
-        public void Update(HDBan hdb)
-        {
-            List<HDBan> list = GetData();
-            for (int i = 0; i < list.Count; ++i)
-                if (list[i].maHDB == hdb.maHDB)
-                {
-                    list[i] = hdb;
-                    break;
-                }
-            StreamWriter sw = File.CreateText(txtfile);
-            for (int i = 0; i < list.Count; ++i)
-                sw.WriteLine(list[i].maHDB + "\t" + list[i].maNV + "\t" + list[i].maKH + "\t"+ list[i].maMT + "\t" + list[i].ngayBan + "\t"+ list[i].soLuong + "\t" + list[i].donGia + "\t" + list[i].tongTien);
+            sw.WriteLine("HDB" + mahdb + "\t" + hdb.maNV + "\t" + hdb.maKH + "\t" + hdb.ngayBan + "\t" + hdb.tongTien);
             sw.Close();
         }
         public void Delete(string mahdb)
@@ -80,8 +65,37 @@ namespace ComputerStore.DataAccessLayer
             StreamWriter sw = File.CreateText(txtfile);
             foreach (HDBan hdb in list)
                 if (hdb.maHDB != mahdb)
-                    sw.WriteLine(hdb.maHDB + "\t" + hdb.maNV + "\t" + hdb.maKH + "\t" + hdb.maMT + "\t" + hdb.ngayBan + "\t" + hdb.soLuong + "\t" + hdb.donGia + "\t" + hdb.tongTien);
+                    sw.WriteLine(hdb.maHDB + "\t" + hdb.maNV + "\t" + hdb.maKH + "\t" + hdb.ngayBan + "\t" + hdb.tongTien);
             sw.Close();
+        }
+        public double TongTien(string mahd)
+        {
+            StreamReader sr = new StreamReader(txtfile);
+
+            string s;
+            double tongTien = 0;
+
+            while ((s = sr.ReadLine()) != null)
+            {
+                String[] tmp = s.Split('\t');
+                if (tmp[0] == mahd)
+                {
+                    StreamReader sr1 = new StreamReader("Data/CTHDBan.txt");
+                    string s1;
+                    while ((s1 = sr1.ReadLine()) != null)
+                    {
+                        string[] tmp1 = s1.Split('\t');
+                        if (tmp1[0] == tmp[0])
+                        {
+                            double tt = double.Parse(tmp1[4]);
+                            tongTien += tt;
+                        }
+                    }
+                    sr1.Close();
+                }
+            }
+            sr.Close();
+            return tongTien;
         }
     }
 }

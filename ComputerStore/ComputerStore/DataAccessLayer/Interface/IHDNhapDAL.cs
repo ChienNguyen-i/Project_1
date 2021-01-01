@@ -11,7 +11,6 @@ namespace ComputerStore.DataAccessLayer.Interface
     {
         List<HDNhap> GetData();
         void Insert(HDNhap hdn);
-        void Update(HDNhap hdn);
         void Delete(string mahdn);
     }
 }
