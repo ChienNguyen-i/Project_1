@@ -19,10 +19,11 @@ namespace ComputerStore.Business
         public void ThemCTHDNhap(CTHDNhap cthdn)
         {
 
-            if (cthdn.maHDN != "" && cthdn.maMT != "")
+            if (cthdn.maHDN != "" && cthdn.maMT != "" && cthdn.tenMT != "")
             {
                 cthdn.maHDN = CongCu.ChuanHoaMa(cthdn.maHDN);
                 cthdn.maMT = CongCu.ChuanHoaMa(cthdn.maMT);
+                cthdn.tenMT = CongCu.ChuanHoaXau(cthdn.tenMT);
                 cthdnDAL.Insert(cthdn);
             }
             else
@@ -39,7 +40,7 @@ namespace ComputerStore.Business
                 }
             return kt;
         }
-        public CTHDNhap LaySL(string mamt)
+        public CTHDNhap LayMT(string mamt)
         {
             CTHDNhap cthdn = null;
             foreach (CTHDNhap cthdnhap in cthdnDAL.GetData())

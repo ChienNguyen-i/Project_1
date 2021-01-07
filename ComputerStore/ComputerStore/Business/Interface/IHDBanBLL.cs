@@ -13,6 +13,5 @@ namespace ComputerStore.Business.Interface
         void ThemHDBan(HDBan hdb);
         void XoaHDBan(string mahdb);
         List<HDBan> TimHDBan(HDBan hdb);
-        HDBan LayHDBan(string mahdb);
     }
 }

@@ -103,7 +103,7 @@ namespace ComputerStore.Presenation
                 Console.Clear();
                 IO.Box(0, 0, 28, 114, ConsoleColor.Black, ConsoleColor.White);
                 IO.BoxTitle("                    CÁC CHỨC NĂNG", x, y, 17, 56);
-                IO.Writexy("F1. Nhập danh sách máy tính", x + 14, y + 3);
+                IO.Writexy("F1. Thêm giá bán máy tính", x + 14, y + 3);
                 IO.Writexy("F2. Sửa thông tin máy tính", x + 14, y + 5);
                 IO.Writexy("F3. Xóa máy tính", x + 14, y + 7);
                 IO.Writexy("F4. Xem danh sách máy tính", x + 14, y + 9);

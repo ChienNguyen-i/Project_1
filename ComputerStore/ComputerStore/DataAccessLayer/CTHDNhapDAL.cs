@@ -22,7 +22,7 @@ namespace ComputerStore.DataAccessLayer
                 {
                     s = CongCu.CatXau(s);
                     string[] a = s.Split('\t');
-                    list.Add(new CTHDNhap(a[0], a[1], int.Parse(a[2]), double.Parse(a[3]), double.Parse(a[4])));
+                    list.Add(new CTHDNhap(a[0], a[1], a[2], int.Parse(a[3]), double.Parse(a[4]), double.Parse(a[5])));
                 }
                 s = sr.ReadLine();
             }
@@ -32,7 +32,7 @@ namespace ComputerStore.DataAccessLayer
         public void Insert(CTHDNhap cthdn)
         {
             StreamWriter sw = File.AppendText(txtfile);
-            sw.WriteLine(cthdn.maHDN + "\t" + cthdn.maMT + "\t" + cthdn.soLuong + "\t" + cthdn.donGia + "\t" + cthdn.thanhTien);
+            sw.WriteLine(cthdn.maHDN + "\t" + cthdn.maMT + "\t" + cthdn.tenMT + "\t" + cthdn.soLuong + "\t" + cthdn.donGia + "\t" + cthdn.thanhTien);
             sw.Close();
         }
         public void Delete(string mahdn)
@@ -41,7 +41,7 @@ namespace ComputerStore.DataAccessLayer
             StreamWriter sw = File.CreateText(txtfile);
             foreach (CTHDNhap cthdn in list)
                 if (cthdn.maHDN != mahdn)
-                    sw.WriteLine(cthdn.maHDN + "\t" + cthdn.maMT + "\t" + cthdn.soLuong + "\t" + cthdn.donGia + "\t" + cthdn.thanhTien);
+                    sw.WriteLine(cthdn.maHDN + "\t" + cthdn.maMT + "\t" + cthdn.tenMT + "\t" + cthdn.soLuong + "\t" + cthdn.donGia + "\t" + cthdn.thanhTien);
             sw.Close();
         }
     }

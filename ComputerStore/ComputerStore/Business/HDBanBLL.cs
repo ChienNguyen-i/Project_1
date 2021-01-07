@@ -29,19 +29,6 @@ namespace ComputerStore.Business
             else
                 throw new Exception("Dữ liệu sai.");
         }
-        public HDBan LayHDBan(string mahdb)
-        {
-            HDBan hdb = null;
-            foreach (HDBan hdban in hdbDAL.GetData())
-            {
-                if (hdban.maHDB == mahdb)
-                {
-                    hdb = new HDBan(hdban);
-                    break;
-                }
-            }
-            return hdb;
-        }
         public void XoaHDBan(string mahdb)
         {
             if (KT_MaHDB(mahdb) == true)

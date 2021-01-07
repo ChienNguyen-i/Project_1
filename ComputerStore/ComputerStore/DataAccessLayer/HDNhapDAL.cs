@@ -87,7 +87,7 @@ namespace ComputerStore.DataAccessLayer
                         string[] tmp1 = s1.Split('\t');
                         if (tmp1[0] == tmp[0])
                         {
-                            double tt = double.Parse(tmp1[4]);
+                            double tt = double.Parse(tmp1[5]);
                             tongTien += tt;
                         }
                     }

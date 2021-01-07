@@ -8,6 +8,7 @@ namespace ComputerStore.Entities
     {
         private string MaHDN;
         private string MaMT;
+        private string TenMT;
         private int SoLuong;
         private double DonGia;
         private double ThanhTien;
@@ -15,10 +16,11 @@ namespace ComputerStore.Entities
         public CTHDNhap()
         {
         }
-        public CTHDNhap(string mahdn, string mamt, int soluong, double dongia, double thanhtien)
+        public CTHDNhap(string mahdn, string mamt, string tenmt, int soluong, double dongia, double thanhtien)
         {
             this.MaHDN = mahdn;
             this.MaMT = mamt;
+            this.TenMT = tenmt;
             this.SoLuong = soluong;
             this.DonGia = dongia;
             this.ThanhTien = thanhtien;
@@ -27,6 +29,7 @@ namespace ComputerStore.Entities
         {
             this.MaHDN = cthdn.maHDN;
             this.MaMT = cthdn.maMT;
+            this.TenMT = cthdn.tenMT;
             this.SoLuong = cthdn.soLuong;
             this.DonGia = cthdn.donGia;
             this.ThanhTien = cthdn.thanhTien;
@@ -54,6 +57,18 @@ namespace ComputerStore.Entities
             {
                 if (value != "")
                     MaMT = value;
+            }
+        }
+        public string tenMT
+        {
+            get
+            {
+                return TenMT;
+            }
+            set
+            {
+                if (value != "")
+                    TenMT = value;
             }
         }
         public int soLuong

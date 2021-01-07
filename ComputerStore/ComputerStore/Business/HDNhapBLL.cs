@@ -29,19 +29,6 @@ namespace ComputerStore.Business
             else
                 throw new Exception("Dữ liệu sai.");
         }
-        public HDNhap LayHDNhap(string mahdn)
-        {
-            HDNhap hdn = null;
-            foreach (HDNhap hdnhap in hdnDAL.GetData())
-            {
-                if (hdnhap.maHDN == mahdn)
-                {
-                    hdn = new HDNhap(hdnhap);
-                    break;
-                }
-            }
-            return hdn;
-        }
         public void XoaHDNhap(string mahdn)
         {
             if (KT_MaHDN(mahdn) == true)
